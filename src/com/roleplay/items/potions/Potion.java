@@ -1,21 +1,16 @@
-package com.roleplay.items.abstractions;
+package com.roleplay.items.potions;
 
 import com.roleplay.items.interfaces.IItem;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class Weapon implements IItem {
-    private final double _damage;
+public class Potion implements IItem {
     private String _name;
 
-    public Weapon(String name, double damage) {
+    public Potion(@NotNull String name) {
         this.setName(name);
-        this._damage = damage;
     }
 
-    public double getDamage() {
-        return this._damage;
-    }
-
+    @Override
     public @NotNull String getName() {
         return this._name;
     }

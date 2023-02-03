@@ -1,4 +1,4 @@
-package com.roleplay.items.abstractions;
+package com.roleplay.items.armors.abstractions;
 
 import com.roleplay.items.interfaces.IItem;
 import org.jetbrains.annotations.NotNull;
