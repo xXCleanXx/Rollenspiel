@@ -19,7 +19,7 @@ public class Inventory {
 
     }
 
-    public void swap(IItem newItem, IItem oldItme) {
+    public void swap(IItem newItem, IItem oldItem) {
 
     }
 }
