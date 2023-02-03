@@ -23,4 +23,7 @@ public class Inventory {
     public void swap(IItem newItem, IItem oldItem) {
 
     }
+    public void useArtefact(Artefact artefact){
+            artefact.use();
+    }
 }
