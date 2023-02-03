@@ -1,19 +1,13 @@
-package com.roleplay.items.weapons.abstractions;
+package com.roleplay.items.weapons;
 
 import com.roleplay.items.interfaces.IItem;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class Weapon implements IItem {
-    private final double _damage;
+public class Arrow implements IItem {
     private String _name;
 
-    protected Weapon(@NotNull String name, double damage) {
+    public Arrow(@NotNull String name) {
         this.setName(name);
-        this._damage = damage;
-    }
-
-    public double getDamage() {
-        return this._damage;
     }
 
     @Override

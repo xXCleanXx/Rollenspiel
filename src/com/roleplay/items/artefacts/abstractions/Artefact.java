@@ -1,12 +1,12 @@
-package com.roleplay.items.potions;
+package com.roleplay.items.artefacts.abstractions;
 
 import com.roleplay.items.interfaces.IItem;
 import org.jetbrains.annotations.NotNull;
 
-public class Potion implements IItem {
+public abstract class Artefact implements IItem {
     private String _name;
 
-    public Potion(@NotNull String name) {
+    protected Artefact(@NotNull String name) {
         this.setName(name);
     }
 
@@ -18,4 +18,6 @@ public class Potion implements IItem {
     private void setName(@NotNull String name) {
         this._name = name;
     }
+
+    public abstract void use();
 }
