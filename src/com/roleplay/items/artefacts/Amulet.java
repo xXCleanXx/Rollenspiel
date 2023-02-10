@@ -1,19 +1,21 @@
 package com.roleplay.items.artefacts;
 
+import com.roleplay.characters.Character;
+import com.roleplay.effects.Effect;
 import com.roleplay.items.Item;
 
 public class Amulet extends Artefact {
-    protected Amulet(String name) {
-        super(name, 0);
+    protected Amulet(String name, Effect effect) {
+        super(name, effect, 0);
     }
 
     @Override
-    public void use() {
-
+    public void use(Character character) {
+        getEffect().apply(character);
     }
 
     @Override
     public Item clone() {
-        return new Amulet(getName());
+        return new Amulet(getName(), getEffect());
     }
 }

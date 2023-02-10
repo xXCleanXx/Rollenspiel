@@ -5,10 +5,14 @@ import com.roleplay.items.Item;
 public class LeatherArmor extends Armor {
     public LeatherArmor(String name) {
         super(name, 10);
+        setStrength(11);
     }
 
     @Override
     public Item clone() {
-        return null;
+        LeatherArmor armor = new LeatherArmor(getName());
+        armor.setDisplayName(armor.getDisplayName());
+
+        return armor;
     }
 }

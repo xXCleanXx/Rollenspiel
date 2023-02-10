@@ -30,9 +30,7 @@ public abstract class Item implements Cloneable {
     }
 
     private void setWeight(double weight) {
-        if (weight < 0) {
-            throw new IllegalArgumentException("Weight cannot be less than 0!");
-        }
+        if (weight < 0) throw new IllegalArgumentException("Weight cannot be less than 0!");
 
         this.weight = weight;
     }

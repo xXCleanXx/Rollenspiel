@@ -1,8 +1,8 @@
 package com.roleplay.characters;
 
 public class Thief extends Character {
-    protected Thief(String name, double healthPoints) {
-        super(name, healthPoints);
+    protected Thief(CharacterBuilder characterBuilder) {
+        super(characterBuilder);
     }
 
     @Override

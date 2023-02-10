@@ -1,8 +1,8 @@
 package com.roleplay.characters;
 
-public class Wizard extends Character {
-    protected Wizard(CharacterBuilder characterBuilder) {
-        super(characterBuilder);
+public class Monster extends Character {
+    protected Monster(CharacterBuilder builder) {
+        super(builder);
     }
 
     @Override

@@ -1,19 +1,19 @@
 package com.roleplay.items;
 
 import com.roleplay.items.armors.Armor;
-import com.roleplay.items.artefacts.Artefact;
 import com.roleplay.items.weapons.Weapon;
 
 public class Inventory {
     private final ItemStack[] items;
     private Weapon currentWeapon;
+    private Armor armor;
 
     public Inventory(int size) {
         if (size < 0) {
             throw new IndexOutOfBoundsException("Size cannot be less than 0!");
         }
 
-        this.items = new ItemStack[size];
+        items = new ItemStack[size];
     }
 
     public ItemStack get(int index) {
@@ -53,7 +53,11 @@ public class Inventory {
     }
 
     public void setArmor(Armor armor) {
+        if (this.armor != null) {
+            throw new IllegalArgumentException("Cannot wear another armor!");
+        }
 
+        this.armor = armor;
     }
 
     public ItemStack swap(int index, ItemStack newItemStack) {
@@ -65,9 +69,5 @@ public class Inventory {
         items[index] = newItemStack;
 
         return oldItemStack;
-    }
-
-    public void useArtefact(Artefact artefact){
-            artefact.use();
     }
 }
