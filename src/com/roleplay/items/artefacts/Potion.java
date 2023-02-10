@@ -1,15 +1,19 @@
 package com.roleplay.items.artefacts;
 
-import com.roleplay.items.artefacts.abstractions.Artefact;
-import org.jetbrains.annotations.NotNull;
+import com.roleplay.items.Item;
 
 public class Potion extends Artefact {
-    protected Potion(@NotNull String name) {
-        super(name);
+    protected Potion(String name) {
+        super(name, 0);
     }
 
     @Override
     public void use() {
 
+    }
+
+    @Override
+    public Item clone() {
+        return null;
     }
 }

@@ -1,15 +1,19 @@
 package com.roleplay.items.artefacts;
 
-import com.roleplay.items.artefacts.abstractions.Artefact;
-import org.jetbrains.annotations.NotNull;
+import com.roleplay.items.Item;
 
 public class Amulet extends Artefact {
-    protected Amulet(@NotNull String name) {
-        super(name);
+    protected Amulet(String name) {
+        super(name, 0);
     }
 
     @Override
     public void use() {
 
+    }
+
+    @Override
+    public Item clone() {
+        return new Amulet(getName());
     }
 }

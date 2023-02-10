@@ -1,21 +1,14 @@
 package com.roleplay.items.weapons;
 
-import com.roleplay.items.interfaces.IItem;
-import org.jetbrains.annotations.NotNull;
+import com.roleplay.items.Item;
 
-public class Arrow implements IItem {
-    private String _name;
-
-    public Arrow(@NotNull String name) {
-        this.setName(name);
+public class Arrow extends Item {
+    public Arrow(String name) {
+        super(name, 0);
     }
 
     @Override
-    public @NotNull String getName() {
-        return this._name;
-    }
-
-    private void setName(@NotNull String name) {
-        this._name = name;
+    public Item clone() {
+        return new Arrow(getName());
     }
 }

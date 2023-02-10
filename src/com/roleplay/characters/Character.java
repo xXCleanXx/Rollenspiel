@@ -2,9 +2,10 @@ package com.roleplay.characters;
 
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.items.Inventory;
-import com.roleplay.items.armors.abstractions.Armor;
-import com.roleplay.items.interfaces.IItem;
-import com.roleplay.items.weapons.abstractions.Weapon;
+import com.roleplay.items.Item;
+import com.roleplay.items.armors.Armor;
+import com.roleplay.items.artefacts.Artefact;
+import com.roleplay.items.weapons.Weapon;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -31,12 +32,12 @@ public abstract class Character {
 
     public abstract void levelUp();
 
-    protected void use(IItem item){
+    protected void use(Item item){
         if(item instanceof Armor) {
-            inventory.setArmor(item);
+            inventory.setArmor((Armor)item);
             //TODO
         } else if (item instanceof Weapon){
-            inventory.setCurrentWeapon(item);
+            inventory.setCurrentWeapon((Weapon)item);
             //TODO
         } else{
             inventory.useArtefact((Artefact) item);

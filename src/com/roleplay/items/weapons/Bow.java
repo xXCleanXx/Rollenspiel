@@ -1,10 +1,14 @@
 package com.roleplay.items.weapons;
 
-import com.roleplay.items.weapons.abstractions.Weapon;
-import org.jetbrains.annotations.NotNull;
+import com.roleplay.items.Item;
 
 public class Bow extends Weapon {
-    protected Bow(@NotNull String name, double damage) {
-        super(name, damage);
+    protected Bow(String name, double damage) {
+        super(name, 2, damage);
+    }
+
+    @Override
+    public Item clone() {
+        return new Bow(getName(), getDamage());
     }
 }

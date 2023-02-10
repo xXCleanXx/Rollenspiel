@@ -1,45 +1,72 @@
 package com.roleplay.items;
 
-import com.roleplay.items.armors.abstractions.Armor;
-import com.roleplay.items.interfaces.IItem;
-import com.roleplay.items.weapons.abstractions.Weapon;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.roleplay.items.armors.Armor;
+import com.roleplay.items.artefacts.Artefact;
+import com.roleplay.items.weapons.Weapon;
 
 public class Inventory {
-    private final List<ItemStack<IItem>> _items = new ArrayList<>();
-    private Weapon _currentWeapon;
+    private final ItemStack[] items;
+    private Weapon currentWeapon;
 
-    public ItemStack<IItem>[] getItems() {
-        //return this._items.toArray(new ItemStack<IItem>[0]);
-        return null;
+    public Inventory(int size) {
+        if (size < 0) {
+            throw new IndexOutOfBoundsException("Size cannot be less than 0!");
+        }
+
+        this.items = new ItemStack[size];
     }
 
-    public void add(ItemStack<IItem> itemStack) {
-        this._items.add(itemStack);
+    public ItemStack get(int index) {
+        if (index < 0 || index > items.length) {
+            throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
+        }
+
+        return items[index];
     }
 
-    public void remove(ItemStack<IItem> itemStack) {
-        this._items.remove(itemStack);
+    public void add(int index, ItemStack itemStack) {
+        if (index < 0 || index > items.length) {
+            throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
+        }
+
+        if (items[index] != null) {
+            throw new IllegalArgumentException("Could not be set, because slot is not null!");
+        }
+
+        items[index] = itemStack;
     }
 
-    public @Nullable Weapon getCurrentWeapon() {
-        return this._currentWeapon;
+    public ItemStack remove(int index) {
+        if (items[index] == null) {
+            throw new IllegalArgumentException("There is nothing to remove!");
+        }
+
+        return swap(index, null);
     }
 
-    public void setCurrentWeapon(@Nullable Weapon currentWeapon) {
-        this._currentWeapon = currentWeapon;
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public void setCurrentWeapon(Weapon currentWeapon) {
+        this.currentWeapon = currentWeapon;
     }
 
     public void setArmor(Armor armor) {
 
     }
 
-    public void swap(IItem newItem, IItem oldItem) {
+    public ItemStack swap(int index, ItemStack newItemStack) {
+        if (index < 0 || index > items.length) {
+            throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
+        }
 
+        ItemStack oldItemStack = items[index];
+        items[index] = newItemStack;
+
+        return oldItemStack;
     }
+
     public void useArtefact(Artefact artefact){
             artefact.use();
     }

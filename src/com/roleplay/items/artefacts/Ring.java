@@ -1,15 +1,19 @@
 package com.roleplay.items.artefacts;
 
-import com.roleplay.items.artefacts.abstractions.Artefact;
-import org.jetbrains.annotations.NotNull;
+import com.roleplay.items.Item;
 
 public class Ring extends Artefact {
-    protected Ring(@NotNull String name) {
-        super(name);
+    protected Ring(String name) {
+        super(name, 0);
     }
 
     @Override
     public void use() {
 
+    }
+
+    @Override
+    public Item clone() {
+        return new Ring(getName());
     }
 }
