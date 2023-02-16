@@ -1,10 +1,13 @@
 package com.roleplay.spells;
 
-public class Spell {
-    private final String name;
-    private final SpellEffect effect;
+import com.roleplay.characters.Character;
+import com.roleplay.effects.Effect;
 
-    public Spell(String name, SpellEffect effect) {
+public abstract class Spell {
+    private final String name;
+    private final Effect effect;
+
+    public Spell(String name, Effect effect) {
         this.name = name;
         this.effect = effect;
     }
@@ -13,7 +16,7 @@ public class Spell {
         return name;
     }
 
-    public void use() {
-
+    public void use(Character character) {
+        effect.apply(character);
     }
 }

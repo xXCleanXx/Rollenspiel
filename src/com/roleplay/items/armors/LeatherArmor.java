@@ -11,7 +11,8 @@ public class LeatherArmor extends Armor {
     @Override
     public Item clone() {
         LeatherArmor armor = new LeatherArmor(getName());
-        armor.setDisplayName(armor.getDisplayName());
+        armor.setDisplayName(getDisplayName());
+        armor.setStrength(getStrength());
 
         return armor;
     }

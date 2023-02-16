@@ -1,7 +1,6 @@
 package com.roleplay.characters;
 
 public class Abilities {
-
     private double intelligence;
     private double strength;
     private double constitution;
@@ -9,14 +8,7 @@ public class Abilities {
     private double skill;
     private double experience;
 
-    public Abilities(double intelligence, double strength, double constitution, double wisdom, double skill, double experience){
-        setIntelligence(intelligence);
-        setStrength(strength);
-        setConstitution(constitution);
-        setWisdom(wisdom);
-        setSkill(skill);
-        setExperience(experience);
-    }
+    public Abilities() { }
 
     public double getIntelligence() {
         return intelligence;
