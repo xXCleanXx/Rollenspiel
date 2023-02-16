@@ -13,9 +13,15 @@ public class GameFrame extends JFrame {
             setTitle("Nerds vs Monsters");
             setMinimumSize(new Dimension(1200,800));
 
-            GameBoard gameBoard = new GameBoard();
+            GameBoard board = new GameBoard();
 
-            add(gameBoard.getBoardPanel(), BorderLayout.CENTER);
+            Box box = new Box(BoxLayout.Y_AXIS);
+
+            box.add(Box.createVerticalGlue());
+            box.add(board.getBoardPanel());
+            box.add(Box.createVerticalGlue());
+
+            add(box);
 
             setExtendedState(JFrame.MAXIMIZED_BOTH);
             setLocationRelativeTo(null);
