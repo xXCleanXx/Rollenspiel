@@ -1,5 +1,6 @@
 package com.roleplay.items;
 
+import com.roleplay.characters.Character;
 import com.roleplay.spells.Spell;
 
 import java.util.ArrayList;
@@ -13,14 +14,22 @@ public class BookOfSpells extends Item {
         super(name, 0);
     }
 
-    public void addSpell(Spell spell) {
-        spells.add(spell);
+    public boolean addSpell(Spell spell) {
+        if (spell == null) throw new IllegalArgumentException("Spell cannot be null!");
+
+        return spells.add(spell);
     }
 
-    public void use(String spell) {
+    public boolean removeSpell(Spell spell) {
+        if (spell == null) throw new IllegalArgumentException("Spell cannot be null!");
+
+        return spells.remove(spell);
+    }
+
+    public void use(Character character, String spell) {
         for(Spell item : spells) {
            if (item.getName().equalsIgnoreCase(spell)) {
-               item.use();
+               item.use(character);
            }
         }
     }

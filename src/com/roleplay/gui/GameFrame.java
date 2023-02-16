@@ -30,7 +30,7 @@ public class GameFrame extends JFrame {
         }
 
 
-    public static void main(String args[]){
-        new GameFrame();
-    }
+    //public static void main(String args[]){
+     //   new GameFrame();
+   // }
 }
