@@ -6,28 +6,34 @@ import com.roleplay.gui.GameBoard;
 import com.roleplay.tiles.items.Item;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 public abstract class Artefact extends Item {
-    private final Effect effect;
+    private Effect effect;
 
-    protected Artefact(String name, Effect effect, double weight, Point pos) {
-        super(name, weight, pos);
-        this.effect = effect;
+    protected Artefact(String name, Effect effect, double weight) {
+        super(name, weight);
+
+        setEffect(effect);
     }
 
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
                 getImg(),
-                getPos().x * GameBoard.tileSize,
-                getPos().y * GameBoard.tileSize,
+                getPosition().x * GameBoard.tileSize,
+                getPosition().y * GameBoard.tileSize,
                 observer
         );
     }
 
     public Effect getEffect() {
         return effect;
+    }
+
+    private void setEffect(Effect effect) {
+        if (effect == null) throw new IllegalArgumentException("Effect cannot be null!");
+
+        this.effect = effect;
     }
 
     public abstract void use(Character character);

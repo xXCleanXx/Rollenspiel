@@ -19,6 +19,6 @@ public class Ring extends Artefact {
 
     @Override
     public Item clone() {
-        return new Ring(getName(), getEffect(), getPos());
+        return new Ring(getName(), getEffect(), getPosition());
     }
 }

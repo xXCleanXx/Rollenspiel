@@ -8,7 +8,7 @@ public abstract class Armor extends Item {
     private double strength;
 
     public Armor(String name, double weight, Point pos) {
-        super(name, weight,  pos);
+        super(name, weight, pos);
     }
 
     public double getStrength() {

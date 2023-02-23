@@ -12,6 +12,6 @@ public class Shield extends Armor {
 
     @Override
     public Item clone() {
-        return new Shield(getName(), getPos());
+        return new Shield(getName(), pos);
     }
 }

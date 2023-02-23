@@ -4,15 +4,12 @@ import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Item;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class Amulet extends Artefact {
 
-    public Amulet(String name, Effect effect, Point pos) {
-        super(name, effect, 0, pos);
+    public Amulet(Effect effect) {
+        super("amulet", effect, 0);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
     @Override
@@ -22,6 +19,10 @@ public class Amulet extends Artefact {
 
     @Override
     public Item clone() {
-        return new Amulet(getName(), getEffect() , getPos());
+        Amulet amulet = new Amulet(getEffect());
+        amulet.setPosition(getPosition());
+        amulet.setDisplayName(getDisplayName());
+
+        return amulet;
     }
 }

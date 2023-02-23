@@ -10,6 +10,6 @@ public class CristalBall extends Item{
 
     @Override
     public Item clone() {
-        return new CristalBall(getName(), getPos());
+        return new CristalBall(getName(), pos);
     }
 }

@@ -11,9 +11,19 @@ public class BookOfSpells extends Item {
     private final List<Spell> spells = new ArrayList<>();
     private float cooldown;
 
-    public BookOfSpells(String name, Point pos) {
-        super(name, 0, pos);
+    public BookOfSpells() {
+        super("book_of_spells", 0);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+    }
+
+    public Spell[] getSpells() {
+        Spell[] spells = new Spell[this.spells.size()];
+
+        for (int i = 0; i < spells.length; i++) {
+            spells[i] = this.spells.get(i);
+        }
+
+        return spells;
     }
 
     public boolean addSpell(Spell spell) {
@@ -38,6 +48,14 @@ public class BookOfSpells extends Item {
 
     @Override
     public Item clone() {
-        return new BookOfSpells(getName(), getPos());
+        BookOfSpells book = new BookOfSpells();
+        book.setPosition(getPosition());
+        book.setDisplayName(getDisplayName());
+
+        for (Spell item : spells) {
+            book.addSpell(item);
+        }
+
+        return book;
     }
 }

@@ -1,15 +1,17 @@
 package com.roleplay.tiles.items;
 
-import java.awt.*;
-
 public class Key extends Item {
 
-    public Key(String name, double weight, Point pos) {
-        super(name, weight, pos);
+    public Key() {
+        super("key", 0);
     }
 
     @Override
     public Item clone() {
-        return new Key(getName(), getWeight(), getPos());
+        Key key = new Key();
+        key.setPosition(getPosition());
+        key.setDisplayName(getDisplayName());
+
+        return key;
     }
 }

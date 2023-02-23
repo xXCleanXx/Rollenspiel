@@ -1,10 +1,7 @@
 package com.roleplay.tiles;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Tile {
 
@@ -14,13 +11,13 @@ public class Tile {
 
     public Tile(String name, Point pos, BufferedImage img){
         setName(name);
-        setPos(pos);
+        setPosition(pos);
         setImg(img);
     }
 
     public Tile(String name, Point pos){
         setName(name);
-        setPos(pos);
+        setPosition(pos);
     }
 
     public Tile(String name){
@@ -31,11 +28,11 @@ public class Tile {
 
     }
 
-    public Point getPos() {
+    public Point getPosition() {
         return pos;
     }
 
-    public void setPos(Point pos) {
+    public void setPosition(Point pos) {
         this.pos = pos;
     }
 

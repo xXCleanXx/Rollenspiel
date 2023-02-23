@@ -1,4 +1,7 @@
-package com.roleplay.tiles;
+package com.roleplay.tiles.build;
+
+import com.roleplay.tiles.Tile;
+import com.roleplay.tiles.items.Key;
 
 import com.roleplay.tiles.items.Key;
 

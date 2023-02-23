@@ -12,9 +12,8 @@ public abstract class Item extends Tile implements Cloneable {
     private String displayName;
     private double weight;
 
-    public Item(String name, double weight, Point pos) {
-        super(name, pos);
-        setName(name);
+    public Item(String name, double weight) {
+        super(name);
         setWeight(weight);
     }
 
