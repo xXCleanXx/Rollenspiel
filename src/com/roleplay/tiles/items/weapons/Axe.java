@@ -12,6 +12,6 @@ public class Axe extends Weapon {
 
     @Override
     public Item clone() {
-        return new Axe(getName(), getDamage(), pos);
+        return new Axe(getName(), getDamage(), getPos());
     }
 }

@@ -12,6 +12,6 @@ public class Bow extends Weapon {
 
     @Override
     public Item clone() {
-        return new Bow(getName(), getDamage(), pos);
+        return new Bow(getName(), getDamage(), getPos());
     }
 }

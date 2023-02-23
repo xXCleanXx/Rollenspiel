@@ -12,6 +12,6 @@ public class Arrow extends Item {
 
     @Override
     public Item clone() {
-        return new Arrow(getName(), pos);
+        return new Arrow(getName(), getPos());
     }
 }

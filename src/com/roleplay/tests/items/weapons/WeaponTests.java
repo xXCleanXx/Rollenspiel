@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 public class WeaponTests {
     @Test
     public void AxeTests() {
-        assertThrows(IllegalArgumentException.class, () -> new Axe(null, 0, 0, null));
-        assertThrows(IllegalArgumentException.class, () -> new Axe("", -1, 0, null));
+        assertThrows(IllegalArgumentException.class, () -> new Axe(null, 0, null));
+        assertThrows(IllegalArgumentException.class, () -> new Axe("", -1, null));
 
-        Axe axe = new Axe("axe", 10, 0, null);
+        Axe axe = new Axe("axe", 10, null);
         axe.setDisplayName("Test Axe");
 
         assertEquals("Test Axe", axe.getDisplayName());
