@@ -1,19 +1,17 @@
 package com.roleplay.tiles;
 
-public class Key {
-    private String name;
+import com.roleplay.tiles.items.Item;
 
-    public Key(String name) {
-        setName(name);
+import java.awt.*;
+
+public class Key extends Item {
+
+    public Key(String name, double weight, Point pos) {
+        super(name, weight, pos);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    private void setName(String name) {
-        if (name == null) throw new IllegalArgumentException("Name cannot be null!");
-
-        this.name = name;
+    @Override
+    public Item clone() {
+        return new Key(getName(), getWeight(), getPos());
     }
 }

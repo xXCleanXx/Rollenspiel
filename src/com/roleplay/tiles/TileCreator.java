@@ -31,9 +31,9 @@ public class TileCreator{
                 String text = bR.readLine();
                 for(int j = 0; j < columns; j++){
                     switch (java.lang.Character.getNumericValue(text.charAt(j))){
-                        case 0: map[i][j] = new Tile(0, new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/background.png")));break;
-                        case 1: map[i][j] = new Tile(1, new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/way.png")));break;
-                        case 2: map[i][j] = new Tile(2, new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/water.png")));break;
+                        case 0: map[i][j] = new Tile("background", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/background.png")));break;
+                        case 1: map[i][j] = new Tile("way", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/way.png")));break;
+                        case 2: map[i][j] = new Tile("water", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/water.png")));break;
                     }
                     tiles.add(map[i][j]);
                 }

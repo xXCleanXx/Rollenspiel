@@ -9,21 +9,13 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class Item extends Tile implements Cloneable {
-    private String name, displayName;
+    private String displayName;
     private double weight;
 
-    public Item(String name, double weight, int id, Point pos) {
-        super(id, pos);
+    public Item(String name, double weight, Point pos) {
+        super(name, pos);
         setName(name);
         setWeight(weight);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    protected void setName(String name) {
-        this.name = name;
     }
 
     public String getDisplayName() {

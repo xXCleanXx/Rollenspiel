@@ -7,8 +7,8 @@ public class Door extends Tile {
     private boolean locked, open;
     private Key key;
 
-    public Door(int id, Point pos, BufferedImage img){
-        super(id,pos,img);
+    public Door(String name, Point pos, BufferedImage img){
+        super(name,pos,img);
     }
 
     public boolean isOpen() {

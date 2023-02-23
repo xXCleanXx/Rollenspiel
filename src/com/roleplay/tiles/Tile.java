@@ -8,19 +8,23 @@ import java.io.IOException;
 
 public class Tile {
 
-    public int id;
+    public String name;
     public Point pos;
     public BufferedImage img;
 
-    public Tile(int id, Point pos, BufferedImage img){
-        setId(id);
+    public Tile(String name, Point pos, BufferedImage img){
+        setName(name);
         setPos(pos);
         setImg(img);
     }
 
-    public Tile(int id, Point pos){
-        setId(id);
+    public Tile(String name, Point pos){
+        setName(name);
         setPos(pos);
+    }
+
+    public Tile(String name){
+        setName(name);
     }
 
     public Tile(){
@@ -35,12 +39,12 @@ public class Tile {
         this.pos = pos;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BufferedImage getImg() {
