@@ -22,7 +22,7 @@ public class TileCreator{
         try{
             BufferedReader bR;
             Random random = new Random();
-            switch (random.nextInt(3)){
+            switch (random.nextInt(1)){
                 case 0: bR = new BufferedReader(new FileReader("src/com/roleplay/resources/maps/map.txt")); break;
                 case 1: bR = new BufferedReader(new FileReader("src/com/roleplay/resources/maps/map1.txt")); break;
                 case 2: bR = new BufferedReader(new FileReader("src/com/roleplay/resources/maps/map2.txt")); break;
@@ -36,6 +36,8 @@ public class TileCreator{
                         case 0: map[i][j] = new Tile("background", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/background.png")));break;
                         case 1: map[i][j] = new Tile("way", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/way.png")));break;
                         case 2: map[i][j] = new Tile("water", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/water.png")));break;
+                        case 3: map[i][j] = new Door("door", new Point(i,j));break;
+                        case 4: map[i][j] = new Door("doorRotated", new Point(i,j), ImageIO.read(new File("src/com/roleplay/resources/images/doorRotated.png")));break;
                     }
                 }
             }
@@ -53,5 +55,9 @@ public class TileCreator{
                 }
             }
         }
+    }
+
+    public Tile[][] getMap() {
+        return map;
     }
 }

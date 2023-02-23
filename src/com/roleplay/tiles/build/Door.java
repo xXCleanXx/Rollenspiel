@@ -13,7 +13,13 @@ public class Door extends Tile {
     private Key key;
 
     public Door(String name, Point pos, BufferedImage img){
-        super(name,pos,img);
+        super(name,pos);
+        setImg(img);
+    }
+
+    public Door(String name, Point pos){
+        super(name,pos);
+        setImg(loadImage("src/com/roleplay/resources/images/door.png"));
     }
 
     public boolean isOpen() {

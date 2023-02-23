@@ -21,9 +21,11 @@ import java.util.Random;
 
 public class GameBoard extends JPanel implements ActionListener {
 
-    public static final int tileSize = 20;
+    public static final int tileSize = 32;
     private final int columns = 50;
     private final int rows = 30;
+
+    private BufferedImage img;
 
     private ArrayList<Artefact> artefacts;
 
@@ -45,19 +47,17 @@ public class GameBoard extends JPanel implements ActionListener {
         characterBuilder.setMaxHealthPoints(25);
         players.add(new Thief(characterBuilder,new Point(0,0)));
 
-        Timer timer = new Timer(25, this);
-        timer.start();
-
-    }
-
-    private void drawBackground(Graphics g) {
-        BufferedImage img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
+        img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
         TileCreator tC = new TileCreator();
         tC.createTiles(img , rows, columns, tileSize);
-        map = tC.map;
+        map = tC.getMap();
+
         artefacts = populateArtefacts();
 
-        g.drawImage(img, 0, 0, null);
+
+
+        Timer timer = new Timer(25, this);
+        timer.start();
 
     }
 
@@ -73,7 +73,6 @@ public class GameBoard extends JPanel implements ActionListener {
             int artefactY = rand.nextInt(rows);
 
             Point position = new Point(artefactX,artefactY);
-
             while (!map[artefactY][artefactX].getName().equalsIgnoreCase("way")){
                 artefactX = rand.nextInt(columns);
                 artefactY = rand.nextInt(rows);
@@ -100,7 +99,7 @@ public class GameBoard extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        drawBackground(g);
+        g.drawImage(img, 0, 0, null);
 
         for (Artefact artefact : artefacts) {
             artefact.draw(g, this);
