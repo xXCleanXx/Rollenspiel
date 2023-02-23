@@ -14,9 +14,11 @@ public class TileCreator{
 
     public ArrayList<Tile> tiles = new ArrayList<>();
 
+    public Tile[][] map;
+
     public void createTiles(BufferedImage img , int rows, int columns, int tileSize) {
 
-        Tile[][] map = new Tile[rows][columns];
+        map = new Tile[rows][columns];
         try{
             BufferedReader bR;
             Random random = new Random();
@@ -35,7 +37,6 @@ public class TileCreator{
                         case 1: map[i][j] = new Tile("way", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/way.png")));break;
                         case 2: map[i][j] = new Tile("water", new Point(i,j),ImageIO.read(new File("src/com/roleplay/resources/images/water.png")));break;
                     }
-                    tiles.add(map[i][j]);
                 }
             }
         }catch (IOException ex){

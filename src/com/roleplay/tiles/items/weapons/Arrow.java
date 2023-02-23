@@ -5,17 +5,13 @@ import com.roleplay.tiles.items.Item;
 import java.awt.*;
 
 public class Arrow extends Item {
-    public Arrow() {
-        super("arrow", 0);
+    public Arrow(String name, Point pos) {
+        super(name, 0, pos);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override
     public Item clone() {
-        Arrow arrow = new Arrow();
-        arrow.setPosition(getPosition());
-        arrow.setDisplayName(getDisplayName());
-
-        return arrow;
+        return new Arrow(getName(), pos);
     }
 }

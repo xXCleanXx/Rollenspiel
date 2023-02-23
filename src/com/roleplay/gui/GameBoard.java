@@ -1,6 +1,7 @@
 package com.roleplay.gui;
 
 ;
+import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.TileCreator;
 import com.roleplay.tiles.characters.Abilities;
 import com.roleplay.tiles.characters.Character;
@@ -28,10 +29,10 @@ public class GameBoard extends JPanel implements ActionListener {
 
     private ArrayList<Character> players;
 
+    private Tile[][] map;
+
     public GameBoard() {
         setPreferredSize(new Dimension(tileSize * columns, tileSize * rows));
-
-        artefacts = populateArtefacts();
 
         players = new ArrayList<>();
 
@@ -53,6 +54,8 @@ public class GameBoard extends JPanel implements ActionListener {
         BufferedImage img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
         TileCreator tC = new TileCreator();
         tC.createTiles(img , rows, columns, tileSize);
+        map = tC.map;
+        artefacts = populateArtefacts();
 
         g.drawImage(img, 0, 0, null);
 
@@ -65,15 +68,26 @@ public class GameBoard extends JPanel implements ActionListener {
         // create the given number of coins in random positions on the board.
         // note that there is not check here to prevent two coins from occupying the same
         // spot, nor to prevent coins from spawning in the same spot as the player
-        for (int i = 0; i < rand.nextInt((columns*rows)/2); i++) {
-            int coinX = rand.nextInt(columns);
-            int coinY = rand.nextInt(rows);
+        for (int i = 0; i < rand.nextInt((columns*rows)/4); i++) {
+            int artefactX = rand.nextInt(columns);
+            int artefactY = rand.nextInt(rows);
 
-            switch (rand.nextInt(4)){
-                case 0: artefactList.add(new Amulet("Amulet", null, new Point(coinX, coinY)));break;
-                case 1: artefactList.add(new Cape("Cape",null, new Point(coinX, coinY)));break;
-                case 2: artefactList.add(new Potion("Potion",null, new Point(coinX, coinY)));break;
-                case 3: artefactList.add(new Ring("Ring",null,new Point(coinX, coinY)));break;
+            Point position = new Point(artefactX,artefactY);
+
+            while (!map[artefactY][artefactX].getName().equalsIgnoreCase("way")){
+                artefactX = rand.nextInt(columns);
+                artefactY = rand.nextInt(rows);
+
+                position = new Point(artefactX,artefactY);
+            }
+
+
+
+            switch (rand.nextInt(4)) {
+                case 0 -> artefactList.add(new Amulet("Amulet", null, position));
+                case 1 -> artefactList.add(new Cape("Cape", null, position));
+                case 2 -> artefactList.add(new Potion("Potion", null, position));
+                case 3 -> artefactList.add(new Ring("Ring", null, position));
             }
 
 
