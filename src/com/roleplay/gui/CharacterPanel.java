@@ -82,6 +82,12 @@ public class CharacterPanel extends Tile {
         });
         lineEnd.add(playerName);
 
+        JButton nextFinish = new JButton(Messages.getString("next"));
+        nextFinish.addActionListener(e -> {
+
+        });
+        lineEnd.add(nextFinish);
+
         return lineEnd;
     }
 

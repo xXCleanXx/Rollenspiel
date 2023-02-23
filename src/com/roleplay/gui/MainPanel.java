@@ -12,7 +12,7 @@ public class MainPanel {
     MainPanel(JPanel contentPane) {
         mainPanel = new JPanel();
 
-        JButton btn_Settings = new JButton(Messages.getString("MAIN_PANEL"));
+        JButton btn_Settings = new JButton(Messages.getString("settings"));
         btn_Settings.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane,Messages.getString("SETTINGS_PANEL"));
