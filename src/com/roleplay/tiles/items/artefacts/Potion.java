@@ -7,8 +7,8 @@ import com.roleplay.tiles.items.Item;
 import java.awt.*;
 
 public class Potion extends Artefact {
-    public Potion(String name, Effect effect, int id, Point pos) {
-        super(name, effect, 0, id, pos);
+    public Potion(String name, Effect effect, Point pos) {
+        super(name, effect, 0, pos);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
@@ -19,6 +19,6 @@ public class Potion extends Artefact {
 
     @Override
     public Item clone() {
-        return new Potion(getName(), getEffect(), id, pos);
+        return new Potion(getName(), getEffect(), getPos());
     }
 }

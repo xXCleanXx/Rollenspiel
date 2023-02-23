@@ -11,8 +11,8 @@ public class BookOfSpells extends Item {
     private final List<Spell> spells = new ArrayList<>();
     private float cooldown;
 
-    public BookOfSpells(String name, int id, Point pos) {
-        super(name, 0, id, pos);
+    public BookOfSpells(String name, Point pos) {
+        super(name, 0, pos);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
@@ -38,6 +38,6 @@ public class BookOfSpells extends Item {
 
     @Override
     public Item clone() {
-        return new BookOfSpells(getName(), id, pos);
+        return new BookOfSpells(getName(), getPos());
     }
 }

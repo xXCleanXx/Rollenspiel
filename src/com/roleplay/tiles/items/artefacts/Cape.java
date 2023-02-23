@@ -7,8 +7,8 @@ import com.roleplay.tiles.items.Item;
 import java.awt.*;
 
 public class Cape extends Artefact {
-    public Cape(String name, Effect effect, int id, Point pos) {
-        super(name, effect, 0, id, pos);
+    public Cape(String name, Effect effect, Point pos) {
+        super(name, effect, 0, pos);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
@@ -19,6 +19,6 @@ public class Cape extends Artefact {
 
     @Override
     public Item clone() {
-        return new Cape(getName(), getEffect(), id, pos);
+        return new Cape(getName(), getEffect(), getPos());
     }
 }

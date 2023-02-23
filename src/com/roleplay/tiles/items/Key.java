@@ -1,6 +1,4 @@
-package com.roleplay.tiles;
-
-import com.roleplay.tiles.items.Item;
+package com.roleplay.tiles.items;
 
 import java.awt.*;
 

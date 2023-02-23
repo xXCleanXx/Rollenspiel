@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class Tile {
 
-    public String name;
-    public Point pos;
-    public BufferedImage img;
+    private String name;
+    private Point pos;
+    private BufferedImage img;
 
     public Tile(String name, Point pos, BufferedImage img){
         setName(name);

@@ -11,8 +11,8 @@ import java.io.File;
 
 public class Amulet extends Artefact {
 
-    public Amulet(String name, Effect effect, int id, Point pos) {
-        super(name, effect, 0, id, pos);
+    public Amulet(String name, Effect effect, Point pos) {
+        super(name, effect, 0, pos);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
     @Override
@@ -22,6 +22,6 @@ public class Amulet extends Artefact {
 
     @Override
     public Item clone() {
-        return new Amulet(getName(), getEffect() ,getId(), getPos());
+        return new Amulet(getName(), getEffect() , getPos());
     }
 }

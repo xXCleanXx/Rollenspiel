@@ -70,10 +70,10 @@ public class GameBoard extends JPanel implements ActionListener {
             int coinY = rand.nextInt(rows);
 
             switch (rand.nextInt(4)){
-                case 0: artefactList.add(new Amulet("Amulet", null,5, new Point(coinX, coinY)));break;
-                case 1: artefactList.add(new Cape("Cape",null,6, new Point(coinX, coinY)));break;
-                case 2: artefactList.add(new Potion("Potion",null,7, new Point(coinX, coinY)));break;
-                case 3: artefactList.add(new Ring("Ring",null,8, new Point(coinX, coinY)));break;
+                case 0: artefactList.add(new Amulet("Amulet", null, new Point(coinX, coinY)));break;
+                case 1: artefactList.add(new Cape("Cape",null, new Point(coinX, coinY)));break;
+                case 2: artefactList.add(new Potion("Potion",null, new Point(coinX, coinY)));break;
+                case 3: artefactList.add(new Ring("Ring",null,new Point(coinX, coinY)));break;
             }
 
 

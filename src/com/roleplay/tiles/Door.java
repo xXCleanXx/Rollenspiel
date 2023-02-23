@@ -1,5 +1,7 @@
 package com.roleplay.tiles;
 
+import com.roleplay.tiles.items.Key;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

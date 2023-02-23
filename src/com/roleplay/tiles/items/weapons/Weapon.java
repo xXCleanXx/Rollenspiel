@@ -7,8 +7,8 @@ import java.awt.*;
 public abstract class Weapon extends Item {
     private double damage;
 
-    protected Weapon(String name, double weight, double damage, int id, Point pos) {
-        super(name, weight, id, pos);
+    protected Weapon(String name, double weight, double damage, Point pos) {
+        super(name, weight, pos);
         setDamage(damage);
     }
 
