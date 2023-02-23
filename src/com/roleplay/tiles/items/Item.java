@@ -36,16 +36,6 @@ public abstract class Item extends Tile implements Cloneable {
         this.weight = weight;
     }
 
-    public BufferedImage loadImage(String pathname){
-        BufferedImage img = null;
-        try{
-            img = ImageIO.read(new File(pathname));
-        } catch(IOException ex){
-            ex.printStackTrace();
-        }
-        return img;
-    }
-
     @Override
     public abstract Item clone();
 }

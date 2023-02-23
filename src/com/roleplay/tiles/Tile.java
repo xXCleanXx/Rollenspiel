@@ -12,22 +12,22 @@ public class Tile {
     private Point pos;
     private BufferedImage img;
 
-    public Tile(String name, Point pos, BufferedImage img){
+    public Tile(String name, Point pos, BufferedImage img) {
         setName(name);
         setPos(pos);
         setImg(img);
     }
 
-    public Tile(String name, Point pos){
+    public Tile(String name, Point pos) {
         setName(name);
         setPos(pos);
     }
 
-    public Tile(String name){
+    public Tile(String name) {
         setName(name);
     }
 
-    public Tile(){
+    public Tile() {
 
     }
 
@@ -53,5 +53,15 @@ public class Tile {
 
     public void setImg(BufferedImage img) {
         this.img = img;
+    }
+
+    public BufferedImage loadImage(String pathname) {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(pathname));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return img;
     }
 }

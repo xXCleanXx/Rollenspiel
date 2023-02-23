@@ -1,21 +1,43 @@
 package com.roleplay.gui;
 
+import com.roleplay.messages.Messages;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
 
-    public MainFrame(){
+    private JPanel contentPane;
+    private MainPanel main;
+    private CharacterPanel character;
+    private ArtefactPanel artefact;
+    private SettingsPanel settings;
+
+    public MainFrame() {
         super();
         initialize();
     }
-    private void initialize(){
+
+    private void initialize() {
         setTitle("Nerds vs Monsters");
-        setMinimumSize(new Dimension(1200,800));
+        setMinimumSize(new Dimension(1200, 800));
 
-        MainPanel main = new MainPanel();
+        contentPane = new JPanel();
+        contentPane.setLayout(new CardLayout());
 
-        add(main.getMainPanel(), BorderLayout.CENTER);
+        main = new MainPanel(contentPane);
+        character = new CharacterPanel(contentPane);
+        artefact = new ArtefactPanel(contentPane);
+        settings = new SettingsPanel(contentPane);
+
+        contentPane.add(main.getMainPanel(), Messages.getString("MAIN_PANEL"));
+        contentPane.add(character.getCharacterPanel(), Messages.getString("CHARACTER_PANEL"));
+        contentPane.add(artefact.getArtefactPanel(), Messages.getString("ARTEFACT_PANEL"));
+        contentPane.add(settings.getSettingsPanel(), Messages.getString("SETTINGS_PANEL"));
+
+        setContentPane(contentPane);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,7 +45,12 @@ public class MainFrame extends JFrame{
     }
 
 
-    //public static void main(String args[]){
-    //   new MainFrame();
-    // }
+    public static void main(String args[]) {
+        new MainFrame();
+    }
+
+    @Override
+    public void setContentPane(Container contentPane) {
+        super.setContentPane(contentPane);
+    }
 }
