@@ -1,16 +1,16 @@
 package com.roleplay.tests.items.weapons;
-
-import com.roleplay.items.weapons.Axe;
 import static org.junit.jupiter.api.Assertions.*;
+
+import com.roleplay.tiles.items.weapons.Axe;
 import org.junit.jupiter.api.Test;
 
 public class WeaponTests {
     @Test
     public void AxeTests() {
-        assertThrows(IllegalArgumentException.class, () -> new Axe(null, 0));
-        assertThrows(IllegalArgumentException.class, () -> new Axe("", -1));
+        assertThrows(IllegalArgumentException.class, () -> new Axe());
+        assertThrows(IllegalArgumentException.class, () -> new Axe());
 
-        Axe axe = new Axe("axe", 10);
+        Axe axe = new Axe();
         axe.setDisplayName("Test Axe");
 
         assertEquals("Test Axe", axe.getDisplayName());

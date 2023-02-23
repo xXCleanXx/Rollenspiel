@@ -1,6 +1,7 @@
-package com.roleplay.items.weapons;
+package com.roleplay.tiles.items.weapons;
 
-import com.roleplay.items.Item;
+
+import com.roleplay.tiles.items.Item;
 
 public class Sword extends Weapon {
     protected Sword(double damage) {

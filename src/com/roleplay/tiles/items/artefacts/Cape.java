@@ -7,7 +7,7 @@ import com.roleplay.tiles.items.Item;
 public class Cape extends Artefact {
     public Cape(Effect effect) {
         super("cape", effect, 0);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(loadImage("src/com/roleplay/resources/images/cape.png"));
     }
 
     @Override

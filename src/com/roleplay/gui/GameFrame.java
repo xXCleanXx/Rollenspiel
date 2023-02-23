@@ -19,6 +19,8 @@ public class GameFrame extends JFrame {
             GameBoard board = new GameBoard();
             add(board, BorderLayout.CENTER);
 
+            addKeyListener(board);
+
             setResizable(false);
             pack();
 

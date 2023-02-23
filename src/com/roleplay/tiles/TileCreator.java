@@ -2,6 +2,7 @@ package com.roleplay.tiles;
 
 import com.roleplay.gui.GameBoard;
 import com.roleplay.tiles.Tile;
+import com.roleplay.tiles.build.Door;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -8,7 +8,7 @@ public class Amulet extends Artefact {
 
     public Amulet(Effect effect) {
         super("amulet", effect, 0);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(loadImage("src/com/roleplay/resources/images/amulet.png"));
     }
     @Override
     public void use(Character character) {

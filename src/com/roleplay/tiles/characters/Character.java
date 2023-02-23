@@ -10,6 +10,8 @@ import com.roleplay.tiles.items.artefacts.Artefact;
 import com.roleplay.tiles.items.weapons.Weapon;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
@@ -172,6 +174,26 @@ public abstract class Character {
                 position.y * GameBoard.tileSize,
                 observer
         );
+    }
+    public void keyPressed(KeyEvent e) {
+        // every keyboard get has a certain code. get the value of that code from the
+        // keyboard event so that we can compare it to KeyEvent constants
+        int key = e.getKeyCode();
+
+        // depending on which arrow key was pressed, we're going to move the player by
+        // one whole tile for this input
+        if (key == KeyEvent.VK_UP) {
+            getPosition().translate(0, -1);
+        }
+        if (key == KeyEvent.VK_RIGHT) {
+            getPosition().translate(1, 0);
+        }
+        if (key == KeyEvent.VK_DOWN) {
+            getPosition().translate(0, 1);
+        }
+        if (key == KeyEvent.VK_LEFT) {
+            getPosition().translate(-1, 0);
+        }
     }
 
 }

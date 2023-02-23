@@ -5,13 +5,13 @@ import com.roleplay.tiles.items.Item;
 import java.awt.*;
 
 public class Axe extends Weapon {
-    public Axe(String name, double damage, Point pos) {
-        super(name, 2, damage, pos);
+    public Axe() {
+        super("axe", 2, 6);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override
     public Item clone() {
-        return new Axe(getName(), getDamage(), pos);
+        return new Axe();
     }
 }
