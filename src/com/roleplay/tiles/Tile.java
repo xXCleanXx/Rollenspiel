@@ -31,6 +31,16 @@ public class Tile {
 
     }
 
+    public BufferedImage loadImage(String pathname){
+        BufferedImage img = null;
+        try{
+            img = ImageIO.read(new File(pathname));
+        } catch(IOException ex){
+            ex.printStackTrace();
+        }
+        return img;
+    }
+
     public Point getPos() {
         return pos;
     }

@@ -9,7 +9,7 @@ import java.awt.*;
 public class Ring extends Artefact {
     public Ring(String name, Effect effect, Point pos) {
         super(name, effect, 0, pos);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(loadImage("src/com/roleplay/resources/images/ring.png"));
     }
 
     @Override
