@@ -1,15 +1,20 @@
 package com.roleplay.tiles.items;
 
-import java.awt.*;
-
-public class CristalBall extends Item{
-    public CristalBall(String name, Point pos) {
-        super(name, 0, pos);
+/***
+ * Cristal ball item.
+ */
+public class CristalBall extends Item {
+    public CristalBall() {
+        super("cristal_ball", 0);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override
     public Item clone() {
-        return new CristalBall(getName(), pos);
+        CristalBall cristallBall = new CristalBall();
+        cristallBall.setPosition(getPosition());
+        cristallBall.setDisplayName(getDisplayName());
+
+        return cristallBall;
     }
 }

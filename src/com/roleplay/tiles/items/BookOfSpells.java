@@ -3,10 +3,13 @@ package com.roleplay.tiles.items;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.spells.Spell;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * Book of spells item.
+ * Contains all collected spells.
+ */
 public class BookOfSpells extends Item {
     private final List<Spell> spells = new ArrayList<>();
     private float cooldown;

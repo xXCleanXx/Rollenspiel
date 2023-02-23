@@ -2,20 +2,17 @@ package com.roleplay.tiles.items.armors;
 
 import com.roleplay.tiles.items.Item;
 
-import java.awt.*;
-
 public class LeatherArmor extends Armor {
-    public LeatherArmor(String name, Point pos) {
-        super(name, 10, pos);
+    public LeatherArmor() {
+        super("leather_armor", 11, 10);
         setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
-        setStrength(11);
     }
 
     @Override
     public Item clone() {
-        LeatherArmor armor = new LeatherArmor(getName(), pos);
+        LeatherArmor armor = new LeatherArmor();
+        armor.setPosition(getPosition());
         armor.setDisplayName(getDisplayName());
-        armor.setStrength(getStrength());
 
         return armor;
     }

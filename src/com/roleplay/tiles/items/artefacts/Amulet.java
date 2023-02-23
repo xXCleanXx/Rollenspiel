@@ -4,8 +4,6 @@ import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Item;
 
-import java.awt.*;
-
 public class Amulet extends Artefact {
 
     public Amulet(Effect effect) {

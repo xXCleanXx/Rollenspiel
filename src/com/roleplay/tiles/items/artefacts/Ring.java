@@ -7,8 +7,8 @@ import com.roleplay.tiles.items.Item;
 import java.awt.*;
 
 public class Ring extends Artefact {
-    public Ring(String name, Effect effect, Point pos) {
-        super(name, effect, 0, pos);
+    public Ring(Effect effect) {
+        super("ring", effect, 0);
         setImg(loadImage("src/com/roleplay/resources/images/ring.png"));
     }
 
@@ -19,6 +19,10 @@ public class Ring extends Artefact {
 
     @Override
     public Item clone() {
-        return new Ring(getName(), getEffect(), getPosition());
+        Ring ring = new Ring(getEffect());
+        ring.setPosition(getPosition());
+        ring.setDisplayName(getDisplayName());
+
+        return ring;
     }
 }

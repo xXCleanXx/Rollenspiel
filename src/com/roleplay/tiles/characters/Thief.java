@@ -7,9 +7,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class Thief extends Character {
-
-
-
     public Thief(CharacterBuilder characterBuilder, Point pos) {
         super(characterBuilder);
         setPosition(pos);

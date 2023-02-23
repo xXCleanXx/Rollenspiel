@@ -5,7 +5,8 @@ import com.roleplay.tiles.items.weapons.Weapon;
 
 public class Inventory {
     private final ItemStack[] items;
-    private Weapon currentWeapon;
+    private Item firstHand;
+    private Item secondHand;
     private Armor armor;
 
     public Inventory(int size) {
@@ -44,12 +45,20 @@ public class Inventory {
         return swap(index, null);
     }
 
-    public Weapon getCurrentWeapon() {
-        return currentWeapon;
+    public Item getFirstHand() {
+        return firstHand;
     }
 
-    public void setCurrentWeapon(Weapon currentWeapon) {
-        this.currentWeapon = currentWeapon;
+    public void setFirstHand(Item item) {
+        firstHand = item;
+    }
+
+    public void setSecondHand(Item item) {
+        secondHand = item;
+    }
+
+    public Item getSecondHand() {
+        return secondHand;
     }
 
     public void setArmor(Armor armor) {

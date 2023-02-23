@@ -19,7 +19,7 @@ public abstract class Character {
     private String name, displayName;
     private double maxHealthPoints, healthPoints;
     private boolean visible = true;
-    private Point pos;
+    private Point position;
     public BufferedImage img;
     private Directions direction = Directions.NORTH;
     private Abilities abilities;
@@ -42,11 +42,12 @@ public abstract class Character {
     public abstract void levelUp();
 
     protected void use(Item item) {
-        if(item instanceof Armor) {
-            inventory.setArmor((Armor)item);
+
+        if (item instanceof Armor) {
+            inventory.setArmor((Armor) item);
             //TODO
-        } else if (item instanceof Weapon){
-            inventory.setCurrentWeapon((Weapon)item);
+        } else if (item instanceof Weapon) {
+            inventory.setFirstHand((Weapon) item);
             //TODO
         } else if (item instanceof Artefact) {
 
@@ -57,14 +58,29 @@ public abstract class Character {
         return displayName;
     }
 
+    /**
+     * Sets the display name of the character.
+     *
+     * @param displayName Specified display name.
+     */
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
 
-    private String getName() {
+    /**
+     * Name of the character e.g. gamer tag.
+     *
+     * @return The name of the character.
+     */
+    public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the character.
+     *
+     * @param name Specified name of the character.
+     */
     private void setName(String name) {
         if (name == null) throw new IllegalArgumentException("Name cannot be null!");
 
@@ -104,11 +120,11 @@ public abstract class Character {
     }
 
     public Point getPosition() {
-        return pos;
+        return position;
     }
 
     public void setPosition(Point position) {
-        this.pos = position;
+        this.position = position;
     }
 
     public Directions getDirection() {
@@ -116,6 +132,8 @@ public abstract class Character {
     }
 
     public void setDirection(Directions direction) {
+        if (direction == null) throw new IllegalArgumentException("Direction cannot be null!");
+
         this.direction = direction;
     }
 
@@ -138,7 +156,8 @@ public abstract class Character {
 
         this.inventory = inventory;
     }
-    public void setImg(BufferedImage img){
+
+    public void setImg(BufferedImage img) {
         this.img = img;
     }
 
@@ -149,8 +168,8 @@ public abstract class Character {
         // position by multiplying by the tile size.
         g.drawImage(
                 img,
-                pos.x * GameBoard.tileSize,
-                pos.y * GameBoard.tileSize,
+                position.x * GameBoard.tileSize,
+                position.y * GameBoard.tileSize,
                 observer
         );
     }

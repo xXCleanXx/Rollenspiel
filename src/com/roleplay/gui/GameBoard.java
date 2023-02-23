@@ -1,6 +1,5 @@
 package com.roleplay.gui;
 
-;
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.TileCreator;
 import com.roleplay.tiles.characters.Abilities;
@@ -8,6 +7,7 @@ import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.characters.CharacterBuilder;
 import com.roleplay.tiles.characters.Thief;
 import com.roleplay.tiles.items.Inventory;
+import com.roleplay.tiles.items.Item;
 import com.roleplay.tiles.items.artefacts.*;
 
 import javax.swing.*;
@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -27,7 +28,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
     private BufferedImage img;
 
-    private ArrayList<Artefact> artefacts;
+    private List<Artefact> artefacts;
 
     private ArrayList<Character> players;
 
@@ -61,8 +62,8 @@ public class GameBoard extends JPanel implements ActionListener {
 
     }
 
-    private ArrayList populateArtefacts() {
-        ArrayList artefactList = new ArrayList<>();
+    private List<Artefact> populateArtefacts() {
+        List<Artefact> artefactList = new ArrayList<>();
         Random rand = new Random();
 
         // create the given number of coins in random positions on the board.
@@ -80,16 +81,17 @@ public class GameBoard extends JPanel implements ActionListener {
                 position = new Point(artefactX,artefactY);
             }
 
+            Artefact item = switch (rand.nextInt(4)) {
+                case 0 -> new Amulet(null);
+                case 1 -> new Cape(null);
+                case 2 -> new Potion(null);
+                case 3 -> new Ring(null);
+                default -> null;
+            };
 
+            item.setPosition(position);
 
-            switch (rand.nextInt(4)) {
-                case 0 -> artefactList.add(new Amulet("Amulet", null, position));
-                case 1 -> artefactList.add(new Cape("Cape", null, position));
-                case 2 -> artefactList.add(new Potion("Potion", null, position));
-                case 3 -> artefactList.add(new Ring("Ring", null, position));
-            }
-
-
+            artefactList.add(item);
         }
 
         return artefactList;

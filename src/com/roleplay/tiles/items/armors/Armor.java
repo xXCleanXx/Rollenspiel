@@ -2,20 +2,21 @@ package com.roleplay.tiles.items.armors;
 
 import com.roleplay.tiles.items.Item;
 
-import java.awt.*;
-
 public abstract class Armor extends Item {
     private double strength;
 
-    public Armor(String name, double weight, Point pos) {
-        super(name, weight, pos);
+    public Armor(String name, double strength, double weight) {
+        super(name, weight);
+        setStrength(strength);
     }
 
     public double getStrength() {
         return this.strength;
     }
 
-    public void setStrength(double strength) {
+    protected void setStrength(double strength) {
+        if (strength < 0) throw new IllegalArgumentException("Strength cannot be less than 0!");
+
         this.strength = strength;
     }
 }

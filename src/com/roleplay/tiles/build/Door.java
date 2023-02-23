@@ -3,8 +3,6 @@ package com.roleplay.tiles.build;
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.items.Key;
 
-import com.roleplay.tiles.items.Key;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
