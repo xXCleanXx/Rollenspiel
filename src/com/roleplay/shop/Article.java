@@ -1,6 +1,6 @@
 package com.roleplay.shop;
 
-import com.roleplay.items.Item;
+import com.roleplay.tiles.items.Item;
 
 public class Article {
     private double price;

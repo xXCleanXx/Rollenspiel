@@ -1,6 +1,6 @@
 package com.roleplay.effects;
 
-import com.roleplay.characters.Character;
+import com.roleplay.tiles.characters.Character;
 
 public class InvisibleEffect extends Effect {
     private double runtime;

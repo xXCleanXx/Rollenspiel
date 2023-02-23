@@ -11,26 +11,29 @@ public class GameFrame extends JFrame {
     }
         private void initialize(){
             setTitle("Nerds vs Monsters");
-            setMinimumSize(new Dimension(1200,800));
+
+            JMenuBar controlBar = new JMenuBar();
+            controlBar.add(new JMenu("Settings"));
+            setJMenuBar(controlBar);
 
             GameBoard board = new GameBoard();
+            add(board, BorderLayout.CENTER);
 
-            Box box = new Box(BoxLayout.Y_AXIS);
+            setResizable(false);
+            pack();
 
-            box.add(Box.createVerticalGlue());
-            box.add(board.getBoardPanel());
-            box.add(Box.createVerticalGlue());
-
-            add(box);
-
-            setExtendedState(JFrame.MAXIMIZED_BOTH);
-            setLocationRelativeTo(null);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setLocationRelativeTo(null);
             setVisible(true);
         }
 
 
-    //public static void main(String args[]){
-     //   new GameFrame();
-   // }
+    public static void main(String args[]){
+       SwingUtilities.invokeLater(new Runnable() {
+           @Override
+           public void run() {
+               new GameFrame();
+           }
+       });
+    }
 }

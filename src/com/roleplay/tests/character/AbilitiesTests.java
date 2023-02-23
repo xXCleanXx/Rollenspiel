@@ -1,6 +1,6 @@
 package com.roleplay.tests.character;
 
-import com.roleplay.characters.Abilities;
+import com.roleplay.tiles.characters.Abilities;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

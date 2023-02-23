@@ -1,6 +1,6 @@
 package com.roleplay.shop;
 
-import com.roleplay.items.Item;
+import com.roleplay.tiles.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;

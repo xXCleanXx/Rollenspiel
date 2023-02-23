@@ -1,41 +1,107 @@
 package com.roleplay.gui;
 
-import com.roleplay.tools.TileCreator;
-
+;
+import com.roleplay.tiles.TileCreator;
+import com.roleplay.tiles.characters.Abilities;
+import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.characters.CharacterBuilder;
+import com.roleplay.tiles.characters.Thief;
+import com.roleplay.tiles.items.Inventory;
+import com.roleplay.tiles.items.artefacts.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Random;
 
 
-public class GameBoard {
+public class GameBoard extends JPanel implements ActionListener {
 
-    private BufferedImage img;
-    private JPanel boardPanel;
+    public static final int tileSize = 20;
+    private final int columns = 50;
+    private final int rows = 30;
 
-    private final int width = 700;
-    private final int height = 550;
+    private ArrayList<Artefact> artefacts;
+
+    private ArrayList<Character> players;
+
     public GameBoard() {
+        setPreferredSize(new Dimension(tileSize * columns, tileSize * rows));
 
-        Dimension dimension = new Dimension(width, height);
+        artefacts = populateArtefacts();
 
-        boardPanel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
-                TileCreator tC = new TileCreator();
-                tC.createTiles(img);
-                g.drawImage(img, 0, 0, null);
-            }
-        };
+        players = new ArrayList<>();
 
-        boardPanel.setPreferredSize(dimension);
-        boardPanel.setMaximumSize(dimension);
-        boardPanel.setMinimumSize(dimension);
+        CharacterBuilder characterBuilder = new CharacterBuilder();
+        characterBuilder.setAbilities(new Abilities());
+        characterBuilder.setName("test");
+        characterBuilder.setInventory(new Inventory(15));
+        characterBuilder.setDisplayName("test2");
+        characterBuilder.setHealthPoints(20);
+        characterBuilder.setMaxHealthPoints(25);
+        players.add(new Thief(characterBuilder,new Point(0,0)));
+
+        Timer timer = new Timer(25, this);
+        timer.start();
 
     }
 
-    public JPanel getBoardPanel() {
-        return boardPanel;
+    private void drawBackground(Graphics g) {
+        BufferedImage img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
+        TileCreator tC = new TileCreator();
+        tC.createTiles(img , rows, columns, tileSize);
+
+        g.drawImage(img, 0, 0, null);
+
+    }
+
+    private ArrayList populateArtefacts() {
+        ArrayList artefactList = new ArrayList<>();
+        Random rand = new Random();
+
+        // create the given number of coins in random positions on the board.
+        // note that there is not check here to prevent two coins from occupying the same
+        // spot, nor to prevent coins from spawning in the same spot as the player
+        for (int i = 0; i < rand.nextInt((columns*rows)/2); i++) {
+            int coinX = rand.nextInt(columns);
+            int coinY = rand.nextInt(rows);
+
+            switch (rand.nextInt(4)){
+                case 0: artefactList.add(new Amulet("Amulet", null,5, new Point(coinX, coinY)));break;
+                case 1: artefactList.add(new Cape("Cape",null,6, new Point(coinX, coinY)));break;
+                case 2: artefactList.add(new Potion("Potion",null,7, new Point(coinX, coinY)));break;
+                case 3: artefactList.add(new Ring("Ring",null,8, new Point(coinX, coinY)));break;
+            }
+
+
+        }
+
+        return artefactList;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        drawBackground(g);
+
+        for (Artefact artefact : artefacts) {
+            artefact.draw(g, this);
+        }
+
+        for(Character character : players){
+            character.draw(g, this);
+        }
+
+        Toolkit.getDefaultToolkit().sync();
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

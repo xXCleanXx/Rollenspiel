@@ -1,6 +1,6 @@
 package com.roleplay.spells;
 
-import com.roleplay.characters.Character;
+import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 
 public abstract class Spell {
