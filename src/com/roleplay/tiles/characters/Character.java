@@ -11,7 +11,6 @@ import com.roleplay.tiles.items.weapons.Weapon;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
@@ -164,10 +163,6 @@ public abstract class Character {
     }
 
     public void draw(Graphics g, ImageObserver observer) {
-        // with the Point class, note that pos.getX() returns a double, but
-        // pos.x reliably returns an int. https://stackoverflow.com/a/30220114/4655368
-        // this is also where we translate board grid position into a canvas pixel
-        // position by multiplying by the tile size.
         g.drawImage(
                 img,
                 position.x * GameBoard.tileSize,
@@ -176,12 +171,8 @@ public abstract class Character {
         );
     }
     public void keyPressed(KeyEvent e) {
-        // every keyboard get has a certain code. get the value of that code from the
-        // keyboard event so that we can compare it to KeyEvent constants
         int key = e.getKeyCode();
 
-        // depending on which arrow key was pressed, we're going to move the player by
-        // one whole tile for this input
         if (key == KeyEvent.VK_UP) {
             getPosition().translate(0, -1);
         }
@@ -193,6 +184,20 @@ public abstract class Character {
         }
         if (key == KeyEvent.VK_LEFT) {
             getPosition().translate(-1, 0);
+        }
+    }
+
+    //prevents player from disappear
+    public void tick(int columns, int rows) {
+        if (getPosition().x < 0) {
+            getPosition().x = 0;
+        } else if (getPosition().x >= columns) {
+            getPosition().x = columns - 1;
+        }
+        if (getPosition().y < 0) {
+            getPosition().y = 0;
+        } else if (getPosition().y >= rows) {
+            getPosition().y = rows - 1;
         }
     }
 

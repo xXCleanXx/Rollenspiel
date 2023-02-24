@@ -4,12 +4,11 @@ import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Item;
 
-import java.awt.*;
 
 public class Ring extends Artefact {
     public Ring(Effect effect) {
         super("ring", effect, 0);
-        setImg(loadImage("src/com/roleplay/resources/images/ring.png"));
+        setImg(loadImage("src/com/roleplay/resources/images/items/ring.png"));
     }
 
     @Override

@@ -3,13 +3,12 @@ package com.roleplay.gui;
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.tiles.Tile;
-import com.roleplay.tiles.TileCreator;
+import com.roleplay.tiles.build.MapCreator;
 import com.roleplay.tiles.characters.Abilities;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.characters.CharacterBuilder;
 import com.roleplay.tiles.characters.Thief;
 import com.roleplay.tiles.items.Inventory;
-import com.roleplay.tiles.items.Item;
 import com.roleplay.tiles.items.artefacts.*;
 
 import javax.swing.*;
@@ -53,9 +52,8 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         players.add(new Thief(characterBuilder, new Point(0, 0)));
 
         img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
-        TileCreator tC = new TileCreator();
-        tC.createTiles(img, rows, columns, tileSize);
-        map = tC.getMap();
+        new MapCreator(img, rows, columns, tileSize);
+        map = MapCreator.getMap();
 
         artefacts = populateArtefacts();
 
@@ -72,9 +70,6 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         int artefactX;
         int artefactY;
 
-        // create the given number of coins in random positions on the board.
-        // note that there is not check here to prevent two coins from occupying the same
-        // spot, nor to prevent coins from spawning in the same spot as the player
         for (int i = 0; i < rand.nextInt((columns * rows) / 4); i++) {
             do {
                 artefactX = rand.nextInt(columns);
@@ -118,17 +113,20 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        for(Character c : players){
+            c.tick(columns,rows);
+        }
+
         repaint();
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // this is not used but must be defined as part of the KeyListener interface
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // react to key down events
 
         for(Character player : players) {
             player.keyPressed(e);
