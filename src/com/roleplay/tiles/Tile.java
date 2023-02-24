@@ -18,14 +18,14 @@ public class Tile {
         setPosition(pos);
         setImg(img);
 
-        if(withHitbox){
-            setHitBox(new Rectangle(getPosition().x,getPosition().y,32,32));
+        if (withHitbox) {
+            setHitBox(new Rectangle(getPosition().x, getPosition().y, 32, 32));
         }
 
     }
 
     public Tile(String name, Point pos, BufferedImage img) {
-        this(name,pos,img,true);
+        this(name, pos, img, true);
 
     }
 
@@ -70,24 +70,14 @@ public class Tile {
         this.hitBox = hitBox;
     }
 
-    public Rectangle getHitBox(){
+    public Rectangle getHitBox() {
         return this.hitBox;
     }
 
-    public boolean collusionDetected(Rectangle a, Rectangle b){
-        if(a == null || (a != null && !a.intersects(b)))
-            return  true;
+    public boolean collusionDetected(Rectangle a, Rectangle b) {
+        if (a == null || (a != null && !a.intersects(b)))
+            return true;
         else
             return false;
-    }
-
-    public BufferedImage loadImage(String pathname) {
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File(pathname));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return img;
     }
 }
