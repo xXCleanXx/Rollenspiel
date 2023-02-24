@@ -8,11 +8,15 @@ import java.awt.*;
 public class Arrow extends Item {
     public Arrow() {
         super("arrow", 0);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     @Override
     public Item clone() {
+        Arrow arrow = new Arrow();
+
+        clone(arrow, this);
+
         return new Arrow();
     }
 }

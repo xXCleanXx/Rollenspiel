@@ -1,7 +1,7 @@
 package com.roleplay.tiles.items.artefacts;
 
-import com.roleplay.effects.Effect;
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Item;
 import com.roleplay.tools.Image;
 
@@ -9,7 +9,7 @@ import com.roleplay.tools.Image;
 public class Ring extends Artefact {
     public Ring(Effect effect) {
         super("ring", effect, 0);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/items/ring.png"));
+        loadTexture("src/com/roleplay/resources/images/items/ring.png");
     }
 
     @Override

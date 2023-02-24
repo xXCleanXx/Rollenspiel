@@ -17,7 +17,7 @@ public class BookOfSpells extends Item {
 
     public BookOfSpells() {
         super("book_of_spells", 0);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     public Spell[] getSpells() {

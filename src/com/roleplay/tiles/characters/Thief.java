@@ -6,9 +6,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class Thief extends Character {
-    public Thief(CharacterBuilder characterBuilder, Point pos) {
+    public Thief(CharacterBuilder characterBuilder) {
         super(characterBuilder);
-        setPosition(pos);
+
         try {
             setImg(ImageIO.read(new File("src/com/roleplay/resources/images/player.png")));
         }catch (IOException ex){

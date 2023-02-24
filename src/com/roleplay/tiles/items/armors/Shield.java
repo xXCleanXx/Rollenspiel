@@ -6,7 +6,7 @@ import com.roleplay.tools.Image;
 public class Shield extends Item {
     public Shield() {
         super("shield", 6);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     public double getStrength() {

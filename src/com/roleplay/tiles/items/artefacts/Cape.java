@@ -1,5 +1,6 @@
 package com.roleplay.tiles.items.artefacts;
 
+import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.items.Item;
@@ -8,7 +9,7 @@ import com.roleplay.tools.Image;
 public class Cape extends Artefact {
     public Cape(Effect effect) {
         super("cape", effect, 0);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/items/cape.png"));
+        loadTexture("src/com/roleplay/resources/images/items/cape.png");
     }
 
     @Override

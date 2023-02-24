@@ -9,8 +9,8 @@ public class Key extends Item {
     @Override
     public Item clone() {
         Key key = new Key();
-        key.setPosition(getPosition());
-        key.setDisplayName(getDisplayName());
+
+        clone(key, this);
 
         return key;
     }

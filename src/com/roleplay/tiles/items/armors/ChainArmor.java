@@ -6,7 +6,7 @@ import com.roleplay.tools.Image;
 public class ChainArmor extends Armor {
     public ChainArmor() {
         super("chain_armor", 16, 55);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     @Override

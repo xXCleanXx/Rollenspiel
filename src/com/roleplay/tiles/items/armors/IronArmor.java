@@ -6,7 +6,7 @@ import com.roleplay.tools.Image;
 public class IronArmor extends Armor {
     public IronArmor() {
         super("iron_armor", 14, 45);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     @Override

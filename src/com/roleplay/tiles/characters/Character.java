@@ -2,6 +2,7 @@ package com.roleplay.tiles.characters;
 
 import com.roleplay.effects.Effect;
 import com.roleplay.gui.GameBoard;
+import com.roleplay.tiles.Entity;
 import com.roleplay.tiles.build.MapCreator;
 import com.roleplay.tiles.characters.enums.Directions;
 import com.roleplay.tiles.items.Inventory;
@@ -17,21 +18,19 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Character {
-    private String name, displayName;
+public abstract class Character extends Entity {
+    private String displayName;
     private double maxHealthPoints, healthPoints;
     private boolean visible = true;
-    private Point position;
     public BufferedImage img;
     private Directions direction = Directions.NORTH;
     private Abilities abilities;
     private Inventory inventory;
     private final List<Effect> effects = new ArrayList<>();
 
-    private Rectangle hitBox;
-
     protected Character(CharacterBuilder builder) {
-        setName(builder.getName());
+        super(builder.getName());
+
         setDisplayName(builder.getDisplayName());
         setAbilities(builder.getAbilities());
         setInventory(builder.getInventory());
@@ -71,26 +70,6 @@ public abstract class Character {
         this.displayName = displayName;
     }
 
-    /**
-     * Name of the character e.g. gamer tag.
-     *
-     * @return The name of the character.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name of the character.
-     *
-     * @param name Specified name of the character.
-     */
-    private void setName(String name) {
-        if (name == null) throw new IllegalArgumentException("Name cannot be null!");
-
-        this.name = name;
-    }
-
     public double getMaxHealthPoints() {
         return maxHealthPoints;
     }
@@ -121,14 +100,6 @@ public abstract class Character {
 
     public void setVisible(boolean flag) {
         visible = flag;
-    }
-
-    public Point getPosition() {
-        return position;
-    }
-
-    public void setPosition(Point position) {
-        this.position = position;
     }
 
     public Directions getDirection() {
@@ -168,8 +139,8 @@ public abstract class Character {
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
                 img,
-                position.x * GameBoard.tileSize,
-                position.y * GameBoard.tileSize,
+                getPosition().x * GameBoard.tileSize,
+                getPosition().y * GameBoard.tileSize,
                 observer
         );
     }
@@ -178,28 +149,28 @@ public abstract class Character {
 
         if (key == KeyEvent.VK_UP) {
             if(getPosition().getY() > 0) {
-                if(MapCreator.getMap()[getPosition().y-1][getPosition().x].collusionDetected(MapCreator.getMap()[getPosition().y-1][getPosition().x].getHitBox(), this.hitBox)){
+                if(MapCreator.getMap()[getPosition().y-1][getPosition().x].collusionDetected(MapCreator.getMap()[getPosition().y-1][getPosition().x].getHitBox(), getHitBox())){
                     getPosition().translate(0, -1);
-            }
+                }
             }
         }
         if (key == KeyEvent.VK_RIGHT) {
             if(getPosition().getX() < 25) {
-                if (MapCreator.getMap()[getPosition().y][getPosition().x + 1].collusionDetected(MapCreator.getMap()[getPosition().y][getPosition().x + 1].getHitBox(),this.hitBox)) {
+                if (MapCreator.getMap()[getPosition().y][getPosition().x + 1].collusionDetected(MapCreator.getMap()[getPosition().y][getPosition().x + 1].getHitBox(), getHitBox())) {
                     getPosition().translate(1, 0);
                 }
             }
         }
         if (key == KeyEvent.VK_DOWN) {
             if (getPosition().getY() < 40) {
-                if (MapCreator.getMap()[getPosition().y + 1][getPosition().x].collusionDetected(MapCreator.getMap()[getPosition().y + 1][getPosition().x].getHitBox(), this.hitBox)){
+                if (MapCreator.getMap()[getPosition().y + 1][getPosition().x].collusionDetected(MapCreator.getMap()[getPosition().y + 1][getPosition().x].getHitBox(), getHitBox())){
                     getPosition().translate(0, 1);
                 }
             }
         }
         if (key == KeyEvent.VK_LEFT) {
             if (getPosition().getX() > 0) {
-                if (MapCreator.getMap()[getPosition().y][getPosition().x - 1].collusionDetected(MapCreator.getMap()[getPosition().y][getPosition().x - 1].getHitBox(),this.hitBox)){
+                if (MapCreator.getMap()[getPosition().y][getPosition().x - 1].collusionDetected(MapCreator.getMap()[getPosition().y][getPosition().x - 1].getHitBox(), getHitBox())){
                     getPosition().translate(-1, 0);
                 }
             }
@@ -218,9 +189,5 @@ public abstract class Character {
         } else if (getPosition().y >= rows) {
             getPosition().y = rows - 1;
         }
-    }
-
-    public void setHitBox(Rectangle hitBox) {
-        this.hitBox = hitBox;
     }
 }

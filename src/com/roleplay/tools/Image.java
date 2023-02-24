@@ -11,7 +11,7 @@ public class Image {
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File(pathname));
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return img;

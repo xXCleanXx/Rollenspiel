@@ -11,7 +11,8 @@ public class Sword extends Weapon {
     @Override
     public Item clone() {
         Sword sword = new Sword(getDamage());
-        sword.setDisplayName(getDisplayName());
+
+        clone(sword, this);
 
         return sword;
     }

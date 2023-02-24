@@ -11,7 +11,8 @@ public class HandAxe extends Weapon {
     @Override
     public Item clone() {
         HandAxe handAxe = new HandAxe(getDamage());
-        handAxe.setDisplayName(getDisplayName());
+
+        clone(handAxe, this);
 
         return handAxe;
     }

@@ -31,4 +31,9 @@ public abstract class Item extends Tile implements Cloneable {
 
     @Override
     public abstract Item clone();
+
+    protected static void clone(Item newItem, Item oldItem) {
+        newItem.setPosition(oldItem.getPosition());
+        newItem.setDisplayName(oldItem.getDisplayName());
+    }
 }

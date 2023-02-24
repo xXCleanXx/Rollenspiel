@@ -6,14 +6,14 @@ import com.roleplay.tools.Image;
 public class Bow extends Weapon {
     protected Bow() {
         super("bow", 2, 8);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     @Override
     public Item clone() {
         Bow bow = new Bow();
-        bow.setPosition(getPosition());
-        bow.setDisplayName(getDisplayName());
+
+        clone(bow, this);
 
         return bow;
     }

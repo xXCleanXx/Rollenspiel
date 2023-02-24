@@ -6,7 +6,7 @@ import com.roleplay.tools.Image;
 public class LeatherArmor extends Armor {
     public LeatherArmor() {
         super("leather_armor", 11, 10);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     @Override

@@ -19,7 +19,7 @@ public abstract class Artefact extends Item {
 
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
-                getImg(),
+                getImage(),
                 getPosition().x * GameBoard.tileSize,
                 getPosition().y * GameBoard.tileSize,
                 observer

@@ -8,15 +8,15 @@ import com.roleplay.tools.Image;
 public class CristalBall extends Item {
     public CristalBall() {
         super("cristal_ball", 0);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
+        loadTexture("src/com/roleplay/resources/images/gras.png");
     }
 
     @Override
     public Item clone() {
-        CristalBall cristallBall = new CristalBall();
-        cristallBall.setPosition(getPosition());
-        cristallBall.setDisplayName(getDisplayName());
+        CristalBall cristalBall = new CristalBall();
 
-        return cristallBall;
+        clone(cristalBall, this);
+
+        return cristalBall;
     }
 }

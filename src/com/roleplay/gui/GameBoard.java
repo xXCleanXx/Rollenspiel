@@ -49,7 +49,10 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         characterBuilder.setDisplayName("test2");
         characterBuilder.setHealthPoints(20);
         characterBuilder.setMaxHealthPoints(25);
-        players.add(new Thief(characterBuilder, new Point(0, 0)));
+        Thief thief = new Thief(characterBuilder);
+        thief.setPosition(new Point(0, 0));
+
+        players.add(thief);
         players.get(0).setHitBox(new Rectangle(players.get(0).getPosition().x,players.get(0).getPosition().y,32,32));
 
         img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
