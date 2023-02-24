@@ -2,12 +2,6 @@ package com.roleplay.tiles.items;
 
 import com.roleplay.tiles.Tile;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
 public abstract class Item extends Tile implements Cloneable {
     private String displayName;
     private double weight;

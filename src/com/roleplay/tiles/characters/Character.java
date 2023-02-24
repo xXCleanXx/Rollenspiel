@@ -1,8 +1,8 @@
 package com.roleplay.tiles.characters;
 
+import com.roleplay.effects.Effect;
 import com.roleplay.gui.GameBoard;
 import com.roleplay.tiles.characters.enums.Directions;
-import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Inventory;
 import com.roleplay.tiles.items.Item;
 import com.roleplay.tiles.items.armors.Armor;

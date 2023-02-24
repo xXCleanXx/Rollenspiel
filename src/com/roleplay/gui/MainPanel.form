@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.roleplay.gui.MainPanel">
+  <grid id="27dc6" binding="mainPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="e1d8f" class="javax.swing.JButton" binding="btn_Settings">
+        <constraints/>
+        <properties>
+          <text resource-bundle="com/roleplay/tools/messages" key="settings"/>
+        </properties>
+      </component>
+      <component id="7c2eb" class="javax.swing.JButton" binding="btn_Character">
+        <constraints/>
+        <properties>
+          <hideActionText value="false"/>
+          <text resource-bundle="com/roleplay/tools/messages" key="charcterMenu"/>
+        </properties>
+      </component>
+      <component id="7ab12" class="javax.swing.JButton" binding="btn_Artefact">
+        <constraints/>
+        <properties>
+          <text resource-bundle="com/roleplay/tools/messages" key="artefact"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

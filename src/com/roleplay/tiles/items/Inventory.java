@@ -1,7 +1,6 @@
 package com.roleplay.tiles.items;
 
 import com.roleplay.tiles.items.armors.Armor;
-import com.roleplay.tiles.items.weapons.Weapon;
 
 public class Inventory {
     private final ItemStack[] items;

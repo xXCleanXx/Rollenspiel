@@ -1,94 +1,66 @@
 package com.roleplay.gui;
 
-import com.roleplay.messages.Messages;
-import com.roleplay.tiles.Tile;
+import com.roleplay.tools.Image;
+import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ResourceBundle;
 
-public class CharacterPanel extends Tile {
+public class CharacterPanel {
 
     private JPanel characterPanel;
     private JLabel charcterPicture;
 
+    private int player = 0;
+    private JLabel title;
+    private JLabel subTitle;
+    private JButton btn_menu;
+    private JButton btn_artefact;
+    private JButton btn_wizard;
+    private JButton btn_Fighter;
+    private JButton btn_thief;
+    private JTextField textField1;
+
     CharacterPanel(JPanel contentPane) {
-        characterPanel = new JPanel(new BorderLayout());
-        characterPanel.add(pageStart(), BorderLayout.PAGE_START);
-        characterPanel.add(lineStart(), BorderLayout.LINE_START);
-        characterPanel.add(lineEnd(), BorderLayout.CENTER);
-        characterPanel.add(pageEnd(contentPane), BorderLayout.PAGE_END);
-
+        lineStart();
+        lineEnd();
+        pageEnd(contentPane);
     }
 
-    private JPanel pageStart() {
-        JPanel pageStart = new JPanel();
-        pageStart.add(new Label(Messages.getString("charcterMenu")));
-        pageStart.add(new Label((Messages.getString("player")) + Messages.getString("chooseCharakter")));
-        return pageStart;
-    }
+    private void pageEnd(JPanel contentPane) {
 
-    private JPanel pageEnd(JPanel contentPane) {
-        JPanel lineEnd = new JPanel(new GridLayout(3, 1));
-
-        JButton btn_menue = new JButton(Messages.getString("startMenu"));
-        btn_menue.addActionListener(e -> {
+        btn_menu.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("MAIN_PANEL"));
         });
-        lineEnd.add(btn_menue);
 
-        JButton btn_artefact = new JButton(Messages.getString("artefact"));
         btn_artefact.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("ARTEFACT_PANEL"));
         });
-        lineEnd.add(btn_artefact);
-        return lineEnd;
+
     }
 
-    private JPanel lineStart() {
-        JPanel lineStart = new JPanel(new GridLayout(3, 1));
+    private void lineStart() {
+        btn_Fighter.setSize(new Dimension(200, 200));
+        btn_Fighter.setMaximumSize(btn_Fighter.getSize());
+        btn_Fighter.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player.png"))));
 
-        JButton btn_Fighter = new JButton(Messages.getString("fighter"));
-        btn_Fighter.addActionListener(e -> {
-            charcterPicture.setIcon(new ImageIcon(loadImage("src/com/roleplay/resources/images/gras.png")));
-        });
-        lineStart.add(btn_Fighter);
+        btn_wizard.setSize(new Dimension(100, 100));
+        btn_wizard.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player.png"))));
 
-        JButton btn_wizard = new JButton(Messages.getString("wizard"));
-        btn_wizard.addActionListener(e -> {
-            charcterPicture.setIcon(new ImageIcon(loadImage("src/com/roleplay/resources/images/gras.png")));
-        });
-        lineStart.add(btn_wizard);
-
-        JButton btn_thief = new JButton(Messages.getString("thief"));
-        btn_thief.addActionListener(e -> {
-            charcterPicture.setIcon(new ImageIcon(loadImage("src/com/roleplay/resources/images/gras.png")));
-        });
-        lineStart.add(btn_thief);
-        return lineStart;
+        btn_thief.setSize(new Dimension(100, 100));
+        btn_thief.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player.png"))));
     }
 
-    private JPanel lineEnd() {
-        JPanel lineEnd = new JPanel(new GridLayout(3, 1));
-
-        charcterPicture = new JLabel();
-        lineEnd.add(charcterPicture);
-
+    private void lineEnd() {
         JTextField playerName = new JTextField();
-        playerName.addActionListener(e -> {
-            System.out.print(playerName.getText());
-        });
-        lineEnd.add(playerName);
+        playerName.addActionListener(e -> System.out.print(playerName.getText()));
 
         JButton nextFinish = new JButton(Messages.getString("next"));
         nextFinish.addActionListener(e -> {
 
         });
-        lineEnd.add(nextFinish);
-
-        return lineEnd;
     }
 
 

@@ -1,12 +1,14 @@
 package com.roleplay.tiles.items;
 
+import com.roleplay.tools.Image;
+
 /***
  * Cristal ball item.
  */
 public class CristalBall extends Item {
     public CristalBall() {
         super("cristal_ball", 0);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override

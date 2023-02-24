@@ -1,11 +1,12 @@
 package com.roleplay.tiles.items.weapons;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tools.Image;
 
 public class Bow extends Weapon {
     protected Bow() {
         super("bow", 2, 8);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override

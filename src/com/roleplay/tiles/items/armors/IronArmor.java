@@ -1,11 +1,12 @@
 package com.roleplay.tiles.items.armors;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tools.Image;
 
 public class IronArmor extends Armor {
     public IronArmor() {
         super("iron_armor", 14, 45);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.roleplay.tiles.items.artefacts;
 
-import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.gui.GameBoard;
+import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.items.Item;
 
 import java.awt.*;

@@ -1,11 +1,9 @@
 package com.roleplay.gui;
 
-import com.roleplay.messages.Messages;
+import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class MainFrame extends JFrame {
 

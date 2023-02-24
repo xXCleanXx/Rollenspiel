@@ -1,11 +1,12 @@
 package com.roleplay.tiles.items.armors;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tools.Image;
 
 public class LeatherArmor extends Armor {
     public LeatherArmor() {
         super("leather_armor", 11, 10);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.roleplay.tests.items.weapons;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.roleplay.tiles.items.weapons.Axe;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class WeaponTests {
     @Test

@@ -1,7 +1,8 @@
 package com.roleplay.tiles.items;
 
-import com.roleplay.tiles.characters.Character;
 import com.roleplay.spells.Spell;
+import com.roleplay.tiles.characters.Character;
+import com.roleplay.tools.Image;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class BookOfSpells extends Item {
 
     public BookOfSpells() {
         super("book_of_spells", 0);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     public Spell[] getSpells() {

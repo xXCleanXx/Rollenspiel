@@ -1,12 +1,13 @@
 package com.roleplay.tiles.items.weapons;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tools.Image;
 
 public class Dart extends Weapon {
 
     protected Dart() {
         super("dart", 0.25, 4);
-        setImg(loadImage("src/com/roleplay/resources/images/gras.png"));
+        setImg(Image.loadImage("src/com/roleplay/resources/images/gras.png"));
     }
 
     @Override

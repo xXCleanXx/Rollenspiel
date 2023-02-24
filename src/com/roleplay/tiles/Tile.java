@@ -1,10 +1,7 @@
 package com.roleplay.tiles;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class Tile {
 
@@ -55,13 +52,4 @@ public class Tile {
         this.img = img;
     }
 
-    public BufferedImage loadImage(String pathname) {
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File(pathname));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return img;
-    }
 }
