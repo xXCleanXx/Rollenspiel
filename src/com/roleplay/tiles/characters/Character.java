@@ -2,6 +2,7 @@ package com.roleplay.tiles.characters;
 
 import com.roleplay.effects.Effect;
 import com.roleplay.gui.GameBoard;
+import com.roleplay.tiles.build.MapCreator;
 import com.roleplay.tiles.characters.enums.Directions;
 import com.roleplay.tiles.items.Inventory;
 import com.roleplay.tiles.items.Item;
@@ -26,6 +27,8 @@ public abstract class Character {
     private Abilities abilities;
     private Inventory inventory;
     private final List<Effect> effects = new ArrayList<>();
+
+    private Rectangle hitBox;
 
     protected Character(CharacterBuilder builder) {
         setName(builder.getName());
@@ -174,16 +177,32 @@ public abstract class Character {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_UP) {
-            getPosition().translate(0, -1);
+            if(getPosition().getY() > 0) {
+                if(MapCreator.getMap()[getPosition().y-1][getPosition().x].collusionDetected(MapCreator.getMap()[getPosition().y-1][getPosition().x].getHitBox(), this.hitBox)){
+                    getPosition().translate(0, -1);
+            }
+            }
         }
         if (key == KeyEvent.VK_RIGHT) {
-            getPosition().translate(1, 0);
+            if(getPosition().getX() < 25) {
+                if (MapCreator.getMap()[getPosition().y][getPosition().x + 1].collusionDetected(MapCreator.getMap()[getPosition().y][getPosition().x + 1].getHitBox(),this.hitBox)) {
+                    getPosition().translate(1, 0);
+                }
+            }
         }
         if (key == KeyEvent.VK_DOWN) {
-            getPosition().translate(0, 1);
+            if (getPosition().getY() < 40) {
+                if (MapCreator.getMap()[getPosition().y + 1][getPosition().x].collusionDetected(MapCreator.getMap()[getPosition().y + 1][getPosition().x].getHitBox(), this.hitBox)){
+                    getPosition().translate(0, 1);
+                }
+            }
         }
         if (key == KeyEvent.VK_LEFT) {
-            getPosition().translate(-1, 0);
+            if (getPosition().getX() > 0) {
+                if (MapCreator.getMap()[getPosition().y][getPosition().x - 1].collusionDetected(MapCreator.getMap()[getPosition().y][getPosition().x - 1].getHitBox(),this.hitBox)){
+                    getPosition().translate(-1, 0);
+                }
+            }
         }
     }
 
@@ -201,4 +220,7 @@ public abstract class Character {
         }
     }
 
+    public void setHitBox(Rectangle hitBox) {
+        this.hitBox = hitBox;
+    }
 }

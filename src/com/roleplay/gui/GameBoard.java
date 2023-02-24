@@ -50,6 +50,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         characterBuilder.setHealthPoints(20);
         characterBuilder.setMaxHealthPoints(25);
         players.add(new Thief(characterBuilder, new Point(0, 0)));
+        players.get(0).setHitBox(new Rectangle(players.get(0).getPosition().x,players.get(0).getPosition().y,32,32));
 
         img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
         new MapCreator(img, rows, columns, tileSize);
@@ -70,7 +71,7 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         int artefactX;
         int artefactY;
 
-        for (int i = 0; i < rand.nextInt((columns * rows) / 4); i++) {
+        for (int i = 0; i < rand.nextInt((columns * rows)/4*players.size()); i++) {
             do {
                 artefactX = rand.nextInt(columns);
                 artefactY = rand.nextInt(rows);

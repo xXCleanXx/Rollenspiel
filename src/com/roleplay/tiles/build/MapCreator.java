@@ -38,10 +38,10 @@ public class MapCreator {
                 System.out.println(text);
                 for (int j = 0; j < columns; j++) {
                     map[i][j] =  switch (Character.getNumericValue(text.charAt(j))) {
-                        case 0 -> new Tile("background", new Point(i, j), ImageIO.read(new File("src/com/roleplay/resources/images/background.png")));
-                        case 1 -> new Tile("way", new Point(i, j), ImageIO.read(new File("src/com/roleplay/resources/images/way.png")));
+                        case 0 -> new Tile ("background", new Point(i, j), ImageIO.read(new File("src/com/roleplay/resources/images/background.png")));
+                        case 1 -> new Tile("way", new Point(i, j), ImageIO.read(new File("src/com/roleplay/resources/images/way.png")), false);
                         case 2 -> new Tile("water", new Point(i, j), ImageIO.read(new File("src/com/roleplay/resources/images/water.png")));
-                        case 3 -> new Door("door", new Point(i, j));
+                        case 3 -> new Door("door", new Point(i, j),ImageIO.read(new File("src/com/roleplay/resources/images/door.png")));
                         case 4 -> new Door("doorRotated", new Point(i, j), ImageIO.read(new File("src/com/roleplay/resources/images/doorRotated.png")));
                         default -> throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
                     };

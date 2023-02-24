@@ -2,7 +2,6 @@ package com.roleplay.tiles.build;
 
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.items.Key;
-import com.roleplay.tools.Image;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,13 +11,7 @@ public class Door extends Tile {
     private Key key;
 
     public Door(String name, Point pos, BufferedImage img){
-        super(name,pos);
-        setImg(img);
-    }
-
-    public Door(String name, Point pos){
-        super(name,pos);
-        setImg(Image.loadImage("src/com/roleplay/resources/images/door.png"));
+        super(name,pos, img);
     }
 
     public boolean isOpen() {
