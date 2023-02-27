@@ -1,7 +1,7 @@
 package com.roleplay.tiles.characters;
 
 public class Wizard extends Character {
-    protected Wizard(CharacterBuilder characterBuilder) {
+    public Wizard(CharacterBuilder characterBuilder) {
         super(characterBuilder);
     }
 

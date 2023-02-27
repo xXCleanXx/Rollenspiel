@@ -1,7 +1,7 @@
 package com.roleplay.tiles.characters;
 
 public class Warrior extends Character {
-    protected Warrior(CharacterBuilder characterBuilder) {
+    public Warrior(CharacterBuilder characterBuilder) {
         super(characterBuilder);
     }
 

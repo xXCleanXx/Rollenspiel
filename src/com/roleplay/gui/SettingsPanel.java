@@ -1,9 +1,12 @@
 package com.roleplay.gui;
 
+import com.roleplay.tiles.characters.Character;
 import com.roleplay.tools.Messages;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class SettingsPanel {
 
@@ -19,7 +22,6 @@ public class SettingsPanel {
     private JButton btn_7player;
     private JButton btn_8player;
     private JComboBox box_difficult;
-
 
     SettingsPanel(JPanel contentPane) {
         btn_4player.addActionListener(e -> setPlayer(4));
@@ -41,7 +43,26 @@ public class SettingsPanel {
         });
     }
 
-    private void setPlayer(int i) {
+    private void setPlayer(int playerCount) {
+        ArrayList<Character> oldCharacterList = MainFrame.getCharacterList();
+        if (oldCharacterList.isEmpty()) {
+            MainFrame.setCharacterList(new ArrayList<>(playerCount));
+            return;
+        }
+        if (playerCount == oldCharacterList.size()) {
+            return;
+        }
+        ArrayList<Character> newcharacterList = new ArrayList<>(playerCount);
+
+        if (playerCount > oldCharacterList.size()) {
+            newcharacterList.addAll(oldCharacterList);
+        } else {
+            for (int i = 0; i < playerCount; i++) {
+                newcharacterList.add(oldCharacterList.get(i));
+            }
+        }
+        MainFrame.setCharacterList(newcharacterList);
+
     }
 
     private void setDifficult(String s) {

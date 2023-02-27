@@ -17,7 +17,7 @@ public class Door extends Block {
     private String getImagePath(boolean flag) {
         String path = "src/com/roleplay/resources/images/door.png";
 
-        if (flag) path = "src/com/roleplay/resources/images/rotatedDoor.png";
+        if (flag) path = "src/com/roleplay/resources/images/doorRotated.png";
 
         return path;
     }

@@ -8,6 +8,12 @@ public class CharacterBuilder {
     private Inventory inventory;
     private double maxHealthPoints, healthPoints;
 
+
+    public CharacterBuilder() {
+        setInventory(new Inventory(30));
+        setAbilities(new Abilities());
+    }
+
     public String getName() {
         return name;
     }
