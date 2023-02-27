@@ -180,7 +180,7 @@
             </constraints>
             <properties>
               <background color="-859287"/>
-              <icon value="com/roleplay/resources/images/player_Big.png"/>
+              <icon value="com/roleplay/resources/images/player/fighter3_300x300.png"/>
               <text value=""/>
               <toolTipText value="Player Image"/>
             </properties>

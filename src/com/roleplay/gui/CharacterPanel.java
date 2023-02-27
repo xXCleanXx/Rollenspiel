@@ -33,9 +33,9 @@ public class CharacterPanel {
             cardLayout.show(contentPane, Messages.getString("ARTEFACT_PANEL"));
         });
 
-        btn_Fighter.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player_Big.png"))));
-        btn_wizard.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player_Big.png"))));
-        btn_thief.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player_Big.png"))));
+        btn_Fighter.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player/fighter1_300x300.png"))));
+        btn_wizard.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
+        btn_thief.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player/fighter2_300x300.png"))));
 
         playerName.addActionListener(e -> System.out.print(playerName.getText()));
         nextFinish.addActionListener(e -> {

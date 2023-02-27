@@ -10,7 +10,7 @@ public class Thief extends Character {
         super(characterBuilder);
 
         try {
-            setImg(ImageIO.read(new File("src/com/roleplay/resources/images/player.png")));
+            setImg(ImageIO.read(new File("src/com/roleplay/resources/images/player/player.png")));
         }catch (IOException ex){
             ex.printStackTrace();
         }
