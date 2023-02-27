@@ -20,7 +20,7 @@ public class MainFrame extends JFrame {
 
     private void initialize() {
         setTitle("Nerds vs Monsters");
-        setMinimumSize(new Dimension(1200, 800));
+        setSize(new Dimension(1200, 800));
 
         contentPane = new JPanel();
         contentPane.setLayout(new CardLayout());
@@ -36,8 +36,8 @@ public class MainFrame extends JFrame {
         contentPane.add(settings.getSettingsPanel(), Messages.getString("SETTINGS_PANEL"));
 
         setContentPane(contentPane);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
+        setResizable(false);
+        //setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

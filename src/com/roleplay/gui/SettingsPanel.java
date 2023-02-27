@@ -9,41 +9,36 @@ public class SettingsPanel {
 
     private JPanel settingsPanel;
 
-    private final String[] difficult = {Messages.getString("easy"), Messages.getString("medium"), Messages.getString("hard")};
+    private JButton btn_menu;
+    private JButton btn_artefact;
+    private JLabel title;
+    private JLabel subTitle;
+    private JButton btn_4player;
+    private JButton btn_5player;
+    private JButton btn_6player;
+    private JButton btn_7player;
+    private JButton btn_8player;
+    private JComboBox box_difficult;
+
 
     SettingsPanel(JPanel contentPane) {
-        settingsPanel = new JPanel(new BorderLayout());
-        settingsPanel.add(pageStart(), BorderLayout.PAGE_START);
-        settingsPanel.add(pageCenter(), BorderLayout.CENTER);
-        settingsPanel.add(pageEnd(contentPane), BorderLayout.PAGE_END);
-    }
+        btn_4player.addActionListener(e -> setPlayer(4));
+        btn_5player.addActionListener(e -> setPlayer(5));
+        btn_6player.addActionListener(e -> setPlayer(6));
+        btn_7player.addActionListener(e -> setPlayer(7));
+        btn_8player.addActionListener(e -> setPlayer(8));
 
-    private JPanel pageStart() {
-        JPanel pageStart = new JPanel();
-        pageStart.add(new Label(Messages.getString("settings")));
-        return pageStart;
-    }
-
-    private JPanel pageCenter() {
-        JPanel pageCenter = new JPanel();
-        pageCenter.add(createPageCenterButtons(4));
-        pageCenter.add(createPageCenterButtons(5));
-        pageCenter.add(createPageCenterButtons(6));
-        pageCenter.add(createPageCenterButtons(7));
-        pageCenter.add(createPageCenterButtons(8));
-
-        JComboBox<String> box_difficult = new JComboBox<>(difficult);
         box_difficult.addActionListener(e -> setDifficult((String) box_difficult.getSelectedItem()));
-        pageCenter.add(box_difficult);
 
-        return pageCenter;
-    }
+        btn_menu.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+            cardLayout.show(contentPane, Messages.getString("MAIN_PANEL"));
+        });
 
-    private JButton createPageCenterButtons(int player) {
-        JButton button = new JButton(Integer.toString(player));
-        button.addActionListener(e -> setPlayer(player));
-        button.setBackground(new Color(100,100,100));
-        return button;
+        btn_artefact.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+            cardLayout.show(contentPane, Messages.getString("CHARACTER_PANEL"));
+        });
     }
 
     private void setPlayer(int i) {
@@ -52,26 +47,13 @@ public class SettingsPanel {
     private void setDifficult(String s) {
     }
 
-    private JPanel pageEnd(JPanel contentPane) {
-        JPanel pageEnd = new JPanel(new GridLayout(1, 2));
-
-        JButton btn_menue = new JButton(Messages.getString("startMenu"));
-        btn_menue.addActionListener(e -> {
-            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-            cardLayout.show(contentPane, Messages.getString("MAIN_PANEL"));
-        });
-        pageEnd.add(btn_menue);
-
-        JButton btn_artefact = new JButton(Messages.getString("character"));
-        btn_artefact.addActionListener(e -> {
-            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
-            cardLayout.show(contentPane, Messages.getString("CHARACTER_PANEL"));
-        });
-        pageEnd.add(btn_artefact);
-        return pageEnd;
-    }
-
     public JPanel getSettingsPanel() {
         return settingsPanel;
+    }
+
+    private void createUIComponents() {
+        final String[] difficult = {Messages.getString("easy"), Messages.getString("medium"), Messages.getString("hard")};
+
+        box_difficult = new JComboBox<>(difficult);
     }
 }
