@@ -1,12 +1,18 @@
 package com.roleplay.gui;
 
+import com.roleplay.tiles.characters.Character;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
 
-    public GameFrame(){
+    private ArrayList<Character> player;
+
+    public GameFrame(ArrayList<Character> player){
         super();
+        this.player = player;
         initialize();
     }
         private void initialize(){
@@ -16,7 +22,7 @@ public class GameFrame extends JFrame {
             controlBar.add(new JMenu("Settings"));
             setJMenuBar(controlBar);
 
-            GameBoard board = new GameBoard();
+            GameBoard board = new GameBoard(player);
             add(board, BorderLayout.CENTER);
 
             addKeyListener(board);
@@ -30,7 +36,7 @@ public class GameFrame extends JFrame {
         }
 
 
-    /*public static void main(String args[]){
+   /* public static void main(String args[]){
        SwingUtilities.invokeLater(new Runnable() {
            @Override
            public void run() {

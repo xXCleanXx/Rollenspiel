@@ -1,9 +1,14 @@
 package com.roleplay.tiles.items;
 
+import com.roleplay.tiles.properties.ItemProperties;
+import com.roleplay.tools.Image;
+
+import java.awt.*;
+
 public class Key extends Item {
 
     public Key() {
-        super("key", 0);
+        super(new ItemProperties("key", new Point(0,0), Image.loadImage("")));
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.roleplay.tiles.items;
 
 import com.roleplay.spells.Spell;
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.properties.ItemProperties;
 import com.roleplay.tools.Image;
 
 import java.util.ArrayList;
@@ -15,9 +16,8 @@ public class BookOfSpells extends Item {
     private final List<Spell> spells = new ArrayList<>();
     private float cooldown;
 
-    public BookOfSpells() {
-        super("book_of_spells", 0);
-        loadTexture("src/com/roleplay/resources/images/gras.png");
+    public BookOfSpells(ItemProperties itemProperties) {
+        super(itemProperties);
     }
 
     public Spell[] getSpells() {
@@ -52,9 +52,9 @@ public class BookOfSpells extends Item {
 
     @Override
     public Item clone() {
-        BookOfSpells book = new BookOfSpells();
-        book.setPosition(getPosition());
-        book.setDisplayName(getDisplayName());
+        BookOfSpells book = new BookOfSpells((ItemProperties) getProperties());
+        book.getProperties().setPosition(getProperties().getPosition());
+        ((ItemProperties) book.getProperties()).setDisplayName(((ItemProperties) getProperties()).getDisplayName());
 
         for (Spell item : spells) {
             book.addSpell(item);

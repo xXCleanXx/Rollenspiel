@@ -1,12 +1,13 @@
 package com.roleplay.tiles.items.weapons;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 
 public abstract class Weapon extends Item {
     private double damage;
 
-    protected Weapon(String name, double weight, double damage) {
-        super(name, weight);
+    protected Weapon(ItemProperties properties, double damage) {
+        super(properties);
         setDamage(damage);
     }
 

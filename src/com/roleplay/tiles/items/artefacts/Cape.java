@@ -4,12 +4,12 @@ import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 import com.roleplay.tools.Image;
 
 public class Cape extends Artefact {
-    public Cape(Effect effect) {
-        super("cape", effect, 0);
-        loadTexture("src/com/roleplay/resources/images/items/cape.png");
+    public Cape(ItemProperties itemProperties , Effect effect) {
+        super(itemProperties, effect);
     }
 
     @Override
@@ -19,9 +19,9 @@ public class Cape extends Artefact {
 
     @Override
     public Item clone() {
-        Cape cape = new Cape(getEffect());
-        cape.setPosition(getPosition());
-        cape.setDisplayName(getDisplayName());
+        Cape cape = new Cape((ItemProperties) getProperties(), getEffect());
+        cape.getProperties().setPosition(getProperties().getPosition());
+        ((ItemProperties) cape.getProperties()).setDisplayName(((ItemProperties)getProperties()).getDisplayName());
 
         return cape;
     }

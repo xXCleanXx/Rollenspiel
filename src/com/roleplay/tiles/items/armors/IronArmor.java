@@ -1,19 +1,19 @@
 package com.roleplay.tiles.items.armors;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 import com.roleplay.tools.Image;
 
 public class IronArmor extends Armor {
-    public IronArmor() {
-        super("iron_armor", 14, 45);
-        loadTexture("src/com/roleplay/resources/images/gras.png");
+    public IronArmor(ItemProperties itemProperties) {
+        super(itemProperties, 14);
     }
 
     @Override
     public Item clone() {
-        IronArmor armor = new IronArmor();
-        armor.setPosition(getPosition());
-        armor.setDisplayName(getDisplayName());
+        IronArmor armor = new IronArmor((ItemProperties) getProperties());
+        armor.getProperties().setPosition(getProperties().getPosition());
+        ((ItemProperties) armor.getProperties()).setDisplayName(((ItemProperties) getProperties()).getDisplayName());
 
         return armor;
     }

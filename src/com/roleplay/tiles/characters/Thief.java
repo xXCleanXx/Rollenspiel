@@ -1,20 +1,11 @@
 package com.roleplay.tiles.characters;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import com.roleplay.tiles.properties.CharacterProperties;
 
 public class Thief extends Character {
-    public Thief(CharacterBuilder characterBuilder) {
-        super(characterBuilder);
-
-        try {
-            setImg(ImageIO.read(new File("src/com/roleplay/resources/images/player/player.png")));
-        }catch (IOException ex){
-            ex.printStackTrace();
-        }
-        }
+    public Thief(CharacterProperties properties) {
+        super(properties);
+    }
 
     @Override
     public double attack(Character enemy) {

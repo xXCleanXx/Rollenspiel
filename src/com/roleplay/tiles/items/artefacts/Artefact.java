@@ -4,6 +4,7 @@ import com.roleplay.effects.Effect;
 import com.roleplay.gui.GameBoard;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
@@ -11,17 +12,18 @@ import java.awt.image.ImageObserver;
 public abstract class Artefact extends Item {
     private Effect effect;
 
-    protected Artefact(String name, Effect effect, double weight) {
-        super(name, weight);
+    protected Artefact(ItemProperties itemProperties ,Effect effect) {
+        super(itemProperties);
+        ((ItemProperties) getProperties()).setWeight(0);
 
         setEffect(effect);
     }
 
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
-                getImage(),
-                getPosition().x * GameBoard.tileSize,
-                getPosition().y * GameBoard.tileSize,
+                getProperties().getTexture(),
+                getProperties().getPosition().x * GameBoard.tileSize,
+                getProperties().getPosition().y * GameBoard.tileSize,
                 observer
         );
     }

@@ -2,15 +2,16 @@ package com.roleplay.tiles.items.weapons;
 
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 
 public class Sword extends Weapon {
-    protected Sword(double damage) {
-        super("sword", 3, damage);
+    protected Sword(ItemProperties properties, double damage) {
+        super(properties, damage);
     }
 
     @Override
     public Item clone() {
-        Sword sword = new Sword(getDamage());
+        Sword sword = new Sword((ItemProperties) getProperties(), getDamage());
 
         clone(sword, this);
 

@@ -1,6 +1,7 @@
 package com.roleplay.effects;
 
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.properties.CharacterProperties;
 
 public class InvisibleEffect extends Effect {
     private double runtime;
@@ -19,6 +20,6 @@ public class InvisibleEffect extends Effect {
 
     @Override
     public void apply(Character character) {
-        character.setVisible(false);
+        ((CharacterProperties) character.getProperties()).setVisible(false);
     }
 }

@@ -3,13 +3,13 @@ package com.roleplay.tiles.items.artefacts;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 import com.roleplay.tools.Image;
 
 
 public class Ring extends Artefact {
-    public Ring(Effect effect) {
-        super("ring", effect, 0);
-        loadTexture("src/com/roleplay/resources/images/items/ring.png");
+    public Ring(ItemProperties itemProperties, Effect effect) {
+        super(itemProperties, effect);
     }
 
     @Override
@@ -19,9 +19,9 @@ public class Ring extends Artefact {
 
     @Override
     public Item clone() {
-        Ring ring = new Ring(getEffect());
-        ring.setPosition(getPosition());
-        ring.setDisplayName(getDisplayName());
+        Ring ring = new Ring((ItemProperties) getProperties(),getEffect());
+        ring.getProperties().setPosition(getProperties().getPosition());
+        ((ItemProperties) ring.getProperties()).setDisplayName(((ItemProperties) getProperties()).getDisplayName());
 
         return ring;
     }

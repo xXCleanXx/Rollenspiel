@@ -1,39 +1,19 @@
 package com.roleplay.tiles.items;
 
 import com.roleplay.tiles.Tile;
+import com.roleplay.tiles.properties.ItemProperties;
 
 public abstract class Item extends Tile implements Cloneable {
-    private String displayName;
-    private double weight;
 
-    public Item(String name, double weight) {
-        super(name);
-        setWeight(weight);
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    private void setWeight(double weight) {
-        if (weight < 0) throw new IllegalArgumentException("Weight cannot be less than 0!");
-
-        this.weight = weight;
+    public Item(ItemProperties itemProperties) {
+        super(itemProperties);
     }
 
     @Override
     public abstract Item clone();
 
-    protected static void clone(Item newItem, Item oldItem) {
-        newItem.setPosition(oldItem.getPosition());
-        newItem.setDisplayName(oldItem.getDisplayName());
+    public static void clone(Item newItem, Item oldItem) {
+        newItem.getProperties().setPosition(oldItem.getProperties().getPosition());
+        ((ItemProperties)newItem.getProperties()).setDisplayName(((ItemProperties)oldItem.getProperties()).getDisplayName());
     }
 }

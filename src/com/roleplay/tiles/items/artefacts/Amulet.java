@@ -3,14 +3,14 @@ package com.roleplay.tiles.items.artefacts;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
+import com.roleplay.tiles.properties.TileProperties;
 import com.roleplay.tools.Image;
 
 public class Amulet extends Artefact {
 
-    public Amulet(Effect effect) {
-        super("amulet", effect, 0);
-
-        loadTexture("src/com/roleplay/resources/images/items/amulet.png");
+    public Amulet(ItemProperties itemProperties, Effect effect) {
+        super(itemProperties, effect);
     }
     @Override
     public void use(Character character) {
@@ -19,9 +19,9 @@ public class Amulet extends Artefact {
 
     @Override
     public Item clone() {
-        Amulet amulet = new Amulet(getEffect());
-        amulet.setPosition(getPosition());
-        amulet.setDisplayName(getDisplayName());
+        Amulet amulet = new Amulet((ItemProperties) getProperties(), getEffect());
+        amulet.getProperties().setPosition(getProperties().getPosition());
+        ((ItemProperties) amulet.getProperties()).setDisplayName(((ItemProperties)getProperties()).getDisplayName());
 
         return amulet;
     }
