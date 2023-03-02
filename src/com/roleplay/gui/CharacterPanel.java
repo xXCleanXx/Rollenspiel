@@ -52,8 +52,8 @@ public class CharacterPanel {
             this.character = new Thief(new CharacterProperties("fighter", new Point(1,0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
         });
 
-        playerName.addActionListener(e -> character.getProperties().setName(playerName.getText()));
         nextFinish.addActionListener(e -> {
+            character.setName(playerName.getText());
             MainFrame.addCharactertoList(character);
             playerName.setText("");
         });

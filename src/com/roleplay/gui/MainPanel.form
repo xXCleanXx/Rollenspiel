@@ -103,17 +103,13 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="78d14" class="javax.swing.JTable" binding="characterTable">
+          <component id="4be23" class="javax.swing.JList" binding="listCharacter">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="150"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
               </grid>
             </constraints>
-            <properties>
-              <autoCreateRowSorter value="false"/>
-              <font size="18"/>
-              <intercellSpacing width="2" height="8"/>
-            </properties>
+            <properties/>
           </component>
         </children>
       </grid>
