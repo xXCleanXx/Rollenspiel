@@ -8,19 +8,20 @@ import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
 
-    private ArrayList<Character> player;
 
     public GameFrame(ArrayList<Character> player){
         super();
-        this.player = player;
-        initialize();
+        initialize(player);
     }
-        private void initialize(){
+        private void initialize(ArrayList<Character> player){
             setTitle("Nerds vs Monsters");
 
             JMenuBar controlBar = new JMenuBar();
             controlBar.add(new JMenu("Settings"));
             setJMenuBar(controlBar);
+
+            InGamePlayersPanel players = new InGamePlayersPanel(player);
+            add(players, BorderLayout.WEST);
 
             GameBoard board = new GameBoard(player);
             add(board, BorderLayout.CENTER);

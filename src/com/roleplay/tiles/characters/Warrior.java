@@ -5,6 +5,7 @@ import com.roleplay.tiles.properties.CharacterProperties;
 public class Warrior extends Character {
     public Warrior(CharacterProperties characterProperties) {
         super(characterProperties);
+        getProperties().setName("Warrior");
     }
 
     @Override

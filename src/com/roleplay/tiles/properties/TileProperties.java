@@ -14,6 +14,15 @@ public abstract class TileProperties {
         setPosition(position);
         setTexture(texture);
     }
+    public TileProperties(Point position, BufferedImage texture){
+        setName(name);
+        setPosition(position);
+        setTexture(texture);
+    }
+    public TileProperties(Point position, BufferedImage texture){
+        setPosition(position);
+        setTexture(texture);
+    }
 
 
     public void setName(String name) {

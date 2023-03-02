@@ -19,8 +19,8 @@ public class CharacterProperties extends TileProperties{
     private double maxHealthPoints, healthPoints;
 
 
-    public CharacterProperties(String name, Point position, BufferedImage texture) {
-        super(name, position, texture);
+    public CharacterProperties(Point position, BufferedImage texture) {
+        super(position, texture);
 
         hitbox = new Hitbox(32,32);
     }

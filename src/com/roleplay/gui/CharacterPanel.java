@@ -33,7 +33,7 @@ public class CharacterPanel {
 
     CharacterPanel(JPanel contentPane) {
 
-        this.character = new Warrior(new CharacterProperties("warrior", new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+        this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
 
         btn_menu.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
@@ -46,15 +46,15 @@ public class CharacterPanel {
 
         btn_Fighter.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/player/fighter1_300x300.png"))));
-            this.character = new Warrior(new CharacterProperties("warrior", new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+            this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
         });
         btn_wizard.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
-            this.character = new Wizard(new CharacterProperties("wizard", new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+            this.character = new Wizard(new CharacterProperties(new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
         });
         btn_thief.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/player/fighter2_300x300.png"))));
-            this.character = new Thief(new CharacterProperties("thief", new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+            this.character = new Thief(new CharacterProperties(new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
         });
 
         nextFinish.addActionListener(e -> {
