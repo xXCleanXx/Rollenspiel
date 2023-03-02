@@ -15,7 +15,7 @@ public class MainPanel {
     private JButton btn_Artefact;
     private JButton btn_start;
     private JLabel title;
-    private JTable characterTable;
+    private JList listCharacter;
 
 
     MainPanel(JPanel contentPane, JFrame mainFrame) {
@@ -46,14 +46,14 @@ public class MainPanel {
     }
 
     public void setCharacterJList(ArrayList<Character> charachterList) {
-        Object[][] charachterObject = new Object[8][2];
+        String[] charachterObject = new String[8];
         for (int i = 0; i < charachterList.size(); i++) {
             Character character = charachterList.get(i);
-            charachterObject[i][0] = character.getName();
-            charachterObject[i][1] = character.getDisplayName();
+            charachterObject[i] = "Player 1: " + character.getName() + ", Typ: " + character.getClass().getSimpleName();
         }
+        listCharacter.setListData(charachterObject);
 
-        characterTable = new JTable(charachterObject, new String[]{"Test1", "Test2"});
+
     }
 
     private void createUIComponents() {

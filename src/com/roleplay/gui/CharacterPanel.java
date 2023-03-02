@@ -24,7 +24,8 @@ public class CharacterPanel {
     private JButton btn_thief;
     private JTextField playerName;
     private JButton nextFinish;
-    private Character character;
+    private Character character = new Warrior(new CharacterBuilder());
+    ;
 
     CharacterPanel(JPanel contentPane) {
 
@@ -50,8 +51,8 @@ public class CharacterPanel {
             this.character = new Thief(new CharacterBuilder());
         });
 
-        playerName.addActionListener(e -> character.setName(playerName.getText()));
         nextFinish.addActionListener(e -> {
+            character.setName(playerName.getText());
             MainFrame.addCharactertoList(character);
             playerName.setText("");
         });
