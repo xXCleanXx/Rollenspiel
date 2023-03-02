@@ -1,6 +1,7 @@
 package com.roleplay.effects;
 
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.properties.CharacterProperties;
 
 public class HealEffect extends Effect {
     private double healthPoints;
@@ -18,6 +19,6 @@ public class HealEffect extends Effect {
     }
 
     public void apply(Character character) {
-        character.setHealthPoints(healthPoints);
+        ((CharacterProperties)character.getProperties()).setHealthPoints(healthPoints);
     }
 }

@@ -1,12 +1,12 @@
 package com.roleplay.tiles.items.armors;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 import com.roleplay.tools.Image;
 
 public class Shield extends Item {
-    public Shield() {
-        super("shield", 6);
-        loadTexture("src/com/roleplay/resources/images/gras.png");
+    public Shield(ItemProperties itemProperties) {
+        super(itemProperties);
     }
 
     public double getStrength() {
@@ -15,9 +15,9 @@ public class Shield extends Item {
 
     @Override
     public Item clone() {
-        Shield shield = new Shield();
-        shield.setPosition(getPosition());
-        shield.setDisplayName(getDisplayName());
+        Shield shield = new Shield((ItemProperties) getProperties());
+        shield.getProperties().setPosition(getProperties().getPosition());
+        ((ItemProperties) shield.getProperties()).setDisplayName(((ItemProperties) getProperties()).getDisplayName());
 
         return shield;
     }

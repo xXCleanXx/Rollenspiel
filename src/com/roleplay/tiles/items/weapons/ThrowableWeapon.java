@@ -1,12 +1,13 @@
 package com.roleplay.tiles.items.weapons;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 
 public abstract class ThrowableWeapon extends Weapon {
     private int range = 0;
 
-    protected ThrowableWeapon(String name, double weight, double damage, int range) {
-        super(name, weight, damage);
+    protected ThrowableWeapon(ItemProperties itemProperties, double damage, int range) {
+        super(itemProperties, damage);
 
         setRange(range);
     }

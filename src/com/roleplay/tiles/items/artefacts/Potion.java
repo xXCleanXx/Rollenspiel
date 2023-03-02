@@ -3,12 +3,12 @@ package com.roleplay.tiles.items.artefacts;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.effects.Effect;
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 import com.roleplay.tools.Image;
 
 public class Potion extends Artefact {
-    public Potion(Effect effect) {
-        super("potion", effect, 0);
-        loadTexture("src/com/roleplay/resources/images/items/potion.png");
+    public Potion(ItemProperties itemProperties, Effect effect) {
+        super(itemProperties, effect);
     }
 
     @Override
@@ -18,6 +18,6 @@ public class Potion extends Artefact {
 
     @Override
     public Item clone() {
-        return new Potion(getEffect());
+        return new Potion((ItemProperties) getProperties(), getEffect());
     }
 }

@@ -1,6 +1,7 @@
 package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.properties.CharacterProperties;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
@@ -36,7 +37,7 @@ public class MainPanel {
 
         btn_start.addActionListener(e -> {
             mainFrame.setVisible(false);
-            new GameFrame();
+            new GameFrame(MainFrame.getCharacterList());
         });
 
     }
@@ -49,7 +50,7 @@ public class MainPanel {
         String[] charachterObject = new String[8];
         for (int i = 0; i < charachterList.size(); i++) {
             Character character = charachterList.get(i);
-            charachterObject[i] = "Player 1: " + character.getName() + ", Typ: " + character.getClass().getSimpleName();
+            charachterObject[i] = "Player 1: " + ((CharacterProperties) character.getProperties()).getDisplayName() + ", Typ: " + character.getClass().getSimpleName();
         }
         listCharacter.setListData(charachterObject);
 

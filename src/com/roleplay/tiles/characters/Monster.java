@@ -1,8 +1,10 @@
 package com.roleplay.tiles.characters;
 
+import com.roleplay.tiles.properties.CharacterProperties;
+
 public class Monster extends Character {
-    protected Monster(CharacterBuilder builder) {
-        super(builder);
+    protected Monster(CharacterProperties characterProperties) {
+        super(characterProperties);
     }
 
     @Override

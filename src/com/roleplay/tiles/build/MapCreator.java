@@ -1,6 +1,9 @@
 package com.roleplay.tiles.build;
 
 import com.roleplay.tiles.Tile;
+import com.roleplay.tiles.properties.MapElementProperties;
+import com.roleplay.tiles.properties.TileProperties;
+import com.roleplay.tools.Image;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -13,7 +16,7 @@ import java.util.Random;
 
 public class MapCreator {
 
-    private static Block[][] map;
+    private static Tile[][] map;
 
     public MapCreator(BufferedImage img, int rows, int columns, int tileSize) {
         createTiles(img, rows, columns, tileSize);
@@ -21,7 +24,7 @@ public class MapCreator {
 
     private void createTiles(BufferedImage img, int rows, int columns, int tileSize) {
 
-        map = new Block[rows][columns];
+        map = new Tile[rows][columns];
         try {
             Random random = new Random();
             List<String> lines = switch (random.nextInt(1)) {
@@ -37,29 +40,30 @@ public class MapCreator {
                 System.out.println(text);
 
                 for (int j = 0; j < columns; j++) {
-                    Block block = null;
+                    Tile tile = null;
+                    MapElementProperties tileProperties;
 
                     switch (Character.getNumericValue(text.charAt(j))) {
                         case 0 -> {
-                            block = new Block("wall_block");
-                            block.loadTexture("src/com/roleplay/resources/images/background.png");
+                            tileProperties = new MapElementProperties("gras", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/background.png"));
+                            tile = new Tile(tileProperties);
                         }
                         case 1 -> {
-                            block = new Block("way_block");
-                            block.loadTexture("src/com/roleplay/resources/images/way.png");
+                            tileProperties = new MapElementProperties("way", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/way.png"));
+                            tileProperties.getHitbox().setEnabled(false);
+                            tile = new Tile(tileProperties);
                         }
                         case 2 -> {
-                            block = new Block("water_block");
-                            block.loadTexture("src/com/roleplay/resources/images/water.png");
+                            tileProperties = new MapElementProperties("water", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/water.png"));
+                            tile = new Tile(tileProperties);
+
                         }
-                        case 3 -> block = new Door(1, false);
-                        case 4 -> block = new Door(1, true);
+                        case 3 -> tile = new Door(1, new MapElementProperties("door", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/door.png")));
+                        case 4 -> tile = new Door(1, new MapElementProperties("doorRotated", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
                         default -> throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
                     }
 
-                    block.setPosition(new Point(i, j));
-
-                    map[i][j] = block;
+                    map[i][j] = tile;
                 }
             }
         } catch (IOException | IllegalStateException ex) {
@@ -68,7 +72,7 @@ public class MapCreator {
 
         for (int i = 0; i < map[0].length; i++) {
             for (int j = 0; j < map.length; j++) {
-                final BufferedImage tile = map[j][i].getImage();
+                final BufferedImage tile = map[j][i].getProperties().getTexture();
 
                 if (tile == null) continue;
 
@@ -81,7 +85,7 @@ public class MapCreator {
         }
     }
 
-    public static Block[][] getMap() {
+    public static Tile[][] getMap() {
         return map;
     }
 }
