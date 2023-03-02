@@ -4,24 +4,14 @@ import java.awt.*;
 
 public class Hitbox {
 
-    private Point position;
     private int width;
     private int height;
 
     private boolean enabled = true;
 
-    public Hitbox(Point position, int width, int height){
-        setPosition(position);
+    public Hitbox(int width, int height){
         setWidth(width);
         setHeight(height);
-    }
-
-    public Point getPosition() {
-        return position;
-    }
-
-    public void setPosition(Point position) {
-        this.position = position;
     }
 
     public int getWidth() {
