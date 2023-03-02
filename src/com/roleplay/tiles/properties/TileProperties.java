@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class TileProperties {
-
     private String name;
     private Point position;
     private BufferedImage texture;
@@ -45,6 +44,7 @@ public abstract class TileProperties {
         if(texture == null){
             throw new IllegalArgumentException("texture can't be null");
         }
+
         this.texture = texture;
     }
 
