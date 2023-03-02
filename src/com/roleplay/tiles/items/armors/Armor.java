@@ -1,12 +1,13 @@
 package com.roleplay.tiles.items.armors;
 
 import com.roleplay.tiles.items.Item;
+import com.roleplay.tiles.properties.ItemProperties;
 
 public abstract class Armor extends Item {
     private double strength;
 
-    public Armor(String name, double strength, double weight) {
-        super(name, weight);
+    public Armor(ItemProperties itemProperties, double strength) {
+        super(itemProperties);
         setStrength(strength);
     }
 

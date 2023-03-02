@@ -1,8 +1,10 @@
 package com.roleplay.tiles.characters;
 
+import com.roleplay.tiles.properties.CharacterProperties;
+
 public class Warrior extends Character {
-    protected Warrior(CharacterBuilder characterBuilder) {
-        super(characterBuilder);
+    public Warrior(CharacterProperties characterProperties) {
+        super(characterProperties);
     }
 
     @Override

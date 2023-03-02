@@ -17,7 +17,7 @@ public class Shop {
 
     public Item buy(String name, double price) {
         for (Article item : articles) {
-            if (item.getItem().getName().equalsIgnoreCase(name) && price == item.getPrice()) {
+            if (item.getItem().getProperties().getName().equalsIgnoreCase(name) && price == item.getPrice()) {
                 return item.getItem();
             }
         }

@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.roleplay.gui.CharacterPanel">
   <grid id="27dc6" binding="characterPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="702" height="647"/>
+      <xy x="20" y="20" width="848" height="1108"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -33,15 +33,15 @@
           </component>
         </children>
       </grid>
-      <grid id="3ae55" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="3ae55" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="25" bottom="25" right="25"/>
         <constraints border-constraint="Last"/>
         <properties/>
         <border type="none"/>
         <children>
           <component id="d3c8a" class="javax.swing.JButton" binding="btn_menu">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="250" height="100"/>
               </grid>
             </constraints>
@@ -50,9 +50,9 @@
               <text resource-bundle="com/roleplay/tools/messages" key="startMenu"/>
             </properties>
           </component>
-          <component id="1307b" class="javax.swing.JButton" binding="btn_artefact">
+          <component id="1307b" class="javax.swing.JButton" binding="btn_charcter">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="250" height="100"/>
               </grid>
             </constraints>
@@ -63,154 +63,159 @@
           </component>
           <hspacer id="15673">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-          <vspacer id="b46df">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="50"/>
-              </grid>
-            </constraints>
-          </vspacer>
-          <hspacer id="ab27a">
-            <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="-1"/>
-                <maximum-size width="50" height="-1"/>
-              </grid>
-            </constraints>
-          </hspacer>
-          <hspacer id="94b0a">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="-1"/>
-                <maximum-size width="50" height="-1"/>
-              </grid>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
         </children>
       </grid>
-      <grid id="98cb1" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="98cb1" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="15">
+        <margin top="0" left="50" bottom="0" right="0"/>
         <constraints border-constraint="West"/>
-        <properties/>
+        <properties>
+          <enabled value="true"/>
+        </properties>
         <border type="none"/>
         <children>
-          <component id="be0a9" class="javax.swing.JButton" binding="btn_Fighter">
+          <grid id="19139" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="200" height="100"/>
-                <preferred-size width="200" height="100"/>
-              </grid>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties>
-              <background color="-886932"/>
-              <font size="22"/>
-              <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="fighter"/>
-            </properties>
-          </component>
-          <component id="11f8a" class="javax.swing.JButton" binding="btn_wizard">
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="be0a9" class="javax.swing.JButton" binding="btn_Fighter">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="75"/>
+                    <preferred-size width="200" height="75"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-886932"/>
+                  <font size="22"/>
+                  <foreground color="-16777216"/>
+                  <text resource-bundle="com/roleplay/tools/messages" key="fighter"/>
+                </properties>
+              </component>
+              <component id="11f8a" class="javax.swing.JButton" binding="btn_wizard">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="75"/>
+                    <preferred-size width="200" height="75"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="22"/>
+                  <text resource-bundle="com/roleplay/tools/messages" key="wizard"/>
+                </properties>
+              </component>
+              <component id="ad126" class="javax.swing.JButton" binding="btn_thief">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="75"/>
+                    <preferred-size width="200" height="75"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font size="22"/>
+                  <text resource-bundle="com/roleplay/tools/messages" key="thief"/>
+                </properties>
+              </component>
+              <vspacer id="f2da6">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <vspacer id="ff040">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+            </children>
+          </grid>
+          <grid id="77edf" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="200" height="100"/>
-                <preferred-size width="200" height="100"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties>
-              <font size="22"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="wizard"/>
-            </properties>
-          </component>
-          <component id="ad126" class="javax.swing.JButton" binding="btn_thief">
-            <constraints>
-              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="200" height="100"/>
-                <preferred-size width="200" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font size="22"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="thief"/>
-            </properties>
-          </component>
-          <vspacer id="5a259">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <vspacer id="56b05">
-            <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <hspacer id="ed957">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-          </hspacer>
-          <vspacer id="8df2b">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="3"/>
-                <maximum-size width="-1" height="5"/>
-              </grid>
-            </constraints>
-          </vspacer>
-          <vspacer id="ba70f">
-            <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-                <preferred-size width="-1" height="3"/>
-                <maximum-size width="-1" height="5"/>
-              </grid>
-            </constraints>
-          </vspacer>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="8e746" class="javax.swing.JButton" binding="zwergButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="75"/>
+                    <preferred-size width="200" height="75"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/roleplay/tools/messages" key="dwraf"/>
+                </properties>
+              </component>
+              <vspacer id="891c1">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="b59cd" class="javax.swing.JButton" binding="menschButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="75"/>
+                    <preferred-size width="200" height="75"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/roleplay/tools/messages" key="human"/>
+                </properties>
+              </component>
+              <component id="bc01a" class="javax.swing.JButton" binding="elfButton" default-binding="true">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="75"/>
+                    <preferred-size width="200" height="75"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/roleplay/tools/messages" key="elf"/>
+                </properties>
+              </component>
+              <component id="665f3" class="javax.swing.JButton" binding="hobbitButton" default-binding="true">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="75"/>
+                    <preferred-size width="200" height="75"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/roleplay/tools/messages" key="hobbit"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
       </grid>
-      <grid id="32305" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="32305" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="25">
+        <margin top="0" left="0" bottom="0" right="100"/>
         <constraints border-constraint="Center"/>
         <properties/>
         <border type="none"/>
         <children>
-          <component id="d5933" class="javax.swing.JLabel" binding="charcterPicture">
+          <component id="31e08" class="javax.swing.JTextField" binding="playerName">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="200" height="200"/>
-                <preferred-size width="300" height="300"/>
-                <maximum-size width="350" height="350"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-859287"/>
-              <icon value="com/roleplay/resources/images/player_Big2.png"/>
-              <text value=""/>
-              <toolTipText value="Player Image"/>
-            </properties>
-          </component>
-          <component id="31e08" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-            <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="200" height="-1"/>
                 <preferred-size width="300" height="-1"/>
                 <maximum-size width="350" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <font size="18"/>
+              <font size="22"/>
             </properties>
           </component>
-          <vspacer id="4c667">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
           <hspacer id="58d8b">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
           <vspacer id="b75a1">
@@ -223,13 +228,32 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <hspacer id="f9342">
+          <component id="cd56f" class="javax.swing.JButton" binding="nextFinish">
             <constraints>
-              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <maximum-size width="100" height="-1"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <maximum-size width="150" height="-1"/>
               </grid>
             </constraints>
-          </hspacer>
+            <properties>
+              <font size="22"/>
+              <text resource-bundle="com/roleplay/tools/messages" key="next"/>
+            </properties>
+          </component>
+          <component id="d5933" class="javax.swing.JLabel" binding="charcterPicture">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="200" height="200"/>
+                <preferred-size width="300" height="300"/>
+                <maximum-size width="350" height="350"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-859287"/>
+              <icon value="com/roleplay/resources/images/player/fighter1_300x300.png"/>
+              <text value=""/>
+              <toolTipText value="Player Image"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

@@ -1,23 +1,23 @@
 package com.roleplay.tiles.build;
 
+import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.items.Key;
+import com.roleplay.tiles.properties.TileProperties;
 
-public class Door extends Block {
+public class Door extends Tile {
     private boolean locked, open;
     private int lockPickingLevel;
     private Key key;
 
-    public Door(int lockPickingLevel, boolean rotated){
-        super("door", new BlockProperties(rotated));
-
-        loadTexture(getImagePath(rotated));
+    public Door(int lockPickingLevel, TileProperties tileProperties){
+        super(tileProperties);
         setLockPickingLevel(lockPickingLevel);
     }
 
     private String getImagePath(boolean flag) {
         String path = "src/com/roleplay/resources/images/door.png";
 
-        if (flag) path = "src/com/roleplay/resources/images/rotatedDoor.png";
+        if (flag) path = "src/com/roleplay/resources/images/doorRotated.png";
 
         return path;
     }
@@ -57,7 +57,7 @@ public class Door extends Block {
     }
 
     public boolean unlock(Key key) {
-        if (!key.getName().equalsIgnoreCase(this.key.getName())) return false;
+        if (!key.getProperties().getName().equalsIgnoreCase(this.key.getProperties().getName())) return false;
 
         locked = false;
 

@@ -4,12 +4,12 @@ import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.build.MapCreator;
-import com.roleplay.tiles.characters.Abilities;
 import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.characters.CharacterBuilder;
 import com.roleplay.tiles.characters.Thief;
-import com.roleplay.tiles.items.Inventory;
 import com.roleplay.tiles.items.artefacts.*;
+import com.roleplay.tiles.properties.CharacterProperties;
+import com.roleplay.tiles.properties.ItemProperties;
+import com.roleplay.tools.Image;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,27 +33,14 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
 
     private List<Artefact> artefacts;
 
-    private ArrayList<Character> players;
+    private List<Character> players;
 
     private Tile[][] map;
 
-    public GameBoard() {
+    public GameBoard(ArrayList<Character> players) {
         setPreferredSize(new Dimension(tileSize * columns, tileSize * rows));
 
-        players = new ArrayList<>();
-
-        CharacterBuilder characterBuilder = new CharacterBuilder();
-        characterBuilder.setAbilities(new Abilities());
-        characterBuilder.setName("test");
-        characterBuilder.setInventory(new Inventory(15));
-        characterBuilder.setDisplayName("test2");
-        characterBuilder.setHealthPoints(20);
-        characterBuilder.setMaxHealthPoints(25);
-        Thief thief = new Thief(characterBuilder);
-        thief.setPosition(new Point(0, 0));
-
-        players.add(thief);
-        players.get(0).setHitBox(new Rectangle(players.get(0).getPosition().x,players.get(0).getPosition().y,32,32));
+        this.players = players;
 
         img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
         new MapCreator(img, rows, columns, tileSize);
@@ -80,17 +67,15 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
                 artefactY = rand.nextInt(rows);
 
                 position = new Point(artefactX, artefactY);
-            } while (!map[artefactY][artefactX].getName().equalsIgnoreCase("way"));
+            } while (!map[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
 
             Artefact item = switch (rand.nextInt(4)) {
-                case 0 -> new Amulet(new HealEffect(3));
-                case 1 -> new Cape(new InvisibleEffect(3));
-                case 2 -> new Potion(new HealEffect(3));
-                case 3 -> new Ring(new HealEffect(3));
+                case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/amulet.png")), new HealEffect(3));
+                case 1 -> new Cape(new ItemProperties("cape", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/cape.png")),new InvisibleEffect(3));
+                case 2 -> new Potion(new ItemProperties("potion", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/potion.png")),new HealEffect(3));
+                case 3 -> new Ring(new ItemProperties("ring", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/ring.png")),new HealEffect(3));
                 default -> null;
             };
-
-            item.setPosition(position);
 
             artefactList.add(item);
         }

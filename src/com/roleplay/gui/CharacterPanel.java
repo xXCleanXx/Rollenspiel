@@ -1,10 +1,14 @@
 package com.roleplay.gui;
 
+import com.roleplay.tiles.characters.*;
+import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.properties.CharacterProperties;
 import com.roleplay.tools.Image;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class CharacterPanel {
 
@@ -15,54 +19,50 @@ public class CharacterPanel {
     private JLabel title;
     private JLabel subTitle;
     private JButton btn_menu;
-    private JButton btn_artefact;
+    private JButton btn_charcter;
     private JButton btn_wizard;
     private JButton btn_Fighter;
     private JButton btn_thief;
-    private JTextField textField1;
+    private JTextField playerName;
+    private JButton nextFinish;
+    private JButton zwergButton;
+    private JButton menschButton;
+    private JButton elfButton;
+    private JButton hobbitButton;
+    private Character character;
 
     CharacterPanel(JPanel contentPane) {
-        lineStart();
-        lineEnd();
-        pageEnd(contentPane);
-    }
 
-    private void pageEnd(JPanel contentPane) {
+        this.character = new Warrior(new CharacterProperties("warrior", new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
 
         btn_menu.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("MAIN_PANEL"));
         });
-
-        btn_artefact.addActionListener(e -> {
+        btn_charcter.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("ARTEFACT_PANEL"));
         });
 
-    }
+        btn_Fighter.addActionListener(e -> {
+            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/player/fighter1_300x300.png"))));
+            this.character = new Warrior(new CharacterProperties("warrior", new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+        });
+        btn_wizard.addActionListener(e -> {
+            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
+            this.character = new Wizard(new CharacterProperties("wizard", new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+        });
+        btn_thief.addActionListener(e -> {
+            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/player/fighter2_300x300.png"))));
+            this.character = new Thief(new CharacterProperties("thief", new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+        });
 
-    private void lineStart() {
-        btn_Fighter.setSize(new Dimension(200, 200));
-        btn_Fighter.setMaximumSize(btn_Fighter.getSize());
-        btn_Fighter.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player.png"))));
-
-        btn_wizard.setSize(new Dimension(100, 100));
-        btn_wizard.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player.png"))));
-
-        btn_thief.setSize(new Dimension(100, 100));
-        btn_thief.addActionListener(e -> charcterPicture.setIcon(new ImageIcon(Image.loadImage("src/com/roleplay/resources/images/player.png"))));
-    }
-
-    private void lineEnd() {
-        JTextField playerName = new JTextField();
-        playerName.addActionListener(e -> System.out.print(playerName.getText()));
-
-        JButton nextFinish = new JButton(Messages.getString("next"));
         nextFinish.addActionListener(e -> {
-
+            ((CharacterProperties) this.character.getProperties()).setDisplayName(playerName.getText());
+            MainFrame.addCharactertoList(this.character);
+            playerName.setText("");
         });
     }
-
 
     public JPanel getCharacterPanel() {
         return characterPanel;

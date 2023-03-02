@@ -1,8 +1,10 @@
 package com.roleplay.tiles.characters;
 
+import com.roleplay.tiles.properties.CharacterProperties;
+
 public class Wizard extends Character {
-    protected Wizard(CharacterBuilder characterBuilder) {
-        super(characterBuilder);
+    public Wizard(CharacterProperties characterProperties) {
+        super(characterProperties);
     }
 
     @Override

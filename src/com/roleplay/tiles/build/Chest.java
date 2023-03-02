@@ -1,7 +1,10 @@
 package com.roleplay.tiles.build;
 
-public class Chest extends Block {
-    public Chest(String name, BlockProperties blockProperties) {
-        super("chest", blockProperties);
+import com.roleplay.tiles.Tile;
+import com.roleplay.tiles.properties.MapElementProperties;
+
+public class Chest extends Tile {
+    public Chest(MapElementProperties properties) {
+        super(properties);
     }
 }
