@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Tile {
-    private String name;
+    private String name, displayName;
     private Point position = new Point();
     private BufferedImage image;
 
@@ -28,6 +28,14 @@ public class Tile {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDisplayName() {
+        return this.displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public BufferedImage getImage() {

@@ -1,12 +1,24 @@
 package com.roleplay.tiles.characters;
 
+import com.roleplay.tiles.characters.enums.Races;
 import com.roleplay.tiles.items.Inventory;
 
 public class CharacterBuilder {
+    private Races race;
     private String name, displayName;
     private Abilities abilities;
     private Inventory inventory;
     private double maxHealthPoints, healthPoints;
+
+    public Races getRace() {
+        return this.race;
+    }
+
+    public CharacterBuilder setRace(Races race) {
+        this.race = race;
+
+        return this;
+    }
 
     public String getName() {
         return name;

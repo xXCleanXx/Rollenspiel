@@ -5,6 +5,7 @@ import com.roleplay.gui.GameBoard;
 import com.roleplay.tiles.Entity;
 import com.roleplay.tiles.build.MapCreator;
 import com.roleplay.tiles.characters.enums.Directions;
+import com.roleplay.tiles.characters.enums.Races;
 import com.roleplay.tiles.items.Inventory;
 import com.roleplay.tiles.items.Item;
 import com.roleplay.tiles.items.armors.Armor;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Character extends Entity {
+    private Races race;
     private String displayName;
     private double maxHealthPoints, healthPoints;
     private boolean visible = true;
@@ -31,43 +33,20 @@ public abstract class Character extends Entity {
     protected Character(CharacterBuilder builder) {
         super(builder.getName());
 
-        setDisplayName(builder.getDisplayName());
+        super.setDisplayName(builder.getDisplayName());
         setAbilities(builder.getAbilities());
         setInventory(builder.getInventory());
         setHealthPoints(builder.getHealthPoints());
         setMaxHealthPoints(builder.getMaxHealthPoints());
+        setRace(builder.getRace());
     }
 
-    public abstract double attack(Character enemy);
-
-    public abstract double defend();
-
-    public abstract void levelUp();
-
-    protected void use(Item item) {
-
-        if (item instanceof Armor) {
-            inventory.setArmor((Armor) item);
-            //TODO
-        } else if (item instanceof Weapon) {
-            inventory.setFirstHand((Weapon) item);
-            //TODO
-        } else if (item instanceof Artefact) {
-
-        }
+    public Races getRace() {
+        return this.race;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    /**
-     * Sets the display name of the character.
-     *
-     * @param displayName Specified display name.
-     */
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    private void setRace(Races race) {
+        this.race = race;
     }
 
     public double getMaxHealthPoints() {
@@ -132,6 +111,25 @@ public abstract class Character extends Entity {
         this.inventory = inventory;
     }
 
+    public abstract double attack(Character enemy);
+
+    public abstract double defend();
+
+    public abstract void levelUp();
+
+    protected void use(Item item) {
+
+        if (item instanceof Armor) {
+            inventory.setArmor((Armor) item);
+            //TODO
+        } else if (item instanceof Weapon) {
+            inventory.setFirstHand((Weapon) item);
+            //TODO
+        } else if (item instanceof Artefact) {
+
+        }
+    }
+
     public void setImg(BufferedImage img) {
         this.img = img;
     }
@@ -144,6 +142,7 @@ public abstract class Character extends Entity {
                 observer
         );
     }
+
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
