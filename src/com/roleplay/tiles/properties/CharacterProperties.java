@@ -15,7 +15,6 @@ public class CharacterProperties extends TileProperties{
     private Directions direction = Directions.NORTH;
     private String displayName;
     private Abilities abilities;
-    private Inventory inventory;
     private final Hitbox hitbox;
     private double maxHealthPoints, healthPoints;
 
@@ -23,7 +22,7 @@ public class CharacterProperties extends TileProperties{
     public CharacterProperties(String name, Point position, BufferedImage texture) {
         super(name, position, texture);
 
-        hitbox = new Hitbox(position, 32,32);
+        hitbox = new Hitbox(32,32);
     }
 
     public boolean isVisible() {
@@ -62,15 +61,6 @@ public class CharacterProperties extends TileProperties{
 
     public void setAbilities(Abilities abilities) {
         this.abilities = abilities;
-    }
-
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-
     }
 
     public double getMaxHealthPoints() {

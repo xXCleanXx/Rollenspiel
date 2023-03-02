@@ -63,8 +63,6 @@ public class MapCreator {
                         default -> throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
                     }
 
-                    tile.getProperties().setPosition(new Point(i, j));
-
                     map[i][j] = tile;
                 }
             }
