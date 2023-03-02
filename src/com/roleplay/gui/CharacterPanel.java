@@ -25,10 +25,10 @@ public class CharacterPanel {
     private JButton btn_thief;
     private JTextField playerName;
     private JButton nextFinish;
-    private JButton zwergButton;
-    private JButton menschButton;
-    private JButton elfButton;
-    private JButton hobbitButton;
+    private JButton btn_Dwarf;
+    private JButton btn_Human;
+    private JButton btn_Elf;
+    private JButton btn_Hobbit;
     private Character character;
 
     CharacterPanel(JPanel contentPane) {
@@ -42,6 +42,22 @@ public class CharacterPanel {
         btn_charcter.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("ARTEFACT_PANEL"));
+        });
+
+        btn_Dwarf.addActionListener(e -> {
+
+        });
+
+        btn_Human.addActionListener(e -> {
+
+        });
+
+        btn_Elf.addActionListener(e -> {
+
+        });
+
+        btn_Hobbit.addActionListener(e -> {
+
         });
 
         btn_Fighter.addActionListener(e -> {

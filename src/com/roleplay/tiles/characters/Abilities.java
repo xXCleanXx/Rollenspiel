@@ -1,5 +1,7 @@
 package com.roleplay.tiles.characters;
 
+import java.util.Random;
+
 public class Abilities {
     private double intelligence;
     private double strength;
@@ -8,7 +10,14 @@ public class Abilities {
     private double skill;
     private double experience;
 
-    public Abilities() { }
+    public Abilities() {
+        Random rand = new Random();
+        setIntelligence(rand.nextInt(18 - 3) + 3);
+        setStrength(rand.nextInt(18 - 3) + 3);
+        setConstitution(rand.nextInt(18 - 3) + 3);
+        setWisdom(rand.nextInt(18 - 3) + 3);
+        setSkill(rand.nextInt(18 - 3) + 3);
+    }
 
     public double getIntelligence() {
         return intelligence;
