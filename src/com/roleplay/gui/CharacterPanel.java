@@ -59,6 +59,7 @@ public class CharacterPanel {
 
         nextFinish.addActionListener(e -> {
             ((CharacterProperties) this.character.getProperties()).setDisplayName(playerName.getText());
+
             MainFrame.addCharactertoList(this.character);
             playerName.setText("");
         });
