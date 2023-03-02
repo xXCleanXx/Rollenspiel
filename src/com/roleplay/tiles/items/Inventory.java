@@ -3,7 +3,7 @@ package com.roleplay.tiles.items;
 import com.roleplay.tiles.items.armors.Armor;
 
 public class Inventory {
-    private final ItemStack[] items;
+    private final Item[] items;
     private Item firstHand;
     private Item secondHand;
     private Armor armor;
@@ -13,10 +13,10 @@ public class Inventory {
             throw new IndexOutOfBoundsException("Size cannot be less than 0!");
         }
 
-        items = new ItemStack[size];
+        items = new Item[size];
     }
 
-    public ItemStack get(int index) {
+    public Item get(int index) {
         if (index < 0 || index > items.length) {
             throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
         }
@@ -24,7 +24,7 @@ public class Inventory {
         return items[index];
     }
 
-    public void add(int index, ItemStack itemStack) {
+    public void add(int index, Item item) {
         if (index < 0 || index > items.length) {
             throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
         }
@@ -33,10 +33,10 @@ public class Inventory {
             throw new IllegalArgumentException("Could not be set, because slot is not null!");
         }
 
-        items[index] = itemStack;
+        items[index] = item;
     }
 
-    public ItemStack remove(int index) {
+    public Item remove(int index) {
         if (items[index] == null) {
             throw new IllegalArgumentException("There is nothing to remove!");
         }
@@ -68,14 +68,14 @@ public class Inventory {
         this.armor = armor;
     }
 
-    public ItemStack swap(int index, ItemStack newItemStack) {
+    public Item swap(int index, Item newItem) {
         if (index < 0 || index > items.length) {
             throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
         }
 
-        ItemStack oldItemStack = items[index];
-        items[index] = newItemStack;
+        Item oldItem = items[index];
+        items[index] = newItem;
 
-        return oldItemStack;
+        return oldItem;
     }
 }

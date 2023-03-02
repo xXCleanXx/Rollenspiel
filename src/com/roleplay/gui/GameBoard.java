@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class GameBoard extends JPanel implements ActionListener, KeyListener {
+public class GameBoard extends JPanel implements ActionListener {
 
     public static final int tileSize = 32;
     private final int columns = 40;
@@ -108,22 +108,5 @@ public class GameBoard extends JPanel implements ActionListener, KeyListener {
         }
 
         repaint();
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-        for(Character player : players) {
-            player.keyPressed(e);
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // react to key up events
     }
 }
