@@ -16,7 +16,7 @@ public class InGamePlayersPanel extends JPanel {
 
         playerPanel infos;
         for(Character c : players){
-            infos = new playerPanel(c.getProperties().getName(), ((CharacterProperties) c.getProperties()).getDisplayName(), ((CharacterProperties) c.getProperties()).getHealthPoints(), ((CharacterProperties) c.getProperties()).getMaxHealthPoints());
+            infos = new playerPanel(c.getProperties().getName(), ((CharacterProperties) c.getProperties()).getDisplayName(), ((CharacterProperties) c.getProperties()).getHealthPoints(), ((CharacterProperties) c.getProperties()).getHealthPoints());
             infos.setBorder(new BasicBorders.MarginBorder());
             add(infos);
         }

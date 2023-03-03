@@ -16,7 +16,7 @@ public class CharacterProperties extends TileProperties {
     private String displayName;
     private Abilities abilities;
     private final Hitbox hitbox;
-    private double maxHealthPoints, healthPoints;
+    private double healthPoints;
     private Inventory inventory;
 
     public CharacterProperties(Point position, BufferedImage texture) {
@@ -83,15 +83,6 @@ public class CharacterProperties extends TileProperties {
     public void setAbilities(Abilities abilities) {
         this.abilities = abilities;
     }
-
-    public double getMaxHealthPoints() {
-        return maxHealthPoints;
-    }
-
-    public void setMaxHealthPoints(double maxHealthPoints) {
-        this.maxHealthPoints = maxHealthPoints;
-    }
-
     public double getHealthPoints() {
         return healthPoints;
     }
