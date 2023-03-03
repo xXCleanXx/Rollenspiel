@@ -36,10 +36,11 @@ public class MainPanel {
         });
 
         btn_start.addActionListener(e -> {
-            mainFrame.setVisible(false);
-            new GameFrame(MainFrame.getCharacterList());
+            if (MainFrame.getCharacterList().size() >= 4) {
+                mainFrame.setVisible(false);
+                new GameFrame(MainFrame.getCharacterList());
+            }
         });
-
     }
 
     public JPanel getMainPanel() {

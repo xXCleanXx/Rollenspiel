@@ -1,5 +1,6 @@
 package com.roleplay.effects;
 
+
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.properties.CharacterProperties;
 
@@ -18,6 +19,7 @@ public class DamageEffect extends Effect {
 
     @Override
     public void apply(Character character) {
-        ((CharacterProperties)character.getProperties()).setHealthPoints(damage);
+        ((CharacterProperties) character.getProperties()).setHealthPoints(damage);
     }
+
 }

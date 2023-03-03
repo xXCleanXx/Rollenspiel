@@ -12,71 +12,66 @@ public class Abilities {
 
     public Abilities() {
         Random rand = new Random();
-        setIntelligence(rand.nextInt(18 - 3) + 3);
-        setStrength(rand.nextInt(18 - 3) + 3);
-        setConstitution(rand.nextInt(18 - 3) + 3);
-        setWisdom(rand.nextInt(18 - 3) + 3);
-        setSkill(rand.nextInt(18 - 3) + 3);
+        setIntelligence(rand.nextInt((18 - 3) + 1) + 3);
+        setStrength(rand.nextInt((18 - 3) + 1) + 3);
+        setConstitution(rand.nextInt((18 - 3) + 1) + 3);
+        setWisdom(rand.nextInt((18 - 3) + 1) + 3);
+        setSkill(rand.nextInt((18 - 3) + 1) + 3);
     }
 
     public double getIntelligence() {
         return intelligence;
     }
 
-    public Abilities setIntelligence(double intelligence) {
+    public void setIntelligence(double intelligence) {
         if (intelligence < 0) throw new IllegalArgumentException("Intelligence cannot be less than 0!");
 
         this.intelligence = intelligence;
 
-        return this;
     }
 
     public double getStrength() {
         return strength;
     }
 
-    public Abilities setStrength(double strength) {
+    public void setStrength(double strength) {
         if (strength < 0) throw new IllegalArgumentException("Strength cannot be less than 0!");
 
         this.strength = strength;
 
-        return this;
     }
 
     public double getConstitution() {
         return constitution;
     }
 
-    public Abilities setConstitution(double constitution) {
+    public void setConstitution(double constitution) {
         if (constitution < 0) throw new IllegalArgumentException("Constitution cannot be less than 0!");
 
         this.constitution = constitution;
 
-        return this;
     }
 
     public double getWisdom() {
         return wisdom;
     }
 
-    public Abilities setWisdom(double wisdom) {
+    public void setWisdom(double wisdom) {
         if (wisdom < 0) throw new IllegalArgumentException("Wisdom cannot be less than 0!");
 
         this.wisdom = wisdom;
 
-        return this;
     }
 
     public double getSkill() {
         return skill;
     }
 
-    public Abilities setSkill(double skill) {
+    public void setSkill(double skill) {
         if (skill < 0) throw new IllegalArgumentException("Skill cannot be less than 0!");
 
         this.skill = skill;
 
-        return this;
     }
 
     public double getExperience() {
@@ -89,5 +84,13 @@ public class Abilities {
         this.experience = experience;
 
         return this;
+    }
+
+    public void addAbilities(int intelligence, int strength, int constitution, int wisdom, int skill) {
+        setIntelligence(getIntelligence() + intelligence);
+        setStrength(getStrength() + strength);
+        setConstitution(getConstitution() + constitution);
+        setWisdom(getWisdom() + wisdom);
+        setSkill(getSkill() + skill);
     }
 }

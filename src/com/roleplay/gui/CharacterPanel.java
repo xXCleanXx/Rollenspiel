@@ -1,7 +1,8 @@
 package com.roleplay.gui;
 
-import com.roleplay.tiles.characters.*;
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.characters.*;
+import com.roleplay.tiles.characters.enums.Races;
 import com.roleplay.tiles.properties.CharacterProperties;
 import com.roleplay.tools.Image;
 import com.roleplay.tools.Messages;
@@ -15,7 +16,7 @@ public class CharacterPanel {
     private JPanel characterPanel;
     private JLabel charcterPicture;
 
-    private int player = 0;
+    private int player = 1;
     private JLabel title;
     private JLabel subTitle;
     private JButton btn_menu;
@@ -31,9 +32,14 @@ public class CharacterPanel {
     private JButton btn_Hobbit;
     private Character character;
 
+
     CharacterPanel(JPanel contentPane) {
 
         this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+
+        Races[] race = {Races.HUMAN};
+
+        subTitle.setText(Messages.getString("player") + " " + player + "" + Messages.getString("chooseCharakter"));
 
         btn_menu.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
@@ -44,21 +50,13 @@ public class CharacterPanel {
             cardLayout.show(contentPane, Messages.getString("ARTEFACT_PANEL"));
         });
 
-        btn_Dwarf.addActionListener(e -> {
+        btn_Dwarf.addActionListener(e -> race[0] = Races.DWARF);
 
-        });
+        btn_Human.addActionListener(e -> race[0] = Races.HUMAN);
 
-        btn_Human.addActionListener(e -> {
+        btn_Elf.addActionListener(e -> race[0] = Races.ELF);
 
-        });
-
-        btn_Elf.addActionListener(e -> {
-
-        });
-
-        btn_Hobbit.addActionListener(e -> {
-
-        });
+        btn_Hobbit.addActionListener(e -> race[0] = Races.HOBBIT);
 
         btn_Fighter.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/player/fighter1_300x300.png"))));
@@ -74,9 +72,10 @@ public class CharacterPanel {
         });
 
         nextFinish.addActionListener(e -> {
-            ((CharacterProperties) this.character.getProperties()).setDisplayName(playerName.getText());
+            new CharacterCreator(this.character, race[0], playerName.getText());
             MainFrame.addCharactertoList(this.character);
             playerName.setText("");
+            subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
         });
     }
 
