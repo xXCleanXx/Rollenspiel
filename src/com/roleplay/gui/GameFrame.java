@@ -20,11 +20,13 @@ public class GameFrame extends JFrame {
             controlBar.add(new JMenu("Settings"));
             setJMenuBar(controlBar);
 
-            InGamePlayersPanel players = new InGamePlayersPanel(player);
-            add(players, BorderLayout.WEST);
-
             GameBoard board = new GameBoard(player);
             add(board, BorderLayout.CENTER);
+
+            InGamePlayersPanel players = new InGamePlayersPanel(player);
+            add(players, BorderLayout.NORTH);
+            revalidate();
+            repaint();
 
             setResizable(false);
             pack();
