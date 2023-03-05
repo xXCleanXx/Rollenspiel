@@ -108,6 +108,13 @@ public class CharacterPanel {
             MainFrame.addCharactertoList(this.character);
             playerName.setText("");
             subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
+            if (this.character.getClass() == Warrior.class) {
+                this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+            } else if (this.character.getClass() == Wizard.class) {
+                this.character = new Wizard(new CharacterProperties(new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+            } else {
+                this.character = new Thief(new CharacterProperties(new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+            }
         });
     }
 
