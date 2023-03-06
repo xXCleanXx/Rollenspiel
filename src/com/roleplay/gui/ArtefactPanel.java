@@ -13,6 +13,22 @@ public class ArtefactPanel {
     private JButton btn_artefact;
     private JLabel title;
     private JLabel subTitle;
+    private JButton btn_Arrow;
+    private JButton btn_Axe;
+    private JButton btn_Bow;
+    private JButton btn_Dagger;
+    private JButton btn_Dart;
+    private JButton btn_HandAxe;
+    private JButton btn_Spear;
+    private JButton btn_Sword;
+    private JButton btn_Chain;
+    private JButton btn_Iron;
+    private JButton btn_Leather;
+    private JButton btn_Shield;
+    private JButton Amulet;
+    private JButton btn_Cape;
+    private JButton btn_Potion;
+    private JButton btn_Ring;
 
     ArtefactPanel(JPanel contentPane) {
 
