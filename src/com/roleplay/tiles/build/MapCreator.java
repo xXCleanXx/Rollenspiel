@@ -59,6 +59,10 @@ public class MapCreator {
                         }
                         case 3 -> tile = new Door(1, new MapElementProperties("door", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/door.png")));
                         case 4 -> tile = new Door(1, new MapElementProperties("doorRotated", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
+                        case 5 -> {
+                            tileProperties = new MapElementProperties("wall", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/wall.png"));
+                            tile = new Tile(tileProperties);
+                        }
                         default -> throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
                     }
 
