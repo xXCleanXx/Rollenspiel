@@ -21,24 +21,28 @@ public class InGamePlayersPanel extends JPanel {
     }
 
     private class playerPanel extends JPanel{
+        protected JLabel displayName;
+        protected JLabel type;
+        protected JLabel nameAndType;
+        protected JLabel health;
 
-        protected JLabel name = new JLabel();
-        protected JLabel displayName = new JLabel();
-        protected JLabel health = new JLabel();
         JLabel texture;
         JPanel info = new JPanel();
 
         public playerPanel (Character c) {
             setLayout(new FlowLayout());
-            this.displayName.setText(((CharacterProperties) c.getProperties()).getDisplayName());
-            this.name.setText(c.getProperties().getName());
-            this.health.setText(((CharacterProperties) c.getProperties()).getHealthPoints() + " / " + ((CharacterProperties) c.getProperties()).getMaxHealthPoints());
+            this.displayName = new JLabel(((CharacterProperties) c.getProperties()).getDisplayName());
+            this.type = new JLabel(c.getProperties().getName());
+            this.health = new JLabel(String.valueOf(((CharacterProperties) c.getProperties()).getHealthPoints()));
 
             texture = new JLabel(new ImageIcon(c.getProperties().getTexture()));
-            info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
-            info.add(this.displayName);
-            info.add(this.name);
+            nameAndType = new JLabel(this.displayName.getText() + "/" + this.type.getText());
+
+            info.setLayout(new BoxLayout(info, BoxLayout.PAGE_AXIS));
+            info.add(nameAndType);
             info.add(this.health);
+
+            info.setOpaque(false);
 
             add(texture);
             add(info);
@@ -47,7 +51,7 @@ public class InGamePlayersPanel extends JPanel {
         @Override
         public void paintComponent(Graphics g){
             super.paintComponent(g);
-            g.drawImage(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_1.png"),0,0,this);
+            g.drawImage(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_1.png"),(getWidth()/2) - 79,(getHeight()/2) - 30,this);
             Toolkit.getDefaultToolkit().sync();
         }
     }

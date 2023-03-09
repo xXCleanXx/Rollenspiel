@@ -24,9 +24,6 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         super();
-        Inventory i = new Inventory(18);
-        BufferedImage img = i.drawInventory();
-        ImageIO.write(img, "test_inventory");
         initialize();
     }
 
