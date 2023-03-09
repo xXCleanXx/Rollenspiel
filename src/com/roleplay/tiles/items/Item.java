@@ -8,4 +8,9 @@ public abstract class Item extends Tile {
     public Item(ItemProperties itemProperties) {
         super(itemProperties);
     }
+
+
+    public ItemProperties getProperties(){
+        return (ItemProperties) super.getProperties();
+    }
 }

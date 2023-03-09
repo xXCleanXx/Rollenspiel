@@ -17,4 +17,5 @@ public class Tile {
     public TileProperties getProperties() {
         return properties;
     }
+
 }

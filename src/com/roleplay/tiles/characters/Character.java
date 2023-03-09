@@ -8,6 +8,7 @@ import com.roleplay.tiles.items.armors.Armor;
 import com.roleplay.tiles.items.artefacts.Artefact;
 import com.roleplay.tiles.items.weapons.Weapon;
 import com.roleplay.tiles.properties.CharacterProperties;
+import com.roleplay.tiles.properties.TileProperties;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
@@ -26,17 +27,17 @@ public abstract class Character extends Tile {
     public abstract double defend();
 
     public void levelUp() {
-        ((CharacterProperties)getProperties()).setXp(0);
-        ((CharacterProperties)getProperties()).setLevel(((CharacterProperties)getProperties()).getLevel());
+        getProperties().setXp(0);
+        getProperties().setLevel(getProperties().getLevel());
     }
 
     protected void use(Item item) {
 
         if (item instanceof Armor) {
-            ((CharacterProperties)getProperties()).getInventory().setArmor((Armor) item);
+            getProperties().getInventory().setArmor((Armor) item);
             //TODO
         } else if (item instanceof Weapon) {
-            ((CharacterProperties)getProperties()).getInventory().setFirstHand(item);
+            getProperties().getInventory().setFirstHand(item);
             //TODO
         } else if (item instanceof Artefact) {
 
@@ -64,5 +65,8 @@ public abstract class Character extends Tile {
         } else if (getProperties().getPosition().y >= rows) {
             getProperties().getPosition().y = rows - 1;
         }
+    }
+    public CharacterProperties getProperties(){
+        return (CharacterProperties) super.getProperties();
     }
 }

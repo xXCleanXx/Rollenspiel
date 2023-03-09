@@ -16,8 +16,7 @@ public class Warrior extends Character {
 
     @Override
     public double defend() {
-        Armor armor = ((CharacterProperties)getProperties()).getInventory().getArmor();
-
+        Armor armor = getProperties().getInventory().getArmor();
         return armor != null ? armor.getStrength() : 0;
     }
 }

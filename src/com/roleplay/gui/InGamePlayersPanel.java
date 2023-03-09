@@ -31,9 +31,9 @@ public class InGamePlayersPanel extends JPanel {
 
         public playerPanel (Character c) {
             setLayout(new FlowLayout());
-            this.displayName = new JLabel(((CharacterProperties) c.getProperties()).getDisplayName());
+            this.displayName = new JLabel(c.getProperties().getDisplayName());
             this.type = new JLabel(c.getProperties().getName());
-            this.health = new JLabel(String.valueOf(((CharacterProperties) c.getProperties()).getHealthPoints()));
+            this.health = new JLabel(String.valueOf(c.getProperties().getHealthPoints()));
 
             texture = new JLabel(new ImageIcon(c.getProperties().getTexture()));
             nameAndType = new JLabel(this.displayName.getText() + "/" + this.type.getText());
@@ -41,7 +41,6 @@ public class InGamePlayersPanel extends JPanel {
             info.setLayout(new BoxLayout(info, BoxLayout.PAGE_AXIS));
             info.add(nameAndType);
             info.add(this.health);
-
             info.setOpaque(false);
 
             add(texture);

@@ -6,7 +6,7 @@ import com.roleplay.tiles.properties.CharacterProperties;
 
 public class CharacterCreator {
     public CharacterCreator(Character character, Races race, String name) {
-        CharacterProperties characterProperties = (CharacterProperties) character.getProperties();
+        CharacterProperties characterProperties = character.getProperties();
 
         characterProperties.setDisplayName(name);
 
