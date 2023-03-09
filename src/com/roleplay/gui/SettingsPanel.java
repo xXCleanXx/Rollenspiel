@@ -1,8 +1,8 @@
 package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.properties.Difficult;
 import com.roleplay.tools.Messages;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +23,8 @@ public class SettingsPanel {
     private JButton btn_8player;
     private JComboBox box_difficult;
 
+    private static Difficult difficult = Difficult.EASY;
+
     SettingsPanel(JPanel contentPane) {
         btn_4player.addActionListener(e -> setPlayer(4));
         btn_5player.addActionListener(e -> setPlayer(5));
@@ -30,7 +32,7 @@ public class SettingsPanel {
         btn_7player.addActionListener(e -> setPlayer(7));
         btn_8player.addActionListener(e -> setPlayer(8));
 
-        box_difficult.addActionListener(e -> setDifficult((String) box_difficult.getSelectedItem()));
+        box_difficult.addActionListener(e -> setDifficult(box_difficult.getSelectedIndex()));
 
         btn_menu.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
@@ -65,7 +67,17 @@ public class SettingsPanel {
 
     }
 
-    private void setDifficult(String s) {
+    private void setDifficult(int i) {
+        switch (i) {
+            case 0 -> difficult = Difficult.EASY;
+            case 1 -> difficult = Difficult.MEDIUM;
+            case 2 -> difficult = Difficult.HARD;
+            case 3 -> difficult = Difficult.HARDCORE;
+        }
+    }
+
+    public static Difficult getDifficult() {
+        return difficult;
     }
 
     public JPanel getSettingsPanel() {
@@ -73,7 +85,7 @@ public class SettingsPanel {
     }
 
     private void createUIComponents() {
-        final String[] difficult = {Messages.getString("easy"), Messages.getString("medium"), Messages.getString("hard")};
+        final String[] difficult = {Messages.getString("easy"), Messages.getString("medium"), Messages.getString("hard"), Messages.getString("hardcore")};
 
         box_difficult = new JComboBox<>(difficult);
     }

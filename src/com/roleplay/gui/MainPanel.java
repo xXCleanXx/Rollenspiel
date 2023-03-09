@@ -2,6 +2,8 @@ package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.properties.CharacterProperties;
+import com.roleplay.tiles.properties.Difficult;
+import com.roleplay.tools.Image;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
@@ -51,14 +53,26 @@ public class MainPanel {
         String[] charachterObject = new String[8];
         for (int i = 0; i < charachterList.size(); i++) {
             Character character = charachterList.get(i);
-            charachterObject[i] = "Player 1: " + ((CharacterProperties) character.getProperties()).getDisplayName() + ", Typ: " + character.getClass().getSimpleName();
+            //charachterObject[i] = "Player " + (i + 1) + ": " + ((CharacterProperties) character.getProperties()).getDisplayName() + ",\n Typ: " + character.getClass().getSimpleName();
+            charachterObject[i] = (i + 1) + ": " + ((CharacterProperties) character.getProperties()).getDisplayName() + "," + character.getClass().getSimpleName();
         }
         listCharacter.setListData(charachterObject);
-
-
     }
 
     private void createUIComponents() {
-
+        mainPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if(SettingsPanel.getDifficult() == Difficult.HARD) {
+                    g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_main_2.png"), 0, 0, this);
+                }else if(SettingsPanel.getDifficult() == Difficult.HARDCORE) {
+                    g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_main_3.png"), 0, 0, this);
+                }else{
+                    g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_main_1.png"), 0, 0, this);
+                }
+                Toolkit.getDefaultToolkit().sync();
+            }
+        };
     }
 }
