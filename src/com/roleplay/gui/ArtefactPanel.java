@@ -1,10 +1,12 @@
 package com.roleplay.gui;
 
 
+import com.roleplay.tools.Image;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class ArtefactPanel {
 
@@ -25,7 +27,7 @@ public class ArtefactPanel {
     private JButton btn_Iron;
     private JButton btn_Leather;
     private JButton btn_Shield;
-    private JButton Amulet;
+    private JButton btn_Amulet;
     private JButton btn_Cape;
     private JButton btn_Potion;
     private JButton btn_Ring;
@@ -36,14 +38,21 @@ public class ArtefactPanel {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("MAIN_PANEL"));
         });
-
-
         btn_artefact.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("SETTINGS_PANEL"));
         });
 
+        btn_Amulet.addActionListener(e -> {
+            if (true){
+                btn_Amulet.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_amulet_disable.png"))));
+            }else{
+                btn_Amulet.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_amulet_enable.png"))));
+            }
+        });
+
     }
+
 
     public JPanel getArtefactPanel() {
         return artefactPanel;
