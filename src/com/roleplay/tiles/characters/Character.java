@@ -66,6 +66,7 @@ public abstract class Character extends Tile {
             getProperties().getPosition().y = rows - 1;
         }
     }
+    @Override
     public CharacterProperties getProperties(){
         return (CharacterProperties) super.getProperties();
     }
