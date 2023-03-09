@@ -16,13 +16,4 @@ public class Cape extends Artefact {
     public void use(Character character) {
         getEffect().apply(character);
     }
-
-    @Override
-    public Item clone() {
-        Cape cape = new Cape((ItemProperties) getProperties(), getEffect());
-        cape.getProperties().setPosition(getProperties().getPosition());
-        ((ItemProperties) cape.getProperties()).setDisplayName(((ItemProperties)getProperties()).getDisplayName());
-
-        return cape;
-    }
 }

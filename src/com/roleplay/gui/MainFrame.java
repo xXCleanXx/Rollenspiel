@@ -2,10 +2,14 @@ package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.properties.CharacterProperties;
+import com.roleplay.tiles.items.Inventory;
 import com.roleplay.tools.Messages;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainFrame extends JFrame {

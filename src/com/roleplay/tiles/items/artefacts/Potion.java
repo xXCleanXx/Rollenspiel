@@ -15,9 +15,4 @@ public class Potion extends Artefact {
     public void use(Character character) {
         getEffect().apply(character);
     }
-
-    @Override
-    public Item clone() {
-        return new Potion((ItemProperties) getProperties(), getEffect());
-    }
 }

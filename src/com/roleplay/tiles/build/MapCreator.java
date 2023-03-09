@@ -37,10 +37,9 @@ public class MapCreator {
 
             for (int i = 0; i < rows; i++) {
                 String text = lines.get(i);
-                System.out.println(text);
 
                 for (int j = 0; j < columns; j++) {
-                    Tile tile = null;
+                    Tile tile;
                     MapElementProperties tileProperties;
 
                     switch (Character.getNumericValue(text.charAt(j))) {

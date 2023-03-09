@@ -12,13 +12,4 @@ public class Shield extends Item {
     public double getStrength() {
         return 2;
     }
-
-    @Override
-    public Item clone() {
-        Shield shield = new Shield((ItemProperties) getProperties());
-        shield.getProperties().setPosition(getProperties().getPosition());
-        ((ItemProperties) shield.getProperties()).setDisplayName(((ItemProperties) getProperties()).getDisplayName());
-
-        return shield;
-    }
 }
