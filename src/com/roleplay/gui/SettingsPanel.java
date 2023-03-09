@@ -47,6 +47,7 @@ public class SettingsPanel {
     }
 
     private void setPlayer(int playerCount) {
+        MainFrame.setPlayer(playerCount);
         ArrayList<Character> oldCharacterList = MainFrame.getCharacterList();
         if (oldCharacterList.isEmpty()) {
             MainFrame.setCharacterList(new ArrayList<>(playerCount));
@@ -95,7 +96,7 @@ public class SettingsPanel {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_Character_3.png"), 0, 0, this);
+                g.drawImage(Image.loadImage("src/com/roleplay/resources/images/artefact_background3.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
             }
 
