@@ -9,6 +9,8 @@ import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class CharacterPanel {
@@ -63,6 +65,13 @@ public class CharacterPanel {
             btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
             btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
 
+        });
+
+        btn_thief.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
         });
 
         btn_Elf.addActionListener(e -> {
