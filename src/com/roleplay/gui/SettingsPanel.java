@@ -2,6 +2,7 @@ package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.properties.Difficult;
+import com.roleplay.tools.Image;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
@@ -88,5 +89,16 @@ public class SettingsPanel {
         final String[] difficult = {Messages.getString("easy"), Messages.getString("medium"), Messages.getString("hard"), Messages.getString("hardcore")};
 
         box_difficult = new JComboBox<>(difficult);
+
+        settingsPanel = new JPanel() {
+
+            @Override
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_Character_3.png"), 0, 0, this);
+                Toolkit.getDefaultToolkit().sync();
+            }
+
+        };
     }
 }

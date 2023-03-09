@@ -67,13 +67,6 @@ public class CharacterPanel {
 
         });
 
-        btn_thief.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
         btn_Elf.addActionListener(e -> {
             race[0] = Races.ELF;
             btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
@@ -113,16 +106,18 @@ public class CharacterPanel {
         });
 
         nextFinish.addActionListener(e -> {
-            new CharacterCreator(this.character, race[0], playerName.getText());
-            MainFrame.addCharactertoList(this.character);
-            playerName.setText("");
-            subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
-            if (this.character.getClass() == Warrior.class) {
-                this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
-            } else if (this.character.getClass() == Wizard.class) {
-                this.character = new Wizard(new CharacterProperties(new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
-            } else {
-                this.character = new Thief(new CharacterProperties(new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+            if(!playerName.getText().isEmpty()  && !MainFrame.getCharacterListNames().contains(playerName.getText())) {
+                new CharacterCreator(this.character, race[0], playerName.getText());
+                MainFrame.addCharactertoList(this.character);
+                playerName.setText("");
+                subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
+                if (this.character.getClass() == Warrior.class) {
+                    this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+                } else if (this.character.getClass() == Wizard.class) {
+                    this.character = new Wizard(new CharacterProperties(new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+                } else {
+                    this.character = new Thief(new CharacterProperties(new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+                }
             }
         });
     }

@@ -1,12 +1,12 @@
 package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.properties.CharacterProperties;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Vector;
 
 public class MainFrame extends JFrame {
 
@@ -71,5 +71,13 @@ public class MainFrame extends JFrame {
     public static void addCharactertoList(Character character) {
         characterList.add(character);
         main.setCharacterJList(getCharacterList());
+    }
+
+    public static ArrayList<String> getCharacterListNames(){
+        ArrayList<String> characterNames = new ArrayList<>();
+        for(Character character : characterList){
+            characterNames.add(((CharacterProperties) character.getProperties()).getDisplayName());
+        }
+        return characterNames;
     }
 }

@@ -15,7 +15,6 @@ public class ArtefactPanel {
     private JButton btn_artefact;
     private JLabel title;
     private JLabel subTitle;
-    private JButton btn_Arrow;
     private JButton btn_Axe;
     private JButton btn_Bow;
     private JButton btn_Dagger;
@@ -56,5 +55,19 @@ public class ArtefactPanel {
 
     public JPanel getArtefactPanel() {
         return artefactPanel;
+    }
+
+    private void createUIComponents() {
+        artefactPanel = new JPanel() {
+
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(Image.loadImage("src/com/roleplay/resources/images/artefact_background.png"), 0, 0, this);
+                Toolkit.getDefaultToolkit().sync();
+
+            }
+
+        };
     }
 }
