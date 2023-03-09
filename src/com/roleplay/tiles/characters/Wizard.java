@@ -17,9 +17,4 @@ public class Wizard extends Character {
     public double defend() {
         return 0;
     }
-
-    @Override
-    public void levelUp() {
-
-    }
 }

@@ -1,10 +1,14 @@
 package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
+import com.roleplay.tiles.items.Inventory;
 import com.roleplay.tools.Messages;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -20,6 +24,9 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         super();
+        Inventory i = new Inventory(18);
+        BufferedImage img = i.drawInventory();
+        ImageIO.write(img, "test_inventory");
         initialize();
     }
 

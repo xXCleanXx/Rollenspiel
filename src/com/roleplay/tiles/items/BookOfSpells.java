@@ -49,17 +49,4 @@ public class BookOfSpells extends Item {
            }
         }
     }
-
-    @Override
-    public Item clone() {
-        BookOfSpells book = new BookOfSpells((ItemProperties) getProperties());
-        book.getProperties().setPosition(getProperties().getPosition());
-        ((ItemProperties) book.getProperties()).setDisplayName(((ItemProperties) getProperties()).getDisplayName());
-
-        for (Spell item : spells) {
-            book.addSpell(item);
-        }
-
-        return book;
-    }
 }

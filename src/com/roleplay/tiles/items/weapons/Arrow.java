@@ -10,13 +10,4 @@ public class Arrow extends Item {
     public Arrow(ItemProperties itemProperties) {
         super(itemProperties);
     }
-
-    @Override
-    public Item clone() {
-        Arrow arrow = new Arrow((ItemProperties) getProperties());
-
-        clone(arrow, this);
-
-        return arrow;
-    }
 }

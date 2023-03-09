@@ -16,13 +16,4 @@ public class Ring extends Artefact {
     public void use(Character character) {
         getEffect().apply(character);
     }
-
-    @Override
-    public Item clone() {
-        Ring ring = new Ring((ItemProperties) getProperties(),getEffect());
-        ring.getProperties().setPosition(getProperties().getPosition());
-        ((ItemProperties) ring.getProperties()).setDisplayName(((ItemProperties) getProperties()).getDisplayName());
-
-        return ring;
-    }
 }

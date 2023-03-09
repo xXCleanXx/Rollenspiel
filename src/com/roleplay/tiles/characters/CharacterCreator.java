@@ -5,7 +5,6 @@ import com.roleplay.tiles.characters.enums.Races;
 import com.roleplay.tiles.properties.CharacterProperties;
 
 public class CharacterCreator {
-
     public CharacterCreator(Character character, Races race, String name) {
         CharacterProperties characterProperties = (CharacterProperties) character.getProperties();
 
@@ -20,9 +19,6 @@ public class CharacterCreator {
         }
 
         addAbilities(characterProperties, race);
-
-        System.out.println(characterProperties.getAbilities());
-
         characterProperties.setDirection(Directions.WEST);
     }
 

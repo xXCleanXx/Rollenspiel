@@ -21,6 +21,4 @@ public abstract class ThrowableWeapon extends Weapon {
 
         this.range = range;
     }
-
-    public abstract Item clone();
 }

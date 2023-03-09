@@ -17,9 +17,4 @@ public class Monster extends Character {
     public double defend() {
         return 0;
     }
-
-    @Override
-    public void levelUp() {
-
-    }
 }
