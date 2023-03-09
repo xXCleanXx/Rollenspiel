@@ -64,6 +64,10 @@ public class Inventory {
         return secondHand;
     }
 
+    public Armor getArmor() {
+        return armor;
+    }
+
     public void setArmor(Armor armor) {
         if (this.armor != null) {
             throw new IllegalArgumentException("Cannot wear another armor!");

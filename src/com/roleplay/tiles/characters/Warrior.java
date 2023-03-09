@@ -1,5 +1,6 @@
 package com.roleplay.tiles.characters;
 
+import com.roleplay.tiles.items.armors.Armor;
 import com.roleplay.tiles.properties.CharacterProperties;
 
 public class Warrior extends Character {
@@ -15,11 +16,8 @@ public class Warrior extends Character {
 
     @Override
     public double defend() {
-        return 0;
-    }
+        Armor armor = ((CharacterProperties)getProperties()).getInventory().getArmor();
 
-    @Override
-    public void levelUp() {
-
+        return armor != null ? armor.getStrength() : 0;
     }
 }

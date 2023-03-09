@@ -18,6 +18,8 @@ public class CharacterProperties extends TileProperties {
     private final Hitbox hitbox;
     private double healthPoints;
     private Inventory inventory;
+    private int level;
+    private int xp;
 
     public CharacterProperties(Point position, BufferedImage texture) {
         super(position, texture);
@@ -89,5 +91,25 @@ public class CharacterProperties extends TileProperties {
 
     public void setHealthPoints(double healthPoints) {
         this.healthPoints = healthPoints;
+    }
+
+    public int getXp() {
+        return this.xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+
+    public void addXp(int xp) {
+        this.xp += xp;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

@@ -3,19 +3,13 @@ package com.roleplay.tiles.characters;
 import com.roleplay.effects.Effect;
 import com.roleplay.gui.GameBoard;
 import com.roleplay.tiles.Tile;
-import com.roleplay.tiles.build.MapCreator;
-import com.roleplay.tiles.characters.enums.Directions;
-import com.roleplay.tiles.characters.enums.Races;
-import com.roleplay.tiles.items.Inventory;
 import com.roleplay.tiles.items.Item;
 import com.roleplay.tiles.items.armors.Armor;
 import com.roleplay.tiles.items.artefacts.Artefact;
 import com.roleplay.tiles.items.weapons.Weapon;
 import com.roleplay.tiles.properties.CharacterProperties;
-import com.roleplay.tiles.properties.MapElementProperties;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,18 +17,18 @@ import java.util.List;
 public abstract class Character extends Tile {
     private final List<Effect> effects = new ArrayList<>();
 
-
     protected Character(CharacterProperties characterProperties) {
         super(characterProperties);
     }
-
-
 
     public abstract double attack(Character enemy);
 
     public abstract double defend();
 
-    public abstract void levelUp();
+    public void levelUp() {
+        ((CharacterProperties)getProperties()).setXp(0);
+        ((CharacterProperties)getProperties()).setLevel(((CharacterProperties)getProperties()).getLevel());
+    }
 
     protected void use(Item item) {
 

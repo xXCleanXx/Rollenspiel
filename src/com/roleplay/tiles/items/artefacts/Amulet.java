@@ -16,13 +16,4 @@ public class Amulet extends Artefact {
     public void use(Character character) {
         getEffect().apply(character);
     }
-
-    @Override
-    public Item clone() {
-        Amulet amulet = new Amulet((ItemProperties) getProperties(), getEffect());
-        amulet.getProperties().setPosition(getProperties().getPosition());
-        ((ItemProperties) amulet.getProperties()).setDisplayName(((ItemProperties)getProperties()).getDisplayName());
-
-        return amulet;
-    }
 }

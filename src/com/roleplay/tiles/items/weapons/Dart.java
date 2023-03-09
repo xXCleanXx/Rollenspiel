@@ -9,13 +9,4 @@ public class Dart extends Weapon {
     protected Dart(ItemProperties itemProperties, double damage) {
         super(itemProperties, damage);
     }
-
-    @Override
-    public Item clone() {
-        Dart dart = new Dart((ItemProperties) getProperties(), getDamage());
-
-        clone(dart, this);
-
-        return dart;
-    }
 }

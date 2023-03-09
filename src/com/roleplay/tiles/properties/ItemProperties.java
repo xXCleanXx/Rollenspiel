@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class ItemProperties extends TileProperties{
-
     private String displayName;
     private double weight;
 
@@ -29,5 +28,4 @@ public class ItemProperties extends TileProperties{
 
         this.weight = weight;
     }
-
 }
