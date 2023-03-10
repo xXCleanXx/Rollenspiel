@@ -3,7 +3,6 @@ package com.roleplay.tiles;
 import com.roleplay.tiles.properties.TileProperties;
 
 public class Tile<T extends TileProperties> {
-
     private T properties;
 
     public Tile(T properties) {

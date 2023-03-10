@@ -1,7 +1,6 @@
 package com.roleplay.tiles.properties;
 
 import com.roleplay.effects.Effect;
-import com.roleplay.tiles.Hitbox;
 import com.roleplay.tiles.characters.Abilities;
 import com.roleplay.tiles.characters.enums.Directions;
 import com.roleplay.tiles.characters.enums.Races;
@@ -12,23 +11,20 @@ import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.List;
 
-public class CharacterProperties extends TileProperties {
+public class CharacterProperties extends MapElementProperties {
     private final List<Effect> effects = new ArrayList<>();
     private Races race;
     private boolean visible = true;
     private Directions direction = Directions.NORTH;
     private String displayName;
     private Abilities abilities;
-    private final Hitbox hitbox;
     private double healthPoints;
     private Inventory inventory;
     private int level;
     private int xp;
 
-    public CharacterProperties(Point position, BufferedImage texture) {
-        super(position, texture);
-
-        hitbox = new Hitbox(32,32);
+    public CharacterProperties(String name, Point position, BufferedImage texture) {
+        super(name, position, texture);
     }
 
     public Inventory getInventory() {
@@ -67,10 +63,6 @@ public class CharacterProperties extends TileProperties {
         if (direction == null) throw new IllegalArgumentException("Direction cannot be null!");
 
         this.direction = direction;
-    }
-
-    public Hitbox getHitbox() {
-        return hitbox;
     }
 
     public String getDisplayName() {

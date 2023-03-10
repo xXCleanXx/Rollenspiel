@@ -14,12 +14,12 @@ public class InGamePlayersPanel extends JPanel {
         setPreferredSize(new Dimension(GameBoard.WIDTH, 60));
 
         for(Character c : players){
-            add(new playerPanel(c));
+            add(new PlayerPanel(c));
 
         }
     }
 
-    private class playerPanel extends JPanel{
+    private static class PlayerPanel extends JPanel{
         protected JLabel displayName;
         protected JLabel type;
         protected JLabel nameAndType;
@@ -28,7 +28,7 @@ public class InGamePlayersPanel extends JPanel {
         JLabel texture;
         JPanel info = new JPanel();
 
-        public playerPanel (Character c) {
+        public PlayerPanel(Character c) {
             setLayout(new FlowLayout());
             this.displayName = new JLabel(c.getProperties().getDisplayName());
             this.type = new JLabel(c.getProperties().getName());

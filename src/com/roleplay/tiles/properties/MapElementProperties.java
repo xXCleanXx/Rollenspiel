@@ -5,9 +5,8 @@ import com.roleplay.tiles.Hitbox;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class MapElementProperties extends TileProperties{
-
-    private Hitbox hitbox;
+public class MapElementProperties extends TileProperties {
+    private final Hitbox hitbox;
 
     public MapElementProperties(String name, Point position, BufferedImage texture) {
         super(name, position, texture);

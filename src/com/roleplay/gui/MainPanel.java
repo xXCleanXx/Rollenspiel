@@ -18,7 +18,7 @@ public class MainPanel {
     private JButton btn_Artefact;
     private JButton btn_start;
     private JLabel title;
-    private JList listCharacter;
+    private JList<String> listCharacter;
 
 
     MainPanel(JPanel contentPane, JFrame mainFrame) {
@@ -54,7 +54,7 @@ public class MainPanel {
         for (int i = 0; i < charachterList.size(); i++) {
             Character character = charachterList.get(i);
             //charachterObject[i] = "Player " + (i + 1) + ": " + ((CharacterProperties) character.getProperties()).getDisplayName() + ",\n Typ: " + character.getClass().getSimpleName();
-            charachterObject[i] = (i + 1) + ": " + ((CharacterProperties) character.getProperties()).getDisplayName() + "," + character.getClass().getSimpleName();
+            charachterObject[i] = (i + 1) + ": " + character.getProperties().getDisplayName() + "," + character.getClass().getSimpleName();
         }
         listCharacter.setListData(charachterObject);
     }

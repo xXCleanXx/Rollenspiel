@@ -3,7 +3,7 @@ package com.roleplay.tiles.properties;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class ItemProperties extends TileProperties{
+public class ItemProperties extends TileProperties {
     private String displayName;
     private double weight;
 
