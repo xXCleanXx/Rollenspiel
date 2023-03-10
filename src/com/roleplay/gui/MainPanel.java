@@ -1,7 +1,6 @@
 package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.properties.CharacterProperties;
 import com.roleplay.tiles.properties.Difficult;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;

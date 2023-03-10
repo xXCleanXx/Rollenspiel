@@ -29,13 +29,14 @@ public class CharacterPanel {
     private JButton btn_Human;
     private JButton btn_Elf;
     private JButton btn_Hobbit;
+    private JButton btn_error;
     private Character character;
+
+    private final Races[] race = {Races.HUMAN};
 
     CharacterPanel(JPanel contentPane, MainFrame mainFrame) {
 
         this.character = new Warrior(new CharacterProperties(new Point(0, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
-
-        Races[] race = {Races.HUMAN};
 
         subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
 
@@ -104,33 +105,50 @@ public class CharacterPanel {
         });
 
         nextFinish.addActionListener(e -> {
-            if (!playerName.getText().isEmpty() && (!mainFrame.getCharacterListNames().contains(playerName.getText()) || playerName.getText().equals(mainFrame.getCharacterListNames().get(player - 2)))) {
-                if (mainFrame.getPlayer() == MainFrame.getCharacterList().size() && mainFrame.getPlayer() != player - 1) {
-                    playerName.setText(mainFrame.getCharacterListNames().get(player - 1));
-                    doClick(player-1);
-                } else if(MainFrame.getCharacterList().size() < player - 1){
-                    new CharacterCreator(this.character, race[0], playerName.getText());
-                    mainFrame.addCharactertoList(this.character);
-                    playerName.setText("");
-                    if (this.character.getClass() == Warrior.class) {
-                        this.character = new Warrior(new CharacterProperties(new Point(0, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
-                    } else if (this.character.getClass() == Wizard.class) {
-                        this.character = new Wizard(new CharacterProperties(new Point(0, 1), ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
-                    } else {
-                        this.character = new Thief(new CharacterProperties(new Point(1, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
-                    }
-                }
-                if (mainFrame.getPlayer() == player - 1) {
-                    this.player = 1;
-                    subTitle.setText(Messages.getString("player") + " " + this.player + " " + Messages.getString("chooseCharakter"));
-                    playerName.setText(mainFrame.getCharacterListNames().get(0));
-                    doClick(0);
-                }
-
-                subTitle.setText(Messages.getString("player") + " " + this.player + " " + Messages.getString("chooseCharakter"));
-                this.player++;
+            btn_error.setVisible(false);
+            try {
+                createNextPlayer(mainFrame);
+            } catch (IndexOutOfBoundsException IOOBE) {
+                btn_error.setText(Messages.getString("exists"));
+                btn_error.setVisible(true);
+            } catch (NullPointerException NPE) {
+                btn_error.setText(Messages.getString("empty"));
+                btn_error.setVisible(true);
             }
         });
+    }
+
+    private void createNextPlayer(MainFrame mainFrame) {
+        if (playerName.getText().isEmpty()) {
+            throw new NullPointerException();
+        }
+        if ((!mainFrame.getCharacterListNames().contains(playerName.getText()) || Objects.equals(playerName.getText(), mainFrame.getCharacterListNames().get(player - 2)))) {
+            if (mainFrame.getPlayer() == MainFrame.getCharacterList().size() && mainFrame.getPlayer() != player - 1) {
+                MainFrame.getCharacterList().get(player - 2).getProperties().setDisplayName(playerName.getText());
+                playerName.setText(mainFrame.getCharacterListNames().get(player - 1));
+                doClick(player - 1);
+            } else if (MainFrame.getCharacterList().size() < player - 1) {
+                new CharacterCreator(this.character, race[0], playerName.getText());
+                mainFrame.addCharactertoList(this.character);
+                playerName.setText("");
+                if (this.character.getClass() == Warrior.class) {
+                    this.character = new Warrior(new CharacterProperties(new Point(0, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+                } else if (this.character.getClass() == Wizard.class) {
+                    this.character = new Wizard(new CharacterProperties(new Point(0, 1), ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+                } else {
+                    this.character = new Thief(new CharacterProperties(new Point(1, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+                }
+            }
+            if (mainFrame.getPlayer() == player - 1) {
+                this.player = 1;
+                subTitle.setText(Messages.getString("player") + " " + this.player + " " + Messages.getString("chooseCharakter"));
+                playerName.setText(mainFrame.getCharacterListNames().get(0));
+                doClick(0);
+            }
+
+            subTitle.setText(Messages.getString("player") + " " + this.player + " " + Messages.getString("chooseCharakter"));
+            this.player++;
+        }
     }
 
     private void doClick(int i) {
