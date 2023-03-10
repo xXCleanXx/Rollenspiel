@@ -1,7 +1,6 @@
 package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.properties.CharacterProperties;
 import com.roleplay.tiles.properties.Difficult;
 import com.roleplay.tools.Image;
 import com.roleplay.tools.Messages;
@@ -54,7 +53,7 @@ public class MainPanel {
         for (int i = 0; i < charachterList.size(); i++) {
             Character character = charachterList.get(i);
             //charachterObject[i] = "Player " + (i + 1) + ": " + ((CharacterProperties) character.getProperties()).getDisplayName() + ",\n Typ: " + character.getClass().getSimpleName();
-            charachterObject[i] = (i + 1) + ": " + ((CharacterProperties) character.getProperties()).getDisplayName() + "," + character.getClass().getSimpleName();
+            charachterObject[i] = (i + 1) + ": " + character.getProperties().getDisplayName() + "," + character.getClass().getSimpleName();
         }
         listCharacter.setListData(charachterObject);
     }
