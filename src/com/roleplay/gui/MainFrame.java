@@ -20,11 +20,20 @@ public class MainFrame extends JFrame {
     private ArtefactPanel artefact;
     private SettingsPanel settings;
 
+    private static int playerCount = 4;
     private static ArrayList<Character> characterList = new ArrayList(4);
 
     public MainFrame() {
         super();
         initialize();
+    }
+
+    public static void setPlayer(int player) {
+        playerCount = player;
+    }
+
+    public int getPlayer() {
+        return playerCount;
     }
 
     private void initialize() {
@@ -35,7 +44,7 @@ public class MainFrame extends JFrame {
         contentPane.setLayout(new CardLayout());
 
         main = new MainPanel(contentPane, this);
-        character = new CharacterPanel(contentPane);
+        character = new CharacterPanel(contentPane, this);
         artefact = new ArtefactPanel(contentPane);
         settings = new SettingsPanel(contentPane);
 
@@ -72,14 +81,14 @@ public class MainFrame extends JFrame {
         main.setCharacterJList(getCharacterList());
     }
 
-    public static void addCharactertoList(Character character) {
+    public void addCharactertoList(Character character) {
         characterList.add(character);
         main.setCharacterJList(getCharacterList());
     }
 
-    public static ArrayList<String> getCharacterListNames(){
+    public ArrayList<String> getCharacterListNames() {
         ArrayList<String> characterNames = new ArrayList<>();
-        for(Character character : characterList){
+        for (Character character : characterList) {
             characterNames.add(((CharacterProperties) character.getProperties()).getDisplayName());
         }
         return characterNames;

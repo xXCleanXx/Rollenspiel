@@ -9,6 +9,7 @@ public class CharacterCreator {
         CharacterProperties characterProperties = character.getProperties();
 
         characterProperties.setDisplayName(name);
+        characterProperties.setRace(race);
 
         characterProperties.setAbilities(new Abilities());
 

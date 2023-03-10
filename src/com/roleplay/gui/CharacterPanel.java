@@ -33,7 +33,7 @@ public class CharacterPanel {
     private JButton btn_Hobbit;
     private Character character;
 
-    CharacterPanel(JPanel contentPane) {
+    CharacterPanel(JPanel contentPane, MainFrame mainFrame) {
 
         this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
 
@@ -106,20 +106,56 @@ public class CharacterPanel {
         });
 
         nextFinish.addActionListener(e -> {
-            if(!playerName.getText().isEmpty()  && !MainFrame.getCharacterListNames().contains(playerName.getText())) {
-                new CharacterCreator(this.character, race[0], playerName.getText());
-                MainFrame.addCharactertoList(this.character);
-                playerName.setText("");
-                subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
-                if (this.character.getClass() == Warrior.class) {
-                    this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
-                } else if (this.character.getClass() == Wizard.class) {
-                    this.character = new Wizard(new CharacterProperties(new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
-                } else {
-                    this.character = new Thief(new CharacterProperties(new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+            if (!playerName.getText().isEmpty() && (!mainFrame.getCharacterListNames().contains(playerName.getText()) || playerName.getText().equals(mainFrame.getCharacterListNames().get(player - 2)))) {
+                if (mainFrame.getPlayer() == MainFrame.getCharacterList().size() && mainFrame.getPlayer() != player - 1) {
+                    playerName.setText(mainFrame.getCharacterListNames().get(player - 1));
+                    doClick(player-1);
+                } else if(MainFrame.getCharacterList().size() < player - 1){
+                    new CharacterCreator(this.character, race[0], playerName.getText());
+                    mainFrame.addCharactertoList(this.character);
+                    playerName.setText("");
+                    if (this.character.getClass() == Warrior.class) {
+                        this.character = new Warrior(new CharacterProperties(new Point(0, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+                    } else if (this.character.getClass() == Wizard.class) {
+                        this.character = new Wizard(new CharacterProperties(new Point(0, 1), Image.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+                    } else {
+                        this.character = new Thief(new CharacterProperties(new Point(1, 0), Image.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+                    }
                 }
+                if (mainFrame.getPlayer() == player - 1) {
+                    this.player = 1;
+                    subTitle.setText(Messages.getString("player") + " " + this.player + " " + Messages.getString("chooseCharakter"));
+                    playerName.setText(mainFrame.getCharacterListNames().get(0));
+                    doClick(0);
+                }
+
+                subTitle.setText(Messages.getString("player") + " " + this.player + " " + Messages.getString("chooseCharakter"));
+                this.player++;
             }
         });
+    }
+
+    private void doClick(int i) {
+        final Character tempCharacter = MainFrame.getCharacterList().get(i);
+        final Races race = ((CharacterProperties) tempCharacter.getProperties()).getRace();
+        if (race.equals(Races.ELF)) {
+            btn_Elf.doClick();
+        } else if (race.equals(Races.DWARF)) {
+            btn_Dwarf.doClick();
+        } else if (race.equals(Races.HOBBIT)) {
+            btn_Hobbit.doClick();
+        } else {
+            btn_Human.doClick();
+        }
+
+        if (tempCharacter.getClass() == Warrior.class) {
+            btn_Fighter.doClick();
+        } else if (tempCharacter.getClass() == Wizard.class) {
+            btn_wizard.doClick();
+        } else {
+            btn_thief.doClick();
+        }
+
     }
 
     private void createUIComponents() {
