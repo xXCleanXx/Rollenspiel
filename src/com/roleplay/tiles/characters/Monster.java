@@ -7,14 +7,4 @@ public class Monster extends Character {
         super(characterProperties);
         getProperties().setName("Monster");
     }
-
-    @Override
-    public double attack(Character enemy) {
-        return 0;
-    }
-
-    @Override
-    public double defend() {
-        return 0;
-    }
 }

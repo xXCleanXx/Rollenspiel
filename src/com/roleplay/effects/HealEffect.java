@@ -11,14 +11,14 @@ public class HealEffect extends Effect {
     }
 
     private void setHealthPoints(double healthPoints) {
-        if (healthPoints < 0) {
-            throw new IllegalArgumentException("Health points cannot be less than 0!");
-        }
+        if (healthPoints < 0) throw new IllegalArgumentException("Health points cannot be less than 0!");
 
         this.healthPoints = healthPoints;
     }
 
     public void apply(Character character) {
-        ((CharacterProperties)character.getProperties()).setHealthPoints(healthPoints);
+        if (character == null) throw new IllegalArgumentException("Character cannot be null!");
+
+        character.getProperties().setHealthPoints(healthPoints);
     }
 }

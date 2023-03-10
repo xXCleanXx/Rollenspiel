@@ -1,7 +1,7 @@
 package com.roleplay.gui;
 
 
-import com.roleplay.tools.Image;
+import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
@@ -44,9 +44,9 @@ public class ArtefactPanel {
 
         btn_Amulet.addActionListener(e -> {
             if (true){
-                btn_Amulet.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_amulet_disable.png"))));
+                btn_Amulet.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_amulet_disable.png"))));
             }else{
-                btn_Amulet.setIcon(new ImageIcon(Objects.requireNonNull(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_amulet_enable.png"))));
+                btn_Amulet.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_amulet_enable.png"))));
             }
         });
 
@@ -63,7 +63,7 @@ public class ArtefactPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(Image.loadImage("src/com/roleplay/resources/images/artefact_background2.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/artefact_background2.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
 
             }

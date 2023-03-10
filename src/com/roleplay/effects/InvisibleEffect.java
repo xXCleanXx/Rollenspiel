@@ -10,16 +10,20 @@ public class InvisibleEffect extends Effect {
         setRuntime(runtime);
     }
 
+    public double getRuntime() {
+        return runtime;
+    }
+
     private void setRuntime(double runtime) {
-        if (runtime < 0) {
-            throw new IllegalArgumentException("Runtime cannot be less than 0!");
-        }
+        if (runtime < 0) throw new IllegalArgumentException("Runtime cannot be less than 0!");
 
         this.runtime = runtime;
     }
 
     @Override
     public void apply(Character character) {
-        ((CharacterProperties) character.getProperties()).setVisible(false);
+        if (character == null) throw new IllegalArgumentException("Character cannot be null!");
+
+        character.getProperties().setVisible(false);
     }
 }

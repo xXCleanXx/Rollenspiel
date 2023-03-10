@@ -2,19 +2,19 @@ package com.roleplay.tiles;
 
 import com.roleplay.tiles.properties.TileProperties;
 
-public class Tile {
+public class Tile<T extends TileProperties> {
 
-    private TileProperties properties;
+    private T properties;
 
-    public Tile(TileProperties properties) {
+    public Tile(T properties) {
         setProperties(properties);
     }
 
-    public void setProperties(TileProperties properties) {
+    public void setProperties(T properties) {
         this.properties = properties;
     }
 
-    public TileProperties getProperties() {
+    public T getProperties() {
         return properties;
     }
 

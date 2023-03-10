@@ -3,7 +3,6 @@ package com.roleplay.tiles.items;
 import com.roleplay.spells.Spell;
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.properties.ItemProperties;
-import com.roleplay.tools.Image;
 
 import java.util.ArrayList;
 import java.util.List;

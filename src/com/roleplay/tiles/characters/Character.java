@@ -5,6 +5,7 @@ import com.roleplay.gui.GameBoard;
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.items.Item;
 import com.roleplay.tiles.items.armors.Armor;
+import com.roleplay.tiles.items.armors.Shield;
 import com.roleplay.tiles.items.artefacts.Artefact;
 import com.roleplay.tiles.items.weapons.Weapon;
 import com.roleplay.tiles.properties.CharacterProperties;
@@ -15,16 +16,18 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Character extends Tile {
-    private final List<Effect> effects = new ArrayList<>();
-
+public abstract class Character extends Tile<CharacterProperties> {
     protected Character(CharacterProperties characterProperties) {
         super(characterProperties);
     }
 
-    public abstract double attack(Character enemy);
+    public double defend() {
+        Armor armor = this.getProperties().getInventory().getArmor();
+        double armorDefence = armor == null ? 0 : armor.getStrength();
+        double shieldDefence = this.getProperties().getInventory().getSecondHand() instanceof Shield shield ? shield.getStrength() : 0;
 
-    public abstract double defend();
+        return armorDefence + shieldDefence;
+    }
 
     public void levelUp() {
         getProperties().setXp(0);
@@ -32,7 +35,6 @@ public abstract class Character extends Tile {
     }
 
     protected void use(Item item) {
-
         if (item instanceof Armor) {
             getProperties().getInventory().setArmor((Armor) item);
             //TODO
@@ -65,9 +67,5 @@ public abstract class Character extends Tile {
         } else if (getProperties().getPosition().y >= rows) {
             getProperties().getPosition().y = rows - 1;
         }
-    }
-    @Override
-    public CharacterProperties getProperties(){
-        return (CharacterProperties) super.getProperties();
     }
 }

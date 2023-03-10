@@ -1,5 +1,6 @@
 package com.roleplay.tiles.properties;
 
+import com.roleplay.effects.Effect;
 import com.roleplay.tiles.Hitbox;
 import com.roleplay.tiles.characters.Abilities;
 import com.roleplay.tiles.characters.enums.Directions;
@@ -8,8 +9,11 @@ import com.roleplay.tiles.items.Inventory;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.*;
+import java.util.List;
 
 public class CharacterProperties extends TileProperties {
+    private final List<Effect> effects = new ArrayList<>();
     private Races race;
     private boolean visible = true;
     private Directions direction = Directions.NORTH;
@@ -40,7 +44,6 @@ public class CharacterProperties extends TileProperties {
     }
 
     public Races getRace() {
-
         return race;
     }
 
@@ -111,5 +114,15 @@ public class CharacterProperties extends TileProperties {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public void addEffect(Effect effect) {
+        if (effect == null) throw new IllegalArgumentException("Effect cannot be null!");
+
+        this.effects.add(effect);
+    }
+
+    public Effect[] getEffects() {
+        return effects.toArray(new Effect[0]);
     }
 }

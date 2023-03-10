@@ -2,7 +2,7 @@ package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
 import com.roleplay.tiles.properties.Difficult;
-import com.roleplay.tools.Image;
+import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
@@ -64,11 +64,11 @@ public class MainPanel {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if(SettingsPanel.getDifficult() == Difficult.HARD) {
-                    g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_main_2.png"), 0, 0, this);
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_2.png"), 0, 0, this);
                 }else if(SettingsPanel.getDifficult() == Difficult.HARDCORE) {
-                    g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_main_3.png"), 0, 0, this);
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_3.png"), 0, 0, this);
                 }else{
-                    g.drawImage(Image.loadImage("src/com/roleplay/resources/images/Background_main_1.png"), 0, 0, this);
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_1.png"), 0, 0, this);
                 }
                 Toolkit.getDefaultToolkit().sync();
             }
