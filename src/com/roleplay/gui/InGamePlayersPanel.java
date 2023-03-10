@@ -1,8 +1,7 @@
 package com.roleplay.gui;
 
 import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.properties.CharacterProperties;
-import com.roleplay.tools.Image;
+import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +49,7 @@ public class InGamePlayersPanel extends JPanel {
         @Override
         public void paintComponent(Graphics g){
             super.paintComponent(g);
-            g.drawImage(Image.loadImage("src/com/roleplay/resources/images/buttons/btn_1.png"),(getWidth()/2) - 79,(getHeight()/2) - 30,this);
+            g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_1.png"),(getWidth()/2) - 79,(getHeight()/2) - 30,this);
             Toolkit.getDefaultToolkit().sync();
         }
     }

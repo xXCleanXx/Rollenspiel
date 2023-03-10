@@ -3,14 +3,9 @@ package com.roleplay.tiles.items;
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.properties.ItemProperties;
 
-public abstract class Item extends Tile {
+public abstract class Item extends Tile<ItemProperties> {
 
     public Item(ItemProperties itemProperties) {
         super(itemProperties);
-    }
-
-
-    public ItemProperties getProperties(){
-        return (ItemProperties) super.getProperties();
     }
 }

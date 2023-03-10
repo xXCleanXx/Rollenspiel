@@ -1,7 +1,7 @@
 package com.roleplay.tiles.items;
 
 import com.roleplay.tiles.items.armors.Armor;
-import com.roleplay.tools.Image;
+import com.roleplay.tools.ImageUtils;
 
 import java.awt.image.BufferedImage;
 
@@ -41,6 +41,10 @@ public class Inventory {
     }
 
     public Item remove(int index) {
+        if (index < 0 || index > items.length) {
+            throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
+        }
+
         if (items[index] == null) {
             throw new IllegalArgumentException("There is nothing to remove!");
         }
@@ -91,7 +95,7 @@ public class Inventory {
         int height = this.items.length / 6;
 
         BufferedImage img = new BufferedImage(SLOT_SIZE * 6, SLOT_SIZE * height, BufferedImage.TYPE_INT_ARGB);
-        BufferedImage slotImg = Image.loadImage("src/com/roleplay/resources/slot.png");
+        BufferedImage slotImg = ImageUtils.loadImage("src/com/roleplay/resources/slot.png");
 
         for (int i = 0; i < img.getHeight(); i++) {
             for (int j = 0; j < img.getWidth(); j++) {

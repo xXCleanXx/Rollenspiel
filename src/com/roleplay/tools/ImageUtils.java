@@ -3,9 +3,8 @@ package com.roleplay.tools;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
-public class Image {
+public class ImageUtils {
 
     public static BufferedImage loadImage(String pathname) {
         BufferedImage img = null;

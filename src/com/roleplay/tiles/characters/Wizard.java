@@ -7,14 +7,4 @@ public class Wizard extends Character {
         super(characterProperties);
         getProperties().setName("Wizard");
     }
-
-    @Override
-    public double attack(Character enemy) {
-        return 0;
-    }
-
-    @Override
-    public double defend() {
-        return 0;
-    }
 }

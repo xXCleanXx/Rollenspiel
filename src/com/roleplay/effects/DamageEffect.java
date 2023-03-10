@@ -19,7 +19,9 @@ public class DamageEffect extends Effect {
 
     @Override
     public void apply(Character character) {
-        ((CharacterProperties) character.getProperties()).setHealthPoints(damage);
+        if (character == null) throw new IllegalArgumentException("Character cannot be null!");
+
+        character.getProperties().setHealthPoints(damage);
     }
 
 }

@@ -5,18 +5,14 @@ import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.build.MapCreator;
 import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.characters.Thief;
 import com.roleplay.tiles.items.artefacts.*;
-import com.roleplay.tiles.properties.CharacterProperties;
 import com.roleplay.tiles.properties.ItemProperties;
-import com.roleplay.tools.Image;
+import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,10 +66,10 @@ public class GameBoard extends JPanel implements ActionListener {
             } while (!map[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
 
             Artefact item = switch (rand.nextInt(4)) {
-                case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/amulet.png")), new HealEffect(3));
-                case 1 -> new Cape(new ItemProperties("cape", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/cape.png")),new InvisibleEffect(3));
-                case 2 -> new Potion(new ItemProperties("potion", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/potion.png")),new HealEffect(3));
-                case 3 -> new Ring(new ItemProperties("ring", new Point(position), Image.loadImage("src/com/roleplay/resources/images/items/ring.png")),new HealEffect(3));
+                case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet.png")), new HealEffect(3));
+                case 1 -> new Cape(new ItemProperties("cape", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/cape.png")),new InvisibleEffect(3));
+                case 2 -> new Potion(new ItemProperties("potion", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/potion.png")),new HealEffect(3));
+                case 3 -> new Ring(new ItemProperties("ring", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/ring.png")),new HealEffect(3));
                 default -> null;
             };
 

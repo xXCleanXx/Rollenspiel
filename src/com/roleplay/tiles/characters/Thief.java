@@ -7,14 +7,4 @@ public class Thief extends Character {
         super(properties);
         getProperties().setName("Thief");
     }
-
-    @Override
-    public double attack(Character enemy) {
-        return 0;
-    }
-
-    @Override
-    public double defend() {
-        return 0;
-    }
 }

@@ -8,15 +8,4 @@ public class Warrior extends Character {
         super(characterProperties);
         getProperties().setName("Warrior");
     }
-
-    @Override
-    public double attack(Character enemy) {
-        return 0;
-    }
-
-    @Override
-    public double defend() {
-        Armor armor = getProperties().getInventory().getArmor();
-        return armor != null ? armor.getStrength() : 0;
-    }
 }

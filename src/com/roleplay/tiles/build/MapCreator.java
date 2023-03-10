@@ -2,12 +2,10 @@ package com.roleplay.tiles.build;
 
 import com.roleplay.tiles.Tile;
 import com.roleplay.tiles.properties.MapElementProperties;
-import com.roleplay.tiles.properties.TileProperties;
-import com.roleplay.tools.Image;
+import com.roleplay.tools.ImageUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -44,23 +42,23 @@ public class MapCreator {
 
                     switch (Character.getNumericValue(text.charAt(j))) {
                         case 0 -> {
-                            tileProperties = new MapElementProperties("gras", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/background.png"));
+                            tileProperties = new MapElementProperties("gras", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/background.png"));
                             tile = new Tile(tileProperties);
                         }
                         case 1 -> {
-                            tileProperties = new MapElementProperties("way", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/way.png"));
+                            tileProperties = new MapElementProperties("way", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/way.png"));
                             tileProperties.getHitbox().setEnabled(false);
                             tile = new Tile(tileProperties);
                         }
                         case 2 -> {
-                            tileProperties = new MapElementProperties("water", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/water.png"));
+                            tileProperties = new MapElementProperties("water", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/water.png"));
                             tile = new Tile(tileProperties);
 
                         }
-                        case 3 -> tile = new Door(1, new MapElementProperties("door", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/door.png")));
-                        case 4 -> tile = new Door(1, new MapElementProperties("doorRotated", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
+                        case 3 -> tile = new Door(1, new MapElementProperties("door", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/door.png")));
+                        case 4 -> tile = new Door(1, new MapElementProperties("doorRotated", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
                         case 5 -> {
-                            tileProperties = new MapElementProperties("wall", new Point(i,j), Image.loadImage("src/com/roleplay/resources/images/wall.png"));
+                            tileProperties = new MapElementProperties("wall", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/wall.png"));
                             tile = new Tile(tileProperties);
                         }
                         default -> throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
