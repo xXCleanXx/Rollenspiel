@@ -24,7 +24,7 @@ public class GameFrame extends JFrame {
             add(board, BorderLayout.CENTER);
 
             InGamePlayersPanel players = new InGamePlayersPanel(player);
-            add(players, BorderLayout.NORTH);
+            add(players, BorderLayout.WEST);
             revalidate();
             repaint();
 

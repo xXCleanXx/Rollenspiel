@@ -10,13 +10,22 @@ import java.util.ArrayList;
 public class InGamePlayersPanel extends JPanel {
 
     public InGamePlayersPanel(ArrayList<Character> players){
-        setLayout(new GridLayout(1,players.size(),10,0));
-        setPreferredSize(new Dimension(GameBoard.WIDTH, 60));
+        setLayout(new GridLayout(players.size(),1,15,-100));
+        setPreferredSize(new Dimension(158, GameBoard.HEIGHT));
+
+        this.setBorder(BorderFactory.createEmptyBorder(60,10,75,25));
+
 
         for(Character c : players){
             add(new playerPanel(c));
 
         }
+    }
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/playerList.png"),0,0,this);
+        Toolkit.getDefaultToolkit().sync();
     }
 
     private class playerPanel extends JPanel{
@@ -30,6 +39,7 @@ public class InGamePlayersPanel extends JPanel {
 
         public playerPanel (Character c) {
             setLayout(new FlowLayout());
+            setOpaque(false);
             this.displayName = new JLabel(c.getProperties().getDisplayName());
             this.type = new JLabel(c.getProperties().getName());
             this.health = new JLabel(String.valueOf(c.getProperties().getHealthPoints()));
@@ -37,20 +47,14 @@ public class InGamePlayersPanel extends JPanel {
             texture = new JLabel(new ImageIcon(c.getProperties().getTexture()));
             nameAndType = new JLabel(this.displayName.getText() + "/" + this.type.getText());
 
+            info.setOpaque(false);
             info.setLayout(new BoxLayout(info, BoxLayout.PAGE_AXIS));
             info.add(nameAndType);
             info.add(this.health);
-            info.setOpaque(false);
 
             add(texture);
             add(info);
-        }
-
-        @Override
-        public void paintComponent(Graphics g){
-            super.paintComponent(g);
-            g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_1.png"),(getWidth()/2) - 79,(getHeight()/2) - 30,this);
-            Toolkit.getDefaultToolkit().sync();
+            setBorder(BorderFactory.createLineBorder(Color.RED));
         }
     }
 
