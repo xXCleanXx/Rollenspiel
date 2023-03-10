@@ -29,6 +29,7 @@ public class CharacterPanel {
     private JButton btn_Human;
     private JButton btn_Elf;
     private JButton btn_Hobbit;
+    private JButton btn_error;
     private Character character;
 
     private final Races[] race = {Races.HUMAN};
@@ -104,13 +105,13 @@ public class CharacterPanel {
         });
 
         nextFinish.addActionListener(e -> {
-                btn_error.setVisible(false);
+            btn_error.setVisible(false);
             try {
                 createNextPlayer(mainFrame);
             } catch (IndexOutOfBoundsException IOOBE) {
                 btn_error.setText(Messages.getString("exists"));
                 btn_error.setVisible(true);
-            } catch (NullPointerException NPE){
+            } catch (NullPointerException NPE) {
                 btn_error.setText(Messages.getString("empty"));
                 btn_error.setVisible(true);
             }
@@ -118,12 +119,12 @@ public class CharacterPanel {
     }
 
     private void createNextPlayer(MainFrame mainFrame) {
-        if(playerName.getText().isEmpty()){
+        if (playerName.getText().isEmpty()) {
             throw new NullPointerException();
         }
         if ((!mainFrame.getCharacterListNames().contains(playerName.getText()) || Objects.equals(playerName.getText(), mainFrame.getCharacterListNames().get(player - 2)))) {
             if (mainFrame.getPlayer() == MainFrame.getCharacterList().size() && mainFrame.getPlayer() != player - 1) {
-                MainFrame.getCharacterList().get(player-2).getProperties().setDisplayName(playerName.getText());
+                MainFrame.getCharacterList().get(player - 2).getProperties().setDisplayName(playerName.getText());
                 playerName.setText(mainFrame.getCharacterListNames().get(player - 1));
                 doClick(player - 1);
             } else if (MainFrame.getCharacterList().size() < player - 1) {
