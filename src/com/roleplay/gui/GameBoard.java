@@ -2,11 +2,11 @@ package com.roleplay.gui;
 
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
-import com.roleplay.tiles.Tile;
-import com.roleplay.tiles.build.MapCreator;
-import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.items.artefacts.*;
-import com.roleplay.tiles.properties.ItemProperties;
+import com.roleplay.map.Tile;
+import com.roleplay.build.MapCreator;
+import com.roleplay.characters.Character;
+import com.roleplay.items.artefacts.*;
+import com.roleplay.items.ItemProperties;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;

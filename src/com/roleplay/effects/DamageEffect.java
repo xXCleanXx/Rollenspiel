@@ -1,8 +1,7 @@
 package com.roleplay.effects;
 
 
-import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.properties.CharacterProperties;
+import com.roleplay.characters.Character;
 
 public class DamageEffect extends Effect {
     private double damage;
