@@ -1,7 +1,6 @@
 package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
-import com.roleplay.characters.CharacterProperties;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
@@ -10,16 +9,12 @@ import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
 
-    private JPanel contentPane;
     private static MainPanel main;
-    private CharacterPanel character;
-    private ArtefactPanel artefact;
-    private SettingsPanel settings;
 
-    private ArrayList<String> artefactBlackList = new ArrayList<>();
+    private final ArrayList<String> artefactBlackList = new ArrayList<>();
 
-    private static int playerCount = 4;
-    private static ArrayList<Character> characterList = new ArrayList(4);
+    private static int playerCount = 3;
+    private static ArrayList<Character> characterList = new ArrayList<>(3);
 
     public MainFrame() {
         super();
@@ -38,13 +33,13 @@ public class MainFrame extends JFrame {
         setTitle(Messages.getString("MvsN"));
         setSize(new Dimension(1200, 800));
 
-        contentPane = new JPanel();
+        JPanel contentPane = new JPanel();
         contentPane.setLayout(new CardLayout());
 
         main = new MainPanel(contentPane, this);
-        character = new CharacterPanel(contentPane, this);
-        artefact = new ArtefactPanel(contentPane, this);
-        settings = new SettingsPanel(contentPane);
+        CharacterPanel character = new CharacterPanel(contentPane, this);
+        ArtefactPanel artefact = new ArtefactPanel(contentPane, this);
+        SettingsPanel settings = new SettingsPanel(contentPane);
 
         contentPane.add(main.getMainPanel(), Messages.getString("MAIN_PANEL"));
         contentPane.add(character.getCharacterPanel(), Messages.getString("CHARACTER_PANEL"));
@@ -61,7 +56,7 @@ public class MainFrame extends JFrame {
     }
 
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         new MainFrame();
     }
 
@@ -90,11 +85,6 @@ public class MainFrame extends JFrame {
             characterNames.add(character.getProperties().getDisplayName());
         }
         return characterNames;
-    }
-
-
-    public void getArtefactBlackList(ArrayList<String> artefactBlackList) {
-        this.artefactBlackList = artefactBlackList;
     }
 
     public void removeArtefactfromBlackList(String artefact) {
