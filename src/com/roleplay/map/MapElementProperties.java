@@ -10,12 +10,13 @@ public class MapElementProperties extends TileProperties {
 
     public MapElementProperties(String name, Point position, BufferedImage texture) {
         super(name, position, texture);
-
-        hitbox = new HitBox(32,32);
+        hitbox = new Hitbox(32,32);
     }
 
-    public MapElementProperties(Point position, BufferedImage texture) {
-        this("", position, texture);
+    public MapElementProperties(Point position, BufferedImage texture){
+        super(position, texture);
+        hitbox = new HitBox(32,32);
+
     }
 
     public HitBox getHitBox() {

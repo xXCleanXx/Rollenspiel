@@ -177,6 +177,7 @@ public class CharacterPanel {
 
     private void createUIComponents() {
         characterPanel = new JPanel() {
+
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
