@@ -10,14 +10,19 @@ import java.util.ArrayList;
 public class InGamePlayersPanel extends JPanel {
 
     public InGamePlayersPanel(ArrayList<Character> players){
-        setLayout(new GridLayout(players.size(),1,15,-100));
-        setPreferredSize(new Dimension(158, GameBoard.HEIGHT));
+        setLayout(new GridLayout(players.size(),1,15,-80));
+        setPreferredSize(new Dimension(190, GameBoard.HEIGHT));
 
-        this.setBorder(BorderFactory.createEmptyBorder(60,10,75,25));
+        this.setBorder(BorderFactory.createEmptyBorder(60,20,75,20));
 
 
         for(Character c : players){
-            add(new PlayerPanel(c));
+            Box box = new Box(BoxLayout.LINE_AXIS);
+            box.add(Box.createHorizontalGlue());
+            box.add(new PlayerPanel(c));
+            box.add(Box.createHorizontalGlue());
+
+            add(box);
 
         }
     }
@@ -43,18 +48,18 @@ public class InGamePlayersPanel extends JPanel {
             this.displayName = new JLabel(c.getProperties().getDisplayName());
             this.type = new JLabel(c.getProperties().getName());
             this.health = new JLabel(String.valueOf(c.getProperties().getHealthPoints()));
+            this.health.setForeground(Color.GREEN);
 
             texture = new JLabel(new ImageIcon(c.getProperties().getTexture()));
-            nameAndType = new JLabel(this.displayName.getText() + "/" + this.type.getText());
+            displayName.setForeground(new Color(240, 240, 240));
 
             info.setOpaque(false);
             info.setLayout(new BoxLayout(info, BoxLayout.PAGE_AXIS));
-            info.add(nameAndType);
+            info.add(this.displayName);
             info.add(this.health);
 
             add(texture);
             add(info);
-            setBorder(BorderFactory.createLineBorder(Color.RED));
         }
     }
 

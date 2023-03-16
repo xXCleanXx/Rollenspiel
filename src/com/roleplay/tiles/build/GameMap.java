@@ -17,7 +17,7 @@ public class GameMap {
         setHeight(height);
         setTileSize(tileSize);
 
-        map = new Tile<>[width][height];
+        map = new Tile[width][height];
     }
 
     public int getWidth() {

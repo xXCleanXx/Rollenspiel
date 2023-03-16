@@ -21,7 +21,7 @@ public class MapCreator {
     }
 
     private void createTiles(BufferedImage img, int rows, int columns, int tileSize) {
-        map = new Tile<>[rows][columns];
+        map = new Tile[rows][columns];
 
         try {
             Random random = new Random();

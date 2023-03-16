@@ -23,8 +23,8 @@ public class CharacterProperties extends MapElementProperties {
     private int level;
     private int xp;
 
-    public CharacterProperties(String name, Point position, BufferedImage texture) {
-        super(name, position, texture);
+    public CharacterProperties(Point position, BufferedImage texture) {
+        super(position, texture);
     }
 
     public Inventory getInventory() {
