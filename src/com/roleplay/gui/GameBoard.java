@@ -3,7 +3,7 @@ package com.roleplay.gui;
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.map.Tile;
-import com.roleplay.build.MapCreator;
+import com.roleplay.map.MapCreator;
 import com.roleplay.characters.Character;
 import com.roleplay.items.artefacts.*;
 import com.roleplay.items.ItemProperties;

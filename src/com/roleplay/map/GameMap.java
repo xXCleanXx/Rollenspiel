@@ -1,7 +1,4 @@
-package com.roleplay.build;
-
-import com.roleplay.map.Tile;
-import com.roleplay.map.MapElementProperties;
+package com.roleplay.map;
 
 import java.awt.image.BufferedImage;
 
@@ -10,14 +7,14 @@ public class GameMap {
     private int height;
     private int tileSize;
 
-    private Tile<MapElementProperties>[][] map;
+    private final Tile<?>[][] map;
 
     public GameMap(int width, int height, int tileSize) {
         setWidth(width);
         setHeight(height);
         setTileSize(tileSize);
 
-        map = new Tile<>[width][height];
+        map = new Tile[width][height];
     }
 
     public int getWidth() {
@@ -56,7 +53,7 @@ public class GameMap {
         return null;
     }
 
-    public Tile<MapElementProperties>[][] getMapElements() {
+    public Tile<?>[][] getMapElements() {
         return map;
     }
 }

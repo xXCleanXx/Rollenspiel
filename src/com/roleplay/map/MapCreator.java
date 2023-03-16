@@ -1,7 +1,6 @@
-package com.roleplay.build;
+package com.roleplay.map;
 
-import com.roleplay.map.Tile;
-import com.roleplay.map.MapElementProperties;
+import com.roleplay.build.Door;
 import com.roleplay.tools.ImageUtils;
 
 import java.awt.*;
@@ -13,14 +12,14 @@ import java.util.List;
 import java.util.Random;
 
 public class MapCreator {
-    private static Tile<MapElementProperties>[][] map;
+    private static Tile<?>[][] map;
 
     public MapCreator(BufferedImage img, int rows, int columns, int tileSize) {
         createTiles(img, rows, columns, tileSize);
     }
 
     private void createTiles(BufferedImage img, int rows, int columns, int tileSize) {
-        map = new Tile<>[rows][columns];
+        map = new Tile[rows][columns];
 
         try {
             Random random = new Random();
@@ -85,7 +84,7 @@ public class MapCreator {
         }
     }
 
-    public static Tile<MapElementProperties>[][] getMap() {
+    public static Tile<?>[][] getMap() {
         return map;
     }
 }

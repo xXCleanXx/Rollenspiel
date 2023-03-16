@@ -7,8 +7,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
-
-
     public GameFrame(ArrayList<Character> player){
         super();
         initialize(player);
