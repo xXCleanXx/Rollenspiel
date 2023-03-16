@@ -46,7 +46,7 @@ public class MapCreator {
                         }
                         case 1 -> {
                             tileProperties = new MapElementProperties("way", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/way.png"));
-                            tileProperties.getHitbox().setEnabled(false);
+                            tileProperties.getHitBox().setEnabled(false);
                             tile = new Tile<>(tileProperties);
                         }
                         case 2 -> {

@@ -1,15 +1,13 @@
 package com.roleplay;
 
-import java.awt.*;
-
-public class Hitbox {
+public class HitBox {
 
     private int width;
     private int height;
 
     private boolean enabled = true;
 
-    public Hitbox(int width, int height){
+    public HitBox(int width, int height){
         setWidth(width);
         setHeight(height);
     }

@@ -153,7 +153,8 @@ public class CharacterPanel {
 
     private void doClick(int i) {
         final Character tempCharacter = MainFrame.getCharacterList().get(i);
-        final Races race = ((CharacterProperties) tempCharacter.getProperties()).getRace();
+        final Races race = tempCharacter.getProperties().getRace();
+
         if (race.equals(Races.ELF)) {
             btn_Elf.doClick();
         } else if (race.equals(Races.DWARF)) {
@@ -176,7 +177,6 @@ public class CharacterPanel {
 
     private void createUIComponents() {
         characterPanel = new JPanel() {
-
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
