@@ -16,6 +16,8 @@ public class MainFrame extends JFrame {
     private ArtefactPanel artefact;
     private SettingsPanel settings;
 
+    private ArrayList<String> artefactBlackList = new ArrayList<>();
+
     private static int playerCount = 4;
     private static ArrayList<Character> characterList = new ArrayList(4);
 
@@ -41,7 +43,7 @@ public class MainFrame extends JFrame {
 
         main = new MainPanel(contentPane, this);
         character = new CharacterPanel(contentPane, this);
-        artefact = new ArtefactPanel(contentPane);
+        artefact = new ArtefactPanel(contentPane, this);
         settings = new SettingsPanel(contentPane);
 
         contentPane.add(main.getMainPanel(), Messages.getString("MAIN_PANEL"));
@@ -85,8 +87,25 @@ public class MainFrame extends JFrame {
     public ArrayList<String> getCharacterListNames() {
         ArrayList<String> characterNames = new ArrayList<>();
         for (Character character : characterList) {
-            characterNames.add(((CharacterProperties) character.getProperties()).getDisplayName());
+            characterNames.add(character.getProperties().getDisplayName());
         }
         return characterNames;
+    }
+
+
+    public void getArtefactBlackList(ArrayList<String> artefactBlackList) {
+        this.artefactBlackList = artefactBlackList;
+    }
+
+    public void removeArtefactfromBlackList(String artefact) {
+        this.artefactBlackList.remove(artefact);
+    }
+
+    public void addArtefactToBlackList(String artefact) {
+        this.artefactBlackList.add(artefact);
+    }
+
+    public boolean containsArtefactInBlackList(String artefact) {
+        return this.artefactBlackList.contains(artefact);
     }
 }

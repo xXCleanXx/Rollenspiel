@@ -8,6 +8,7 @@ import com.roleplay.tools.Messages;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SettingsPanel {
 
@@ -16,22 +17,38 @@ public class SettingsPanel {
     private JButton btn_menu;
     private JButton btn_artefact;
     private JLabel title;
-    private JLabel subTitle;
     private JButton btn_4player;
     private JButton btn_5player;
     private JButton btn_6player;
-    private JButton btn_7player;
-    private JButton btn_8player;
+    private JButton btn_3player;
     private JComboBox box_difficult;
 
     private static Difficult difficult = Difficult.EASY;
 
     SettingsPanel(JPanel contentPane) {
-        btn_4player.addActionListener(e -> setPlayer(4));
-        btn_5player.addActionListener(e -> setPlayer(5));
-        btn_6player.addActionListener(e -> setPlayer(6));
-        btn_7player.addActionListener(e -> setPlayer(7));
-        btn_8player.addActionListener(e -> setPlayer(8));
+        btn_3player.addActionListener(e -> {
+            setPlayer(3);
+            resetIcons();
+            btn_3player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40_enable.png"))));
+        });
+
+        btn_4player.addActionListener(e -> {
+            setPlayer(4);
+            resetIcons();
+            btn_4player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40_enable.png"))));
+
+        });
+        btn_5player.addActionListener(e -> {
+            setPlayer(5);
+            resetIcons();
+            btn_5player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40_enable.png"))));
+        });
+        btn_6player.addActionListener(e -> {
+            setPlayer(6);
+            resetIcons();
+            btn_6player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40_enable.png"))));
+        });
+
 
         box_difficult.addActionListener(e -> setDifficult(box_difficult.getSelectedIndex()));
 
@@ -76,6 +93,14 @@ public class SettingsPanel {
             case 2 -> difficult = Difficult.HARD;
             case 3 -> difficult = Difficult.HARDCORE;
         }
+    }
+
+    private void resetIcons(){
+        btn_3player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40.png"))));
+        btn_4player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40.png"))));
+        btn_5player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40.png"))));
+        btn_6player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40.png"))));
+        btn_3player.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40.png"))));
     }
 
     public static Difficult getDifficult() {
