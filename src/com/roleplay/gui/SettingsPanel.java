@@ -20,8 +20,6 @@ public class SettingsPanel {
     private JButton btn_4player;
     private JButton btn_5player;
     private JButton btn_6player;
-    private JButton btn_7player;
-    private JButton btn_8player;
     private JComboBox box_difficult;
 
     private static Difficult difficult = Difficult.EASY;
@@ -30,8 +28,6 @@ public class SettingsPanel {
         btn_4player.addActionListener(e -> setPlayer(4));
         btn_5player.addActionListener(e -> setPlayer(5));
         btn_6player.addActionListener(e -> setPlayer(6));
-        btn_7player.addActionListener(e -> setPlayer(7));
-        btn_8player.addActionListener(e -> setPlayer(8));
 
         box_difficult.addActionListener(e -> setDifficult(box_difficult.getSelectedIndex()));
 
