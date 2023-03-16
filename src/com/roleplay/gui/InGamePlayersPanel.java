@@ -1,6 +1,6 @@
 package com.roleplay.gui;
 
-import com.roleplay.tiles.characters.Character;
+import com.roleplay.characters.Character;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;

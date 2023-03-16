@@ -1,9 +1,9 @@
 package com.roleplay.gui;
 
-import com.roleplay.tiles.characters.Character;
-import com.roleplay.tiles.characters.*;
-import com.roleplay.tiles.characters.enums.Races;
-import com.roleplay.tiles.properties.CharacterProperties;
+import com.roleplay.characters.Character;
+import com.roleplay.characters.*;
+import com.roleplay.characters.enums.Races;
+import com.roleplay.characters.CharacterProperties;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
@@ -154,6 +154,7 @@ public class CharacterPanel {
     private void doClick(int i) {
         final Character tempCharacter = MainFrame.getCharacterList().get(i);
         final Races race = tempCharacter.getProperties().getRace();
+
         if (race.equals(Races.ELF)) {
             btn_Elf.doClick();
         } else if (race.equals(Races.DWARF)) {
