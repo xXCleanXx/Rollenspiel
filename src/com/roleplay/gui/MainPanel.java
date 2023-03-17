@@ -49,10 +49,9 @@ public class MainPanel {
     }
 
     public void setCharacterJList(ArrayList<Character> charachterList) {
-        String[] charachterObject = new String[8];
+        String[] charachterObject = new String[6];
         for (int i = 0; i < charachterList.size(); i++) {
             Character character = charachterList.get(i);
-            //charachterObject[i] = "Player " + (i + 1) + ": " + ((CharacterProperties) character.getProperties()).getDisplayName() + ",\n Typ: " + character.getClass().getSimpleName();
             charachterObject[i] = (i + 1) + ": " + character.getProperties().getDisplayName() + "," + character.getClass().getSimpleName();
         }
         listCharacter.setListData(charachterObject);
