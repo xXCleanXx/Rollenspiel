@@ -4,6 +4,7 @@ import com.roleplay.items.armors.Armor;
 import com.roleplay.tools.ImageUtils;
 
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 public class Inventory {
     public final int SLOT_SIZE = 48;
@@ -26,6 +27,20 @@ public class Inventory {
         }
 
         return items[index];
+    }
+
+    public int add(Item item) {
+        if (item == null) throw new IllegalArgumentException("Item cannot be null!");
+
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == null) {
+                items[i] = item;
+
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public void add(int index, Item item) {
@@ -101,7 +116,7 @@ public class Inventory {
             for (int j = 0; j < width; j++) {
                 for (int x = 0; x < SLOT_SIZE; x++) {
                     for (int y = 0; y < SLOT_SIZE; y++) {
-                        img.setRGB(i + x * SLOT_SIZE, j + y * SLOT_SIZE, slotImg.getRGB(x, y));
+                        img.setRGB(i + x * SLOT_SIZE, j + y * SLOT_SIZE, Objects.requireNonNull(slotImg).getRGB(x, y));
                     }
                 }
             }
