@@ -84,6 +84,10 @@ public class GameBoard extends JPanel implements ActionListener {
 
     }
 
+    public GameMap getGameMap(){
+        return this.gameMap;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 

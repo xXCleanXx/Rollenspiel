@@ -22,6 +22,7 @@ public class CharacterProperties extends MapElementProperties {
     private Inventory inventory;
     private int level;
     private int xp;
+    private boolean myTurn = false;
 
     public CharacterProperties(Point position, BufferedImage texture) {
         super(position, texture);
@@ -123,5 +124,13 @@ public class CharacterProperties extends MapElementProperties {
 
     public Effect[] getEffects() {
         return effects.toArray(new Effect[0]);
+    }
+
+    public boolean isMyTurn(){
+        return this.myTurn;
+    }
+
+    public void setMyTurn(boolean myTurn){
+        this.myTurn = myTurn;
     }
 }

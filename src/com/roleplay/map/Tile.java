@@ -17,4 +17,8 @@ public class Tile<T extends TileProperties> {
         return properties;
     }
 
+    public MapElementProperties getMapElementProperties(){
+        return (MapElementProperties) properties;
+    }
+
 }
