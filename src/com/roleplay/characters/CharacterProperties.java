@@ -4,14 +4,14 @@ import com.roleplay.effects.Effect;
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.characters.enums.Races;
 import com.roleplay.items.Inventory;
-import com.roleplay.map.MapElementProperties;
+import com.roleplay.map.GameMapElementProperties;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.List;
 
-public class CharacterProperties extends MapElementProperties {
+public class CharacterProperties extends GameMapElementProperties {
     private final List<Effect> effects = new ArrayList<>();
     private Races race;
     private boolean visible = true;

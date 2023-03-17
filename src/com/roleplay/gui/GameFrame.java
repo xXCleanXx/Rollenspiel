@@ -2,7 +2,7 @@ package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
 import com.roleplay.map.GameMap;
-import com.roleplay.map.MapCreator;
+import com.roleplay.map.GameMapCreator;
 
 import javax.swing.*;
 import java.awt.*;

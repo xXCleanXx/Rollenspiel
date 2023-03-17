@@ -1,16 +1,15 @@
 package com.roleplay.build;
 
-import com.roleplay.map.MapElementProperties;
+import com.roleplay.map.GameMapElementProperties;
 import com.roleplay.map.Tile;
 import com.roleplay.items.Key;
-import com.roleplay.map.TileProperties;
 
-public class Door extends Tile<MapElementProperties> {
+public class Door extends Tile<GameMapElementProperties> {
     private boolean locked, open;
     private int lockPickingLevel;
     private Key key;
 
-    public Door(int lockPickingLevel, MapElementProperties tileProperties){
+    public Door(int lockPickingLevel, GameMapElementProperties tileProperties){
         super(tileProperties);
 
         setLockPickingLevel(lockPickingLevel);

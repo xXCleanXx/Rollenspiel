@@ -3,8 +3,7 @@ package com.roleplay.gui;
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.map.GameMap;
-import com.roleplay.map.Tile;
-import com.roleplay.map.MapCreator;
+import com.roleplay.map.GameMapCreator;
 import com.roleplay.characters.Character;
 import com.roleplay.items.artefacts.*;
 import com.roleplay.items.ItemProperties;
@@ -14,7 +13,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -27,7 +25,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
     public GameBoard(ArrayList<Character> players) {
         this.players = players;
-        gameMap = MapCreator.loadRandomMap();
+        gameMap = GameMapCreator.loadRandomMap();
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 
         artefacts = populateArtefacts();
