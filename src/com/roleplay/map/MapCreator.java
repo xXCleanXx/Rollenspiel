@@ -11,36 +11,24 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
-public class MapCreator {
-    private static Tile<?>[][] map;
+public final class MapCreator {
+    private MapCreator() { }
 
-    public MapCreator(BufferedImage img, int rows, int columns, int tileSize) {
-        createTiles(img, rows, columns, tileSize);
-    }
-
-    private void createTiles(BufferedImage img, int rows, int columns, int tileSize) {
-        map = new Tile[rows][columns];
-
+    public static GameMap loadMap(String path) {
         try {
-            Random random = new Random();
-            List<String> lines = switch (random.nextInt(1)) {
-                case 0 -> Files.readAllLines(Paths.get("src/com/roleplay/resources/maps/map.txt"));
-                case 1 -> Files.readAllLines(Paths.get("src/com/roleplay/resources/maps/map1.txt"));
-                case 2 -> Files.readAllLines(Paths.get("src/com/roleplay/resources/maps/map2.txt"));
-                default -> throw new IllegalStateException("Unexpected value: " + random.nextInt(1));
-            };
+            List<String> lines = Files.readAllLines(Paths.get(path));
+            GameMap gameMap = new GameMap(lines.get(0).length(), lines.size());
 
-
-            for (int i = 0; i < rows; i++) {
+            for (int i = 0; i < gameMap.getHeight(); i++) {
                 String text = lines.get(i);
 
-                for (int j = 0; j < columns; j++) {
+                for (int j = 0; j < gameMap.getWidth(); j++) {
                     Tile<MapElementProperties> tile;
                     MapElementProperties tileProperties;
 
                     switch (Character.getNumericValue(text.charAt(j))) {
                         case 0 -> {
-                            tileProperties = new MapElementProperties("gras", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/background.png"));
+                            tileProperties = new MapElementProperties("gras", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/background.png"));
                             tile = new Tile<>(tileProperties);
                         }
                         case 1 -> {
@@ -49,42 +37,36 @@ public class MapCreator {
                             tile = new Tile<>(tileProperties);
                         }
                         case 2 -> {
-                            tileProperties = new MapElementProperties("water", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/water.png"));
+                            tileProperties = new MapElementProperties("water", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/water.png"));
                             tile = new Tile<>(tileProperties);
-
                         }
-                        case 3 -> tile = new Door(1, new MapElementProperties("door", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/door.png")));
-                        case 4 -> tile = new Door(1, new MapElementProperties("doorRotated", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
+                        case 3 -> tile = new Door(1, new MapElementProperties("door", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/door.png")));
+                        case 4 -> tile = new Door(1, new MapElementProperties("doorRotated", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
                         case 5 -> {
-                            tileProperties = new MapElementProperties("wall", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/wall.png"));
+                            tileProperties = new MapElementProperties("wall", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/wall.png"));
                             tile = new Tile<>(tileProperties);
                         }
                         default -> throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
                     }
 
-                    map[i][j] = tile;
+                    gameMap.getMapElements()[i][j] = tile;
                 }
             }
-        } catch (IOException | IllegalStateException ex) {
-            ex.printStackTrace();
-        }
 
-        for (int i = 0; i < map[0].length; i++) {
-            for (int j = 0; j < map.length; j++) {
-                final BufferedImage tile = map[j][i].getProperties().getTexture();
-
-                if (tile == null) continue;
-
-                for (int x = 0; x < tile.getWidth(); x++) {
-                    for (int y = 0; y < tile.getHeight(); y++) {
-                        img.setRGB(x + i * tileSize, y + j * tileSize, tile.getRGB(x, y));
-                    }
-                }
-            }
+            return gameMap;
+        } catch (IOException e) {
+            return null;
         }
     }
 
-    public static Tile<?>[][] getMap() {
-        return map;
+    public static GameMap loadRandomMap() {
+        Random random = new Random();
+        String[] maps = new String[] {
+            "map.txt",
+            "map1.txt",
+            "map2.txt",
+        };
+
+        return loadMap("src/com/roleplay/resources/maps/" + maps[random.nextInt(1)]); // TODO: Random load
     }
 }

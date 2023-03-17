@@ -1,6 +1,7 @@
 package com.roleplay.characters;
 
 import com.roleplay.gui.GameBoard;
+import com.roleplay.map.GameMap;
 import com.roleplay.map.Tile;
 import com.roleplay.items.Item;
 import com.roleplay.items.armors.Armor;
@@ -44,8 +45,8 @@ public abstract class Character extends Tile<CharacterProperties> {
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
                 getProperties().getTexture(),
-                getProperties().getPosition().x * GameBoard.tileSize,
-                getProperties().getPosition().y * GameBoard.tileSize,
+                getProperties().getPosition().x * GameMap.TILE_SIZE,
+                getProperties().getPosition().y * GameMap.TILE_SIZE,
                 observer
         );
     }

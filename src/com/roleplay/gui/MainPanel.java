@@ -37,7 +37,7 @@ public class MainPanel {
         });
 
         btn_start.addActionListener(e -> {
-            if (MainFrame.getCharacterList().size() >= 4) {
+            if (MainFrame.getCharacterList().size() >= 3) {
                 mainFrame.setVisible(false);
                 new GameFrame(MainFrame.getCharacterList());
             }

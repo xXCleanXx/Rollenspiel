@@ -2,6 +2,7 @@ package com.roleplay.gui;
 
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
+import com.roleplay.map.GameMap;
 import com.roleplay.map.Tile;
 import com.roleplay.map.MapCreator;
 import com.roleplay.characters.Character;
@@ -20,27 +21,14 @@ import java.util.Random;
 
 
 public class GameBoard extends JPanel implements ActionListener {
-
-    public static final int tileSize = 32;
-    private final int columns = 40;
-    private final int rows = 25;
-
-    private BufferedImage img;
-
-    private List<Artefact> artefacts;
-
-    private List<Character> players;
-
-    private Tile[][] map;
+    private final GameMap gameMap;
+    private final List<Artefact> artefacts;
+    private final List<Character> players;
 
     public GameBoard(ArrayList<Character> players) {
-        setPreferredSize(new Dimension(tileSize * columns, tileSize * rows));
-
         this.players = players;
-
-        img = new BufferedImage(tileSize * columns, tileSize * rows, BufferedImage.TYPE_INT_ARGB);   // here you should create a compatible BufferedImage
-        new MapCreator(img, rows, columns, tileSize);
-        map = MapCreator.getMap();
+        gameMap = MapCreator.loadRandomMap();
+        setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 
         artefacts = populateArtefacts();
 
@@ -57,13 +45,13 @@ public class GameBoard extends JPanel implements ActionListener {
         int artefactX;
         int artefactY;
 
-        for (int i = 0; i < rand.nextInt((columns * rows)/4*players.size()); i++) {
+        for (int i = 0; i < rand.nextInt((gameMap.getWidth() * gameMap.getHeight())/4*players.size()); i++) {
             do {
-                artefactX = rand.nextInt(columns);
-                artefactY = rand.nextInt(rows);
+                artefactX = rand.nextInt(gameMap.getWidth());
+                artefactY = rand.nextInt(gameMap.getHeight());
 
                 position = new Point(artefactX, artefactY);
-            } while (!map[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
+            } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
 
             Artefact item = switch (rand.nextInt(4)) {
                 case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet.png")), new HealEffect(3));
@@ -83,7 +71,7 @@ public class GameBoard extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(img, 0, 0, null);
+        g.drawImage(gameMap.getMap(), 0, 0, null);
 
         for (Artefact artefact : artefacts) {
             artefact.draw(g, this);
@@ -100,7 +88,7 @@ public class GameBoard extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         for(Character c : players){
-            c.tick(columns,rows);
+            c.tick(gameMap.getWidth(), gameMap.getHeight());
         }
 
         repaint();
