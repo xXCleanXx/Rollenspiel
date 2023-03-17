@@ -92,12 +92,14 @@ public class CharacterProperties extends MapElementProperties {
         return this.xp;
     }
 
-    public void setXp(int xp) {
+    private void setXp(int xp) {
         this.xp = xp;
     }
 
     public void addXp(int xp) {
-        this.xp += xp;
+        if (xp < 0) throw new IllegalArgumentException("XP cannot be less than 0!");
+
+        setXp(getXp() + xp);
     }
 
     public int getLevel() {
@@ -106,6 +108,11 @@ public class CharacterProperties extends MapElementProperties {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public void levelUp() {
+        setXp(0);
+        setLevel(getLevel() + 1);
     }
 
     public void addEffect(Effect effect) {

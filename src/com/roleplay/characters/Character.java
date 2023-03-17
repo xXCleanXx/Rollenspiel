@@ -1,13 +1,9 @@
 package com.roleplay.characters;
 
-import com.roleplay.gui.GameBoard;
 import com.roleplay.map.GameMap;
 import com.roleplay.map.Tile;
-import com.roleplay.items.Item;
 import com.roleplay.items.armors.Armor;
 import com.roleplay.items.armors.Shield;
-import com.roleplay.items.artefacts.Artefact;
-import com.roleplay.items.weapons.Weapon;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
@@ -23,23 +19,6 @@ public abstract class Character extends Tile<CharacterProperties> {
         double shieldDefence = this.getProperties().getInventory().getSecondHand() instanceof Shield shield ? shield.getStrength() : 0;
 
         return armorDefence + shieldDefence;
-    }
-
-    public void levelUp() {
-        getProperties().setXp(0);
-        getProperties().setLevel(getProperties().getLevel());
-    }
-
-    protected void use(Item item) {
-        if (item instanceof Armor) {
-            getProperties().getInventory().setArmor((Armor) item);
-            //TODO
-        } else if (item instanceof Weapon) {
-            getProperties().getInventory().setFirstHand(item);
-            //TODO
-        } else if (item instanceof Artefact) {
-
-        }
     }
 
     public void draw(Graphics g, ImageObserver observer) {

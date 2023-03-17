@@ -7,7 +7,9 @@ public class Tile<T extends TileProperties> {
         setProperties(properties);
     }
 
-    public void setProperties(T properties) {
+    protected void setProperties(T properties) {
+        if (properties == null) throw new IllegalArgumentException("Properties cannot be null!");
+
         this.properties = properties;
     }
 
