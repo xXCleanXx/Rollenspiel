@@ -37,32 +37,41 @@
               <toolTipText value="Player Image"/>
             </properties>
           </component>
-          <component id="10103" class="javax.swing.JLabel" binding="lbl_armor">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
-              <opaque value="false"/>
-              <text value=""/>
-            </properties>
-          </component>
           <component id="abde9" class="javax.swing.JLabel" binding="lbl_shield">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="4bc87" class="javax.swing.JLabel" binding="lbl_wepons">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
+              <opaque value="false"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="10103" class="javax.swing.JLabel" binding="lbl_armor">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
+            </constraints>
+            <properties>
               <opaque value="false"/>
               <text value=""/>
             </properties>
@@ -84,97 +93,129 @@
         <children>
           <component id="9b487" class="javax.swing.JLabel" binding="lbl_00">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
+              <name value=""/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="cf7a8" class="javax.swing.JLabel" binding="lbl_01">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="e981c" class="javax.swing.JLabel" binding="lbl_02">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="2a80d" class="javax.swing.JLabel" binding="lbl_03">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="7a400" class="javax.swing.JLabel" binding="lbl_10">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="c7640" class="javax.swing.JLabel" binding="lbl_13">
             <constraints>
-              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="711d3" class="javax.swing.JLabel" binding="lbl_04">
             <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="49bc3" class="javax.swing.JLabel" binding="lbl_12">
             <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="54826" class="javax.swing.JLabel" binding="lbl_14">
             <constraints>
-              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
           </component>
           <component id="b21ac" class="javax.swing.JLabel" binding="lbl_20">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
               <icon value="com/roleplay/resources/images/amulet.png"/>
@@ -184,7 +225,11 @@
           </component>
           <component id="dc199" class="javax.swing.JLabel" binding="lbl_21">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
               <icon value="com/roleplay/resources/images/amulet.png"/>
@@ -194,7 +239,11 @@
           </component>
           <component id="73d2f" class="javax.swing.JLabel" binding="lbl_22">
             <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
               <icon value="com/roleplay/resources/images/amulet.png"/>
@@ -204,7 +253,11 @@
           </component>
           <component id="110" class="javax.swing.JLabel" binding="lbl_23">
             <constraints>
-              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
               <icon value="com/roleplay/resources/images/amulet.png"/>
@@ -214,7 +267,11 @@
           </component>
           <component id="51cf2" class="javax.swing.JLabel" binding="lbl_24">
             <constraints>
-              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
               <icon value="com/roleplay/resources/images/amulet.png"/>
@@ -224,10 +281,13 @@
           </component>
           <component id="514aa" class="javax.swing.JLabel" binding="lbl_11">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="32" height="32"/>
+                <preferred-size width="32" height="32"/>
+                <maximum-size width="32" height="32"/>
+              </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
