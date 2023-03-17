@@ -1,18 +1,20 @@
 package com.roleplay.gui;
 
+import com.roleplay.characters.Character;
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
-import com.roleplay.map.Tile;
-import com.roleplay.map.MapCreator;
-import com.roleplay.characters.Character;
-import com.roleplay.items.artefacts.*;
 import com.roleplay.items.ItemProperties;
+import com.roleplay.items.artefacts.*;
+import com.roleplay.map.MapCreator;
+import com.roleplay.map.Tile;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +35,12 @@ public class GameBoard extends JPanel implements ActionListener {
 
     private Tile[][] map;
 
+    InventoryPanel inventoryPanel = new InventoryPanel();
+
+
     public GameBoard(ArrayList<Character> players) {
         setPreferredSize(new Dimension(tileSize * columns, tileSize * rows));
+        setLayout(new OverlayLayout(this));
 
         this.players = players;
 
@@ -44,9 +50,10 @@ public class GameBoard extends JPanel implements ActionListener {
 
         artefacts = populateArtefacts();
 
-
         Timer timer = new Timer(25, this);
         timer.start();
+
+        add(inventoryPanel);
 
     }
 
@@ -57,7 +64,7 @@ public class GameBoard extends JPanel implements ActionListener {
         int artefactX;
         int artefactY;
 
-        for (int i = 0; i < rand.nextInt((columns * rows)/4*players.size()); i++) {
+        for (int i = 0; i < rand.nextInt((columns * rows) / 4 * players.size()); i++) {
             do {
                 artefactX = rand.nextInt(columns);
                 artefactY = rand.nextInt(rows);
@@ -66,10 +73,14 @@ public class GameBoard extends JPanel implements ActionListener {
             } while (!map[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
 
             Artefact item = switch (rand.nextInt(4)) {
-                case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet.png")), new HealEffect(3));
-                case 1 -> new Cape(new ItemProperties("cape", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/cape.png")),new InvisibleEffect(3));
-                case 2 -> new Potion(new ItemProperties("potion", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/potion.png")),new HealEffect(3));
-                case 3 -> new Ring(new ItemProperties("ring", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/ring.png")),new HealEffect(3));
+                case 0 ->
+                        new Amulet(new ItemProperties("amulet", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet.png")), new HealEffect(3));
+                case 1 ->
+                        new Cape(new ItemProperties("cape", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/cape.png")), new InvisibleEffect(3));
+                case 2 ->
+                        new Potion(new ItemProperties("potion", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/potion.png")), new HealEffect(3));
+                case 3 ->
+                        new Ring(new ItemProperties("ring", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/ring.png")), new HealEffect(3));
                 default -> null;
             };
 
@@ -99,10 +110,18 @@ public class GameBoard extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        for(Character c : players){
-            c.tick(columns,rows);
+        for (Character c : players) {
+            c.tick(columns, rows);
         }
-
         repaint();
     }
+
+    public void setVisible(){
+        if (inventoryPanel.isVisible()) {
+            inventoryPanel.setVisible(false);
+        } else {
+            inventoryPanel.setVisible(true);
+        }
+    }
+
 }

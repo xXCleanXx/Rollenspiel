@@ -4,43 +4,45 @@ import com.roleplay.characters.Character;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
-    public GameFrame(ArrayList<Character> player){
+
+    public GameFrame(ArrayList<Character> player) {
         super();
         initialize(player);
     }
-        private void initialize(ArrayList<Character> player){
-            setTitle("Nerds vs Monsters");
 
-            JMenuBar controlBar = new JMenuBar();
-            controlBar.add(new JMenu("Settings"));
-            setJMenuBar(controlBar);
+    private void initialize(ArrayList<Character> player) {
+        setTitle("Nerds vs Monsters");
 
-            GameBoard board = new GameBoard(player);
-            add(board, BorderLayout.CENTER);
+        JMenuBar controlBar = new JMenuBar();
+        controlBar.add(new JMenu("Settings"));
+        setJMenuBar(controlBar);
 
-            InGamePlayersPanel players = new InGamePlayersPanel(player);
-            add(players, BorderLayout.WEST);
-            revalidate();
-            repaint();
+        GameBoard board = new GameBoard(player);
+        add(board, BorderLayout.CENTER);
 
-            setResizable(false);
-            pack();
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                board.setVisible();
+            }
+        });
 
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setLocationRelativeTo(null);
-            setVisible(true);
-        }
+        InGamePlayersPanel players = new InGamePlayersPanel(player);
+        add(players, BorderLayout.WEST);
+        revalidate();
+        repaint();
 
+        setResizable(false);
+        pack();
 
-   /* public static void main(String args[]){
-       SwingUtilities.invokeLater(new Runnable() {
-           @Override
-           public void run() {
-               new GameFrame();
-           }
-       });
-    }*/
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
 }
