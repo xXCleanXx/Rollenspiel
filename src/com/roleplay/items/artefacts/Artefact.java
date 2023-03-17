@@ -5,6 +5,7 @@ import com.roleplay.gui.GameBoard;
 import com.roleplay.characters.Character;
 import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
+import com.roleplay.map.GameMap;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
@@ -22,8 +23,8 @@ public abstract class Artefact extends Item {
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
                 getProperties().getTexture(),
-                getProperties().getPosition().x * GameBoard.tileSize,
-                getProperties().getPosition().y * GameBoard.tileSize,
+                getProperties().getPosition().x * GameMap.TILE_SIZE,
+                getProperties().getPosition().y * GameMap.TILE_SIZE,
                 observer
         );
     }

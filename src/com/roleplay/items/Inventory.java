@@ -4,6 +4,7 @@ import com.roleplay.items.armors.Armor;
 import com.roleplay.tools.ImageUtils;
 
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 public class Inventory {
     public final int SLOT_SIZE = 48;
@@ -26,6 +27,20 @@ public class Inventory {
         }
 
         return items[index];
+    }
+
+    public int add(Item item) {
+        if (item == null) throw new IllegalArgumentException("Item cannot be null!");
+
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == null) {
+                items[i] = item;
+
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public void add(int index, Item item) {
@@ -91,17 +106,17 @@ public class Inventory {
         return oldItem;
     }
 
-    public BufferedImage drawInventory() {
-        int height = this.items.length / 6;
+    public BufferedImage drawInventory(int width, int height) {
+        int rows = this.items.length / 6;
 
-        BufferedImage img = new BufferedImage(SLOT_SIZE * 6, SLOT_SIZE * height, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage img = new BufferedImage(width * 6, height * rows, BufferedImage.TYPE_INT_ARGB);
         BufferedImage slotImg = ImageUtils.loadImage("src/com/roleplay/resources/slot.png");
 
-        for (int i = 0; i < img.getHeight(); i++) {
-            for (int j = 0; j < img.getWidth(); j++) {
-                for (int k = 0; k < SLOT_SIZE; k++) {
-                    for (int l = 0; l < SLOT_SIZE; l++) {
-                        img.setRGB(i, j, slotImg.getRGB(k, l));
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                for (int x = 0; x < SLOT_SIZE; x++) {
+                    for (int y = 0; y < SLOT_SIZE; y++) {
+                        img.setRGB(i + x * SLOT_SIZE, j + y * SLOT_SIZE, Objects.requireNonNull(slotImg).getRGB(x, y));
                     }
                 }
             }
