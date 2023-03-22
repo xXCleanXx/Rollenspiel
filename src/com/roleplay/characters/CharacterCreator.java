@@ -2,6 +2,13 @@ package com.roleplay.characters;
 
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.characters.enums.Races;
+import com.roleplay.effects.HealEffect;
+import com.roleplay.items.Inventory;
+import com.roleplay.items.ItemProperties;
+import com.roleplay.items.artefacts.Amulet;
+import com.roleplay.tools.ImageUtils;
+
+import java.awt.*;
 
 public class CharacterCreator {
     public CharacterCreator(Character character, Races race, String name) {
@@ -11,6 +18,8 @@ public class CharacterCreator {
         characterProperties.setRace(race);
 
         characterProperties.setAbilities(new Abilities());
+        characterProperties.setInventory(new Inventory(15));
+        characterProperties.getInventory().add(new Amulet(new ItemProperties("amulet", new Point(new Point(2, 2)), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet_32x32.png")), new HealEffect(3)));
 
         if (character.getClass() == Warrior.class) {
             abilitiesModifier(characterProperties, 10);

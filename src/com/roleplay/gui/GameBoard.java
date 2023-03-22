@@ -58,10 +58,10 @@ public class GameBoard extends JPanel implements ActionListener {
             } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
 
             Artefact item = switch (rand.nextInt(4)) {
-                case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet.png")), new HealEffect(3));
-                case 1 -> new Cape(new ItemProperties("cape", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/cape.png")),new InvisibleEffect(3));
-                case 2 -> new Potion(new ItemProperties("potion", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/potion.png")),new HealEffect(3));
-                case 3 -> new Ring(new ItemProperties("ring", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/ring.png")),new HealEffect(3));
+                case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet_32x32.png")), new HealEffect(3));
+                case 1 -> new Cape(new ItemProperties("cape", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/cape_32x32.png")),new InvisibleEffect(3));
+                case 2 -> new Potion(new ItemProperties("potion", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/potion_32x32.png")),new HealEffect(3));
+                case 3 -> new Ring(new ItemProperties("ring", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/ring_32x32.png")),new HealEffect(3));
                 default -> null;
             };
 
@@ -106,6 +106,7 @@ public class GameBoard extends JPanel implements ActionListener {
             inventoryPanel.setVisible(false);
         } else {
             inventoryPanel.setVisible(true);
+            inventoryPanel.initialize();
         }
     }
 

@@ -1,14 +1,14 @@
 package com.roleplay.characters;
 
-import com.roleplay.effects.Effect;
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.characters.enums.Races;
+import com.roleplay.effects.Effect;
 import com.roleplay.items.Inventory;
 import com.roleplay.map.GameMapElementProperties;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterProperties extends GameMapElementProperties {
@@ -32,11 +32,10 @@ public class CharacterProperties extends GameMapElementProperties {
         return inventory;
     }
 
-    private void setInventory(Inventory inventory) {
+    public void setInventory(Inventory inventory) {
         if (inventory == null) {
             throw new IllegalArgumentException("Inventory cannot be null!");
         }
-
         this.inventory = inventory;
     }
 
@@ -44,7 +43,7 @@ public class CharacterProperties extends GameMapElementProperties {
         return race;
     }
 
-    public void setRace(Races race){
+    public void setRace(Races race) {
         this.race = race;
     }
 
@@ -81,6 +80,7 @@ public class CharacterProperties extends GameMapElementProperties {
     public void setAbilities(Abilities abilities) {
         this.abilities = abilities;
     }
+
     public double getHealthPoints() {
         return healthPoints;
     }
@@ -126,11 +126,11 @@ public class CharacterProperties extends GameMapElementProperties {
         return effects.toArray(new Effect[0]);
     }
 
-    public boolean isMyTurn(){
+    public boolean isMyTurn() {
         return this.myTurn;
     }
 
-    public void setMyTurn(boolean myTurn){
+    public void setMyTurn(boolean myTurn) {
         this.myTurn = myTurn;
     }
 }

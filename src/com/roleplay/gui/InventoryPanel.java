@@ -1,13 +1,16 @@
 package com.roleplay.gui;
 
+import com.roleplay.characters.Character;
+import com.roleplay.items.Inventory;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.dnd.DropTarget;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class InventoryPanel extends JPanel {
     private JPanel inventoryPanel;
@@ -31,12 +34,16 @@ public class InventoryPanel extends JPanel {
     private JLabel lbl_23;
     private JLabel lbl_24;
 
+    private Inventory inventory;
+
+    private final ArrayList<JLabel> labelList = new ArrayList<>();
+
+    private final MouseListener listener = new DragMouseAdapter();
+
     public InventoryPanel() {
         setOpaque(false);
         setVisible(false);
         add(inventoryPanel);
-
-        MouseListener listener = new DragMouseAdapter();
 
         lbl_armor.addMouseListener(listener);
         lbl_armor.setTransferHandler(new TransferHandler("icon"));
@@ -47,61 +54,94 @@ public class InventoryPanel extends JPanel {
         lbl_shield.addMouseListener(listener);
         lbl_shield.setTransferHandler(new TransferHandler("icon"));
 
-        lbl_00.addMouseListener(listener);
-        lbl_00.setTransferHandler(new TransferHandler("icon"));
+        labelList.add(lbl_00);
+        labelList.add(lbl_01);
+        labelList.add(lbl_02);
+        labelList.add(lbl_03);
+        labelList.add(lbl_04);
+        labelList.add(lbl_10);
+        labelList.add(lbl_11);
+        labelList.add(lbl_12);
+        labelList.add(lbl_13);
+        labelList.add(lbl_14);
+        labelList.add(lbl_20);
+        labelList.add(lbl_21);
+        labelList.add(lbl_22);
+        labelList.add(lbl_23);
+        labelList.add(lbl_24);
 
-        lbl_01.addMouseListener(listener);
-        lbl_01.setTransferHandler(new TransferHandler("icon"));
+        setListenerTransferHAndler();
 
-        lbl_02.addMouseListener(listener);
-        lbl_02.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_03.addMouseListener(listener);
-        lbl_03.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_04.addMouseListener(listener);
-        lbl_04.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_10.addMouseListener(listener);
-        lbl_10.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_11.addMouseListener(listener);
-        lbl_11.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_12.addMouseListener(listener);
-        lbl_12.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_13.addMouseListener(listener);
-        lbl_13.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_14.addMouseListener(listener);
-        lbl_14.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_20.addMouseListener(listener);
-        lbl_20.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_21.addMouseListener(listener);
-        lbl_21.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_22.addMouseListener(listener);
-        lbl_22.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_23.addMouseListener(listener);
-        lbl_23.setTransferHandler(new TransferHandler("icon"));
-
-        lbl_24.addMouseListener(listener);
-        lbl_24.setTransferHandler(new TransferHandler("icon"));
     }
 
     private class DragMouseAdapter extends MouseAdapter {
         public void mousePressed(MouseEvent e) {
+            System.out.println("1: ");
+            System.out.println(e);
             JComponent c = (JComponent) e.getSource();
+            System.out.println(c);
             TransferHandler handler = c.getTransferHandler();
-            handler.exportAsDrag(c, e, TransferHandler.COPY);
-            ((JLabel)c).setIcon(null);
+            handler.exportAsDrag(c, e, TransferHandler.MOVE);
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            System.out.println("2: ");
+            System.out.println(e);
+            JComponent c = (JComponent) e.getSource();
+            System.out.println(c);
+        }
+
+    }
+
+    public void initialize() {
+        for (Character character : MainFrame.getCharacterList()) {
+            if (character.getProperties().isMyTurn()) {
+                inventory = character.getProperties().getInventory();
+                break;
+            }
+        }
+        try {
+            setIcon(lbl_armor, inventory.getArmor().getProperties().getName());
+        } catch (Exception ignored) {
+
+        }
+        try {
+            setIcon(lbl_wepons, inventory.getFirstHand().getProperties().getName());
+        } catch (Exception ignored) {
+
+        }
+        try {
+            setIcon(lbl_shield, inventory.getSecondHand().getProperties().getName());
+        } catch (Exception ignored) {
+
+        }
+        setLblIcons();
+    }
+
+    private void setIcon(JLabel label, String name) {
+        if (!name.isEmpty()) {
+            label.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/items/" + name + "_32x32.png"))));
         }
     }
 
+    private void setListenerTransferHAndler() {
+        for (JLabel label : labelList) {
+            label.addMouseListener(listener);
+            label.setTransferHandler(new TransferHandler("icon"));
+        }
+    }
+
+    private void setLblIcons() {
+        int counterInventory = 0;
+        for (JLabel label : labelList) {
+            try {
+                setIcon(label, inventory.get(counterInventory).getProperties().getName());
+            } catch (Exception ignored) {
+            }
+            counterInventory++;
+        }
+    }
 
     private void createUIComponents() {
         inventoryPanel = new JPanel() {

@@ -27,7 +27,9 @@ public class GameFrame extends JFrame {
 
         board = new GameBoard(player);
         add(board, BorderLayout.CENTER);
-        addKeyBindings(board);
+        //addKeyBindings(board);
+
+        player.get(0).getProperties().setMyTurn(true);
 
         this.addKeyListener(new KeyAdapter() {
             @Override
@@ -39,8 +41,8 @@ public class GameFrame extends JFrame {
 
         InGamePlayersPanel players = new InGamePlayersPanel(player);
         add(players, BorderLayout.WEST);
-        ControlPanel gameControl = new ControlPanel();
-        add(gameControl, BorderLayout.EAST);
+        //ControlPanel gameControl = new ControlPanel();
+        //add(gameControl, BorderLayout.EAST);
         revalidate();
         repaint();
 
@@ -83,4 +85,6 @@ public class GameFrame extends JFrame {
             }
         });
     }
+
+
 }

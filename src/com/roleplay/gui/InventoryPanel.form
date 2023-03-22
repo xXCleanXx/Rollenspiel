@@ -219,6 +219,7 @@
             </constraints>
             <properties>
               <icon value="com/roleplay/resources/images/amulet.png"/>
+              <name value="ring"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
@@ -233,6 +234,7 @@
             </constraints>
             <properties>
               <icon value="com/roleplay/resources/images/amulet.png"/>
+              <name value="potion"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
