@@ -61,7 +61,7 @@ public class GameMap {
 
         for (int i = 0; i < getHeight(); i++) {
             for (int j = 0; j < getWidth(); j++) {
-                final BufferedImage tile = getMapElements()[i][j].getProperties().getTexture();
+                final BufferedImage tile = getMapElements()[i][j].getProperties().getTexture32();
 
                 if (tile == null) continue;
 

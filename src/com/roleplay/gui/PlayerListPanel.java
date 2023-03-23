@@ -2,7 +2,6 @@ package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
 import com.roleplay.tools.ImageUtils;
-import com.roleplay.interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +54,7 @@ public class PlayerListPanel extends JPanel {
             this.health = new JLabel(String.valueOf(c.getProperties().getHealthPoints()));
             this.health.setForeground(Color.GREEN);
 
-            texture = new JLabel(new ImageIcon(c.getProperties().getTexture()));
+            texture = new JLabel(new ImageIcon(c.getProperties().getTexture32()));
             displayName.setForeground(new Color(240, 240, 240));
 
             info.setOpaque(false);

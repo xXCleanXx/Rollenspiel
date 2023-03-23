@@ -36,7 +36,7 @@ public class CharacterPanel {
 
     CharacterPanel(JPanel contentPane, MainFrame mainFrame) {
 
-        this.character = new Warrior(new CharacterProperties(new Point(0, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+        this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
 
         subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
 
@@ -87,21 +87,21 @@ public class CharacterPanel {
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter_enable.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
-            this.character = new Warrior(new CharacterProperties(new Point(0, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+            this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
         });
         btn_wizard.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard_enable.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
-            this.character = new Wizard(new CharacterProperties(new Point(0, 1), ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+            this.character = new Wizard(new CharacterProperties(new Point(0, 1)));
         });
         btn_thief.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_300x300.png"))));
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief_enable.png"))));
-            this.character = new Thief(new CharacterProperties(new Point(1, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+            this.character = new Thief(new CharacterProperties(new Point(1, 0)));
         });
 
         nextFinish.addActionListener(e -> {
@@ -132,11 +132,11 @@ public class CharacterPanel {
                 mainFrame.addCharactertoList(this.character);
                 playerName.setText("");
                 if (this.character.getClass() == Warrior.class) {
-                    this.character = new Warrior(new CharacterProperties(new Point(0, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter1_32x32.png")));
+                    this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
                 } else if (this.character.getClass() == Wizard.class) {
-                    this.character = new Wizard(new CharacterProperties(new Point(0, 1), ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_32x32.png")));
+                    this.character = new Wizard(new CharacterProperties(new Point(0, 1)));
                 } else {
-                    this.character = new Thief(new CharacterProperties(new Point(1, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png")));
+                    this.character = new Thief(new CharacterProperties(new Point(1, 0)));
                 }
             }
             if (mainFrame.getPlayer() == player - 1) {

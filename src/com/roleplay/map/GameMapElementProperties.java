@@ -13,8 +13,8 @@ public class GameMapElementProperties extends TileProperties {
         hitbox = new HitBox(32,32);
     }
 
-    public GameMapElementProperties(Point position, BufferedImage texture){
-        super(position, texture);
+    public GameMapElementProperties(Point position){
+        super(position);
         hitbox = new HitBox(32,32);
 
     }

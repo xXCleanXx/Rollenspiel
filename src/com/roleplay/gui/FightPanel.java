@@ -2,7 +2,6 @@ package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
 import com.roleplay.items.weapons.Weapon;
-import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.util.Objects;
@@ -20,11 +19,11 @@ public class FightPanel {
     public FightPanel(Character fighter, Character opponent) {
         lbl_name1.setText(fighter.getProperties().getDisplayName());
         lbl_health1.setText("" + fighter.getProperties().getHealthPoints());
-        lbl_texture1.setIcon(new ImageIcon(fighter.getProperties().getTexture()));
+        lbl_texture1.setIcon(new ImageIcon(fighter.getProperties().getTexture300()));
 
         lbl_name2.setText(opponent.getProperties().getDisplayName());
         lbl_health2.setText("" + opponent.getProperties().getHealthPoints());
-        lbl_texture2.setIcon(new ImageIcon(opponent.getProperties().getTexture()));
+        lbl_texture2.setIcon(new ImageIcon(opponent.getProperties().getTexture300()));
 
         lbl_info.setText(fighter.getProperties().getDisplayName() + " greift " + opponent.getProperties().getDisplayName() + " an.");
         attack(fighter, opponent);

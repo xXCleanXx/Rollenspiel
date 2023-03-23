@@ -24,8 +24,8 @@ public class CharacterProperties extends GameMapElementProperties {
     private int xp;
     private boolean myTurn = false;
 
-    public CharacterProperties(Point position, BufferedImage texture) {
-        super(position, texture);
+    public CharacterProperties(Point position) {
+        super(position);
     }
 
     public Inventory getInventory() {

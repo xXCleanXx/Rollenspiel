@@ -13,7 +13,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class InventoryPanel extends JPanel {
     private JPanel inventoryPanel;
@@ -80,35 +79,36 @@ public class InventoryPanel extends JPanel {
             System.out.println("Test " + c);
             if (c == lbl_armor) {
                 final int i = inventory.add(inventory.getArmor());
-                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture32()));
                 lbl_armor.setIcon(null);
                 inventory.setArmor(null);
             } else if (c == lbl_wepons) {
                 final int i = inventory.add(inventory.getFirstHand());
-                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture32()));
                 lbl_wepons.setIcon(null);
                 inventory.setFirstHand(null);
             } else if (c == lbl_shield) {
                 final int i = inventory.add(inventory.getSecondHand());
-                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture32()));
                 lbl_shield.setIcon(null);
                 inventory.setSecondHand(null);
             } else {
                 int index = labelList.indexOf(c);
+                //Wenn inventory null wirft NPE, wird nicht behandelt.
                 var item = inventory.get(index);
                 if (item instanceof Shield) {
                     inventory.setSecondHand(item);
-                    lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture()));
+                    lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
                     inventory.remove(index);
                     c.setIcon(null);
                 } else if (item instanceof Weapon) {
                     inventory.setFirstHand(item);
-                    lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture()));
+                    lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture32()));
                     inventory.remove(index);
                     c.setIcon(null);
                 } else if (item instanceof Armor) {
                     inventory.setArmor((Armor) item);
-                    lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture()));
+                    lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
                     inventory.remove(index);
                     c.setIcon(null);
                 }
@@ -120,19 +120,20 @@ public class InventoryPanel extends JPanel {
         for (Character character : MainFrame.getCharacterList()) {
             if (character.getProperties().isMyTurn()) {
                 inventory = character.getProperties().getInventory();
+                charcterPicture.setIcon(new ImageIcon(character.getProperties().getTexture100()));
                 break;
             }
         }
         try {
-            lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture()));
+            lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
         } catch (Exception ignored) {
         }
         try {
-            lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture()));
+            lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture32()));
         } catch (Exception ignored) {
         }
         try {
-            lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture()));
+            lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
         } catch (Exception ignored) {
         }
         setLblIcons();
@@ -147,7 +148,7 @@ public class InventoryPanel extends JPanel {
     private void setLblIcons() {
         for (int i = 0; i < labelList.size(); i++) {
             try {
-                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture32()));
             } catch (Exception ignored) {
                 break;
             }
