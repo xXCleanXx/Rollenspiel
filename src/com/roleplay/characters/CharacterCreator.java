@@ -30,7 +30,7 @@ public class CharacterCreator {
         }
 
         addAbilities(characterProperties, race);
-        characterProperties.setDirection(Directions.WEST);
+        characterProperties.setDirection(Directions.EAST);
     }
 
     private void abilitiesModifier(CharacterProperties characterProperties, int healthPoints) {

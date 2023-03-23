@@ -1,6 +1,7 @@
 package com.roleplay.Factorys;
 
 import com.roleplay.characters.Character;
+import com.roleplay.characters.enums.Directions;
 import com.roleplay.gui.BoardPanel;
 import com.roleplay.gui.GameFrame;
 import com.roleplay.gui.MainFrame;
@@ -22,6 +23,8 @@ public class KeyFactory {
 
         setKeyActions("inventory", KeyEvent.VK_E);
         setKeyActions("move", KeyEvent.VK_UP);
+        setKeyActions("changeDirectionForwards", KeyEvent.VK_RIGHT);
+        setKeyActions("changeDirectionBackwards", KeyEvent.VK_LEFT);
     }
 
     private void setKeyActions(String keyName, int key) {
@@ -34,16 +37,68 @@ public class KeyFactory {
                         ((BoardPanel) jc).setInventoryVisible();
                 } else if (keyName.equalsIgnoreCase("move")) {
                     for (Character c : MainFrame.getCharacterList()) {
+                        Directions playerDirection = c.getProperties().getDirection();
                         if (c.getProperties().isMyTurn()) {
-
+                                if(playerDirection.equals(Directions.NORTH)){
+                                    if(c.getProperties().getPosition().y > 0) {
+                                        if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y - 1][c.getProperties().getPosition().x].getMapElementProperties().getHitBox().isEnabled()) {
+                                            c.getProperties().getPosition().translate(0, -1);
+                                        }
+                                    }
+                                } else if(playerDirection.equals(Directions.EAST)){
+                                    if(c.getProperties().getPosition().x < 40) {
+                                        if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y][c.getProperties().getPosition().x + 1].getMapElementProperties().getHitBox().isEnabled()) {
+                                            c.getProperties().getPosition().translate(1, 0);
+                                        }
+                                    }
+                                } else if(playerDirection.equals(Directions.SOUTH)){
+                                    if(c.getProperties().getPosition().y < 25 ) {
+                                        if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y + 1][c.getProperties().getPosition().x].getMapElementProperties().getHitBox().isEnabled()) {
+                                            c.getProperties().getPosition().translate(0, 1);
+                                        }
+                                    }
+                                } else if(playerDirection.equals(Directions.WEST)) {
+                                    if(c.getProperties().getPosition().x > 0) {
+                                        if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y][c.getProperties().getPosition().x - 1].getMapElementProperties().getHitBox().isEnabled()) {
+                                            c.getProperties().getPosition().translate(-1, 0);
+                                        }
+                                    }
+                                }
                         }
                     }
-
+                } else if (keyName.equalsIgnoreCase("changeDirectionForwards")) {
+                    for (Character c : MainFrame.getCharacterList()) {
+                        Directions playerDirection = c.getProperties().getDirection();
+                        if (c.getProperties().isMyTurn()) {
+                            if(playerDirection.equals(Directions.NORTH)){
+                                c.getProperties().setDirection(Directions.EAST);
+                            } else if (playerDirection.equals(Directions.EAST)){
+                                c.getProperties().setDirection(Directions.SOUTH);
+                            } else if (playerDirection.equals(Directions.SOUTH)){
+                                c.getProperties().setDirection(Directions.WEST);
+                            } else if (playerDirection.equals(Directions.WEST)){
+                                c.getProperties().setDirection(Directions.NORTH);
+                            }
+                        }
+                    }
+                } else if (keyName.equalsIgnoreCase("changeDirectionBackwards")) {
+                    for (Character c : MainFrame.getCharacterList()) {
+                        Directions playerDirection = c.getProperties().getDirection();
+                        if (c.getProperties().isMyTurn()) {
+                            if(playerDirection.equals(Directions.NORTH)){
+                                c.getProperties().setDirection(Directions.WEST);
+                            } else if (playerDirection.equals(Directions.WEST)){
+                                c.getProperties().setDirection(Directions.SOUTH);
+                            } else if (playerDirection.equals(Directions.SOUTH)){
+                                c.getProperties().setDirection(Directions.EAST);
+                            } else if (playerDirection.equals(Directions.EAST)){
+                                c.getProperties().setDirection(Directions.NORTH);
+                            }
+                        }
+                    }
                 }
-                notifyObservers();
             }
         });
-
     }
 
     private void addObserver(IObserver observer){
