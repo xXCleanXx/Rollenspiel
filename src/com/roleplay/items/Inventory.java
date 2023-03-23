@@ -43,6 +43,14 @@ public class Inventory {
         return -1;
     }
 
+    public int length() {
+        return items.length;
+    }
+
+    public Item getLast() {
+        return items[items.length - 1];
+    }
+
     public void add(int index, Item item) {
         if (index < 0 || index > items.length) {
             throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");

@@ -2,6 +2,9 @@ package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
 import com.roleplay.items.Inventory;
+import com.roleplay.items.armors.Armor;
+import com.roleplay.items.armors.Shield;
+import com.roleplay.items.weapons.Weapon;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
@@ -46,13 +49,8 @@ public class InventoryPanel extends JPanel {
         add(inventoryPanel);
 
         lbl_armor.addMouseListener(listener);
-        lbl_armor.setTransferHandler(new TransferHandler("icon"));
-
         lbl_wepons.addMouseListener(listener);
-        lbl_wepons.setTransferHandler(new TransferHandler("icon"));
-
         lbl_shield.addMouseListener(listener);
-        lbl_shield.setTransferHandler(new TransferHandler("icon"));
 
         labelList.add(lbl_00);
         labelList.add(lbl_01);
@@ -75,23 +73,47 @@ public class InventoryPanel extends JPanel {
     }
 
     private class DragMouseAdapter extends MouseAdapter {
-        public void mousePressed(MouseEvent e) {
-            System.out.println("1: ");
-            System.out.println(e);
-            JComponent c = (JComponent) e.getSource();
-            System.out.println(c);
-            TransferHandler handler = c.getTransferHandler();
-            handler.exportAsDrag(c, e, TransferHandler.MOVE);
-        }
 
         @Override
-        public void mouseReleased(MouseEvent e) {
-            System.out.println("2: ");
-            System.out.println(e);
-            JComponent c = (JComponent) e.getSource();
-            System.out.println(c);
+        public void mouseClicked(MouseEvent e) {
+            JLabel c = (JLabel) e.getSource();
+            System.out.println("Test " + c);
+            if (c == lbl_armor) {
+                final int i = inventory.add(inventory.getArmor());
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
+                lbl_armor.setIcon(null);
+                inventory.setArmor(null);
+            } else if (c == lbl_wepons) {
+                final int i = inventory.add(inventory.getFirstHand());
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
+                lbl_wepons.setIcon(null);
+                inventory.setFirstHand(null);
+            } else if (c == lbl_shield) {
+                final int i = inventory.add(inventory.getSecondHand());
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
+                lbl_shield.setIcon(null);
+                inventory.setSecondHand(null);
+            } else {
+                int index = labelList.indexOf(c);
+                var item = inventory.get(index);
+                if (item instanceof Shield) {
+                    inventory.setSecondHand(item);
+                    lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture()));
+                    inventory.remove(index);
+                    c.setIcon(null);
+                } else if (item instanceof Weapon) {
+                    inventory.setFirstHand(item);
+                    lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture()));
+                    inventory.remove(index);
+                    c.setIcon(null);
+                } else if (item instanceof Armor) {
+                    inventory.setArmor((Armor) item);
+                    lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture()));
+                    inventory.remove(index);
+                    c.setIcon(null);
+                }
+            }
         }
-
     }
 
     public void initialize() {
@@ -102,44 +124,33 @@ public class InventoryPanel extends JPanel {
             }
         }
         try {
-            setIcon(lbl_armor, inventory.getArmor().getProperties().getName());
+            lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture()));
         } catch (Exception ignored) {
-
         }
         try {
-            setIcon(lbl_wepons, inventory.getFirstHand().getProperties().getName());
+            lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture()));
         } catch (Exception ignored) {
-
         }
         try {
-            setIcon(lbl_shield, inventory.getSecondHand().getProperties().getName());
+            lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture()));
         } catch (Exception ignored) {
-
         }
         setLblIcons();
-    }
-
-    private void setIcon(JLabel label, String name) {
-        if (!name.isEmpty()) {
-            label.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/items/" + name + "_32x32.png"))));
-        }
     }
 
     private void setListenerTransferHAndler() {
         for (JLabel label : labelList) {
             label.addMouseListener(listener);
-            label.setTransferHandler(new TransferHandler("icon"));
         }
     }
 
     private void setLblIcons() {
-        int counterInventory = 0;
-        for (JLabel label : labelList) {
+        for (int i = 0; i < labelList.size(); i++) {
             try {
-                setIcon(label, inventory.get(counterInventory).getProperties().getName());
+                labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture()));
             } catch (Exception ignored) {
+                break;
             }
-            counterInventory++;
         }
     }
 

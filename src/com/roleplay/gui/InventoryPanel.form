@@ -72,6 +72,7 @@
               </grid>
             </constraints>
             <properties>
+              <name value="lbl_armor"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
@@ -100,7 +101,7 @@
               </grid>
             </constraints>
             <properties>
-              <name value=""/>
+              <name value="lbl_00"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
@@ -218,7 +219,6 @@
               </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <name value="ring"/>
               <opaque value="false"/>
               <text value=""/>
@@ -233,7 +233,6 @@
               </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <name value="potion"/>
               <opaque value="false"/>
               <text value=""/>
@@ -248,7 +247,6 @@
               </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
@@ -262,7 +260,6 @@
               </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>
@@ -276,7 +273,6 @@
               </grid>
             </constraints>
             <properties>
-              <icon value="com/roleplay/resources/images/amulet.png"/>
               <opaque value="false"/>
               <text value=""/>
             </properties>

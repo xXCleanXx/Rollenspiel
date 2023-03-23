@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
 
-    private GameBoard board;
+    private BoardPanel board;
 
     public GameFrame(ArrayList<Character> player) {
         super();
@@ -25,7 +25,7 @@ public class GameFrame extends JFrame {
         controlBar.add(new JMenu("Settings"));
         setJMenuBar(controlBar);
 
-        board = new GameBoard(player);
+        board = new BoardPanel(player);
         add(board, BorderLayout.CENTER);
         //addKeyBindings(board);
 
@@ -39,7 +39,7 @@ public class GameFrame extends JFrame {
             }
         });
 
-        InGamePlayersPanel players = new InGamePlayersPanel(player);
+        PlayerListPanel players = new PlayerListPanel(player);
         add(players, BorderLayout.WEST);
         //ControlPanel gameControl = new ControlPanel();
         //add(gameControl, BorderLayout.EAST);
