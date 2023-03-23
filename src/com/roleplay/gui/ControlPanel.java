@@ -1,20 +1,19 @@
 package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
-import interfaces.IObserver;
+import com.roleplay.interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ControlPanel extends JPanel implements IObserver {
+public class ControlPanel extends JPanel {
 
-    public static JButton button;
-    private static int value;
-    public static final JLabel showValue = new JLabel();
-
-    public static ArrayList<Character> leftInRound;
+    public JButton button;
+    private int value;
+    public final JLabel showValue = new JLabel();
+    public ArrayList<Character> leftInRound;
 
     public ControlPanel(){
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -34,7 +33,6 @@ public class ControlPanel extends JPanel implements IObserver {
 
         add(showValue);
         add(button);
-
     }
 
     @Override
@@ -44,15 +42,13 @@ public class ControlPanel extends JPanel implements IObserver {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public static int getValue(){
+    public int getValue(){
         return value;
     }
 
-    public static void setValue(int values){
+    public void setValue(int values){
         value = values;
     }
-
-    @Override
     public void update() {
 
     }

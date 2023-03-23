@@ -1,4 +1,4 @@
-package interfaces;
+package com.roleplay.interfaces;
 
 public interface IObserver {
 

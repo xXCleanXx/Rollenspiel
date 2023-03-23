@@ -8,7 +8,7 @@ import com.roleplay.items.artefacts.*;
 import com.roleplay.map.GameMap;
 import com.roleplay.map.GameMapCreator;
 import com.roleplay.tools.ImageUtils;
-import interfaces.IObserver;
+import com.roleplay.interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class BoardPanel extends JPanel implements ActionListener, IObserver {
+public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
     private final List<Artefact> artefacts;
     private final List<Character> players;
@@ -96,7 +96,6 @@ public class BoardPanel extends JPanel implements ActionListener, IObserver {
     public List<Artefact> getArtefacts(){
         return this.artefacts;
     }
-    @Override
     public void update() {
 
     }
@@ -110,7 +109,7 @@ public class BoardPanel extends JPanel implements ActionListener, IObserver {
         repaint();
     }
 
-    public void setVisible(){
+    public void setInventoryVisible(){
         if (inventoryPanel.isVisible()) {
             inventoryPanel.setVisible(false);
         } else {

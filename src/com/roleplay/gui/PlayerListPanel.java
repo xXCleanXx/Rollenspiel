@@ -2,13 +2,13 @@ package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
 import com.roleplay.tools.ImageUtils;
-import interfaces.IObserver;
+import com.roleplay.interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PlayerListPanel extends JPanel implements IObserver {
+public class PlayerListPanel extends JPanel {
 
     public PlayerListPanel(ArrayList<Character> players){
         setLayout(new GridLayout(players.size(),1,15,-80));
@@ -34,7 +34,6 @@ public class PlayerListPanel extends JPanel implements IObserver {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    @Override
     public void update() {
 
     }
