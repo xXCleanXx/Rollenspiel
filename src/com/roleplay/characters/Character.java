@@ -20,7 +20,6 @@ public abstract class Character extends Tile<CharacterProperties> {
 
         return armorDefence + shieldDefence;
     }
-
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
                 getProperties().getTexture(),

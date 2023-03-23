@@ -1,14 +1,14 @@
 package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
+import interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ControlPanel extends JPanel {
+public class ControlPanel extends JPanel implements IObserver {
 
     public static JButton button;
     private static int value;
@@ -18,7 +18,7 @@ public class ControlPanel extends JPanel {
 
     public ControlPanel(){
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        setPreferredSize(new Dimension(190, GameBoard.HEIGHT));
+        setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
         button = new JButton("roll");
         button.addActionListener(e -> {
             Random rand = new Random();
@@ -52,4 +52,8 @@ public class ControlPanel extends JPanel {
         value = values;
     }
 
+    @Override
+    public void update() {
+
+    }
 }

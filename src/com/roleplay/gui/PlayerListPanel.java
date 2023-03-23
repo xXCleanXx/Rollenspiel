@@ -2,16 +2,17 @@ package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
 import com.roleplay.tools.ImageUtils;
+import interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class InGamePlayersPanel extends JPanel {
+public class PlayerListPanel extends JPanel implements IObserver {
 
-    public InGamePlayersPanel(ArrayList<Character> players){
+    public PlayerListPanel(ArrayList<Character> players){
         setLayout(new GridLayout(players.size(),1,15,-80));
-        setPreferredSize(new Dimension(190, GameBoard.HEIGHT));
+        setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
 
         this.setBorder(BorderFactory.createEmptyBorder(60,20,75,20));
 
@@ -31,6 +32,11 @@ public class InGamePlayersPanel extends JPanel {
         super.paintComponent(g);
         g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/playerList.png"),0,0,this);
         Toolkit.getDefaultToolkit().sync();
+    }
+
+    @Override
+    public void update() {
+
     }
 
     private static class PlayerPanel extends JPanel{

@@ -1,7 +1,6 @@
 package com.roleplay.items.artefacts;
 
 import com.roleplay.effects.Effect;
-import com.roleplay.gui.GameBoard;
 import com.roleplay.characters.Character;
 import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
