@@ -1,6 +1,6 @@
 package com.roleplay.gui;
 
-import com.roleplay.Factorys.KeyFactory;
+import com.roleplay.Factories.KeyFactory;
 import com.roleplay.characters.Character;
 import com.roleplay.interfaces.IObserver;
 

@@ -62,7 +62,7 @@ public class ControlPanel extends JPanel {
                     break;
                 }
             }
-            JOptionPane.showMessageDialog(null, "Player "+ turnCount + "! \n it's your turn!");
+            JOptionPane.showMessageDialog(null, "Player "+ (turnCount + 1) + "! \n it's your turn!");
             button.setEnabled(true);
         }
 

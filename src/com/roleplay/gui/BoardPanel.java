@@ -3,6 +3,7 @@ package com.roleplay.gui;
 import com.roleplay.characters.Character;
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
+import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
 import com.roleplay.items.artefacts.*;
 import com.roleplay.map.GameMap;
@@ -21,7 +22,7 @@ import java.util.Random;
 
 public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
-    private final List<Artefact> artefacts;
+    private final List<Item> items;
     private final List<Character> players;
 
     InventoryPanel inventoryPanel = new InventoryPanel();
@@ -34,7 +35,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         gameMap = GameMapCreator.loadRandomMap();
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 
-        artefacts = populateArtefacts();
+        items = populateArtefacts();
 
         Timer timer = new Timer(25, this);
         timer.start();
@@ -43,8 +44,8 @@ public class BoardPanel extends JPanel implements ActionListener {
 
     }
 
-    private List<Artefact> populateArtefacts() {
-        List<Artefact> artefactList = new ArrayList<>();
+    private List<Item> populateArtefacts() {
+        List<Item> artefactList = new ArrayList<>();
         Random rand = new Random();
         Point position;
         int artefactX;
@@ -78,8 +79,8 @@ public class BoardPanel extends JPanel implements ActionListener {
 
         g.drawImage(gameMap.getMap(), 0, 0, null);
 
-        for (Artefact artefact : artefacts) {
-            artefact.draw(g, this);
+        for (Item item : items) {
+            item.draw(g, this);
         }
         for (Character character : players) {
             character.draw(g, this);
@@ -93,11 +94,11 @@ public class BoardPanel extends JPanel implements ActionListener {
         return this.gameMap;
     }
 
-    public List<Artefact> getArtefacts(){
-        return this.artefacts;
+    public List<Item> getItems(){
+        return this.items;
     }
     public void update() {
-
+        repaint();
     }
 
     @Override

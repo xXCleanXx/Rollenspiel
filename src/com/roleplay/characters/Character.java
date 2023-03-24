@@ -1,11 +1,14 @@
 package com.roleplay.characters;
 
+import com.roleplay.characters.enums.Directions;
+import com.roleplay.items.Item;
 import com.roleplay.map.GameMap;
 import com.roleplay.map.Tile;
 import com.roleplay.items.armors.Armor;
 import com.roleplay.items.armors.Shield;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
 
 public abstract class Character extends Tile<CharacterProperties> {
@@ -20,6 +23,7 @@ public abstract class Character extends Tile<CharacterProperties> {
 
         return armorDefence + shieldDefence;
     }
+
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(
                 getProperties().getTexture32(),
@@ -42,4 +46,12 @@ public abstract class Character extends Tile<CharacterProperties> {
             getProperties().getPosition().y = rows - 1;
         }
     }
+
+    public void collectItem(Item item) {
+        this.getProperties().getInventory().add(item);
+    }
+
+    public void changeDirection(Directions e){
+            getProperties().setDirection(e);
+        }
 }
