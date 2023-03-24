@@ -13,6 +13,10 @@ public class ItemProperties extends TileProperties {
         super(name, position, texture);
     }
 
+    public ItemProperties() {
+        super();
+    }
+
     public String getDisplayName() {
         return displayName;
     }

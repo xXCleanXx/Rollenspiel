@@ -10,14 +10,17 @@ public abstract class TileProperties {
     private BufferedImage texture100;
     private BufferedImage texture300;
 
-    public TileProperties(String name, Point position, BufferedImage texture){
+    public TileProperties(String name, Point position, BufferedImage texture) {
         setName(name);
         setPosition(position);
         setTexture32(texture);
     }
 
-    public TileProperties(Point position){
+    public TileProperties(Point position) {
         setPosition(position);
+    }
+
+    public TileProperties() {
     }
 
 
@@ -38,7 +41,7 @@ public abstract class TileProperties {
     }
 
     public void setTexture32(BufferedImage texture) {
-        if(texture == null){
+        if (texture == null) {
             throw new IllegalArgumentException("texture can't be null");
         }
 
@@ -46,7 +49,7 @@ public abstract class TileProperties {
     }
 
     public void setTexture100(BufferedImage texture) {
-        if(texture == null){
+        if (texture == null) {
             throw new IllegalArgumentException("texture can't be null");
         }
 
@@ -54,7 +57,7 @@ public abstract class TileProperties {
     }
 
     public void setTexture300(BufferedImage texture) {
-        if(texture == null){
+        if (texture == null) {
             throw new IllegalArgumentException("texture can't be null");
         }
 

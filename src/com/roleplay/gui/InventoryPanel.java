@@ -125,10 +125,18 @@ public class InventoryPanel extends JPanel {
             }
         }
 
-        lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
-        lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture32()));
-        lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
-
+        try {
+            lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
+        } catch (Exception ignored) {
+        }
+        try {
+            lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture32()));
+        } catch (Exception ignored) {
+        }
+        try {
+            lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
+        } catch (Exception ignored) {
+        }
         setLblIcons();
     }
 

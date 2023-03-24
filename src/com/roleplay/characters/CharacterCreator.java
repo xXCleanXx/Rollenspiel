@@ -2,14 +2,16 @@ package com.roleplay.characters;
 
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.characters.enums.Races;
-import com.roleplay.effects.HealEffect;
+import com.roleplay.items.BookOfSpells;
+import com.roleplay.items.CristalBall;
 import com.roleplay.items.Inventory;
 import com.roleplay.items.ItemProperties;
-import com.roleplay.items.artefacts.Amulet;
-import com.roleplay.items.weapons.Sword;
-import com.roleplay.tools.ImageUtils;
+import com.roleplay.items.armors.ChainArmor;
+import com.roleplay.items.armors.LeatherArmor;
+import com.roleplay.items.armors.Shield;
+import com.roleplay.items.weapons.*;
 
-import java.awt.*;
+import java.util.Random;
 
 public class CharacterCreator {
     public CharacterCreator(Character character, Races race, String name) {
@@ -20,13 +22,35 @@ public class CharacterCreator {
 
         characterProperties.setAbilities(new Abilities());
         characterProperties.setInventory(new Inventory(15));
-        characterProperties.getInventory().add(new Amulet(new ItemProperties("amulet", new Point(new Point(2, 2)), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet_32x32.png")), new HealEffect(3)));
-        characterProperties.getInventory().add(new Sword(new ItemProperties("sword", new Point(new Point(2, 2)), ImageUtils.loadImage("src/com/roleplay/resources/images/items/sword_32x32.png")), 10));
 
         if (character instanceof Warrior) {
             abilitiesModifier(characterProperties, 10);
-        } else {
+            switch (new Random().nextInt(3)) {
+                case 0 -> {
+                    characterProperties.getInventory().add(new ChainArmor(new ItemProperties()));
+                    characterProperties.getInventory().add(new Bow(new ItemProperties()));
+                }
+                case 1 -> {
+                    characterProperties.getInventory().add(new Sword(new ItemProperties()));
+                    characterProperties.getInventory().add(new Shield(new ItemProperties()));
+                }
+                case 2 -> {
+                    characterProperties.getInventory().add(new HandAxe(new ItemProperties()));
+                    characterProperties.getInventory().add(new HandAxe(new ItemProperties()));
+                }
+            }
+        } else if (character instanceof Wizard) {
             abilitiesModifier(characterProperties, 8);
+            characterProperties.getInventory().add(new Dagger(new ItemProperties()));
+            characterProperties.getInventory().add(new BookOfSpells(new ItemProperties()));
+            characterProperties.getInventory().add(new CristalBall(new ItemProperties()));
+        } else if (character instanceof Thief) {
+            abilitiesModifier(characterProperties, 8);
+            characterProperties.getInventory().add(new LeatherArmor(new ItemProperties()));
+            characterProperties.getInventory().add(new Dagger(new ItemProperties()));
+            characterProperties.getInventory().add(new Dagger(new ItemProperties()));
+            characterProperties.getInventory().add(new Bow(new ItemProperties()));
+            characterProperties.getInventory().add(new Spear(new ItemProperties()));
         }
 
         addAbilities(characterProperties, race);

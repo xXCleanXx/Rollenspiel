@@ -5,7 +5,6 @@ import com.roleplay.items.weapons.Weapon;
 
 import javax.swing.*;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class FightPanel extends JPanel {
     private JPanel fightPanel;
@@ -25,6 +24,7 @@ public class FightPanel extends JPanel {
         setVisible(false);
         add(fightPanel);
 
+
         btn_fight.addActionListener(e -> {
             new Thread(() -> {
                 try {
@@ -33,18 +33,19 @@ public class FightPanel extends JPanel {
 
                     Thread.sleep(2000);
 
-                    lbl_info.setText(fighter.getProperties().getDisplayName() + " greift " + opponent.getProperties().getDisplayName() + " an.");
+                    lbl_info.setText(opponent.getProperties().getDisplayName() + " greift " + fighter.getProperties().getDisplayName() + " an.");
 
                     Thread.sleep(2000);
 
                     attack(opponent, fighter);
                     lbl_health1.setText("" + fighter.getProperties().getHealthPoints());
-                    repaint();
 
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
 
                     lbl_info.setText("Kampf beendet");
-                    repaint();
+
+                    Thread.sleep(1000);
+
                     setVisible(false);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
@@ -54,17 +55,18 @@ public class FightPanel extends JPanel {
     }
 
     private void attack(Character fighter, Character opponent) {
+        final double defence = Objects.requireNonNull(opponent).defend();
+        double diff = 1 - defence;
         if (Objects.requireNonNull(fighter).getProperties().getInventory().getFirstHand() instanceof Weapon weapon) {
-            double defence = Objects.requireNonNull(opponent).defend();
-
             if (defence < weapon.getDamage()) {
-                double diff = weapon.getDamage() - defence;
-
-                opponent.getProperties().setHealthPoints(opponent.getProperties().getHealthPoints() - diff);
-                lbl_info.setText(opponent.getProperties().getDisplayName() + " erleidet " + diff + " schaden.");
-
+                diff = weapon.getDamage() - defence;
             }
         }
+        if (diff < 0) {
+            diff = 0;
+        }
+        opponent.getProperties().setHealthPoints(opponent.getProperties().getHealthPoints() - diff);
+        lbl_info.setText(opponent.getProperties().getDisplayName() + " erleidet " + diff + " schaden.");
     }
 
     public void initialize(Character fighter, Character opponent) {
