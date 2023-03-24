@@ -5,8 +5,9 @@ import com.roleplay.items.weapons.Weapon;
 
 import javax.swing.*;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
-public class FightPanel {
+public class FightPanel extends JPanel {
     private JPanel fightPanel;
     private JLabel lbl_name1;
     private JLabel lbl_name2;
@@ -15,22 +16,41 @@ public class FightPanel {
     private JLabel lbl_info;
     private JLabel lbl_texture1;
     private JLabel lbl_texture2;
+    private JButton btn_fight;
+    private Character fighter;
+    private Character opponent;
 
-    public FightPanel(Character fighter, Character opponent) {
-        lbl_name1.setText(fighter.getProperties().getDisplayName());
-        lbl_health1.setText("" + fighter.getProperties().getHealthPoints());
-        lbl_texture1.setIcon(new ImageIcon(fighter.getProperties().getTexture300()));
+    public FightPanel() {
+        setOpaque(false);
+        setVisible(false);
+        add(fightPanel);
 
-        lbl_name2.setText(opponent.getProperties().getDisplayName());
-        lbl_health2.setText("" + opponent.getProperties().getHealthPoints());
-        lbl_texture2.setIcon(new ImageIcon(opponent.getProperties().getTexture300()));
+        btn_fight.addActionListener(e -> {
+            new Thread(() -> {
+                try {
+                    attack(fighter, opponent);
+                    lbl_health2.setText("" + opponent.getProperties().getHealthPoints());
 
-        lbl_info.setText(fighter.getProperties().getDisplayName() + " greift " + opponent.getProperties().getDisplayName() + " an.");
-        attack(fighter, opponent);
-        lbl_info.setText(fighter.getProperties().getDisplayName() + " greift " + opponent.getProperties().getDisplayName() + " an.");
-        attack(opponent, fighter);
-        lbl_info.setText("Kampf beendet");
+                    Thread.sleep(2000);
 
+                    lbl_info.setText(fighter.getProperties().getDisplayName() + " greift " + opponent.getProperties().getDisplayName() + " an.");
+
+                    Thread.sleep(2000);
+
+                    attack(opponent, fighter);
+                    lbl_health1.setText("" + fighter.getProperties().getHealthPoints());
+                    repaint();
+
+                    Thread.sleep(2000);
+
+                    lbl_info.setText("Kampf beendet");
+                    repaint();
+                    setVisible(false);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }).start();
+        });
     }
 
     private boolean attack(Character fighter, Character opponent) {
@@ -47,4 +67,20 @@ public class FightPanel {
         }
         return opponent.getProperties().getHealthPoints() > 0;
     }
+
+    public void initialize(Character fighter, Character opponent) {
+        this.fighter = fighter;
+        this.opponent = opponent;
+        lbl_name1.setText(fighter.getProperties().getDisplayName());
+        lbl_health1.setText("" + fighter.getProperties().getHealthPoints());
+        lbl_texture1.setIcon(new ImageIcon(fighter.getProperties().getTexture300()));
+
+        lbl_name2.setText(opponent.getProperties().getDisplayName());
+        lbl_health2.setText("" + opponent.getProperties().getHealthPoints());
+        lbl_texture2.setIcon(new ImageIcon(opponent.getProperties().getTexture300()));
+
+        lbl_info.setText(fighter.getProperties().getDisplayName() + " greift " + opponent.getProperties().getDisplayName() + " an.");
+
+    }
+
 }

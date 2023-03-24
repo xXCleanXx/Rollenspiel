@@ -383,7 +383,7 @@
               <icon value="com/roleplay/resources/images/player/fighter1_300x300.png"/>
               <opaque value="false"/>
               <text value=""/>
-              <toolTipText value="Player Image"/>
+              <toolTipText value=""/>
             </properties>
           </component>
         </children>

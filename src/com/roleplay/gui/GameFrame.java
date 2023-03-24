@@ -56,4 +56,5 @@ public class GameFrame extends JFrame implements IObserver {
         playerList.update();
         gameControl.update();
     }
+
 }

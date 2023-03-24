@@ -27,7 +27,7 @@ public class ControlPanel extends JPanel {
             MainFrame.getCharacterList().get(turnCount).getProperties().setMyTurn(true);
             turnCount++;
             if(turnCount == MainFrame.getCharacterList().size()){
-                turnCount = 0;
+                turnCount = 1;
             }
 
             button.setEnabled(false);
