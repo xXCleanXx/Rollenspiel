@@ -114,9 +114,9 @@ public class BoardPanel extends JPanel implements ActionListener {
     }
 
     private void isCharachterOnPosition() {
-        for (Character fighter : MainFrame.getCharacterList()) {
+        for (Character fighter : gameMap.getSettings().getPlayers()) {
             if (fighter.getProperties().isMyTurn()) {
-                for (Character opponent : MainFrame.getCharacterList()) {
+                for (Character opponent : gameMap.getSettings().getPlayers()) {
                     if (!opponent.getProperties().isMyTurn() && fighter.getProperties().getPosition().equals(opponent.getProperties().getPosition())) {
                         setFightVisible(fighter, opponent);
                     }
