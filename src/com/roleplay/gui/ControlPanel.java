@@ -2,6 +2,7 @@ package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
 import com.roleplay.interfaces.IObserver;
+import com.roleplay.map.Settings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,13 +10,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ControlPanel extends JPanel {
-
     public JButton button;
     private int value;
     public final JLabel showValue = new JLabel();
     public int turnCount = 0;
+    private final Settings settings;
 
-    public ControlPanel() {
+    public ControlPanel(Settings settings) {
+        this.settings = settings;
+
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
         button = new JButton("roll");
@@ -24,9 +27,10 @@ public class ControlPanel extends JPanel {
             value = rand.nextInt(20) + 1;
             repaint();
 
-            MainFrame.getCharacterList().get(turnCount).getProperties().setMyTurn(true);
+            settings.getPlayers().get(turnCount).getProperties().setMyTurn(true);
             turnCount++;
-            if(turnCount == MainFrame.getCharacterList().size()){
+
+            if(turnCount == settings.getPlayers().size()){
                 turnCount = 0;
             }
 
@@ -56,9 +60,9 @@ public class ControlPanel extends JPanel {
         setValue(this.getValue() - 1);
         showValue.setText(String.valueOf(value));
         if (getValue() == 0) {
-            for (int i = 0; i < MainFrame.getCharacterList().size(); i++) {
-                if (MainFrame.getCharacterList().get(i).getProperties().isMyTurn()) {
-                    MainFrame.getCharacterList().get(i).getProperties().setMyTurn(false);
+            for (int i = 0; i < settings.getPlayers().size(); i++) {
+                if (settings.getPlayers().get(i).getProperties().isMyTurn()) {
+                    settings.getPlayers().get(i).getProperties().setMyTurn(false);
                     break;
                 }
             }

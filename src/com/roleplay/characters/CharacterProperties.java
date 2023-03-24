@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterProperties extends GameMapElementProperties {
-    private final List<Effect> effects = new ArrayList<>();
     private Races race;
     private boolean visible = true;
     private Directions direction = Directions.NORTH;
@@ -114,16 +113,6 @@ public class CharacterProperties extends GameMapElementProperties {
     public void levelUp() {
         setXp(0);
         setLevel(getLevel() + 1);
-    }
-
-    public void addEffect(Effect effect) {
-        if (effect == null) throw new IllegalArgumentException("Effect cannot be null!");
-
-        this.effects.add(effect);
-    }
-
-    public Effect[] getEffects() {
-        return effects.toArray(new Effect[0]);
     }
 
     public boolean isMyTurn() {

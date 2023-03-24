@@ -8,6 +8,7 @@ public abstract class Armor extends Item {
 
     public Armor(ItemProperties itemProperties, double strength) {
         super(itemProperties);
+
         setStrength(strength);
     }
 

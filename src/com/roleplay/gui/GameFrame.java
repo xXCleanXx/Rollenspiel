@@ -3,37 +3,38 @@ package com.roleplay.gui;
 import com.roleplay.Factories.KeyFactory;
 import com.roleplay.characters.Character;
 import com.roleplay.interfaces.IObserver;
+import com.roleplay.map.Settings;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class GameFrame extends JFrame implements IObserver {
     private BoardPanel board;
     private PlayerListPanel playerList;
     private ControlPanel gameControl;
-    public GameFrame(ArrayList<Character> player) {
+
+    public GameFrame(Settings settings) {
         super();
-        initialize(player);
+        initialize(settings);
     }
 
-    private void initialize(ArrayList<Character> player) {
+    private void initialize(Settings settings) {
         setTitle("Nerds vs Monsters");
 
         JMenuBar controlBar = new JMenuBar();
         controlBar.add(new JMenu("Settings"));
         setJMenuBar(controlBar);
 
-        board = new BoardPanel(player);
+        board = new BoardPanel(settings);
         add(board, BorderLayout.CENTER);
-        gameControl = new ControlPanel();
+        gameControl = new ControlPanel(settings);
         add(gameControl, BorderLayout.EAST);
-        playerList = new PlayerListPanel();
+        playerList = new PlayerListPanel(settings);
         add(playerList, BorderLayout.WEST);
 
-        KeyFactory keyFactory = new KeyFactory();
+        KeyFactory keyFactory = new KeyFactory(settings);
         keyFactory.addKeyBindings(this);
-
 
         revalidate();
         repaint();

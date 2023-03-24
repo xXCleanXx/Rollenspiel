@@ -7,16 +7,22 @@ import com.roleplay.gui.GameFrame;
 import com.roleplay.gui.MainFrame;
 import com.roleplay.interfaces.IObserver;
 import com.roleplay.items.Item;
+import com.roleplay.map.Settings;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 public class KeyFactory {
-
     private JComponent jc;
-    private ArrayList<IObserver> observers = new ArrayList<>();
+    private final List<IObserver> observers = new ArrayList<>();
+    private final Settings settings;
+
+    public KeyFactory(Settings settings) {
+        this.settings = settings;
+    }
 
     public void addKeyBindings(GameFrame component) {
         this.jc = component.getBoard();
@@ -39,8 +45,9 @@ public class KeyFactory {
                     if (jc instanceof BoardPanel)
                         ((BoardPanel) jc).setInventoryVisible();
                 } else if (keyName.equalsIgnoreCase("move")) {
-                    for (Character c : MainFrame.getCharacterList()) {
+                    for (Character c : settings.getPlayers()) {
                         Directions playerDirection = c.getProperties().getDirection();
+
                         if (c.getProperties().isMyTurn()) {
                             if (playerDirection.equals(Directions.NORTH)) {
                                 if (c.getProperties().getPosition().y > 0) {
@@ -62,25 +69,25 @@ public class KeyFactory {
                         }
                     }
                 } else if (keyName.equalsIgnoreCase("DirectionNorth")) {
-                    for (Character c : MainFrame.getCharacterList()) {
+                    for (Character c : settings.getPlayers()) {
                         if (c.getProperties().isMyTurn()) {
                             c.changeDirection(Directions.NORTH);
                         }
                     }
                 } else if (keyName.equalsIgnoreCase("DirectionEast")) {
-                    for (Character c : MainFrame.getCharacterList()) {
+                    for (Character c : settings.getPlayers()) {
                         if (c.getProperties().isMyTurn()) {
                             c.changeDirection(Directions.EAST);
                         }
                     }
                 } else if (keyName.equalsIgnoreCase("DirectionSouth")) {
-                    for (Character c : MainFrame.getCharacterList()) {
+                    for (Character c : settings.getPlayers()) {
                         if (c.getProperties().isMyTurn()) {
                             c.changeDirection(Directions.SOUTH);
                         }
                     }
                 } else if (keyName.equalsIgnoreCase("DirectionWest")) {
-                    for (Character c : MainFrame.getCharacterList()) {
+                    for (Character c : settings.getPlayers()) {
                         if (c.getProperties().isMyTurn()) {
                             c.changeDirection(Directions.WEST);
                         }
@@ -99,13 +106,16 @@ public class KeyFactory {
     private void performPlayerMove(Character c, int dx, int dy){
         if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx].getMapElementProperties().getHitBox().isEnabled()) {
             c.getProperties().getPosition().translate(dx, dy);
+
             for (Item item : ((BoardPanel) jc).getItems()) {
                 if (item.getProperties().getPosition().getX() == (c.getProperties().getPosition()).getX() && item.getProperties().getPosition().getY() == (c.getProperties().getPosition()).getY()) {
                     c.collectItem(item);
                     ((BoardPanel) jc).getItems().remove(item);
+
                     break;
                 }
             }
+
             notifyObservers();
         }
     }
@@ -115,6 +125,4 @@ public class KeyFactory {
             o.update();
         }
     }
-
-
 }

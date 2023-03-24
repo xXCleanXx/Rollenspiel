@@ -113,23 +113,4 @@ public class Inventory {
 
         return oldItem;
     }
-
-    public BufferedImage drawInventory(int width, int height) {
-        int rows = this.items.length / 6;
-
-        BufferedImage img = new BufferedImage(width * 6, height * rows, BufferedImage.TYPE_INT_ARGB);
-        BufferedImage slotImg = ImageUtils.loadImage("src/com/roleplay/resources/slot.png");
-
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                for (int x = 0; x < SLOT_SIZE; x++) {
-                    for (int y = 0; y < SLOT_SIZE; y++) {
-                        img.setRGB(i + x * SLOT_SIZE, j + y * SLOT_SIZE, Objects.requireNonNull(slotImg).getRGB(x, y));
-                    }
-                }
-            }
-        }
-
-        return img;
-    }
 }

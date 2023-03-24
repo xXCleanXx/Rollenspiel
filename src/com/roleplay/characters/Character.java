@@ -40,6 +40,7 @@ public abstract class Character extends Tile<CharacterProperties> {
         } else if (getProperties().getPosition().x >= columns) {
             getProperties().getPosition().x = columns - 1;
         }
+
         if (getProperties().getPosition().y < 0) {
             getProperties().getPosition().y = 0;
         } else if (getProperties().getPosition().y >= rows) {

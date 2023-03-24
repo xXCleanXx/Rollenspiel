@@ -1,6 +1,7 @@
 package com.roleplay.gui;
 
 
+import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 import com.roleplay.tools.Strings;
@@ -10,7 +11,6 @@ import java.awt.*;
 import java.util.Objects;
 
 public class ArtefactPanel {
-
     JPanel artefactPanel;
     private JButton btn_menu;
     private JButton btn_artefact;
@@ -31,8 +31,10 @@ public class ArtefactPanel {
     private JButton btn_Cape;
     private JButton btn_Potion;
     private JButton btn_Ring;
+    private final Settings settings;
 
-    ArtefactPanel(JPanel contentPane, MainFrame mainFrame) {
+    ArtefactPanel(JPanel contentPane, MainFrame mainFrame, Settings settings) {
+        this.settings = settings;
 
         btn_menu.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
@@ -62,12 +64,12 @@ public class ArtefactPanel {
     }
 
     private void changeIconandBlacklist(String name, MainFrame mainFrame, JButton button) {
-        if (mainFrame.containsArtefactInBlackList(name)) {
+        if (settings.containsArtefactInBlacklist(name)) {
             button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_" + name + "_enable.png"))));
-            mainFrame.removeArtefactfromBlackList(name);
+            settings.removeArtefactFromBlacklist(name);
         } else {
             button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_" + name + "_disable.png"))));
-            mainFrame.addArtefactToBlackList(name);
+            settings.addArtefactToBlacklist(name);
         }
     }
 

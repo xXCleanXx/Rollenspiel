@@ -8,6 +8,7 @@ import com.roleplay.items.ItemProperties;
 import com.roleplay.items.artefacts.*;
 import com.roleplay.map.GameMap;
 import com.roleplay.map.GameMapCreator;
+import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.interfaces.IObserver;
 
@@ -19,20 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
 public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
     private final List<Item> items;
-    private final List<Character> players;
+    public InventoryPanel inventoryPanel;
 
-    InventoryPanel inventoryPanel = new InventoryPanel();
-
-
-    public BoardPanel(ArrayList<Character> players) {
+    public BoardPanel(Settings settings) {
         setLayout(new OverlayLayout(this));
 
-        this.players = players;
+        inventoryPanel = new InventoryPanel(settings);
         gameMap = GameMapCreator.loadRandomMap();
+        gameMap.setSettings(settings);
+
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 
         items = populateArtefacts();
@@ -41,7 +40,6 @@ public class BoardPanel extends JPanel implements ActionListener {
         timer.start();
 
         add(inventoryPanel);
-
     }
 
     private List<Item> populateArtefacts() {
@@ -51,7 +49,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         int artefactX;
         int artefactY;
 
-        for (int i = 0; i < rand.nextInt((gameMap.getWidth() * gameMap.getHeight())/4*players.size()); i++) {
+        for (int i = 0; i < rand.nextInt((gameMap.getWidth() * gameMap.getHeight()) / 4 * gameMap.getSettings().getPlayers().size()); i++) {
             do {
                 artefactX = rand.nextInt(gameMap.getWidth());
                 artefactY = rand.nextInt(gameMap.getHeight());
@@ -82,7 +80,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         for (Item item : items) {
             item.draw(g, this);
         }
-        for (Character character : players) {
+        for (Character character : gameMap.getSettings().getPlayers()) {
             character.draw(g, this);
         }
 
@@ -97,16 +95,17 @@ public class BoardPanel extends JPanel implements ActionListener {
     public List<Item> getItems(){
         return this.items;
     }
+
     public void update() {
         repaint();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        for(Character c : players){
+        for(Character c : gameMap.getSettings().getPlayers()){
             c.tick(gameMap.getWidth(), gameMap.getHeight());
         }
+
         repaint();
     }
 

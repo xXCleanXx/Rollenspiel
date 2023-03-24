@@ -27,7 +27,6 @@ public class Abilities {
         if (intelligence < 0) throw new IllegalArgumentException("Intelligence cannot be less than 0!");
 
         this.intelligence = intelligence;
-
     }
 
     public double getStrength() {
@@ -38,7 +37,6 @@ public class Abilities {
         if (strength < 0) throw new IllegalArgumentException("Strength cannot be less than 0!");
 
         this.strength = strength;
-
     }
 
     public double getConstitution() {
@@ -60,7 +58,6 @@ public class Abilities {
         if (wisdom < 0) throw new IllegalArgumentException("Wisdom cannot be less than 0!");
 
         this.wisdom = wisdom;
-
     }
 
     public double getSkill() {
@@ -71,7 +68,6 @@ public class Abilities {
         if (skill < 0) throw new IllegalArgumentException("Skill cannot be less than 0!");
 
         this.skill = skill;
-
     }
 
     public double getExperience() {
