@@ -3,13 +3,16 @@ package com.roleplay.gui;
 import com.roleplay.characters.Character;
 import com.roleplay.interfaces.IObserver;
 import com.roleplay.map.Settings;
+import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class ControlPanel extends JPanel {
+
     public JButton button;
     private int value;
     public final JLabel showValue = new JLabel();
@@ -18,10 +21,13 @@ public class ControlPanel extends JPanel {
 
     public ControlPanel(Settings settings) {
         this.settings = settings;
-
-        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        setLayout(new GridLayout(2,1,50, -300));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
-        button = new JButton("roll");
+        button = new JButton();
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/dice.png"))));
         button.addActionListener(e -> {
             Random rand = new Random();
             value = rand.nextInt(20) + 1;
@@ -37,13 +43,17 @@ public class ControlPanel extends JPanel {
             button.setEnabled(false);
         });
 
-        add(showValue);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        showValue.setHorizontalAlignment(JLabel.CENTER);
+        showValue.setForeground(Color.green);
         add(button);
+        add(showValue);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/controlBackGround.png"),0,0,this);
         showValue.setText(String.valueOf(getValue()));
         Toolkit.getDefaultToolkit().sync();
     }
