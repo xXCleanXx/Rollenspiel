@@ -13,9 +13,9 @@ public class ControlPanel extends JPanel {
     public JButton button;
     private int value;
     public final JLabel showValue = new JLabel();
-    public ArrayList<Character> leftInRound;
+    public int turnCount = 0;
 
-    public ControlPanel(){
+    public ControlPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
         button = new JButton("roll");
@@ -24,10 +24,12 @@ public class ControlPanel extends JPanel {
             value = rand.nextInt(20) + 1;
             repaint();
 
-            if(leftInRound == null || leftInRound.isEmpty())
-                leftInRound = new ArrayList<>(MainFrame.getCharacterList());
+            MainFrame.getCharacterList().get(turnCount).getProperties().setMyTurn(true);
+            turnCount++;
+            if(turnCount == MainFrame.getCharacterList().size()){
+                turnCount = 0;
+            }
 
-            leftInRound.get(0).getProperties().setMyTurn(true);
             button.setEnabled(false);
         });
 
@@ -36,20 +38,33 @@ public class ControlPanel extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         showValue.setText(String.valueOf(getValue()));
         Toolkit.getDefaultToolkit().sync();
     }
 
-    public int getValue(){
+    public int getValue() {
         return value;
     }
 
-    public void setValue(int values){
+    public void setValue(int values) {
         value = values;
     }
+
     public void update() {
+        setValue(this.getValue() - 1);
+        showValue.setText(String.valueOf(value));
+        if (getValue() == 0) {
+            for (int i = 0; i < MainFrame.getCharacterList().size(); i++) {
+                if (MainFrame.getCharacterList().get(i).getProperties().isMyTurn()) {
+                    MainFrame.getCharacterList().get(i).getProperties().setMyTurn(false);
+                    break;
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Player "+ turnCount + "! \n it's your turn!");
+            button.setEnabled(true);
+        }
 
     }
 }

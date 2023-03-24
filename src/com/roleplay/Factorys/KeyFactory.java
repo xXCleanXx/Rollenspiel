@@ -43,24 +43,28 @@ public class KeyFactory {
                                     if(c.getProperties().getPosition().y > 0) {
                                         if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y - 1][c.getProperties().getPosition().x].getMapElementProperties().getHitBox().isEnabled()) {
                                             c.getProperties().getPosition().translate(0, -1);
+                                            notifyObservers();
                                         }
                                     }
                                 } else if(playerDirection.equals(Directions.EAST)){
                                     if(c.getProperties().getPosition().x < 40) {
                                         if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y][c.getProperties().getPosition().x + 1].getMapElementProperties().getHitBox().isEnabled()) {
                                             c.getProperties().getPosition().translate(1, 0);
+                                            notifyObservers();
                                         }
                                     }
                                 } else if(playerDirection.equals(Directions.SOUTH)){
                                     if(c.getProperties().getPosition().y < 25 ) {
                                         if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y + 1][c.getProperties().getPosition().x].getMapElementProperties().getHitBox().isEnabled()) {
                                             c.getProperties().getPosition().translate(0, 1);
+                                            notifyObservers();
                                         }
                                     }
                                 } else if(playerDirection.equals(Directions.WEST)) {
                                     if(c.getProperties().getPosition().x > 0) {
                                         if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y][c.getProperties().getPosition().x - 1].getMapElementProperties().getHitBox().isEnabled()) {
                                             c.getProperties().getPosition().translate(-1, 0);
+                                            notifyObservers();
                                         }
                                     }
                                 }

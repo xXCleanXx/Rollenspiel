@@ -9,21 +9,19 @@ import java.util.ArrayList;
 
 public class PlayerListPanel extends JPanel {
 
-    public PlayerListPanel(ArrayList<Character> players){
+    private ArrayList<Character> players = MainFrame.getCharacterList();
+    public PlayerListPanel(){
         setLayout(new GridLayout(players.size(),1,15,-80));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
 
         this.setBorder(BorderFactory.createEmptyBorder(60,20,75,20));
-
 
         for(Character c : players){
             Box box = new Box(BoxLayout.LINE_AXIS);
             box.add(Box.createHorizontalGlue());
             box.add(new PlayerPanel(c));
             box.add(Box.createHorizontalGlue());
-
             add(box);
-
         }
     }
     @Override
@@ -34,13 +32,12 @@ public class PlayerListPanel extends JPanel {
     }
 
     public void update() {
-
+        repaint();
     }
 
     private static class PlayerPanel extends JPanel{
         protected JLabel displayName;
         protected JLabel type;
-        protected JLabel nameAndType;
         protected JLabel health;
 
         JLabel texture;

@@ -26,10 +26,10 @@ public class GameFrame extends JFrame implements IObserver {
 
         board = new BoardPanel(player);
         add(board, BorderLayout.CENTER);
-        playerList = new PlayerListPanel(player);
-        add(playerList, BorderLayout.WEST);
         gameControl = new ControlPanel();
         add(gameControl, BorderLayout.EAST);
+        playerList = new PlayerListPanel();
+        add(playerList, BorderLayout.WEST);
 
         KeyFactory keyFactory = new KeyFactory();
         keyFactory.addKeyBindings(this);
