@@ -53,7 +53,7 @@ public class FightPanel extends JPanel {
         });
     }
 
-    private boolean attack(Character fighter, Character opponent) {
+    private void attack(Character fighter, Character opponent) {
         if (Objects.requireNonNull(fighter).getProperties().getInventory().getFirstHand() instanceof Weapon weapon) {
             double defence = Objects.requireNonNull(opponent).defend();
 
@@ -65,7 +65,6 @@ public class FightPanel extends JPanel {
 
             }
         }
-        return opponent.getProperties().getHealthPoints() > 0;
     }
 
     public void initialize(Character fighter, Character opponent) {

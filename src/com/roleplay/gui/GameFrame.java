@@ -1,13 +1,11 @@
 package com.roleplay.gui;
 
 import com.roleplay.Factories.KeyFactory;
-import com.roleplay.characters.Character;
 import com.roleplay.interfaces.IObserver;
 import com.roleplay.map.Settings;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class GameFrame extends JFrame implements IObserver {
     private BoardPanel board;

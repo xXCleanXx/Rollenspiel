@@ -1,13 +1,10 @@
 package com.roleplay.gui;
 
-import com.roleplay.characters.Character;
-import com.roleplay.interfaces.IObserver;
 import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 

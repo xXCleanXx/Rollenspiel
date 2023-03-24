@@ -68,11 +68,9 @@ public class InventoryPanel extends JPanel {
         labelList.add(lbl_24);
 
         setListenerTransferHAndler();
-
     }
 
     private class DragMouseAdapter extends MouseAdapter {
-
         @Override
         public void mouseClicked(MouseEvent e) {
             JLabel c = (JLabel) e.getSource();
@@ -96,6 +94,7 @@ public class InventoryPanel extends JPanel {
                 int index = labelList.indexOf(c);
                 //Wenn inventory null wirft NPE, wird nicht behandelt.
                 var item = inventory.get(index);
+
                 if (item instanceof Shield) {
                     inventory.setSecondHand(item);
                     lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
@@ -121,21 +120,15 @@ public class InventoryPanel extends JPanel {
             if (character.getProperties().isMyTurn()) {
                 inventory = character.getProperties().getInventory();
                 charcterPicture.setIcon(new ImageIcon(character.getProperties().getTexture100()));
+
                 break;
             }
         }
-        try {
-            lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
-        } catch (Exception ignored) {
-        }
-        try {
-            lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture32()));
-        } catch (Exception ignored) {
-        }
-        try {
-            lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
-        } catch (Exception ignored) {
-        }
+
+        lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
+        lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture32()));
+        lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
+
         setLblIcons();
     }
 

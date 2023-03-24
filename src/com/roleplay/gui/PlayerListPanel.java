@@ -6,8 +6,6 @@ import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerListPanel extends JPanel {
     public PlayerListPanel(Settings settings) {

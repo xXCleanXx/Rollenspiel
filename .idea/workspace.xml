@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e17844f9-2e67-43ef-b593-27a7a66cb16a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/roleplay/items/ItemRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/ArtefactPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/ArtefactPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/CharacterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/CharacterPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/ControlPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/ControlPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/FightPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/FightPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/InventoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/InventoryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/PlayerListPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/PlayerListPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/items/artefacts/Ring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/items/artefacts/Ring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/tools/Strings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/tools/Strings.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2NSQ9Hlr8cdxR7miZ7DVWeckZz1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "H:/Erdweg_Seb/SUD/Java/Rollenspiel",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e17844f9-2e67-43ef-b593-27a7a66cb16a" name="Changes" comment="" />
+      <created>1679654853412</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679654853412</updated>
+    </task>
+    <servers />
+  </component>
+</project>

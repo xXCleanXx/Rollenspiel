@@ -10,7 +10,6 @@ import com.roleplay.map.GameMap;
 import com.roleplay.map.GameMapCreator;
 import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
-import com.roleplay.interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;

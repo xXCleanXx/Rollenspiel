@@ -33,7 +33,7 @@ public class ArtefactPanel {
     private JButton btn_Ring;
     private final Settings settings;
 
-    ArtefactPanel(JPanel contentPane, MainFrame mainFrame, Settings settings) {
+    ArtefactPanel(JPanel contentPane, Settings settings) {
         this.settings = settings;
 
         btn_menu.addActionListener(e -> {
@@ -45,25 +45,25 @@ public class ArtefactPanel {
             cardLayout.show(contentPane, Messages.getString("SETTINGS_PANEL"));
         });
 
-        btn_Amulet.addActionListener(e -> changeIconandBlacklist(Strings.getString("amulet"), mainFrame, btn_Amulet));
-        btn_Cape.addActionListener(e -> changeIconandBlacklist(Strings.getString("cape"), mainFrame, btn_Cape));
-        btn_Potion.addActionListener(e -> changeIconandBlacklist(Strings.getString("potion"), mainFrame, btn_Potion));
-        btn_Ring.addActionListener(e -> changeIconandBlacklist(Strings.getString("ring"), mainFrame, btn_Ring));
-        btn_Leather.addActionListener(e -> changeIconandBlacklist(Strings.getString("leather"), mainFrame, btn_Leather));
-        btn_Chain.addActionListener(e -> changeIconandBlacklist(Strings.getString("chain"), mainFrame, btn_Chain));
-        btn_Iron.addActionListener(e -> changeIconandBlacklist(Strings.getString("iron"), mainFrame, btn_Iron));
-        btn_Shield.addActionListener(e -> changeIconandBlacklist(Strings.getString("shield"), mainFrame, btn_Shield));
-        btn_Axe.addActionListener(e -> changeIconandBlacklist(Strings.getString("axe"), mainFrame, btn_Axe));
-        btn_Bow.addActionListener(e -> changeIconandBlacklist(Strings.getString("bow"), mainFrame, btn_Bow));
-        btn_Dagger.addActionListener(e -> changeIconandBlacklist(Strings.getString("dagger"), mainFrame, btn_Dagger));
-        btn_Dart.addActionListener(e -> changeIconandBlacklist(Strings.getString("dart"), mainFrame, btn_Dart));
-        btn_HandAxe.addActionListener(e -> changeIconandBlacklist(Strings.getString("handAxe"), mainFrame, btn_HandAxe));
-        btn_Spear.addActionListener(e -> changeIconandBlacklist(Strings.getString("spear"), mainFrame, btn_Spear));
-        btn_Sword.addActionListener(e -> changeIconandBlacklist(Strings.getString("sword"), mainFrame, btn_Sword));
+        btn_Amulet.addActionListener(e -> changeIconandBlacklist(Strings.getString("amulet"), btn_Amulet));
+        btn_Cape.addActionListener(e -> changeIconandBlacklist(Strings.getString("cape"), btn_Cape));
+        btn_Potion.addActionListener(e -> changeIconandBlacklist(Strings.getString("potion"), btn_Potion));
+        btn_Ring.addActionListener(e -> changeIconandBlacklist(Strings.getString("ring"), btn_Ring));
+        btn_Leather.addActionListener(e -> changeIconandBlacklist(Strings.getString("leather"), btn_Leather));
+        btn_Chain.addActionListener(e -> changeIconandBlacklist(Strings.getString("chain"), btn_Chain));
+        btn_Iron.addActionListener(e -> changeIconandBlacklist(Strings.getString("iron"), btn_Iron));
+        btn_Shield.addActionListener(e -> changeIconandBlacklist(Strings.getString("shield"), btn_Shield));
+        btn_Axe.addActionListener(e -> changeIconandBlacklist(Strings.getString("axe"), btn_Axe));
+        btn_Bow.addActionListener(e -> changeIconandBlacklist(Strings.getString("bow"), btn_Bow));
+        btn_Dagger.addActionListener(e -> changeIconandBlacklist(Strings.getString("dagger"), btn_Dagger));
+        btn_Dart.addActionListener(e -> changeIconandBlacklist(Strings.getString("dart"), btn_Dart));
+        btn_HandAxe.addActionListener(e -> changeIconandBlacklist(Strings.getString("handAxe"), btn_HandAxe));
+        btn_Spear.addActionListener(e -> changeIconandBlacklist(Strings.getString("spear"), btn_Spear));
+        btn_Sword.addActionListener(e -> changeIconandBlacklist(Strings.getString("sword"), btn_Sword));
 
     }
 
-    private void changeIconandBlacklist(String name, MainFrame mainFrame, JButton button) {
+    private void changeIconandBlacklist(String name, JButton button) {
         if (settings.containsArtefactInBlacklist(name)) {
             button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_" + name + "_enable.png"))));
             settings.removeArtefactFromBlacklist(name);
@@ -79,7 +79,6 @@ public class ArtefactPanel {
 
     private void createUIComponents() {
         artefactPanel = new JPanel() {
-
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);

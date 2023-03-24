@@ -36,7 +36,7 @@ public class CharacterPanel {
     private final Settings settings;
     private final Races[] race = {Races.HUMAN};
 
-    CharacterPanel(JPanel contentPane, MainFrame mainFrame, Settings settings) {
+    CharacterPanel(JPanel contentPane, Settings settings) {
         this.settings = settings;
         this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
 
