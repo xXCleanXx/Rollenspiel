@@ -1,15 +1,13 @@
 package com.roleplay.map;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameMap {
     private int width;
     private int height;
     public static final int TILE_SIZE = 32;
     private final Tile<?>[][] map;
-    private final List<String> blacklistedItems = new ArrayList<>();
+    private Settings settings;
 
     public GameMap(int width, int height) {
         setWidth(width);
@@ -18,22 +16,12 @@ public class GameMap {
         map = new Tile[height][width];
     }
 
-    public List<String> getBlacklistedItems() {
-        return blacklistedItems;
+    public Settings getSettings() {
+        return settings;
     }
 
-    public void addItemToBlacklist(String itemName) {
-        if (itemName == null || itemName.isBlank()) throw new IllegalArgumentException("Item name cannot be null, empty or consists of white-spaces!");
-
-        if (!blacklistedItems.contains(itemName)) {
-            blacklistedItems.add(itemName);
-        }
-    }
-
-    public void removeItemFromBlacklist(String itemName) {
-        if (itemName == null || itemName.isBlank()) throw new IllegalArgumentException("Item name cannot be null, empty or consists of white-spaces!");
-
-        blacklistedItems.remove(itemName);
+    public void setSettings(Settings settings) {
+        this.settings = settings;
     }
 
     public int getWidth() {

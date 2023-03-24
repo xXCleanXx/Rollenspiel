@@ -5,6 +5,7 @@ import com.roleplay.items.Inventory;
 import com.roleplay.items.armors.Armor;
 import com.roleplay.items.armors.Shield;
 import com.roleplay.items.weapons.Weapon;
+import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
@@ -35,14 +36,13 @@ public class InventoryPanel extends JPanel {
     private JLabel lbl_22;
     private JLabel lbl_23;
     private JLabel lbl_24;
-
     private Inventory inventory;
-
     private final ArrayList<JLabel> labelList = new ArrayList<>();
-
     private final MouseListener listener = new DragMouseAdapter();
+    private final Settings settings;
 
-    public InventoryPanel() {
+    public InventoryPanel(Settings settings) {
+        this.settings = settings;
         setOpaque(false);
         setVisible(false);
         add(inventoryPanel);
@@ -117,7 +117,7 @@ public class InventoryPanel extends JPanel {
     }
 
     public void initialize() {
-        for (Character character : MainFrame.getCharacterList()) {
+        for (Character character : this.settings.getPlayers()) {
             if (character.getProperties().isMyTurn()) {
                 inventory = character.getProperties().getInventory();
                 charcterPicture.setIcon(new ImageIcon(character.getProperties().getTexture100()));

@@ -23,7 +23,7 @@ public class CharacterCreator {
         characterProperties.getInventory().add(new Amulet(new ItemProperties("amulet", new Point(new Point(2, 2)), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet_32x32.png")), new HealEffect(3)));
         characterProperties.getInventory().add(new Sword(new ItemProperties("sword", new Point(new Point(2, 2)), ImageUtils.loadImage("src/com/roleplay/resources/images/items/sword_32x32.png")), 10));
 
-        if (character.getClass() == Warrior.class) {
+        if (character instanceof Warrior) {
             abilitiesModifier(characterProperties, 10);
         } else {
             abilitiesModifier(characterProperties, 8);
@@ -45,13 +45,13 @@ public class CharacterCreator {
     }
 
     private void addAbilities(CharacterProperties characterProperties, Races race) {
-        if (Races.DWARF.equals(race)) {
+        if (race == Races.DWARF) {
             characterProperties.getAbilities().addAbilities(0, 2, 2, 1, 0);
-        } else if (Races.HUMAN.equals(race)) {
+        } else if (race == Races.HUMAN) {
             characterProperties.getAbilities().addAbilities(1, 1, 1, 1, 1);
-        } else if (Races.ELF.equals(race)) {
+        } else if (race == Races.ELF) {
             characterProperties.getAbilities().addAbilities(2, 0, 0, 1, 2);
-        } else if (Races.HOBBIT.equals(race)) {
+        } else if (race == Races.HOBBIT) {
             characterProperties.getAbilities().addAbilities(0, 0, 1, 2, 2);
         }
     }

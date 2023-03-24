@@ -4,11 +4,13 @@ import com.roleplay.characters.Character;
 import com.roleplay.characters.*;
 import com.roleplay.characters.enums.Races;
 import com.roleplay.characters.CharacterProperties;
+import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 import java.util.Objects;
 
 public class CharacterPanel {
@@ -31,11 +33,11 @@ public class CharacterPanel {
     private JButton btn_Hobbit;
     private JButton btn_error;
     private Character character;
-
+    private final Settings settings;
     private final Races[] race = {Races.HUMAN};
 
-    CharacterPanel(JPanel contentPane, MainFrame mainFrame) {
-
+    CharacterPanel(JPanel contentPane, MainFrame mainFrame, Settings settings) {
+        this.settings = settings;
         this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
 
         subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
@@ -87,7 +89,6 @@ public class CharacterPanel {
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter_enable.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
-            this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
         });
         btn_wizard.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
@@ -107,7 +108,7 @@ public class CharacterPanel {
         nextFinish.addActionListener(e -> {
             btn_error.setVisible(false);
             try {
-                createNextPlayer(mainFrame);
+                createNextPlayer();
             } catch (IndexOutOfBoundsException IOOBE) {
                 btn_error.setText(Messages.getString("exists"));
                 btn_error.setVisible(true);
@@ -118,31 +119,37 @@ public class CharacterPanel {
         });
     }
 
-    private void createNextPlayer(MainFrame mainFrame) {
+    private void createNextPlayer() {
         if (playerName.getText().isEmpty()) {
             throw new NullPointerException();
         }
-        if ((!mainFrame.getCharacterListNames().contains(playerName.getText()) || Objects.equals(playerName.getText(), mainFrame.getCharacterListNames().get(player - 2)))) {
-            if (mainFrame.getPlayer() == MainFrame.getCharacterList().size() && mainFrame.getPlayer() != player - 1) {
-                MainFrame.getCharacterList().get(player - 2).getProperties().setDisplayName(playerName.getText());
-                playerName.setText(mainFrame.getCharacterListNames().get(player - 1));
+
+        if (settings.getPlayers().stream().noneMatch(x -> x.getProperties().getDisplayName().equalsIgnoreCase(playerName.getText().trim()))) {
+            if (settings.getPlayerCount() == settings.getPlayers().size() && settings.getPlayerCount() != player - 1) {
+                settings.getPlayers().get(player - 2).getProperties().setDisplayName(playerName.getText());
+                playerName.setText(settings.getPlayers().get(player - 1).getProperties().getDisplayName());
+
                 doClick(player - 1);
-            } else if (MainFrame.getCharacterList().size() < player - 1) {
+            } else if (settings.getPlayers().size() < player - 1) {
                 new CharacterCreator(this.character, race[0], playerName.getText());
-                mainFrame.addCharactertoList(this.character);
+                settings.addPlayer(this.character);
                 playerName.setText("");
-                if (this.character.getClass() == Warrior.class) {
+
+                if (this.character instanceof Warrior) {
                     this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
-                } else if (this.character.getClass() == Wizard.class) {
+                } else if (this.character instanceof Wizard) {
                     this.character = new Wizard(new CharacterProperties(new Point(0, 1)));
                 } else {
                     this.character = new Thief(new CharacterProperties(new Point(1, 0)));
                 }
             }
-            if (mainFrame.getPlayer() == player - 1) {
+
+            if (settings.getPlayerCount() == player - 1) {
                 this.player = 1;
+
                 subTitle.setText(Messages.getString("player") + " " + this.player + " " + Messages.getString("chooseCharakter"));
-                playerName.setText(mainFrame.getCharacterListNames().get(0));
+                playerName.setText(settings.getPlayers().get(0).getProperties().getDisplayName());
+
                 doClick(0);
             }
 
@@ -152,27 +159,26 @@ public class CharacterPanel {
     }
 
     private void doClick(int i) {
-        final Character tempCharacter = MainFrame.getCharacterList().get(i);
+        final Character tempCharacter = settings.getPlayers().get(i);
         final Races race = tempCharacter.getProperties().getRace();
 
-        if (race.equals(Races.ELF)) {
+        if (race == Races.ELF) {
             btn_Elf.doClick();
-        } else if (race.equals(Races.DWARF)) {
+        } else if (race == Races.DWARF) {
             btn_Dwarf.doClick();
-        } else if (race.equals(Races.HOBBIT)) {
+        } else if (race == Races.HOBBIT) {
             btn_Hobbit.doClick();
         } else {
             btn_Human.doClick();
         }
 
-        if (tempCharacter.getClass() == Warrior.class) {
+        if (tempCharacter instanceof Warrior) {
             btn_Fighter.doClick();
-        } else if (tempCharacter.getClass() == Wizard.class) {
+        } else if (tempCharacter instanceof Wizard) {
             btn_wizard.doClick();
         } else {
             btn_thief.doClick();
         }
-
     }
 
     private void createUIComponents() {

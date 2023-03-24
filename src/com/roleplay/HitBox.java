@@ -1,10 +1,8 @@
 package com.roleplay;
 
 public class HitBox {
-
     private int width;
     private int height;
-
     private boolean enabled = true;
 
     public HitBox(int width, int height){

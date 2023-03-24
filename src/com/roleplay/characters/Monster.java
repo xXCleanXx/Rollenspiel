@@ -4,6 +4,7 @@ public class Monster extends Character {
     protected Monster(CharacterProperties characterProperties) {
         super(characterProperties);
 
-        getProperties().setName("Monster");
+        getProperties().setName("monster");
+        getProperties().setDisplayName("Monster");
     }
 }

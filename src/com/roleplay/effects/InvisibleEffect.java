@@ -2,6 +2,9 @@ package com.roleplay.effects;
 
 import com.roleplay.characters.Character;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class InvisibleEffect extends Effect {
     private double runtime;
 
@@ -24,5 +27,11 @@ public class InvisibleEffect extends Effect {
         if (character == null) throw new IllegalArgumentException("Character cannot be null!");
 
         character.getProperties().setVisible(false);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                character.getProperties().setVisible(true);
+            }
+        }, (long)getRuntime() * 1000);
     }
 }

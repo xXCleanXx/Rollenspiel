@@ -1,16 +1,16 @@
 package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
-import com.roleplay.enums.Difficult;
+import com.roleplay.characters.enums.Difficulty;
+import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainPanel {
-
     private JPanel mainPanel;
     private JButton btn_Settings;
     private JButton btn_Character;
@@ -18,9 +18,11 @@ public class MainPanel {
     private JButton btn_start;
     private JLabel title;
     private JList<String> listCharacter;
+    private final Settings settings;
 
+    MainPanel(JPanel contentPane, JFrame mainFrame, Settings settings) {
+        this.settings = settings;
 
-    MainPanel(JPanel contentPane, JFrame mainFrame) {
         btn_Settings.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("SETTINGS_PANEL"));
@@ -37,9 +39,9 @@ public class MainPanel {
         });
 
         btn_start.addActionListener(e -> {
-            if (MainFrame.getCharacterList().size() >= 1) {
+            if (settings.getPlayers().size() >= 1) {
                 mainFrame.setVisible(false);
-                new GameFrame(MainFrame.getCharacterList());
+                new GameFrame(settings);
             }
         });
     }
@@ -48,13 +50,15 @@ public class MainPanel {
         return mainPanel;
     }
 
-    public void setCharacterJList(ArrayList<Character> charachterList) {
-        String[] charachterObject = new String[6];
-        for (int i = 0; i < charachterList.size(); i++) {
-            Character character = charachterList.get(i);
-            charachterObject[i] = (i + 1) + ": " + character.getProperties().getDisplayName() + "," + character.getClass().getSimpleName();
+    public void setCharacterJList(List<Character> characterList) {
+        String[] characterObject = new String[6];
+
+        for (int i = 0; i < characterList.size(); i++) {
+            Character character = characterList.get(i);
+            characterObject[i] = (i + 1) + ": " + character.getProperties().getDisplayName() + "," + character.getClass().getSimpleName();
         }
-        listCharacter.setListData(charachterObject);
+
+        listCharacter.setListData(characterObject);
     }
 
     private void createUIComponents() {
@@ -62,9 +66,10 @@ public class MainPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                if(SettingsPanel.getDifficult() == Difficult.HARD) {
+
+                if(settings.getDifficulty() == Difficulty.HARD) {
                     g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_2.png"), 0, 0, this);
-                }else if(SettingsPanel.getDifficult() == Difficult.HARDCORE) {
+                }else if(settings.getDifficulty() == Difficulty.HARDCORE) {
                     g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_3.png"), 0, 0, this);
                 }else{
                     g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_1.png"), 0, 0, this);

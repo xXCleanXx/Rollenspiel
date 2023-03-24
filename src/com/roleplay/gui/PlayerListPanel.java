@@ -1,22 +1,22 @@
 package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
+import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerListPanel extends JPanel {
-
-    private ArrayList<Character> players = MainFrame.getCharacterList();
-    public PlayerListPanel(){
-        setLayout(new GridLayout(players.size(),1,15,-80));
+    public PlayerListPanel(Settings settings) {
+        setLayout(new GridLayout(settings.getPlayers().size(),1,15,-80));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
 
         this.setBorder(BorderFactory.createEmptyBorder(60,20,75,20));
 
-        for(Character c : players){
+        for(Character c : settings.getPlayers()){
             Box box = new Box(BoxLayout.LINE_AXIS);
             box.add(Box.createHorizontalGlue());
             box.add(new PlayerPanel(c));
@@ -39,7 +39,6 @@ public class PlayerListPanel extends JPanel {
         protected JLabel displayName;
         protected JLabel type;
         protected JLabel health;
-
         JLabel texture;
         JPanel info = new JPanel();
 
@@ -63,5 +62,4 @@ public class PlayerListPanel extends JPanel {
             add(info);
         }
     }
-
 }
