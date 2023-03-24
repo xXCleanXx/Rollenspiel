@@ -187,7 +187,7 @@ public class CharacterPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_Character_3.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_Character_3.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
             }
         };

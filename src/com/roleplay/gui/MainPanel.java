@@ -68,11 +68,11 @@ public class MainPanel {
                 super.paintComponent(g);
 
                 if(settings.getDifficulty() == Difficulty.HARD) {
-                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_2.png"), 0, 0, this);
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_main_2.png"), 0, 0, this);
                 }else if(settings.getDifficulty() == Difficulty.HARDCORE) {
-                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_3.png"), 0, 0, this);
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_main_3.png"), 0, 0, this);
                 }else{
-                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Background_main_1.png"), 0, 0, this);
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_main_1.png"), 0, 0, this);
                 }
                 Toolkit.getDefaultToolkit().sync();
             }

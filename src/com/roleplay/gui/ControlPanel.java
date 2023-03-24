@@ -50,7 +50,7 @@ public class ControlPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/controlBackGround.png"),0,0,this);
+        g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/controlBackGround.png"),0,0,this);
         showValue.setText(String.valueOf(getValue()));
         Toolkit.getDefaultToolkit().sync();
     }

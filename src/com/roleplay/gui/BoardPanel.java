@@ -5,11 +5,15 @@ import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
+import com.roleplay.items.armors.ChainArmor;
+import com.roleplay.items.armors.IronArmor;
+import com.roleplay.items.armors.LeatherArmor;
+import com.roleplay.items.armors.Shield;
 import com.roleplay.items.artefacts.*;
+import com.roleplay.items.weapons.*;
 import com.roleplay.map.GameMap;
 import com.roleplay.map.GameMapCreator;
 import com.roleplay.map.Settings;
-import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +38,7 @@ public class BoardPanel extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 
-        items = populateArtefacts();
+        items = populateItems();
 
         Timer timer = new Timer(25, this);
         timer.start();
@@ -44,8 +48,8 @@ public class BoardPanel extends JPanel implements ActionListener {
 
     }
 
-    private List<Item> populateArtefacts() {
-        List<Item> artefactList = new ArrayList<>();
+    private List<Item> populateItems() {
+        List<Item> itemList = new ArrayList<>();
         Random rand = new Random();
         Point position;
         int artefactX;
@@ -59,18 +63,29 @@ public class BoardPanel extends JPanel implements ActionListener {
                 position = new Point(artefactX, artefactY);
             } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
 
-            Artefact item = switch (rand.nextInt(4)) {
-                case 0 -> new Amulet(new ItemProperties("amulet", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet_32x32.png")), new HealEffect(3));
-                case 1 -> new Cape(new ItemProperties("cape", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/cape_32x32.png")),new InvisibleEffect(3));
-                case 2 -> new Potion(new ItemProperties("potion", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/potion_32x32.png")),new HealEffect(3));
-                case 3 -> new Ring(new ItemProperties("ring", new Point(position), ImageUtils.loadImage("src/com/roleplay/resources/images/items/ring_32x32.png")),new HealEffect(3));
+            Item item = switch (rand.nextInt(15)) {
+                case 0 -> new Amulet(new ItemProperties(new Point(position)), new HealEffect(3));
+                case 1 -> new Cape(new ItemProperties(new Point(position)), new InvisibleEffect(3));
+                case 2 -> new Potion(new ItemProperties(new Point(position)), new HealEffect(3));
+                case 3 -> new Ring(new ItemProperties(new Point(position)), new HealEffect(3));
+                case 4 -> new LeatherArmor(new ItemProperties(new Point(position)));
+                case 5 -> new ChainArmor(new ItemProperties(new Point(position)));
+                case 6 -> new IronArmor(new ItemProperties(new Point(position)));
+                case 7 -> new Shield(new ItemProperties(new Point(position)));
+                case 8 -> new Dagger(new ItemProperties(new Point(position)));
+                case 9 -> new Dart(new ItemProperties(new Point(position)));
+                case 10 -> new HandAxe(new ItemProperties(new Point(position)));
+                case 11 -> new Axe(new ItemProperties(new Point(position)));
+                case 12 -> new Spear(new ItemProperties(new Point(position)));
+                case 13 -> new Sword(new ItemProperties(new Point(position)));
+                case 14 -> new Bow(new ItemProperties(new Point(position)));
                 default -> null;
             };
 
-            artefactList.add(item);
+            itemList.add(item);
         }
 
-        return artefactList;
+        return itemList;
     }
 
     @Override
@@ -94,7 +109,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         return this.gameMap;
     }
 
-    public List<Item> getItems(){
+    public List<Item> getItems() {
         return this.items;
     }
 
@@ -105,7 +120,7 @@ public class BoardPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(Character c : gameMap.getSettings().getPlayers()){
+        for (Character c : gameMap.getSettings().getPlayers()) {
             c.tick(gameMap.getWidth(), gameMap.getHeight());
         }
 

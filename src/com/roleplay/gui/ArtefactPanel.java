@@ -82,7 +82,7 @@ public class ArtefactPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/artefact_background2.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/artefact_background2.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
 
             }

@@ -87,7 +87,7 @@ public class SettingsPanel {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/artefact_background3.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/artefact_background3.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
             }
         };

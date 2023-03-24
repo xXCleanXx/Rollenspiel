@@ -161,7 +161,7 @@ public class InventoryPanel extends JPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/Inventory_Background.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Inventory_Background.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
             }
         };

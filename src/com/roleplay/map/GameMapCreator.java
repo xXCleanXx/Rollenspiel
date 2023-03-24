@@ -27,7 +27,7 @@ public final class GameMapCreator {
 
                     switch (Character.getNumericValue(text.charAt(j))) {
                         case 0 -> {
-                            tileProperties = new GameMapElementProperties("gras", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/background.png"));
+                            tileProperties = new GameMapElementProperties("gras", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/background.png"));
                             tile = new Tile<>(tileProperties);
                         }
                         case 1 -> {
