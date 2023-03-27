@@ -1,12 +1,17 @@
 package com.roleplay.gui;
 
+import com.roleplay.characters.Character;
 import com.roleplay.map.Settings;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
+
 
 public class MainFrame extends JFrame {
+    private static MainPanel main;
+
     public MainFrame() {
         super();
 
@@ -25,7 +30,7 @@ public class MainFrame extends JFrame {
         contentPane.setLayout(new CardLayout());
         Settings settings = new Settings();
 
-        MainPanel main = new MainPanel(contentPane, this, settings);
+        main = new MainPanel(contentPane, this, settings);
         CharacterPanel characterPanel = new CharacterPanel(contentPane, settings);
         ArtefactPanel artefactPanel = new ArtefactPanel(contentPane, settings);
         SettingsPanel settingsPanel = new SettingsPanel(contentPane, settings);
@@ -46,5 +51,9 @@ public class MainFrame extends JFrame {
     @Override
     public void setContentPane(Container contentPane) {
         super.setContentPane(contentPane);
+    }
+
+    public static void setCharacterList(List<Character> newCharacterList) {
+        main.setCharacterJList(newCharacterList);
     }
 }

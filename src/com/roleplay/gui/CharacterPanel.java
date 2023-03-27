@@ -3,14 +3,12 @@ package com.roleplay.gui;
 import com.roleplay.characters.Character;
 import com.roleplay.characters.*;
 import com.roleplay.characters.enums.Races;
-import com.roleplay.characters.CharacterProperties;
 import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 import java.util.Objects;
 
 public class CharacterPanel {
@@ -89,6 +87,7 @@ public class CharacterPanel {
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter_enable.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
+            this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
         });
         btn_wizard.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
@@ -124,7 +123,7 @@ public class CharacterPanel {
             throw new NullPointerException();
         }
 
-        if (settings.getPlayers().stream().noneMatch(x -> x.getProperties().getDisplayName().equalsIgnoreCase(playerName.getText().trim()))) {
+        if ((!settings.getPlayerNames().contains(playerName.getText()) || Objects.equals(playerName.getText(), settings.getPlayerNames().get(player - 2)))) {
             if (settings.getPlayerCount() == settings.getPlayers().size() && settings.getPlayerCount() != player - 1) {
                 settings.getPlayers().get(player - 2).getProperties().setDisplayName(playerName.getText());
                 playerName.setText(settings.getPlayers().get(player - 1).getProperties().getDisplayName());
@@ -133,6 +132,7 @@ public class CharacterPanel {
             } else if (settings.getPlayers().size() < player - 1) {
                 new CharacterCreator(this.character, race[0], playerName.getText());
                 settings.addPlayer(this.character);
+                MainFrame.setCharacterList(settings.getPlayers());
                 playerName.setText("");
 
                 if (this.character instanceof Warrior) {
@@ -162,11 +162,11 @@ public class CharacterPanel {
         final Character tempCharacter = settings.getPlayers().get(i);
         final Races race = tempCharacter.getProperties().getRace();
 
-        if (race == Races.ELF) {
+        if (race.equals(Races.ELF)) {
             btn_Elf.doClick();
-        } else if (race == Races.DWARF) {
+        } else if (race.equals(Races.DWARF)) {
             btn_Dwarf.doClick();
-        } else if (race == Races.HOBBIT) {
+        } else if (race.equals(Races.HOBBIT)) {
             btn_Hobbit.doClick();
         } else {
             btn_Human.doClick();

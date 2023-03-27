@@ -18,7 +18,7 @@ public class ControlPanel extends JPanel {
 
     public ControlPanel(Settings settings) {
         this.settings = settings;
-        setLayout(new GridLayout(2,1,50, -300));
+        setLayout(new GridLayout(2, 1, 50, -300));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
         button = new JButton();
         button.setOpaque(false);
@@ -33,7 +33,7 @@ public class ControlPanel extends JPanel {
             settings.getPlayers().get(turnCount).getProperties().setMyTurn(true);
             turnCount++;
 
-            if(turnCount == settings.getPlayers().size()){
+            if (turnCount == settings.getPlayers().size()) {
                 turnCount = 0;
             }
 
@@ -50,7 +50,7 @@ public class ControlPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/controlBackGround.png"),0,0,this);
+        g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/controlBackGround.png"), 0, 0, this);
         showValue.setText(String.valueOf(getValue()));
         Toolkit.getDefaultToolkit().sync();
     }
@@ -73,7 +73,7 @@ public class ControlPanel extends JPanel {
                     break;
                 }
             }
-            JOptionPane.showMessageDialog(null, "Player "+ (turnCount + 1) + "! \n it's your turn!");
+            JOptionPane.showMessageDialog(null, "Player " + (turnCount + 1) + "! \n it's your turn!");
             button.setEnabled(true);
         }
 

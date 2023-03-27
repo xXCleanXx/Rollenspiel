@@ -7,6 +7,8 @@ import java.awt.*;
 public class Key extends Item {
     public Key(ItemProperties itemProperties) {
         super(itemProperties);
-        getProperties().setName("key");
+        itemProperties.setName("key");
+        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/key_32x32.png"));
+
     }
 }

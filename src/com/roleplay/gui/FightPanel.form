@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.roleplay.gui.FightPanel">
-  <grid id="27dc6" binding="fightPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+  <grid id="27dc6" binding="fightPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="704" height="524"/>
+      <xy x="20" y="20" width="720" height="548"/>
     </constraints>
-    <properties/>
+    <properties>
+      <maximumSize width="720" height="530"/>
+      <minimumSize width="720" height="530"/>
+      <opaque value="false"/>
+      <preferredSize width="720" height="530"/>
+      <requestFocusEnabled value="true"/>
+    </properties>
     <border type="none"/>
     <children>
       <grid id="c6ce" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="100" vgap="-1">
@@ -45,8 +51,8 @@
           </component>
         </children>
       </grid>
-      <grid id="d7a89" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="d7a89" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="25" left="10" bottom="5" right="10"/>
         <constraints border-constraint="South"/>
         <properties>
           <opaque value="false"/>
@@ -62,6 +68,8 @@
               </grid>
             </constraints>
             <properties>
+              <font name="Comic Sans MS" size="16"/>
+              <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Label"/>
@@ -76,8 +84,10 @@
               </grid>
             </constraints>
             <properties>
+              <font name="Comic Sans MS" size="16"/>
+              <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
+              <horizontalTextPosition value="2"/>
               <text value="Label"/>
             </properties>
           </component>
@@ -88,6 +98,8 @@
               </grid>
             </constraints>
             <properties>
+              <font name="Comic Sans MS" size="16"/>
+              <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Label"/>
@@ -96,34 +108,42 @@
           <component id="8829b" class="javax.swing.JLabel" binding="lbl_health2">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="50" height="50"/>
-                <preferred-size width="50" height="50"/>
-                <maximum-size width="50" height="50"/>
+                <minimum-size width="100" height="150"/>
+                <preferred-size width="100" height="150"/>
+                <maximum-size width="100" height="150"/>
               </grid>
             </constraints>
             <properties>
+              <font name="Comic Sans MS" size="16"/>
+              <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Label"/>
+              <verticalAlignment value="1"/>
+              <verticalTextPosition value="1"/>
             </properties>
           </component>
           <component id="83639" class="javax.swing.JLabel" binding="lbl_health1">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="50" height="50"/>
-                <preferred-size width="50" height="50"/>
-                <maximum-size width="50" height="50"/>
+                <minimum-size width="100" height="150"/>
+                <preferred-size width="100" height="150"/>
+                <maximum-size width="100" height="150"/>
               </grid>
             </constraints>
             <properties>
+              <font name="Comic Sans MS" size="16"/>
+              <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Label"/>
+              <verticalAlignment value="1"/>
+              <verticalTextPosition value="1"/>
             </properties>
           </component>
           <component id="3b430" class="javax.swing.JButton" binding="btn_fight">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="250" height="100"/>
                 <preferred-size width="250" height="100"/>
                 <maximum-size width="250" height="100"/>
@@ -131,6 +151,8 @@
             </constraints>
             <properties>
               <enabled value="true"/>
+              <font name="Comic Sans MS" size="20"/>
+              <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
               <opaque value="false"/>

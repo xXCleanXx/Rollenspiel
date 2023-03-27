@@ -2,14 +2,10 @@ package com.roleplay.characters;
 
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.characters.enums.Races;
-import com.roleplay.effects.Effect;
 import com.roleplay.items.Inventory;
 import com.roleplay.map.GameMapElementProperties;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CharacterProperties extends GameMapElementProperties {
     private Races race;

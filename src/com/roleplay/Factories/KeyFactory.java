@@ -4,7 +4,6 @@ import com.roleplay.characters.Character;
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.gui.BoardPanel;
 import com.roleplay.gui.GameFrame;
-import com.roleplay.gui.MainFrame;
 import com.roleplay.interfaces.IObserver;
 import com.roleplay.items.Item;
 import com.roleplay.map.Settings;

@@ -9,7 +9,7 @@ public class ImageUtils {
     public static BufferedImage loadImage(String pathname) {
         BufferedImage img = null;
 
-        if(pathname.isEmpty()){
+        if (pathname.isEmpty()) {
             return null;
         } else {
             try {

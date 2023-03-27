@@ -1,7 +1,7 @@
 package com.roleplay.spells;
 
-import com.roleplay.effects.Effect;
 import com.roleplay.characters.Character;
+import com.roleplay.effects.Effect;
 
 public abstract class Spell {
     private final String name;

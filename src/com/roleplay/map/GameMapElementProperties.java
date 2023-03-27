@@ -10,12 +10,12 @@ public class GameMapElementProperties extends TileProperties {
 
     public GameMapElementProperties(String name, Point position, BufferedImage texture) {
         super(name, position, texture);
-        hitbox = new HitBox(32,32);
+        hitbox = new HitBox(32, 32);
     }
 
-    public GameMapElementProperties(Point position){
+    public GameMapElementProperties(Point position) {
         super(position);
-        hitbox = new HitBox(32,32);
+        hitbox = new HitBox(32, 32);
 
     }
 

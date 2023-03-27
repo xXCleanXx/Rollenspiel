@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Random;
 
 public final class GameMapCreator {
-    private GameMapCreator() { }
+    private GameMapCreator() {
+    }
 
     public static GameMap loadMap(String path) {
         try {
@@ -27,25 +28,28 @@ public final class GameMapCreator {
 
                     switch (Character.getNumericValue(text.charAt(j))) {
                         case 0 -> {
-                            tileProperties = new GameMapElementProperties("gras", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/background.png"));
+                            tileProperties = new GameMapElementProperties("gras", new Point(j, i), ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/background.png"));
                             tile = new Tile<>(tileProperties);
                         }
                         case 1 -> {
-                            tileProperties = new GameMapElementProperties("way", new Point(i,j), ImageUtils.loadImage("src/com/roleplay/resources/images/way.png"));
+                            tileProperties = new GameMapElementProperties("way", new Point(i, j), ImageUtils.loadImage("src/com/roleplay/resources/images/way.png"));
                             tileProperties.getHitBox().setEnabled(false);
                             tile = new Tile<>(tileProperties);
                         }
                         case 2 -> {
-                            tileProperties = new GameMapElementProperties("water", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/water.png"));
+                            tileProperties = new GameMapElementProperties("water", new Point(j, i), ImageUtils.loadImage("src/com/roleplay/resources/images/water.png"));
                             tile = new Tile<>(tileProperties);
                         }
-                        case 3 -> tile = new Door(1, new GameMapElementProperties("door", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/door.png")));
-                        case 4 -> tile = new Door(1, new GameMapElementProperties("doorRotated", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
+                        case 3 ->
+                                tile = new Door(1, new GameMapElementProperties("door", new Point(j, i), ImageUtils.loadImage("src/com/roleplay/resources/images/door.png")));
+                        case 4 ->
+                                tile = new Door(1, new GameMapElementProperties("doorRotated", new Point(j, i), ImageUtils.loadImage("src/com/roleplay/resources/images/doorRotated.png")));
                         case 5 -> {
-                            tileProperties = new GameMapElementProperties("wall", new Point(j,i), ImageUtils.loadImage("src/com/roleplay/resources/images/wall.png"));
+                            tileProperties = new GameMapElementProperties("wall", new Point(j, i), ImageUtils.loadImage("src/com/roleplay/resources/images/wall.png"));
                             tile = new Tile<>(tileProperties);
                         }
-                        default -> throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
+                        default ->
+                                throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));
                     }
 
                     gameMap.getMapElements()[i][j] = tile;
@@ -60,10 +64,10 @@ public final class GameMapCreator {
 
     public static GameMap loadRandomMap() {
         Random random = new Random();
-        String[] maps = new String[] {
-            "map.txt",
-            "map1.txt",
-            "map2.txt",
+        String[] maps = new String[]{
+                "map.txt",
+                "map1.txt",
+                "map2.txt",
         };
 
         return loadMap("src/com/roleplay/resources/maps/" + maps[random.nextInt(1)]); // TODO: Random load

@@ -9,6 +9,7 @@ import java.util.List;
 public class Settings {
     private Difficulty difficulty = Difficulty.MEDIUM;
     private final List<Character> players = new ArrayList<>();
+    private final List<String> playerNames = new ArrayList<>();
     private int playerCount = 3;
     private final List<String> artefactBlacklist = new ArrayList<>();
 
@@ -21,17 +22,21 @@ public class Settings {
     }
 
     public void setPlayerCount(int playerCount) {
-        if (playerCount < 3 || playerCount > 6) throw new IllegalArgumentException("Player count cannot be less than 3 and greater than 6!");
+        if (playerCount < 3 || playerCount > 6)
+            throw new IllegalArgumentException("Player count cannot be less than 3 and greater than 6!");
 
         this.playerCount = playerCount;
     }
 
     public List<Character> getPlayers() {
         return players;
+    }    public List<String> getPlayerNames() {
+        return playerNames;
     }
 
     public void addPlayer(Character player) {
         players.add(player);
+        playerNames.add(player.getProperties().getDisplayName());
     }
 
     public void removePlayer(Character player) {

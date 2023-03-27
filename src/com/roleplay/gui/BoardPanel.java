@@ -5,11 +5,15 @@ import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
+import com.roleplay.items.Key;
 import com.roleplay.items.armors.ChainArmor;
 import com.roleplay.items.armors.IronArmor;
 import com.roleplay.items.armors.LeatherArmor;
 import com.roleplay.items.armors.Shield;
-import com.roleplay.items.artefacts.*;
+import com.roleplay.items.artefacts.Amulet;
+import com.roleplay.items.artefacts.Cape;
+import com.roleplay.items.artefacts.Potion;
+import com.roleplay.items.artefacts.Ring;
 import com.roleplay.items.weapons.*;
 import com.roleplay.map.GameMap;
 import com.roleplay.map.GameMapCreator;
@@ -27,7 +31,7 @@ public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
     private final List<Item> items;
     public InventoryPanel inventoryPanel;
-    FightPanel fightPanel = new FightPanel();
+    private final FightPanel fightPanel = new FightPanel();
 
     public BoardPanel(Settings settings) {
         setLayout(new OverlayLayout(this));
@@ -83,6 +87,14 @@ public class BoardPanel extends JPanel implements ActionListener {
             };
 
             itemList.add(item);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            artefactX = rand.nextInt(gameMap.getWidth());
+            artefactY = rand.nextInt(gameMap.getHeight());
+
+            position = new Point(artefactX, artefactY);
+            itemList.add(new Key(new ItemProperties(new Point(position))));
         }
 
         return itemList;

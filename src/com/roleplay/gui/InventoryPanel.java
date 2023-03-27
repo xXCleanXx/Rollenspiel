@@ -74,7 +74,6 @@ public class InventoryPanel extends JPanel {
         @Override
         public void mouseClicked(MouseEvent e) {
             JLabel c = (JLabel) e.getSource();
-            System.out.println("Test " + c);
             if (c == lbl_armor) {
                 final int i = inventory.add(inventory.getArmor());
                 labelList.get(i).setIcon(new ImageIcon(inventory.get(i).getProperties().getTexture32()));

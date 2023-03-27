@@ -2,13 +2,12 @@ package com.roleplay.characters;
 
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.items.Item;
-import com.roleplay.map.GameMap;
-import com.roleplay.map.Tile;
 import com.roleplay.items.armors.Armor;
 import com.roleplay.items.armors.Shield;
+import com.roleplay.map.GameMap;
+import com.roleplay.map.Tile;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.image.ImageObserver;
 
 public abstract class Character extends Tile<CharacterProperties> {
@@ -52,7 +51,7 @@ public abstract class Character extends Tile<CharacterProperties> {
         this.getProperties().getInventory().add(item);
     }
 
-    public void changeDirection(Directions e){
-            getProperties().setDirection(e);
-        }
+    public void changeDirection(Directions e) {
+        getProperties().setDirection(e);
+    }
 }

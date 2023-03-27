@@ -1,6 +1,5 @@
 package com.roleplay.gui;
 
-import com.roleplay.characters.Character;
 import com.roleplay.characters.enums.Difficulty;
 import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
@@ -8,8 +7,6 @@ import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class SettingsPanel {
