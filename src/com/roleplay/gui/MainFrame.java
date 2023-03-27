@@ -27,12 +27,12 @@ public class MainFrame extends JFrame {
 
         MainPanel main = new MainPanel(contentPane, this, settings);
         CharacterPanel characterPanel = new CharacterPanel(contentPane, settings);
-        ArtefactPanel artefactPanel = new ArtefactPanel(contentPane, settings);
+        ItemPanel itemPanel = new ItemPanel(contentPane, settings);
         SettingsPanel settingsPanel = new SettingsPanel(contentPane, settings);
 
         contentPane.add(main.getMainPanel(), Messages.getString("MAIN_PANEL"));
         contentPane.add(characterPanel.getCharacterPanel(), Messages.getString("CHARACTER_PANEL"));
-        contentPane.add(artefactPanel.getArtefactPanel(), Messages.getString("ARTEFACT_PANEL"));
+        contentPane.add(itemPanel.getArtefactPanel(), Messages.getString("ARTEFACT_PANEL"));
         contentPane.add(settingsPanel.getSettingsPanel(), Messages.getString("SETTINGS_PANEL"));
 
         setContentPane(contentPane);

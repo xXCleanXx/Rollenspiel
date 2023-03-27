@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.roleplay.gui.ArtefactPanel">
-  <grid id="27dc6" binding="artefactPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.roleplay.gui.ItemPanel">
+  <grid id="27dc6" binding="itemPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="1024" height="752"/>
     </constraints>
@@ -24,7 +24,7 @@
             <properties>
               <font name="Comic Sans MS" size="36"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="artefact"/>
+              <text resource-bundle="com/roleplay/tools/messages" key="items"/>
             </properties>
           </component>
           <component id="e5d9c" class="javax.swing.JLabel" binding="subTitle">
@@ -36,7 +36,7 @@
               <font name="Comic Sans MS" size="24"/>
               <foreground color="-16777216"/>
               <requestFocusEnabled value="false"/>
-              <text value="Bitte auswählen welche Artefakte aktiviert/deaktiviert sein sollen."/>
+              <text value="Bitte auswählen welche Items aktiviert/deaktiviert sein sollen."/>
             </properties>
           </component>
         </children>
@@ -321,7 +321,7 @@
                 </constraints>
                 <properties>
                   <horizontalTextPosition value="0"/>
-                  <icon value="com/roleplay/resources/images/buttons/btn_axe_enable.png"/>
+                  <icon value="com/roleplay/resources/images/buttons/btn_hand_axe_enable.png"/>
                   <text value=""/>
                 </properties>
               </component>

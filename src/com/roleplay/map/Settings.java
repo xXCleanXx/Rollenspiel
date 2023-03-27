@@ -2,6 +2,7 @@ package com.roleplay.map;
 
 import com.roleplay.characters.Character;
 import com.roleplay.characters.enums.Difficulty;
+import com.roleplay.items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,8 @@ public class Settings {
     private Difficulty difficulty = Difficulty.MEDIUM;
     private final List<Character> players = new ArrayList<>();
     private int playerCount = 3;
-    private final List<String> artefactBlacklist = new ArrayList<>();
+    private final List<Item> itemWhiteList = new ArrayList<>();
+    private final List<Item> itemBlackList = new ArrayList<>();
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -42,15 +44,19 @@ public class Settings {
         this.difficulty = difficulty;
     }
 
-    public boolean containsArtefactInBlacklist(String artefact) {
-        return artefactBlacklist.contains(artefact);
+    public void addItemToWhiteList(Item item) {
+        if (!itemWhiteList.contains(item)) itemWhiteList.add(item);
     }
 
-    public void addArtefactToBlacklist(String artefact) {
-        if (!artefactBlacklist.contains(artefact)) artefactBlacklist.add(artefact);
+    public List<Item> getItemWhiteList(){
+        return this.itemWhiteList;
     }
 
-    public void removeArtefactFromBlacklist(String artefact) {
-        artefactBlacklist.remove(artefact);
+    public void addItemToBlackList(Item item) {
+        if (!itemBlackList.contains(item)) itemBlackList.add(item);
+    }
+
+    public List<Item> getItemBlackList(){
+        return this.itemBlackList;
     }
 }

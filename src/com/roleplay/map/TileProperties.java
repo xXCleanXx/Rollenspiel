@@ -20,6 +20,10 @@ public abstract class TileProperties {
         setPosition(position);
     }
 
+    public TileProperties(String name){
+        setName(name);
+    }
+
     public TileProperties() {
     }
 

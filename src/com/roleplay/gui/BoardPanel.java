@@ -1,5 +1,7 @@
 package com.roleplay.gui;
 
+import com.roleplay.Factories.ItemFactory;
+import com.roleplay.Factories.KeyFactory;
 import com.roleplay.characters.Character;
 import com.roleplay.effects.HealEffect;
 import com.roleplay.effects.InvisibleEffect;
@@ -63,24 +65,9 @@ public class BoardPanel extends JPanel implements ActionListener {
                 position = new Point(artefactX, artefactY);
             } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
 
-            Item item = switch (rand.nextInt(15)) {
-                case 0 -> new Amulet(new ItemProperties(new Point(position)), new HealEffect(3));
-                case 1 -> new Cape(new ItemProperties(new Point(position)), new InvisibleEffect(3));
-                case 2 -> new Potion(new ItemProperties(new Point(position)), new HealEffect(3));
-                case 3 -> new Ring(new ItemProperties(new Point(position)), new HealEffect(3));
-                case 4 -> new LeatherArmor(new ItemProperties(new Point(position)));
-                case 5 -> new ChainArmor(new ItemProperties(new Point(position)));
-                case 6 -> new IronArmor(new ItemProperties(new Point(position)));
-                case 7 -> new Shield(new ItemProperties(new Point(position)));
-                case 8 -> new Dagger(new ItemProperties(new Point(position)));
-                case 9 -> new Dart(new ItemProperties(new Point(position)));
-                case 10 -> new HandAxe(new ItemProperties(new Point(position)));
-                case 11 -> new Axe(new ItemProperties(new Point(position)));
-                case 12 -> new Spear(new ItemProperties(new Point(position)));
-                case 13 -> new Sword(new ItemProperties(new Point(position)));
-                case 14 -> new Bow(new ItemProperties(new Point(position)));
-                default -> null;
-            };
+            ItemFactory itemFactory = new ItemFactory(gameMap.getSettings());
+            Item item = itemFactory.createItemByName(gameMap.getSettings().getItemWhiteList().get(rand.nextInt(getGameMap().getSettings().getItemWhiteList().size())).getProperties().getName());
+            item.getProperties().setPosition(new Point(position));
 
             itemList.add(item);
         }
