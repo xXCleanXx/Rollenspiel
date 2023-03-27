@@ -1,6 +1,6 @@
 package com.roleplay.effects;
 
-import com.roleplay.tiles.characters.Character;
+import com.roleplay.characters.Character;
 
 public class DefendEffect extends Effect {
     @Override

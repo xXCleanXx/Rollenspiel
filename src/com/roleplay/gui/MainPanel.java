@@ -1,24 +1,28 @@
 package com.roleplay.gui;
 
-import com.roleplay.tiles.characters.Character;
+import com.roleplay.characters.Character;
+import com.roleplay.characters.enums.Difficulty;
+import com.roleplay.map.Settings;
+import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainPanel {
-
     private JPanel mainPanel;
     private JButton btn_Settings;
     private JButton btn_Character;
     private JButton btn_Artefact;
     private JButton btn_start;
     private JLabel title;
-    private JList listCharacter;
+    private JList<String> listCharacter;
+    private final Settings settings;
 
+    MainPanel(JPanel contentPane, JFrame mainFrame, Settings settings) {
+        this.settings = settings;
 
-    MainPanel(JPanel contentPane, JFrame mainFrame) {
         btn_Settings.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
             cardLayout.show(contentPane, Messages.getString("SETTINGS_PANEL"));
@@ -35,28 +39,43 @@ public class MainPanel {
         });
 
         btn_start.addActionListener(e -> {
-            mainFrame.setVisible(false);
-            new GameFrame();
+            if (settings.getPlayers().size() >= 1) {
+                mainFrame.setVisible(false);
+                new GameFrame(settings);
+            }
         });
-
     }
 
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    public void setCharacterJList(ArrayList<Character> charachterList) {
-        String[] charachterObject = new String[8];
-        for (int i = 0; i < charachterList.size(); i++) {
-            Character character = charachterList.get(i);
-            charachterObject[i] = "Player 1: " + character.getName() + ", Typ: " + character.getClass().getSimpleName();
+    public void setCharacterJList(List<Character> characterList) {
+        String[] characterObject = new String[6];
+
+        for (int i = 0; i < characterList.size(); i++) {
+            Character character = characterList.get(i);
+            characterObject[i] = (i + 1) + ": " + character.getProperties().getDisplayName() + "," + character.getClass().getSimpleName();
         }
-        listCharacter.setListData(charachterObject);
 
-
+        listCharacter.setListData(characterObject);
     }
 
     private void createUIComponents() {
+        mainPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
 
+                if(settings.getDifficulty() == Difficulty.HARD) {
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_main_2.png"), 0, 0, this);
+                }else if(settings.getDifficulty() == Difficulty.HARDCORE) {
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_main_3.png"), 0, 0, this);
+                }else{
+                    g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_main_1.png"), 0, 0, this);
+                }
+                Toolkit.getDefaultToolkit().sync();
+            }
+        };
     }
 }

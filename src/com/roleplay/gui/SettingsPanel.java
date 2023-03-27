@@ -1,36 +1,44 @@
 package com.roleplay.gui;
 
-import com.roleplay.tiles.characters.Character;
+import com.roleplay.characters.Character;
+import com.roleplay.characters.enums.Difficulty;
+import com.roleplay.map.Settings;
+import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class SettingsPanel {
-
     private JPanel settingsPanel;
-
     private JButton btn_menu;
     private JButton btn_artefact;
     private JLabel title;
-    private JLabel subTitle;
+    private JButton btn_3player;
     private JButton btn_4player;
     private JButton btn_5player;
     private JButton btn_6player;
-    private JButton btn_7player;
-    private JButton btn_8player;
-    private JComboBox box_difficult;
+    private JComboBox<String> box_difficult;
+    private final Settings settings;
 
-    SettingsPanel(JPanel contentPane) {
-        btn_4player.addActionListener(e -> setPlayer(4));
-        btn_5player.addActionListener(e -> setPlayer(5));
-        btn_6player.addActionListener(e -> setPlayer(6));
-        btn_7player.addActionListener(e -> setPlayer(7));
-        btn_8player.addActionListener(e -> setPlayer(8));
+    SettingsPanel(JPanel contentPane, Settings settings) {
+        this.settings = settings;
 
-        box_difficult.addActionListener(e -> setDifficult((String) box_difficult.getSelectedItem()));
+        setButton(btn_3player, 3);
+        setButton(btn_4player, 4);
+        setButton(btn_5player, 5);
+        setButton(btn_6player, 6);
+
+        box_difficult.addActionListener(e -> {
+            int i = box_difficult.getSelectedIndex();
+
+            if (i < 0) return;
+
+            settings.setDifficulty(Difficulty.values()[i]);
+        });
 
         btn_menu.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) contentPane.getLayout();
@@ -43,29 +51,23 @@ public class SettingsPanel {
         });
     }
 
-    private void setPlayer(int playerCount) {
-        ArrayList<Character> oldCharacterList = MainFrame.getCharacterList();
-        if (oldCharacterList.isEmpty()) {
-            MainFrame.setCharacterList(new ArrayList<>(playerCount));
-            return;
-        }
-        if (playerCount == oldCharacterList.size()) {
-            return;
-        }
-        ArrayList<Character> newcharacterList = new ArrayList<>(playerCount);
-
-        if (playerCount > oldCharacterList.size()) {
-            newcharacterList.addAll(oldCharacterList);
-        } else {
-            for (int i = 0; i < playerCount; i++) {
-                newcharacterList.add(oldCharacterList.get(i));
-            }
-        }
-        MainFrame.setCharacterList(newcharacterList);
-
+    private void setButton(JButton button, int playerCount) {
+        button.addActionListener(e -> {
+            settings.setPlayerCount(playerCount);
+            resetIcons();
+            button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40_enable.png"))));
+        });
     }
 
-    private void setDifficult(String s) {
+    private void resetIcon(JButton button) {
+        button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40.png"))));
+    }
+
+    private void resetIcons(){
+        resetIcon(btn_3player);
+        resetIcon(btn_4player);
+        resetIcon(btn_5player);
+        resetIcon(btn_6player);
     }
 
     public JPanel getSettingsPanel() {
@@ -73,8 +75,21 @@ public class SettingsPanel {
     }
 
     private void createUIComponents() {
-        final String[] difficult = {Messages.getString("easy"), Messages.getString("medium"), Messages.getString("hard")};
+        String[] difficult = {
+                Messages.getString("easy"),
+                Messages.getString("medium"),
+                Messages.getString("hard"),
+                Messages.getString("hardcore")
+        };
 
         box_difficult = new JComboBox<>(difficult);
+        settingsPanel = new JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/artefact_background3.png"), 0, 0, this);
+                Toolkit.getDefaultToolkit().sync();
+            }
+        };
     }
 }

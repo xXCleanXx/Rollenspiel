@@ -1,6 +1,7 @@
 package com.roleplay.effects;
 
-import com.roleplay.tiles.characters.Character;
+
+import com.roleplay.characters.Character;
 
 public class DamageEffect extends Effect {
     private double damage;
@@ -17,6 +18,9 @@ public class DamageEffect extends Effect {
 
     @Override
     public void apply(Character character) {
-        character.setHealthPoints(damage);
+        if (character == null) throw new IllegalArgumentException("Character cannot be null!");
+
+        character.getProperties().setHealthPoints(damage);
     }
+
 }

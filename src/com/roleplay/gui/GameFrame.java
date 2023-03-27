@@ -1,41 +1,58 @@
 package com.roleplay.gui;
 
+import com.roleplay.Factories.KeyFactory;
+import com.roleplay.interfaces.IObserver;
+import com.roleplay.map.Settings;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class GameFrame extends JFrame {
+public class GameFrame extends JFrame implements IObserver {
+    private BoardPanel board;
+    private PlayerListPanel playerList;
+    private ControlPanel gameControl;
 
-    public GameFrame(){
+    public GameFrame(Settings settings) {
         super();
-        initialize();
+        initialize(settings);
     }
-        private void initialize(){
-            setTitle("Nerds vs Monsters");
 
-            JMenuBar controlBar = new JMenuBar();
-            controlBar.add(new JMenu("Settings"));
-            setJMenuBar(controlBar);
+    private void initialize(Settings settings) {
+        setTitle("Nerds vs Monsters");
 
-            GameBoard board = new GameBoard();
-            add(board, BorderLayout.CENTER);
+        JMenuBar controlBar = new JMenuBar();
+        controlBar.add(new JMenu("Settings"));
+        setJMenuBar(controlBar);
 
-            addKeyListener(board);
+        board = new BoardPanel(settings);
+        add(board, BorderLayout.CENTER);
+        gameControl = new ControlPanel(settings);
+        add(gameControl, BorderLayout.EAST);
+        playerList = new PlayerListPanel(settings);
+        add(playerList, BorderLayout.WEST);
 
-            setResizable(false);
-            pack();
+        KeyFactory keyFactory = new KeyFactory(settings);
+        keyFactory.addKeyBindings(this);
 
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setLocationRelativeTo(null);
-            setVisible(true);
-        }
+        revalidate();
+        repaint();
 
+        setResizable(false);
+        pack();
 
-    public static void main(String args[]){
-       SwingUtilities.invokeLater(new Runnable() {
-           @Override
-           public void run() {
-               new GameFrame();
-           }
-       });
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public BoardPanel getBoard(){
+        return this.board;
+    }
+
+    @Override
+    public void update() {
+        board.update();
+        playerList.update();
+        gameControl.update();
     }
 }
