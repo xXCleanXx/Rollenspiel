@@ -16,6 +16,9 @@ public class ItemProperties extends TileProperties {
     public ItemProperties(Point position) {
         super(position);
     }
+    public ItemProperties(String name) {
+        super(name);
+    }
 
     public ItemProperties() {
         super();
