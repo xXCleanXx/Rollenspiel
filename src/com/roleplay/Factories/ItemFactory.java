@@ -15,40 +15,43 @@ import com.roleplay.items.artefacts.Ring;
 import com.roleplay.items.weapons.*;
 import com.roleplay.map.Settings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemFactory {
 
-    private Settings settings;
+    private final Settings settings;
+
+    private List<Item> allItems;
+
     public ItemFactory(Settings settings){
         this.settings = settings;
     }
 
     public void addAllItems(){
-        settings.addItemToWhiteList(new Amulet(new ItemProperties("amulet"), new HealEffect(3)));
-        settings.addItemToWhiteList(new Cape(new ItemProperties("cape"), new InvisibleEffect(3)));
-        settings.addItemToWhiteList(new Potion(new ItemProperties("potion"), new HealEffect(3)));
-        settings.addItemToWhiteList(new Ring(new ItemProperties("ring"), new HealEffect(3)));
-        settings.addItemToWhiteList(new LeatherArmor(new ItemProperties("leather")));
-        settings.addItemToWhiteList(new ChainArmor(new ItemProperties("chain")));
-        settings.addItemToWhiteList(new IronArmor(new ItemProperties("iron")));
-        settings.addItemToWhiteList(new Shield(new ItemProperties("shield")));
-        settings.addItemToWhiteList(new Dagger(new ItemProperties("dagger")));
-        settings.addItemToWhiteList(new Dart(new ItemProperties("dart")));
-        settings.addItemToWhiteList(new HandAxe(new ItemProperties("hand_axe")));
-        settings.addItemToWhiteList(new Axe(new ItemProperties("axe")));
-        settings.addItemToWhiteList(new Spear(new ItemProperties("spear")));
-        settings.addItemToWhiteList(new Sword(new ItemProperties("sword")));
-        settings.addItemToWhiteList(new Bow(new ItemProperties("bow")));
+        settings.addItemToWhiteList(createItemByName("amulet"));
+        settings.addItemToWhiteList(createItemByName(("cape")));
+        settings.addItemToWhiteList(createItemByName("potion"));
+        settings.addItemToWhiteList(createItemByName("ring"));
+        settings.addItemToWhiteList(createItemByName("leather"));
+        settings.addItemToWhiteList(createItemByName("chain"));
+        settings.addItemToWhiteList(createItemByName("iron"));
+        settings.addItemToWhiteList(createItemByName("shield"));
+        settings.addItemToWhiteList(createItemByName("dagger"));
+        settings.addItemToWhiteList(createItemByName("dart"));
+        settings.addItemToWhiteList(createItemByName("handAxe"));
+        settings.addItemToWhiteList(createItemByName("axe"));
+        settings.addItemToWhiteList(createItemByName("spear"));
+        settings.addItemToWhiteList(createItemByName("sword"));
+        settings.addItemToWhiteList(createItemByName("bow"));
+
+        allItems = new ArrayList<>(settings.getItemWhiteList());
 
     }
 
     public Item getItemByName(String name) {
-        for (Item i : settings.getItemWhiteList()) {
+        for (Item i : allItems) {
             if (i.getProperties().getName().equalsIgnoreCase(name)) {
-                return i;
-            }
-        }
-        for(Item i : settings.getItemBlackList()){
-            if(i.getProperties().getName().equalsIgnoreCase(name)){
                 return i;
             }
         }
@@ -67,11 +70,11 @@ public class ItemFactory {
             case "shield" -> new Shield(new ItemProperties());
             case "dagger" -> new Dagger(new ItemProperties());
             case "dart" -> new Dart(new ItemProperties());
-            case "hand_axe" -> new HandAxe(new ItemProperties());
+            case "handAxe" -> new HandAxe(new ItemProperties());
             case "axe" -> new Axe(new ItemProperties());
             case "spear" -> new Spear(new ItemProperties());
             case "sword" -> new Sword(new ItemProperties());
-            case "Bow" -> new Bow(new ItemProperties());
+            case "bow" -> new Bow(new ItemProperties());
             default -> null;
         };
     }

@@ -62,21 +62,20 @@ public class ItemPanel {
         btn_Bow.addActionListener(e -> changeIconAndList(itemFactory.getItemByName("bow"), btn_Bow));
         btn_Dagger.addActionListener(e -> changeIconAndList(itemFactory.getItemByName("dagger"), btn_Dagger));
         btn_Dart.addActionListener(e -> changeIconAndList(itemFactory.getItemByName("dart"), btn_Dart));
-        btn_HandAxe.addActionListener(e -> changeIconAndList(itemFactory.getItemByName("hand_axe"), btn_HandAxe));
+        btn_HandAxe.addActionListener(e -> changeIconAndList(itemFactory.getItemByName("handAxe"), btn_HandAxe));
         btn_Spear.addActionListener(e -> changeIconAndList(itemFactory.getItemByName("spear"), btn_Spear));
         btn_Sword.addActionListener(e -> changeIconAndList(itemFactory.getItemByName("sword"), btn_Sword));
 
     }
 
     private void changeIconAndList(Item item, JButton button) {
-        if (settings.getItemBlackList().contains(item)) {
+        if (!settings.getItemWhiteList().contains(item)) {
             button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_" + item.getProperties().getName() + "_enable.png"))));
             settings.addItemToWhiteList(item);
-            settings.getItemBlackList().remove(item);
+
         } else {
             button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_" + item.getProperties().getName() + "_disable.png"))));
             settings.getItemWhiteList().remove(item);
-            settings.addItemToBlackList(item);
         }
     }
 

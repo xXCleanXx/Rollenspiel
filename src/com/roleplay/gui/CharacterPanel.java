@@ -123,7 +123,7 @@ public class CharacterPanel {
             throw new NullPointerException();
         }
 
-        if ((!settings.getPlayerNames().contains(playerName.getText()) || Objects.equals(playerName.getText(), settings.getPlayerNames().get(player - 2)))) {
+        if ((!settings.playerNamesContainsIgnoreCase(playerName.getText()) || Objects.equals(playerName.getText(), settings.getPlayerNames().get(player - 2)))) {
             if (settings.getPlayerCount() == settings.getPlayers().size() && settings.getPlayerCount() != player - 1) {
                 settings.getPlayers().get(player - 2).getProperties().setDisplayName(playerName.getText());
                 playerName.setText(settings.getPlayers().get(player - 1).getProperties().getDisplayName());

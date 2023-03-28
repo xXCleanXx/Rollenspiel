@@ -1,8 +1,10 @@
 package com.roleplay.items;
 
+import com.roleplay.gui.InventoryPanel;
 import com.roleplay.items.armors.Armor;
 import com.roleplay.tools.ImageUtils;
 
+import javax.management.InstanceNotFoundException;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
 
@@ -19,6 +21,24 @@ public class Inventory {
         }
 
         items = new Item[size];
+    }
+
+    public boolean containsItem(String name) {
+        for (Item i : items) {
+            if (i != null && i.getProperties().getName().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getItemIndexByName(String name) throws InstanceNotFoundException {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i].getProperties().getName().equalsIgnoreCase(name)) {
+                return i;
+            }
+        }
+        throw new InstanceNotFoundException("item does not exist!");
     }
 
     public Item get(int index) {
@@ -63,7 +83,7 @@ public class Inventory {
         items[index] = item;
     }
 
-    public Item remove(int index) {
+    public void remove(int index) {
         if (index < 0 || index > items.length) {
             throw new IndexOutOfBoundsException("Index was less than 0 or greater than the maximum allow size!");
         }
@@ -72,7 +92,7 @@ public class Inventory {
             throw new IllegalArgumentException("There is nothing to remove!");
         }
 
-        return swap(index, null);
+        items[index] = null;
     }
 
     public Item getFirstHand() {
@@ -96,10 +116,6 @@ public class Inventory {
     }
 
     public void setArmor(Armor armor) {
-        if (this.armor != null) {
-            throw new IllegalArgumentException("Cannot wear another armor!");
-        }
-
         this.armor = armor;
     }
 

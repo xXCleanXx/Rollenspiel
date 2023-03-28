@@ -1,5 +1,6 @@
 package com.roleplay.Factories;
 
+import com.roleplay.build.Door;
 import com.roleplay.characters.Character;
 import com.roleplay.characters.enums.Directions;
 import com.roleplay.gui.BoardPanel;
@@ -8,6 +9,7 @@ import com.roleplay.interfaces.IObserver;
 import com.roleplay.items.Item;
 import com.roleplay.map.Settings;
 
+import javax.management.InstanceNotFoundException;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KeyFactory {
-    private JComponent jc;
+    private BoardPanel jc;
     private final List<IObserver> observers = new ArrayList<>();
     private final Settings settings;
 
@@ -41,8 +43,7 @@ public class KeyFactory {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (keyName.equalsIgnoreCase("inventory")) {
-                    if (jc instanceof BoardPanel)
-                        ((BoardPanel) jc).setInventoryVisible();
+                    jc.setInventoryVisible();
                 } else if (keyName.equalsIgnoreCase("move")) {
                     for (Character c : settings.getPlayers()) {
                         Directions playerDirection = c.getProperties().getDirection();
@@ -102,21 +103,30 @@ public class KeyFactory {
         }
     }
 
-    private void performPlayerMove(Character c, int dx, int dy){
-        if (!((BoardPanel) jc).getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx].getMapElementProperties().getHitBox().isEnabled()) {
+    private void performPlayerMove(Character c, int dx, int dy) {
+        if (!jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx].getMapElementProperties().getHitBox().isEnabled()) {
             c.getProperties().getPosition().translate(dx, dy);
 
-            for (Item item : ((BoardPanel) jc).getItems()) {
+            for (Item item : jc.getItems()) {
                 if (item.getProperties().getPosition().getX() == (c.getProperties().getPosition()).getX() && item.getProperties().getPosition().getY() == (c.getProperties().getPosition()).getY()) {
                     c.collectItem(item);
-                    ((BoardPanel) jc).getItems().remove(item);
+                    jc.getItems().remove(item);
 
                     break;
                 }
             }
-
+            notifyObservers();
+        } else if ((jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx] instanceof Door && c.getProperties().getInventory().containsItem("key"))) {
+            ((Door) jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx]).open();
+            try {
+                c.getProperties().getInventory().remove(c.getProperties().getInventory().getItemIndexByName("key"));
+                c.getProperties().getPosition().translate(dx, dy);
+            } catch (InstanceNotFoundException e) {
+                e.printStackTrace();
+            }
             notifyObservers();
         }
+
     }
 
     private void notifyObservers() {

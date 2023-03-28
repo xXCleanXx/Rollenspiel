@@ -77,10 +77,12 @@ public class BoardPanel extends JPanel implements ActionListener {
         }
 
         for (int i = 0; i < 3; i++) {
-            artefactX = rand.nextInt(gameMap.getWidth());
-            artefactY = rand.nextInt(gameMap.getHeight());
+            do {
+                artefactX = rand.nextInt(gameMap.getWidth());
+                artefactY = rand.nextInt(gameMap.getHeight());
 
-            position = new Point(artefactX, artefactY);
+                position = new Point(artefactX, artefactY);
+            } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
             itemList.add(new Key(new ItemProperties(new Point(position))));
         }
 
@@ -113,7 +115,7 @@ public class BoardPanel extends JPanel implements ActionListener {
     }
 
     public void update() {
-        isCharachterOnPosition();
+        isCharacterOnPosition();
         repaint();
     }
 
@@ -126,7 +128,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    private void isCharachterOnPosition() {
+    private void isCharacterOnPosition() {
         for (Character fighter : gameMap.getSettings().getPlayers()) {
             if (fighter.getProperties().isMyTurn()) {
                 for (Character opponent : gameMap.getSettings().getPlayers()) {

@@ -42,6 +42,7 @@ public class Door extends Tile<GameMapElementProperties> {
     }
 
     public void open() {
+        getProperties().getHitBox().setEnabled(false);
         open = true;
     }
 

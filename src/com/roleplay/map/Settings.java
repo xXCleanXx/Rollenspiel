@@ -13,7 +13,6 @@ public class Settings {
     private final List<String> playerNames = new ArrayList<>();
     private int playerCount = 3;
     private final List<Item> itemWhiteList = new ArrayList<>();
-    private final List<Item> itemBlackList = new ArrayList<>();
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -36,6 +35,14 @@ public class Settings {
         return playerNames;
     }
 
+    public boolean playerNamesContainsIgnoreCase(String playerName){
+        for (String name : getPlayerNames())
+            if(name.equalsIgnoreCase(playerName)){
+                return true;
+            }
+        return false;
+    }
+
     public void addPlayer(Character player) {
         players.add(player);
         playerNames.add(player.getProperties().getDisplayName());
@@ -55,13 +62,5 @@ public class Settings {
 
     public List<Item> getItemWhiteList(){
         return this.itemWhiteList;
-    }
-
-    public void addItemToBlackList(Item item) {
-        if (!itemBlackList.contains(item)) itemBlackList.add(item);
-    }
-
-    public List<Item> getItemBlackList(){
-        return this.itemBlackList;
     }
 }

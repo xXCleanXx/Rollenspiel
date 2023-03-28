@@ -94,17 +94,17 @@ public class InventoryPanel extends JPanel {
                 //Wenn inventory null wirft NPE, wird nicht behandelt.
                 var item = inventory.get(index);
 
-                if (item instanceof Shield) {
+                if (item instanceof Shield && inventory.getSecondHand() == null) {
                     inventory.setSecondHand(item);
                     lbl_shield.setIcon(new ImageIcon(inventory.getSecondHand().getProperties().getTexture32()));
                     inventory.remove(index);
                     c.setIcon(null);
-                } else if (item instanceof Weapon) {
+                } else if (item instanceof Weapon && inventory.getFirstHand() == null) {
                     inventory.setFirstHand(item);
                     lbl_wepons.setIcon(new ImageIcon(inventory.getFirstHand().getProperties().getTexture32()));
                     inventory.remove(index);
                     c.setIcon(null);
-                } else if (item instanceof Armor) {
+                } else if (item instanceof Armor && inventory.getArmor() == null) {
                     inventory.setArmor((Armor) item);
                     lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
                     inventory.remove(index);

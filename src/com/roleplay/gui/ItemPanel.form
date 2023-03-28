@@ -321,7 +321,7 @@
                 </constraints>
                 <properties>
                   <horizontalTextPosition value="0"/>
-                  <icon value="com/roleplay/resources/images/buttons/btn_hand_axe_enable.png"/>
+                  <icon value="com/roleplay/resources/images/buttons/btn_handAxe_enable.png"/>
                   <text value=""/>
                 </properties>
               </component>
