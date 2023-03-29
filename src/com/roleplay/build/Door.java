@@ -3,6 +3,7 @@ package com.roleplay.build;
 import com.roleplay.items.Key;
 import com.roleplay.map.GameMapElementProperties;
 import com.roleplay.map.Tile;
+import com.roleplay.tools.ImageUtils;
 
 public class Door extends Tile<GameMapElementProperties> {
     private boolean locked, open;
@@ -43,6 +44,11 @@ public class Door extends Tile<GameMapElementProperties> {
 
     public void open() {
         getProperties().getHitBox().setEnabled(false);
+        if(getProperties().getName().equalsIgnoreCase("door")){
+            getProperties().setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/doorOpen.png"));
+        } else if (getProperties().getName().equalsIgnoreCase("doorRotated")){
+            getProperties().setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/doorRotatedOpen.png"));
+        }
         open = true;
     }
 

@@ -70,6 +70,6 @@ public final class GameMapCreator {
                 "map2.txt",
         };
 
-        return loadMap("src/com/roleplay/resources/maps/" + maps[random.nextInt(1)]); // TODO: Random load
+        return loadMap("src/com/roleplay/resources/maps/" + maps[random.nextInt(3)]); // TODO: Random load
     }
 }
