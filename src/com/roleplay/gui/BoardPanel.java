@@ -2,6 +2,8 @@ package com.roleplay.gui;
 
 import com.roleplay.Factories.ItemFactory;
 import com.roleplay.characters.Character;
+import com.roleplay.characters.CharacterProperties;
+import com.roleplay.characters.Monster;
 import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
 import com.roleplay.items.Key;
@@ -14,13 +16,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
-    private final List<Item> items;
     public InventoryPanel inventoryPanel;
     private final FightPanel fightPanel = new FightPanel();
 
@@ -33,60 +32,64 @@ public class BoardPanel extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 
-        items = populateItems();
+        populateItems();
+        populateMonsters();
 
         Timer timer = new Timer(25, this);
         timer.start();
 
         add(inventoryPanel);
         add(fightPanel);
-
     }
 
-    private List<Item> populateItems() {
-        List<Item> itemList = new ArrayList<>();
+    private Point generatePoint(Random random) {
+        Point position;
+
+        do {
+            position = new Point(random.nextInt(gameMap.getWidth()), random.nextInt(gameMap.getHeight()));
+        } while (!gameMap.getMapElements()[position.y][position.x].getProperties().getName().equalsIgnoreCase("way"));
+
+        return position;
+    }
+
+    private void populateMonsters() {
         Random rand = new Random();
         Point position;
-        int artefactX;
-        int artefactY;
+
+        int count = switch(gameMap.getSettings().getDifficulty()) {
+            case HARD -> gameMap.getSettings().getPlayerCount() * 4;
+            case HARDCORE -> gameMap.getSettings().getPlayerCount() * 3;
+            case MEDIUM -> gameMap.getSettings().getPlayerCount() * 2;
+            case EASY -> gameMap.getSettings().getPlayerCount();
+        };
+
+        for (int i = 0; i < count; i++) {
+            position = generatePoint(rand);
+            gameMap.addMonster(new Monster(new CharacterProperties(new Point(position))));
+        }
+    }
+
+    private void populateItems() {
+        Random rand = new Random();
+        Point position;
 
         for (int i = 0; i < rand.nextInt((gameMap.getWidth() * gameMap.getHeight()) / 4 * gameMap.getSettings().getPlayers().size()); i++) {
-            do {
-                artefactX = rand.nextInt(gameMap.getWidth());
-                artefactY = rand.nextInt(gameMap.getHeight());
-
-                position = new Point(artefactX, artefactY);
-            } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
-
+            position = generatePoint(rand);
             ItemFactory itemFactory = new ItemFactory(gameMap.getSettings());
             Item item = itemFactory.createItemByName(gameMap.getSettings().getItemWhiteList().get(rand.nextInt(getGameMap().getSettings().getItemWhiteList().size())).getProperties().getName());
             item.getProperties().setPosition(new Point(position));
-
-            itemList.add(item);
+            gameMap.addItem(item);
         }
 
         for (int i = 0; i < 5; i++) {
-            do {
-                artefactX = rand.nextInt(gameMap.getWidth());
-                artefactY = rand.nextInt(gameMap.getHeight());
-
-                position = new Point(artefactX, artefactY);
-            } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
-            itemList.add(new Key(new ItemProperties(new Point(position))));
+            position = generatePoint(rand);
+            gameMap.addItem(new Key(new ItemProperties(new Point(position))));
         }
 
         for (int i = 1; i <= 3; i++) {
-            do {
-                artefactX = rand.nextInt(gameMap.getWidth());
-                artefactY = rand.nextInt(gameMap.getHeight());
-
-                position = new Point(artefactX, artefactY);
-            } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
-            itemList.add(new MortalInstruments(new ItemProperties(new Point(position)), i));
+            position = generatePoint(rand);
+            gameMap.addItem(new MortalInstruments(new ItemProperties(new Point(position)), i));
         }
-
-
-        return itemList;
     }
 
     @Override
@@ -95,11 +98,16 @@ public class BoardPanel extends JPanel implements ActionListener {
 
         g.drawImage(gameMap.getMap(), 0, 0, null);
 
-        for (Item item : items) {
+        for (Item item : gameMap.getItems()) {
             item.draw(g, this);
         }
-        for (Character character : gameMap.getSettings().getPlayers()) {
-            character.draw(g, this);
+
+        for (Character item : gameMap.getSettings().getPlayers()) {
+            item.draw(g, this);
+        }
+
+        for (Monster monster : gameMap.getMonsters()) {
+            monster.draw(g, this);
         }
 
         Toolkit.getDefaultToolkit().sync();
@@ -108,10 +116,6 @@ public class BoardPanel extends JPanel implements ActionListener {
 
     public GameMap getGameMap() {
         return this.gameMap;
-    }
-
-    public List<Item> getItems() {
-        return this.items;
     }
 
     public void update() {
