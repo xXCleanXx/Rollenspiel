@@ -32,11 +32,12 @@ public class CharacterPanel {
     private JButton btn_error;
     private Character character;
     private final Settings settings;
-    private final Races[] race = {Races.HUMAN};
+    private Races race = Races.HUMAN;
+    private int warriorCount, wizardCount, thiefCount;
 
     CharacterPanel(JPanel contentPane, Settings settings) {
         this.settings = settings;
-        this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
+        this.character = new Warrior(new CharacterProperties(new Point(warriorCount, 0)));
 
         subTitle.setText(Messages.getString("player") + " " + player++ + " " + Messages.getString("chooseCharakter"));
 
@@ -50,7 +51,7 @@ public class CharacterPanel {
         });
 
         btn_Dwarf.addActionListener(e -> {
-            race[0] = Races.DWARF;
+            race = Races.DWARF;
             btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
             btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
             btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
@@ -58,7 +59,7 @@ public class CharacterPanel {
         });
 
         btn_Human.addActionListener(e -> {
-            race[0] = Races.HUMAN;
+            race = Races.HUMAN;
             btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
             btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
             btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
@@ -67,7 +68,7 @@ public class CharacterPanel {
         });
 
         btn_Elf.addActionListener(e -> {
-            race[0] = Races.ELF;
+            race = Races.ELF;
             btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
             btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
             btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
@@ -75,7 +76,7 @@ public class CharacterPanel {
         });
 
         btn_Hobbit.addActionListener(e -> {
-            race[0] = Races.HOBBIT;
+            race = Races.HOBBIT;
             btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
             btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
             btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
@@ -87,21 +88,21 @@ public class CharacterPanel {
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter_enable.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
-            this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
+            this.character = new Warrior(new CharacterProperties(new Point(warriorCount, 0)));
         });
         btn_wizard.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard_enable.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
-            this.character = new Wizard(new CharacterProperties(new Point(0, 1)));
+            this.character = new Wizard(new CharacterProperties(new Point(wizardCount, 1)));
         });
         btn_thief.addActionListener(e -> {
             charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_300x300.png"))));
             btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter.png"))));
             btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
             btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief_enable.png"))));
-            this.character = new Thief(new CharacterProperties(new Point(1, 0)));
+            this.character = new Thief(new CharacterProperties(new Point(thiefCount, 2)));
         });
 
         nextFinish.addActionListener(e -> {
@@ -130,17 +131,17 @@ public class CharacterPanel {
 
                 doClick(player - 1);
             } else if (settings.getPlayers().size() < player - 1) {
-                new CharacterCreator(this.character, race[0], playerName.getText());
+                new CharacterCreator(this.character, race, playerName.getText());
                 settings.addPlayer(this.character);
                 MainFrame.setCharacterList(settings.getPlayers());
                 playerName.setText("");
 
                 if (this.character instanceof Warrior) {
-                    this.character = new Warrior(new CharacterProperties(new Point(0, 0)));
+                    warriorCount++;
                 } else if (this.character instanceof Wizard) {
-                    this.character = new Wizard(new CharacterProperties(new Point(0, 1)));
+                    wizardCount++;
                 } else {
-                    this.character = new Thief(new CharacterProperties(new Point(1, 0)));
+                    thiefCount++;
                 }
             }
 
