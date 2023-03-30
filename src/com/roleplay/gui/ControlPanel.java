@@ -10,7 +10,6 @@ import java.util.Objects;
 import java.util.Random;
 
 public class ControlPanel extends JPanel {
-
     public JButton button;
     private int value;
     public final JLabel showValue = new JLabel();
@@ -87,9 +86,11 @@ public class ControlPanel extends JPanel {
             for (int i = 0; i < settings.getPlayers().size(); i++) {
                 if (settings.getPlayers().get(i).getProperties().isMyTurn()) {
                     settings.getPlayers().get(i).getProperties().setMyTurn(false);
+
                     break;
                 }
             }
+
             JOptionPane.showMessageDialog(null, "Player " + (turnCount + 1) + "! \n it's your turn!");
             button.setEnabled(true);
         }
