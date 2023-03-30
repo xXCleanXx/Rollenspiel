@@ -47,6 +47,13 @@ public class BoardPanel extends JPanel implements ActionListener {
         add(fightPanel);
         add(new StartInfoPanel());
         add(endInfoPanel);
+
+        //Lighting does not work.
+        //EnviromentManager eManager = new EnviromentManager(this);
+        //eManager.setup(settings.getPlayers().get(0));
+        //var tempScreen = new BufferedImage(GameMap.TILE_SIZE *43, GameMap.TILE_SIZE *25, BufferedImage.TYPE_INT_ARGB);
+        //eManager.draw((Graphics2D) tempScreen.getGraphics());
+
     }
 
     private Point generatePoint(Random random) {
