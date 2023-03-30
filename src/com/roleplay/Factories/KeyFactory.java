@@ -1,6 +1,7 @@
 package com.roleplay.Factories;
 
 import com.roleplay.build.Chest;
+import com.roleplay.build.Chest;
 import com.roleplay.build.Door;
 import com.roleplay.characters.Character;
 import com.roleplay.characters.enums.Directions;
@@ -9,7 +10,9 @@ import com.roleplay.gui.GameFrame;
 import com.roleplay.interfaces.IObserver;
 import com.roleplay.items.Item;
 import com.roleplay.items.MortalInstruments;
+import com.roleplay.items.MortalInstruments;
 import com.roleplay.map.Settings;
+import com.roleplay.map.Tile;
 
 import javax.management.InstanceNotFoundException;
 import javax.swing.*;
@@ -84,6 +87,7 @@ public class KeyFactory {
     }
 
     private void performPlayerMove(Character c, int dx, int dy) {
+        Tile<?> mapElement = boardPanel.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx];
         if ((boardPanel.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx] instanceof Chest && c.getProperties().getInventory().containsMortal())) {
             List<Integer> index = new ArrayList<>();
             for (int i = 0; i < c.getProperties().getInventory().length(); i++) {
@@ -98,7 +102,7 @@ public class KeyFactory {
             c.getProperties().getPosition().translate(dx, dy);
 
             notifyObservers();
-        } else if (!boardPanel.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx].getMapElementProperties().getHitBox().isEnabled()) {
+        } else if (!mapElement.getMapElementProperties().getHitBox().isEnabled()) {
             c.getProperties().getPosition().translate(dx, dy);
 
             for (Item item : boardPanel.getGameMap().getItems()) {
@@ -109,9 +113,10 @@ public class KeyFactory {
                     break;
                 }
             }
+
             notifyObservers();
-        } else if ((boardPanel.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx] instanceof Door && c.getProperties().getInventory().containsItem("key"))) {
-            ((Door) boardPanel.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx]).open();
+        } else if ((mapElement instanceof Door && c.getProperties().getInventory().containsItem("key"))) {
+            ((Door) mapElement).open();
 
             try {
                 c.getProperties().getInventory().remove(c.getProperties().getInventory().getItemIndexByName("key"));
@@ -122,7 +127,6 @@ public class KeyFactory {
 
             notifyObservers();
         }
-
     }
 
     private void notifyObservers() {
