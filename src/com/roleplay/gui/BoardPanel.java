@@ -1,22 +1,11 @@
 package com.roleplay.gui;
 
 import com.roleplay.Factories.ItemFactory;
-import com.roleplay.Factories.KeyFactory;
 import com.roleplay.characters.Character;
-import com.roleplay.effects.HealEffect;
-import com.roleplay.effects.InvisibleEffect;
 import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
 import com.roleplay.items.Key;
-import com.roleplay.items.armors.ChainArmor;
-import com.roleplay.items.armors.IronArmor;
-import com.roleplay.items.armors.LeatherArmor;
-import com.roleplay.items.armors.Shield;
-import com.roleplay.items.artefacts.Amulet;
-import com.roleplay.items.artefacts.Cape;
-import com.roleplay.items.artefacts.Potion;
-import com.roleplay.items.artefacts.Ring;
-import com.roleplay.items.weapons.*;
+import com.roleplay.items.MortalInstruments;
 import com.roleplay.map.GameMap;
 import com.roleplay.map.GameMapCreator;
 import com.roleplay.map.Settings;
@@ -76,7 +65,7 @@ public class BoardPanel extends JPanel implements ActionListener {
             itemList.add(item);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             do {
                 artefactX = rand.nextInt(gameMap.getWidth());
                 artefactY = rand.nextInt(gameMap.getHeight());
@@ -85,6 +74,17 @@ public class BoardPanel extends JPanel implements ActionListener {
             } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
             itemList.add(new Key(new ItemProperties(new Point(position))));
         }
+
+        for (int i = 1; i <= 3; i++) {
+            do {
+                artefactX = rand.nextInt(gameMap.getWidth());
+                artefactY = rand.nextInt(gameMap.getHeight());
+
+                position = new Point(artefactX, artefactY);
+            } while (!gameMap.getMapElements()[artefactY][artefactX].getProperties().getName().equalsIgnoreCase("way"));
+            itemList.add(new MortalInstruments(new ItemProperties(new Point(position)), i));
+        }
+
 
         return itemList;
     }
