@@ -30,6 +30,7 @@ public class PlayerListPanel extends JPanel {
     }
 
     public void update() {
+
         repaint();
     }
 

@@ -62,7 +62,7 @@ public class ItemFactory {
         return switch (name) {
             case "amulet" -> new Amulet(new ItemProperties(), new HealEffect(3));
             case "cape" -> new Cape(new ItemProperties(), new InvisibleEffect(3));
-            case "potion" -> new Potion(new ItemProperties(), new HealEffect(3));
+            case "potion" -> new Potion(new ItemProperties());
             case "ring" -> new Ring(new ItemProperties(), new HealEffect(3));
             case "leather" -> new LeatherArmor(new ItemProperties());
             case "chain" -> new ChainArmor(new ItemProperties());

@@ -20,7 +20,7 @@ public class ControlPanel extends JPanel {
 
     public ControlPanel(Settings settings) {
         this.settings = settings;
-        setLayout(new GridLayout(2, 1, 50, -300));
+        setLayout(new GridLayout(4, 1, 50, -300));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
         button = new JButton();
         button.setOpaque(false);
@@ -48,10 +48,19 @@ public class ControlPanel extends JPanel {
 
         mortalCount.setHorizontalAlignment(JLabel.CENTER);
         mortalCount.setForeground(Color.green);
-        add(button);
-        add(showValue);
-        add(new JLabel("Anzahl der Gefundenen gegenstände"));
-        add(mortalCount);
+        mortalCount.setText("0");
+
+        /*JTextArea jTextArea = new JTextArea();
+        jTextArea.setText("Anzahl der Gefundenen gegenstände");
+        jTextArea.setLineWrap(true);
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setOpaque(false);
+        jTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jTextArea.setEditable(false);*/
+        add(button, 0);
+        add(showValue,1);
+        //add(jTextArea,2);
+        add(mortalCount,2);
     }
 
     @Override

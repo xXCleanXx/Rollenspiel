@@ -4,6 +4,7 @@ import com.roleplay.characters.Character;
 import com.roleplay.items.Inventory;
 import com.roleplay.items.armors.Armor;
 import com.roleplay.items.armors.Shield;
+import com.roleplay.items.artefacts.Artefact;
 import com.roleplay.items.weapons.Weapon;
 import com.roleplay.map.Settings;
 import com.roleplay.tools.ImageUtils;
@@ -40,6 +41,8 @@ public class InventoryPanel extends JPanel {
     private final ArrayList<JLabel> labelList = new ArrayList<>();
     private final MouseListener listener = new DragMouseAdapter();
     private final Settings settings;
+
+    private Character character;
 
     public InventoryPanel(Settings settings) {
         this.settings = settings;
@@ -109,6 +112,10 @@ public class InventoryPanel extends JPanel {
                     lbl_armor.setIcon(new ImageIcon(inventory.getArmor().getProperties().getTexture32()));
                     inventory.remove(index);
                     c.setIcon(null);
+                } else if (item instanceof Artefact) {
+                    ((Artefact) item).use(character);
+                    inventory.remove(index);
+                    c.setIcon(null);
                 }
             }
         }
@@ -119,7 +126,7 @@ public class InventoryPanel extends JPanel {
             if (character.getProperties().isMyTurn()) {
                 inventory = character.getProperties().getInventory();
                 charcterPicture.setIcon(new ImageIcon(character.getProperties().getTexture100()));
-
+                this.character = character;
                 break;
             }
         }
