@@ -1,5 +1,7 @@
 package com.roleplay.Factories;
 
+import com.roleplay.build.Chest;
+import com.roleplay.build.Chest;
 import com.roleplay.build.Door;
 import com.roleplay.characters.Character;
 import com.roleplay.characters.enums.Directions;
@@ -7,6 +9,8 @@ import com.roleplay.gui.BoardPanel;
 import com.roleplay.gui.GameFrame;
 import com.roleplay.interfaces.IObserver;
 import com.roleplay.items.Item;
+import com.roleplay.items.MortalInstruments;
+import com.roleplay.items.MortalInstruments;
 import com.roleplay.map.Settings;
 import com.roleplay.map.Tile;
 
@@ -18,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KeyFactory {
-    private BoardPanel jc;
+    private BoardPanel boardPanel;
     private final List<IObserver> observers = new ArrayList<>();
     private final Settings settings;
 
@@ -27,7 +31,7 @@ public class KeyFactory {
     }
 
     public void addKeyBindings(GameFrame component) {
-        this.jc = component.getBoard();
+        this.boardPanel = component.getBoard();
         addObserver(component);
 
         setKeyActions("inventory", KeyEvent.VK_E);
@@ -39,12 +43,12 @@ public class KeyFactory {
     }
 
     private void setKeyActions(String keyName, int key) {
-        this.jc.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key, 0, false), keyName);
-        this.jc.getActionMap().put(keyName, new AbstractAction() {
+        this.boardPanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key, 0, false), keyName);
+        this.boardPanel.getActionMap().put(keyName, new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (keyName.equalsIgnoreCase("inventory")) {
-                    jc.setInventoryVisible();
+                    boardPanel.setInventoryVisible();
 
                     return;
                 }
@@ -83,15 +87,28 @@ public class KeyFactory {
     }
 
     private void performPlayerMove(Character c, int dx, int dy) {
-        Tile<?> mapElement = jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx];
-
-        if (!mapElement.getMapElementProperties().getHitBox().isEnabled()) {
+        Tile<?> mapElement = boardPanel.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx];
+        if ((mapElement instanceof Chest && c.getProperties().getInventory().containsMortal())) {
+            List<Integer> index = new ArrayList<>();
+            for (int i = 0; i < c.getProperties().getInventory().length(); i++) {
+                if (c.getProperties().getInventory().get(i) instanceof MortalInstruments) {
+                    ((Chest) mapElement).addInstrument((MortalInstruments) c.getProperties().getInventory().get(i));
+                    index.add(i);
+                }
+            }
+            for (int i : index) {
+                c.getProperties().getInventory().remove(i);
+            }
             c.getProperties().getPosition().translate(dx, dy);
 
-            for (Item item : jc.getGameMap().getItems()) {
+            notifyObservers();
+        } else if (!mapElement.getMapElementProperties().getHitBox().isEnabled()) {
+            c.getProperties().getPosition().translate(dx, dy);
+
+            for (Item item : boardPanel.getGameMap().getItems()) {
                 if (item.getProperties().getPosition().getX() == (c.getProperties().getPosition()).getX() && item.getProperties().getPosition().getY() == (c.getProperties().getPosition()).getY()) {
                     c.collectItem(item);
-                    jc.getGameMap().getItems().remove(item);
+                    boardPanel.getGameMap().getItems().remove(item);
 
                     break;
                 }

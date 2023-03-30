@@ -12,6 +12,8 @@ public class GameFrame extends JFrame implements IObserver {
     private PlayerListPanel playerList;
     private ControlPanel gameControl;
 
+    private static GameFrame gameFrame;
+
     public GameFrame(Settings settings) {
         super();
         initialize(settings);
@@ -40,12 +42,14 @@ public class GameFrame extends JFrame implements IObserver {
         setResizable(false);
         pack();
 
+        gameFrame = this;
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
-    public BoardPanel getBoard(){
+    public BoardPanel getBoard() {
         return this.board;
     }
 
@@ -54,5 +58,9 @@ public class GameFrame extends JFrame implements IObserver {
         board.update();
         playerList.update();
         gameControl.update();
+    }
+
+    public static void close() {
+        gameFrame.dispose();
     }
 }

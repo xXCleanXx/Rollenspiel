@@ -1,12 +1,8 @@
 package com.roleplay.items;
 
-import com.roleplay.gui.InventoryPanel;
 import com.roleplay.items.armors.Armor;
-import com.roleplay.tools.ImageUtils;
 
 import javax.management.InstanceNotFoundException;
-import java.awt.image.BufferedImage;
-import java.util.Objects;
 
 public class Inventory {
     public final int SLOT_SIZE = 48;
@@ -26,6 +22,15 @@ public class Inventory {
     public boolean containsItem(String name) {
         for (Item i : items) {
             if (i != null && i.getProperties().getName().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsMortal() {
+        for (Item i : items) {
+            if (i instanceof MortalInstruments) {
                 return true;
             }
         }
