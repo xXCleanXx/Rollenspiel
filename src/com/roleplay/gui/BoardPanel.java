@@ -23,7 +23,7 @@ import java.util.Random;
 public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
     public InventoryPanel inventoryPanel;
-    private final FightPanel fightPanel = new FightPanel();
+    private final FightPanel fightPanel;
     private static final EndInfoPanel endInfoPanel = new EndInfoPanel();
 
     public BoardPanel(Settings settings) {
@@ -32,6 +32,8 @@ public class BoardPanel extends JPanel implements ActionListener {
         inventoryPanel = new InventoryPanel(settings);
         gameMap = GameMapCreator.loadRandomMap();
         gameMap.setSettings(settings);
+
+        fightPanel = new FightPanel(gameMap);
 
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 

@@ -34,10 +34,6 @@ public class ControlPanel extends JPanel {
             settings.getPlayers().get(turnCount).getProperties().setMyTurn(true);
             turnCount++;
 
-            if (turnCount == settings.getPlayers().size()) {
-                turnCount = 0;
-            }
-
             button.setEnabled(false);
         });
 
@@ -86,6 +82,9 @@ public class ControlPanel extends JPanel {
             for (int i = 0; i < settings.getPlayers().size(); i++) {
                 if (settings.getPlayers().get(i).getProperties().isMyTurn()) {
                     settings.getPlayers().get(i).getProperties().setMyTurn(false);
+                    if (turnCount >= settings.getPlayers().size()) {
+                        turnCount = 0;
+                    }
 
                     break;
                 }

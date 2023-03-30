@@ -56,7 +56,6 @@ public class GameFrame extends JFrame implements IObserver {
     @Override
     public void update() {
         board.update();
-        playerList.update();
         gameControl.update();
     }
 
