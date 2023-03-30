@@ -3,7 +3,7 @@ package com.roleplay.characters;
 import com.roleplay.tools.ImageUtils;
 
 public class Monster extends Character {
-    protected Monster(CharacterProperties characterProperties) {
+    public Monster(CharacterProperties characterProperties) {
         super(characterProperties);
 
         getProperties().setName("monster");

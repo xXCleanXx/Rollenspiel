@@ -1,12 +1,19 @@
 package com.roleplay.map;
 
+import com.roleplay.characters.Monster;
+import com.roleplay.items.Item;
+
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameMap {
     private int width;
     private int height;
     public static final int TILE_SIZE = 32;
     private final Tile<?>[][] map;
+    private final List<Item> items = new ArrayList<>();
+    private final List<Monster> _monsters = new ArrayList<>();
     private Settings settings;
 
     public GameMap(int width, int height) {
@@ -22,6 +29,38 @@ public class GameMap {
 
     public void setSettings(Settings settings) {
         this.settings = settings;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void addItem(Item item) {
+        if (item == null) throw new IllegalArgumentException("Item cannot be null!");
+
+        items.add(item);
+    }
+
+    public void removeItem(Item item) {
+        if (item == null) throw new IllegalArgumentException("Item cannot be null!");
+
+        items.remove(item);
+    }
+
+    public List<Monster> getMonsters() {
+        return _monsters;
+    }
+
+    public void addMonster(Monster monster) {
+        if (monster == null) throw new IllegalArgumentException("Monster cannot be null!");
+
+        _monsters.add(monster);
+    }
+
+    public void removeMonster(Monster monster) {
+        if (monster == null) throw new IllegalArgumentException("Monster cannot be null!");
+
+        _monsters.remove(monster);
     }
 
     public int getWidth() {
