@@ -1,5 +1,6 @@
 package com.roleplay.map;
 
+import com.roleplay.build.Chest;
 import com.roleplay.build.Door;
 import com.roleplay.tools.ImageUtils;
 
@@ -47,6 +48,9 @@ public final class GameMapCreator {
                         case 5 -> {
                             tileProperties = new GameMapElementProperties("wall", new Point(j, i), ImageUtils.loadImage("src/com/roleplay/resources/images/wall.png"));
                             tile = new Tile<>(tileProperties);
+                        }
+                        case 9 -> {
+                            tile = new Chest(new GameMapElementProperties("chest", new Point(0, 0), ImageUtils.loadImage("src/com/roleplay/resources/images/chest.png")));
                         }
                         default ->
                                 throw new IllegalStateException("Unexpected value: " + Character.getNumericValue(text.charAt(j)));

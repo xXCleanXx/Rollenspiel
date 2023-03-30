@@ -22,6 +22,7 @@ public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
     public InventoryPanel inventoryPanel;
     private final FightPanel fightPanel = new FightPanel();
+    private static final EndInfoPanel endInfoPanel = new EndInfoPanel();
 
     public BoardPanel(Settings settings) {
         setLayout(new OverlayLayout(this));
@@ -41,6 +42,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         add(inventoryPanel);
         add(fightPanel);
         add(new StartInfoPanel());
+        add(endInfoPanel);
     }
 
     private Point generatePoint(Random random) {
@@ -57,7 +59,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         Random rand = new Random();
         Point position;
 
-        int count = switch(gameMap.getSettings().getDifficulty()) {
+        int count = switch (gameMap.getSettings().getDifficulty()) {
             case HARD -> gameMap.getSettings().getPlayerCount() * 4;
             case HARDCORE -> gameMap.getSettings().getPlayerCount() * 3;
             case MEDIUM -> gameMap.getSettings().getPlayerCount() * 2;
@@ -161,6 +163,10 @@ public class BoardPanel extends JPanel implements ActionListener {
             fightPanel.setVisible(true);
             fightPanel.initialize(fighter, opponent);
         }
+    }
+
+    public static void setInfoVisible() {
+        endInfoPanel.setVisible(true);
     }
 
 }
