@@ -154,7 +154,7 @@ public class BoardPanel extends JPanel implements ActionListener {
         }
     }
 
-    public void setFightVisible(Character fighter, Character opponent) {
+    private void setFightVisible(Character fighter, Character opponent) {
         if (fightPanel.isVisible()) {
             fightPanel.setVisible(false);
         } else {

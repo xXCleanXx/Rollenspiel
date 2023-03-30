@@ -8,6 +8,7 @@ import com.roleplay.gui.GameFrame;
 import com.roleplay.interfaces.IObserver;
 import com.roleplay.items.Item;
 import com.roleplay.map.Settings;
+import com.roleplay.map.Tile;
 
 import javax.management.InstanceNotFoundException;
 import javax.swing.*;
@@ -82,7 +83,9 @@ public class KeyFactory {
     }
 
     private void performPlayerMove(Character c, int dx, int dy) {
-        if (!jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx].getMapElementProperties().getHitBox().isEnabled()) {
+        Tile<?> mapElement = jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx];
+
+        if (!mapElement.getMapElementProperties().getHitBox().isEnabled()) {
             c.getProperties().getPosition().translate(dx, dy);
 
             for (Item item : jc.getGameMap().getItems()) {
@@ -93,9 +96,10 @@ public class KeyFactory {
                     break;
                 }
             }
+
             notifyObservers();
-        } else if ((jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx] instanceof Door && c.getProperties().getInventory().containsItem("key"))) {
-            ((Door) jc.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx]).open();
+        } else if ((mapElement instanceof Door && c.getProperties().getInventory().containsItem("key"))) {
+            ((Door) mapElement).open();
 
             try {
                 c.getProperties().getInventory().remove(c.getProperties().getInventory().getItemIndexByName("key"));
@@ -106,7 +110,6 @@ public class KeyFactory {
 
             notifyObservers();
         }
-
     }
 
     private void notifyObservers() {
