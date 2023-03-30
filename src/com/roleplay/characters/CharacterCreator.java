@@ -25,6 +25,7 @@ public class CharacterCreator {
 
         if (character instanceof Warrior) {
             abilitiesModifier(characterProperties, 10);
+
             switch (new Random().nextInt(3)) {
                 case 0 -> {
                     characterProperties.getInventory().add(new ChainArmor(new ItemProperties()));
@@ -51,6 +52,8 @@ public class CharacterCreator {
             characterProperties.getInventory().add(new Dagger(new ItemProperties()));
             characterProperties.getInventory().add(new Bow(new ItemProperties()));
             characterProperties.getInventory().add(new Spear(new ItemProperties()));
+        } else if (character instanceof Monster) {
+            abilitiesModifier(characterProperties, 8);
         }
 
         addAbilities(characterProperties, race);

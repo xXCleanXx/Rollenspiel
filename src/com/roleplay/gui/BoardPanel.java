@@ -2,8 +2,10 @@ package com.roleplay.gui;
 
 import com.roleplay.Factories.ItemFactory;
 import com.roleplay.characters.Character;
+import com.roleplay.characters.CharacterCreator;
 import com.roleplay.characters.CharacterProperties;
 import com.roleplay.characters.Monster;
+import com.roleplay.characters.enums.Races;
 import com.roleplay.items.Item;
 import com.roleplay.items.ItemProperties;
 import com.roleplay.items.Key;
@@ -66,7 +68,9 @@ public class BoardPanel extends JPanel implements ActionListener {
 
         for (int i = 0; i < count; i++) {
             position = generatePoint(rand);
-            gameMap.addMonster(new Monster(new CharacterProperties(new Point(position))));
+            Monster monster = new Monster(new CharacterProperties(new Point(position)));
+            new CharacterCreator(monster, Races.HOBBIT, "Monster");
+            gameMap.addMonster(monster);
         }
     }
 
@@ -133,12 +137,28 @@ public class BoardPanel extends JPanel implements ActionListener {
         repaint();
     }
 
+    private boolean fight(Character fighter, Character opponent) {
+        if (!opponent.getProperties().isMyTurn() && fighter.getProperties().getPosition().equals(opponent.getProperties().getPosition())) {
+            setFightVisible(fighter, opponent);
+
+            return true;
+        }
+
+        return false;
+    }
+
     private void isCharacterOnPosition() {
         for (Character fighter : gameMap.getSettings().getPlayers()) {
             if (fighter.getProperties().isMyTurn()) {
+                boolean monster = true;
+
                 for (Character opponent : gameMap.getSettings().getPlayers()) {
-                    if (!opponent.getProperties().isMyTurn() && fighter.getProperties().getPosition().equals(opponent.getProperties().getPosition())) {
-                        setFightVisible(fighter, opponent);
+                    monster = !fight(fighter, opponent);
+                }
+
+                if (monster) {
+                    for (Character item : gameMap.getMonsters()) {
+                        fight(fighter, item);
                     }
                 }
             }

@@ -21,34 +21,37 @@ public class FightPanel extends JPanel {
     private JButton btn_fight;
     private Character fighter;
     private Character opponent;
+    private boolean blockButton;
 
     public FightPanel() {
         setOpaque(false);
         setVisible(false);
         add(fightPanel);
 
-
         btn_fight.addActionListener(e -> {
+            if (blockButton) return;
+
+            blockButton = true;
+
             new Thread(() -> {
                 try {
                     attack(fighter, opponent);
                     lbl_health2.setText(Messages.getString("live") + ": " + opponent.getProperties().getHealthPoints());
-
-                    Thread.sleep(2000);
-
                     lbl_info.setText(opponent.getProperties().getDisplayName() + Messages.getString("greift") + fighter.getProperties().getDisplayName() + Messages.getString("an"));
 
-                    Thread.sleep(2000);
+                    Thread.sleep(100 * 1000);
 
                     attack(opponent, fighter);
+                    lbl_info.setText(fighter.getProperties().getDisplayName() + Messages.getString("greift") + opponent.getProperties().getDisplayName() + Messages.getString("an"));
                     lbl_health1.setText(Messages.getString("live") + ": " + fighter.getProperties().getHealthPoints());
 
-                    Thread.sleep(1000);
+                    Thread.sleep(100 * 1000);
 
                     lbl_info.setText(Messages.getString("fight_end"));
 
-                    Thread.sleep(1000);
+                    Thread.sleep(100 * 1000);
 
+                    blockButton = false;
                     setVisible(false);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
