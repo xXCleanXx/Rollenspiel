@@ -53,9 +53,9 @@ public class ControlPanel extends JPanel {
         jTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
         jTextArea.setEditable(false);*/
         add(button, 0);
-        add(showValue,1);
+        add(showValue, 1);
         //add(jTextArea,2);
-        add(mortalCount,2);
+        add(mortalCount, 2);
     }
 
     @Override
@@ -89,6 +89,14 @@ public class ControlPanel extends JPanel {
                     break;
                 }
             }
+            /*try {
+                while (!FightPanel.isRunning()) {
+                    //Thread.sleep(1000);
+                }
+            } catch(InterruptedException ex){
+                ex.printStackTrace();
+            }*/
+
 
             JOptionPane.showMessageDialog(null, "Player " + (turnCount + 1) + "! \n it's your turn!");
             button.setEnabled(true);

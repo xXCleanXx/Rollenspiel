@@ -24,8 +24,9 @@ public class FightPanel extends JPanel {
     private Character fighter;
     private Character opponent;
     private boolean blockButton;
+    private final GameMap gameMap;
 
-    private GameMap gameMap;
+    private static boolean isRunning = false;
 
     public FightPanel(GameMap gameMap) {
         setOpaque(false);
@@ -66,6 +67,7 @@ public class FightPanel extends JPanel {
 
                     blockButton = false;
                     setVisible(false);
+                    setRunning(false);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -125,5 +127,13 @@ public class FightPanel extends JPanel {
                 Toolkit.getDefaultToolkit().sync();
             }
         };
+    }
+
+    public void setRunning(boolean running){
+        isRunning = running;
+    }
+
+    public static boolean isRunning(){
+        return isRunning;
     }
 }

@@ -190,6 +190,7 @@ public class BoardPanel extends JPanel implements ActionListener {
             fightPanel.setVisible(false);
         } else {
             fightPanel.setVisible(true);
+            fightPanel.setRunning(true);
             fightPanel.initialize(fighter, opponent);
         }
     }
