@@ -4,7 +4,6 @@ import com.roleplay.characters.Character;
 import com.roleplay.items.weapons.Weapon;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
-import com.roleplay.interfaces.IObserver;
 
 import javax.swing.*;
 import java.awt.*;

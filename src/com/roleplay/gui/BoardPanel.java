@@ -40,6 +40,7 @@ public class BoardPanel extends JPanel implements ActionListener {
 
         add(inventoryPanel);
         add(fightPanel);
+        add(new StartInfoPanel());
 
     }
 
