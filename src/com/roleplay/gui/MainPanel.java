@@ -15,9 +15,10 @@ public class MainPanel {
     private JButton btn_Settings;
     private JButton btn_Character;
     private JButton btn_Artefact;
-    private JButton btn_start;
+    private JButton btn_Start;
     private JLabel title;
     private JList<String> listCharacter;
+    private JButton btn_Info;
     private final Settings settings;
 
     MainPanel(JPanel contentPane, JFrame mainFrame, Settings settings) {
@@ -38,7 +39,12 @@ public class MainPanel {
             cardLayout.show(contentPane, Messages.getString("ARTEFACT_PANEL"));
         });
 
-        btn_start.addActionListener(e -> {
+        btn_Info.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+            cardLayout.show(contentPane, Messages.getString("INFO_PANEL"));
+        });
+
+        btn_Start.addActionListener(e -> {
             if (settings.getPlayers().size() >= 1) {
                 mainFrame.setVisible(false);
                 new GameFrame(settings);

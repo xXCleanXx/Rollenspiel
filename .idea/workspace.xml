@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e17844f9-2e67-43ef-b593-27a7a66cb16a" name="Changes" comment="Add main Background and Icons&#10;Add Difficult">
-      <change afterPath="$PROJECT_DIR$/src/com/roleplay/enviroment/EnviromentManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/roleplay/enviroment/Lighting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/roleplay/resources/maps/map3.txt" afterDir="false" />
+    <list default="true" id="7d733696-a1b1-4ba5-be00-2b7b841a73db" name="Changes" comment="Merge">
+      <change afterPath="$PROJECT_DIR$/src/com/roleplay/gui/InfoPanel.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/roleplay/gui/InfoPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/roleplay/resources/images/backgrounds/Info_Background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/roleplay/map/GameMapCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/map/GameMapCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/FightPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/FightPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/MainPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/MainPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/roleplay/gui/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/gui/MainPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/roleplay/tools/messages_de.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/roleplay/tools/messages_de.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,17 +45,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/nik-k/IdeaProjects/Rollenspiel/src/com/roleplay/resources/maps",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nik-k/IdeaProjects/Rollenspiel/src/com/roleplay/resources/maps&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nik-k\IdeaProjects\Rollenspiel\src\com\roleplay\resources\maps" />

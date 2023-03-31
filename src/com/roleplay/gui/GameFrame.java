@@ -22,10 +22,6 @@ public class GameFrame extends JFrame implements IObserver {
     private void initialize(Settings settings) {
         setTitle("Nerds vs Monsters");
 
-        JMenuBar controlBar = new JMenuBar();
-        controlBar.add(new JMenu("Settings"));
-        setJMenuBar(controlBar);
-
         board = new BoardPanel(settings);
         add(board, BorderLayout.CENTER);
         gameControl = new ControlPanel(settings);

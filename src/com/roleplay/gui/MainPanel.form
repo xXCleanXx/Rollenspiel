@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.roleplay.gui.MainPanel">
   <grid id="27dc6" binding="mainPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="858" height="534"/>
+      <xy x="20" y="20" width="1182" height="559"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -76,7 +76,7 @@
           </component>
         </children>
       </grid>
-      <grid id="99936" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="99936" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="25" bottom="25" right="25"/>
         <constraints border-constraint="South"/>
         <properties>
@@ -84,14 +84,37 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="7b419" class="javax.swing.JButton" binding="btn_start">
+          <component id="7b419" class="javax.swing.JButton" binding="btn_Start">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="800" height="100"/>
+                <preferred-size width="800" height="100"/>
+                <maximum-size width="800" height="100"/>
+              </grid>
             </constraints>
             <properties>
               <font name="Comic Sans MS" size="28"/>
               <foreground color="-16777216"/>
+              <horizontalTextPosition value="0"/>
+              <icon value="com/roleplay/resources/images/buttons/btn_800x100 .png"/>
               <text resource-bundle="com/roleplay/tools/messages" key="start"/>
+            </properties>
+          </component>
+          <component id="28ea" class="javax.swing.JButton" binding="btn_Info">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="250" height="100"/>
+                <preferred-size width="250" height="100"/>
+                <maximum-size width="250" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Comic Sans MS" size="28"/>
+              <foreground color="-16777216"/>
+              <hideActionText value="true"/>
+              <horizontalTextPosition value="0"/>
+              <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
+              <text resource-bundle="com/roleplay/tools/messages" key="INFO_PANEL"/>
             </properties>
           </component>
         </children>

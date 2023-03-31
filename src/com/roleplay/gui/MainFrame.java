@@ -34,11 +34,13 @@ public class MainFrame extends JFrame {
         CharacterPanel characterPanel = new CharacterPanel(contentPane, settings);
         ItemPanel itemPanel = new ItemPanel(contentPane, settings);
         SettingsPanel settingsPanel = new SettingsPanel(contentPane, settings);
+        InfoPanel infoPanel = new InfoPanel(contentPane);
 
         contentPane.add(main.getMainPanel(), Messages.getString("MAIN_PANEL"));
         contentPane.add(characterPanel.getCharacterPanel(), Messages.getString("CHARACTER_PANEL"));
         contentPane.add(itemPanel.getArtefactPanel(), Messages.getString("ARTEFACT_PANEL"));
         contentPane.add(settingsPanel.getSettingsPanel(), Messages.getString("SETTINGS_PANEL"));
+        contentPane.add(infoPanel.getInfoPanel(), Messages.getString("INFO_PANEL"));
 
         setContentPane(contentPane);
         setResizable(false);

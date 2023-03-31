@@ -42,11 +42,11 @@ public class FightPanel extends JPanel {
 
             new Thread(() -> {
                 try {
-                    Thread.sleep(3500);
+                    Thread.sleep(2000);
                     attack(fighter, opponent);
                     lbl_health2.setText(Messages.getString("live") + ": " + opponent.getProperties().getHealthPoints());
 
-                    Thread.sleep(3500);
+                    Thread.sleep(2000);
 
                     if(!gameMap.getSettings().getPlayers().contains(opponent) && !gameMap.getMonsters().contains(opponent)){
                         Thread.currentThread().interrupt();
@@ -56,14 +56,14 @@ public class FightPanel extends JPanel {
 
                     lbl_info.setText(opponent.getProperties().getDisplayName() + Messages.getString("greift") + fighter.getProperties().getDisplayName() + Messages.getString("an"));
 
-                    Thread.sleep(3500);
+                    Thread.sleep(2000);
                     attack(opponent, fighter);
                     lbl_health1.setText(Messages.getString("live") + ": " + fighter.getProperties().getHealthPoints());
 
-                    Thread.sleep(3500);
+                    Thread.sleep(2000);
                     lbl_info.setText(Messages.getString("fight_end"));
 
-                    Thread.sleep(3500);
+                    Thread.sleep(2000);
 
                     blockButton = false;
                     setVisible(false);
