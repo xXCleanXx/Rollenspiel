@@ -23,7 +23,7 @@ import java.util.Random;
 public class BoardPanel extends JPanel implements ActionListener {
     private final GameMap gameMap;
     public InventoryPanel inventoryPanel;
-    private final FightPanel fightPanel = new FightPanel();
+    private final FightPanel fightPanel;
     private static final EndInfoPanel endInfoPanel = new EndInfoPanel();
 
     public BoardPanel(Settings settings) {
@@ -32,6 +32,8 @@ public class BoardPanel extends JPanel implements ActionListener {
         inventoryPanel = new InventoryPanel(settings);
         gameMap = GameMapCreator.loadRandomMap();
         gameMap.setSettings(settings);
+
+        fightPanel = new FightPanel(gameMap);
 
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
 
@@ -45,6 +47,13 @@ public class BoardPanel extends JPanel implements ActionListener {
         add(fightPanel);
         add(new StartInfoPanel());
         add(endInfoPanel);
+
+        //Lighting does not work.
+        //EnviromentManager eManager = new EnviromentManager(this);
+        //eManager.setup(settings.getPlayers().get(0));
+        //var tempScreen = new BufferedImage(GameMap.TILE_SIZE *43, GameMap.TILE_SIZE *25, BufferedImage.TYPE_INT_ARGB);
+        //eManager.draw((Graphics2D) tempScreen.getGraphics());
+
     }
 
     private Point generatePoint(Random random) {
@@ -181,6 +190,7 @@ public class BoardPanel extends JPanel implements ActionListener {
             fightPanel.setVisible(false);
         } else {
             fightPanel.setVisible(true);
+            fightPanel.setRunning(true);
             fightPanel.initialize(fighter, opponent);
         }
     }

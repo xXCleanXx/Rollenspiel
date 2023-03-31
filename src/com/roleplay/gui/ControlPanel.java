@@ -19,7 +19,7 @@ public class ControlPanel extends JPanel {
 
     public ControlPanel(Settings settings) {
         this.settings = settings;
-        setLayout(new GridLayout(2, 1, 50, -300));
+        setLayout(new GridLayout(4, 1, 50, -300));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
         button = new JButton();
         button.setOpaque(false);
@@ -34,10 +34,6 @@ public class ControlPanel extends JPanel {
             settings.getPlayers().get(turnCount).getProperties().setMyTurn(true);
             turnCount++;
 
-            if (turnCount == settings.getPlayers().size()) {
-                turnCount = 0;
-            }
-
             button.setEnabled(false);
         });
 
@@ -47,10 +43,19 @@ public class ControlPanel extends JPanel {
 
         mortalCount.setHorizontalAlignment(JLabel.CENTER);
         mortalCount.setForeground(Color.green);
-        add(button);
-        add(showValue);
-        add(new JLabel("Anzahl der Gefundenen gegenstände"));
-        add(mortalCount);
+        mortalCount.setText("0");
+
+        /*JTextArea jTextArea = new JTextArea();
+        jTextArea.setText("Anzahl der Gefundenen gegenstände");
+        jTextArea.setLineWrap(true);
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setOpaque(false);
+        jTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jTextArea.setEditable(false);*/
+        add(button, 0);
+        add(showValue, 1);
+        //add(jTextArea,2);
+        add(mortalCount, 2);
     }
 
     @Override
@@ -77,10 +82,21 @@ public class ControlPanel extends JPanel {
             for (int i = 0; i < settings.getPlayers().size(); i++) {
                 if (settings.getPlayers().get(i).getProperties().isMyTurn()) {
                     settings.getPlayers().get(i).getProperties().setMyTurn(false);
+                    if (turnCount >= settings.getPlayers().size()) {
+                        turnCount = 0;
+                    }
 
                     break;
                 }
             }
+            /*try {
+                while (!FightPanel.isRunning()) {
+                    //Thread.sleep(1000);
+                }
+            } catch(InterruptedException ex){
+                ex.printStackTrace();
+            }*/
+
 
             JOptionPane.showMessageDialog(null, "Player " + (turnCount + 1) + "! \n it's your turn!");
             button.setEnabled(true);

@@ -1,7 +1,9 @@
 package com.roleplay.gui;
 
 import com.roleplay.characters.Character;
+import com.roleplay.characters.Monster;
 import com.roleplay.items.weapons.Weapon;
+import com.roleplay.map.GameMap;
 import com.roleplay.tools.ImageUtils;
 import com.roleplay.tools.Messages;
 
@@ -22,11 +24,16 @@ public class FightPanel extends JPanel {
     private Character fighter;
     private Character opponent;
     private boolean blockButton;
+    private final GameMap gameMap;
 
-    public FightPanel() {
+    private static boolean isRunning = false;
+
+    public FightPanel(GameMap gameMap) {
         setOpaque(false);
         setVisible(false);
         add(fightPanel);
+
+        this.gameMap = gameMap;
 
         btn_fight.addActionListener(e -> {
             if (blockButton) return;
@@ -35,24 +42,32 @@ public class FightPanel extends JPanel {
 
             new Thread(() -> {
                 try {
+                    Thread.sleep(3500);
                     attack(fighter, opponent);
                     lbl_health2.setText(Messages.getString("live") + ": " + opponent.getProperties().getHealthPoints());
+
+                    Thread.sleep(3500);
+
+                    if(!gameMap.getSettings().getPlayers().contains(opponent) && !gameMap.getMonsters().contains(opponent)){
+                        Thread.currentThread().interrupt();
+                        setVisible(false);
+                        return;
+                    }
+
                     lbl_info.setText(opponent.getProperties().getDisplayName() + Messages.getString("greift") + fighter.getProperties().getDisplayName() + Messages.getString("an"));
 
-                    Thread.sleep(100 * 1000);
-
+                    Thread.sleep(3500);
                     attack(opponent, fighter);
-                    lbl_info.setText(fighter.getProperties().getDisplayName() + Messages.getString("greift") + opponent.getProperties().getDisplayName() + Messages.getString("an"));
                     lbl_health1.setText(Messages.getString("live") + ": " + fighter.getProperties().getHealthPoints());
 
-                    Thread.sleep(100 * 1000);
-
+                    Thread.sleep(3500);
                     lbl_info.setText(Messages.getString("fight_end"));
 
-                    Thread.sleep(100 * 1000);
+                    Thread.sleep(3500);
 
                     blockButton = false;
                     setVisible(false);
+                    setRunning(false);
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -72,7 +87,20 @@ public class FightPanel extends JPanel {
             diff = 0;
         }
         opponent.getProperties().setHealthPoints(opponent.getProperties().getHealthPoints() - diff);
-        lbl_info.setText(opponent.getProperties().getDisplayName() + Messages.getString("erleidet") + diff + Messages.getString("damage"));
+
+        if(opponent.getProperties().getHealthPoints() <= 0){
+            lbl_info.setText(opponent.getProperties().getDisplayName() + " erliegt seinen Verletzungen");
+
+            if(opponent instanceof Monster) {
+                gameMap.removeMonster((Monster) opponent);
+            } else {
+                gameMap.getSettings().removePlayer(opponent);
+            }
+
+        } else{
+            lbl_info.setText(opponent.getProperties().getDisplayName() + Messages.getString("erleidet") + diff + Messages.getString("damage"));
+        }
+        PlayerListPanel.update(opponent);
     }
 
     public void initialize(Character fighter, Character opponent) {
@@ -99,5 +127,13 @@ public class FightPanel extends JPanel {
                 Toolkit.getDefaultToolkit().sync();
             }
         };
+    }
+
+    public void setRunning(boolean running){
+        isRunning = running;
+    }
+
+    public static boolean isRunning(){
+        return isRunning;
     }
 }
