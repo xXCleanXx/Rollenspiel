@@ -26,7 +26,7 @@
             <properties>
               <font name="Comic Sans MS" size="36"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="charcterMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="charcterMenu"/>
             </properties>
           </component>
           <component id="7c39b" class="javax.swing.JLabel" binding="subTitle">
@@ -62,7 +62,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="startMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="startMenu"/>
             </properties>
           </component>
           <component id="1307b" class="javax.swing.JButton" binding="btn_charcter">
@@ -78,7 +78,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="artefactMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="artefactMenu"/>
             </properties>
           </component>
           <component id="d2478" class="javax.swing.JButton" binding="btn_error">
@@ -100,11 +100,11 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/labelx_350x100.png"/>
-              <label resource-bundle="com/roleplay/tools/messages" key="exists"/>
+              <label resource-bundle="com/roleplay/resources/properties/messages" key="exists"/>
               <opaque value="false"/>
               <requestFocusEnabled value="false"/>
               <rolloverEnabled value="false"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="exists"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="exists"/>
               <verifyInputWhenFocusTarget value="false"/>
               <visible value="false"/>
             </properties>
@@ -166,7 +166,7 @@
                   <requestFocusEnabled value="false"/>
                   <rolloverEnabled value="true"/>
                   <selected value="false"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="fighter"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="fighter"/>
                   <verifyInputWhenFocusTarget value="true"/>
                   <visible value="true"/>
                 </properties>
@@ -198,7 +198,7 @@
                   <opaque value="true"/>
                   <requestFocusEnabled value="true"/>
                   <rolloverEnabled value="true"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="wizard"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="wizard"/>
                   <verticalAlignment value="0"/>
                   <verticalTextPosition value="0"/>
                 </properties>
@@ -219,7 +219,7 @@
                   <horizontalTextPosition value="0"/>
                   <icon value="com/roleplay/resources/images/buttons/btn_thief.png"/>
                   <inheritsPopupMenu value="true"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="thief"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="thief"/>
                 </properties>
               </component>
               <vspacer id="ff040">
@@ -252,7 +252,7 @@
                   <horizontalTextPosition value="0"/>
                   <icon value="com/roleplay/resources/images/buttons/btn_125x75.png"/>
                   <selected value="true"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="dwraf"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="dwraf"/>
                 </properties>
               </component>
               <component id="bc01a" class="javax.swing.JButton" binding="btn_Elf">
@@ -270,7 +270,7 @@
                   <horizontalTextPosition value="0"/>
                   <icon value="com/roleplay/resources/images/buttons/btn_125x75.png"/>
                   <selected value="true"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="elf"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="elf"/>
                 </properties>
               </component>
               <component id="b59cd" class="javax.swing.JButton" binding="btn_Human">
@@ -287,7 +287,7 @@
                   <icon value="com/roleplay/resources/images/buttons/btn_125x75_enable.png"/>
                   <inheritsPopupMenu value="true"/>
                   <selected value="true"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="human"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="human"/>
                 </properties>
               </component>
               <component id="665f3" class="javax.swing.JButton" binding="btn_Hobbit">
@@ -303,7 +303,7 @@
                   <horizontalTextPosition value="0"/>
                   <icon value="com/roleplay/resources/images/buttons/btn_125x75.png"/>
                   <selected value="true"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="hobbit"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="hobbit"/>
                 </properties>
               </component>
             </children>
@@ -336,7 +336,7 @@
               <opaque value="false"/>
               <selectedTextColor color="-1873663"/>
               <selectionColor color="-1873663"/>
-              <toolTipText resource-bundle="com/roleplay/tools/messages" key="addName"/>
+              <toolTipText resource-bundle="com/roleplay/resources/properties/messages" key="addName"/>
             </properties>
           </component>
           <hspacer id="58d8b">
@@ -367,7 +367,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_150x60.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="next"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="next"/>
             </properties>
           </component>
           <component id="d5933" class="javax.swing.JLabel" binding="charcterPicture">

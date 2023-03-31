@@ -157,7 +157,7 @@
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
               <opaque value="false"/>
               <requestFocusEnabled value="false"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="fight"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="fight"/>
             </properties>
           </component>
         </children>

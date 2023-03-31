@@ -27,7 +27,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="startMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="startMenu"/>
             </properties>
           </component>
           <component id="1307b" class="javax.swing.JButton" binding="btn_artefact">
@@ -42,7 +42,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="charcterMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="charcterMenu"/>
             </properties>
           </component>
           <hspacer id="15673">
@@ -67,7 +67,7 @@
             <properties>
               <font name="Comic Sans MS" size="36"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="settings"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="settings"/>
             </properties>
           </component>
         </children>
@@ -194,7 +194,7 @@
               <font name="Comic Sans MS" size="22"/>
               <foreground color="-16777216"/>
               <labelFor value="1e7b0"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="difficult"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="difficult"/>
             </properties>
           </component>
           <component id="22cf6" class="javax.swing.JLabel">
@@ -206,7 +206,7 @@
               <foreground color="-16777216"/>
               <labelFor value=""/>
               <requestFocusEnabled value="false"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="countPlayer"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="countPlayer"/>
             </properties>
           </component>
           <vspacer id="5af9e">

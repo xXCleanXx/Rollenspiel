@@ -6,6 +6,7 @@ import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Objects;
 import java.util.Random;
 
@@ -43,18 +44,10 @@ public class ControlPanel extends JPanel {
 
         mortalCount.setHorizontalAlignment(JLabel.CENTER);
         mortalCount.setForeground(Color.green);
-        mortalCount.setText("0");
+        mortalCount.setText("Items: " + "0");
 
-        /*JTextArea jTextArea = new JTextArea();
-        jTextArea.setText("Anzahl der Gefundenen gegenstände");
-        jTextArea.setLineWrap(true);
-        jTextArea.setWrapStyleWord(true);
-        jTextArea.setOpaque(false);
-        jTextArea.setAlignmentX(Component.CENTER_ALIGNMENT);
-        jTextArea.setEditable(false);*/
         add(button, 0);
         add(showValue, 1);
-        //add(jTextArea,2);
         add(mortalCount, 2);
     }
 
@@ -77,7 +70,7 @@ public class ControlPanel extends JPanel {
     public void update() {
         setValue(this.getValue() - 1);
         showValue.setText(String.valueOf(value));
-        mortalCount.setText(String.valueOf(Chest.getLength()));
+        mortalCount.setText("Items: " + Chest.getLength());
         if (getValue() == 0) {
             for (int i = 0; i < settings.getPlayers().size(); i++) {
                 if (settings.getPlayers().get(i).getProperties().isMyTurn()) {
@@ -98,8 +91,28 @@ public class ControlPanel extends JPanel {
             }*/
 
 
-            JOptionPane.showMessageDialog(null, "Player " + (turnCount + 1) + "! \n it's your turn!");
+            ImageBackgroundPane jOption = new ImageBackgroundPane(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/background_info.png"));
+            jOption.showMessageDialog(null, "Player " + (turnCount + 1) + "! \n it's your turn!");
+
             button.setEnabled(true);
+        }
+
+    }
+
+    class ImageBackgroundPane extends JOptionPane {
+        private BufferedImage img;
+
+        public ImageBackgroundPane(BufferedImage image) {
+            this.img = image;
+            setOpaque(false);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Dimension curSize = this.getSize();
+            g.drawImage(img, 0, 0, curSize.width, curSize.height, null);
+            Toolkit.getDefaultToolkit().sync();
         }
 
     }

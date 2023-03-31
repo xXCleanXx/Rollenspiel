@@ -131,7 +131,7 @@ public class CharacterPanel {
 
                 doClick(player - 1);
             } else if (settings.getPlayers().size() < player - 1) {
-                new CharacterCreator(this.character, race, playerName.getText());
+                new CharacterCreator(this.character, race, playerName.getText().trim());
                 settings.addPlayer(this.character);
                 MainFrame.setCharacterList(settings.getPlayers());
                 playerName.setText("");
