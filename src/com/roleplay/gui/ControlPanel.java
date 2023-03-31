@@ -1,7 +1,11 @@
 package com.roleplay.gui;
 
 import com.roleplay.build.Chest;
+import com.roleplay.characters.Monster;
+import com.roleplay.characters.enums.Directions;
+import com.roleplay.map.GameMap;
 import com.roleplay.map.Settings;
+import com.roleplay.map.Tile;
 import com.roleplay.tools.ImageUtils;
 
 import javax.swing.*;
@@ -15,10 +19,10 @@ public class ControlPanel extends JPanel {
     public final JLabel showValue = new JLabel();
     public final JLabel mortalCount = new JLabel();
     public int turnCount = 0;
-    private final Settings settings;
+    private final GameMap gameMap;
 
-    public ControlPanel(Settings settings) {
-        this.settings = settings;
+    public ControlPanel(GameMap gameMap) {
+        this.gameMap = gameMap;
         setLayout(new GridLayout(4, 1, 50, -300));
         setPreferredSize(new Dimension(190, BoardPanel.HEIGHT));
         button = new JButton();
@@ -31,7 +35,7 @@ public class ControlPanel extends JPanel {
             value = rand.nextInt(20) + 1;
             repaint();
 
-            settings.getPlayers().get(turnCount).getProperties().setMyTurn(true);
+            gameMap.getSettings().getPlayers().get(turnCount).getProperties().setMyTurn(true);
             turnCount++;
 
             button.setEnabled(false);
@@ -74,29 +78,62 @@ public class ControlPanel extends JPanel {
         value = values;
     }
 
+    private boolean moveMonster(Monster monster, int dx, int dy) {
+        Tile<?> mapElement = gameMap.getMapElements()[monster.getProperties().getPosition().y + dy][monster.getProperties().getPosition().x + dx];
+
+        if (!mapElement.getMapElementProperties().getHitBox().isEnabled()) {
+            monster.getProperties().getPosition().translate(dx, dy);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void moveMonster() {
+        if (gameMap.getMonsters().size() > 0) {
+            Random random = new Random();
+            Monster monster = gameMap.getMonsters().get(random.nextInt(0, gameMap.getMonsters().size()));
+            monster.changeDirection(Directions.values()[random.nextInt(0, 4)]);
+
+            boolean canMove = true;
+
+            do {
+                if (monster.getProperties().getDirection() == Directions.NORTH && monster.getProperties().getPosition().y > 0) {
+                    canMove = !moveMonster(monster, 0, -1);
+                } else if (monster.getProperties().getDirection() == Directions.EAST && monster.getProperties().getPosition().x < 40) {
+                    canMove = !moveMonster(monster, 1, 0);
+                } else if (monster.getProperties().getDirection() == Directions.SOUTH && monster.getProperties().getPosition().y < 25) {
+                    canMove = !moveMonster(monster, 0, 1);
+                } else if (monster.getProperties().getDirection() == Directions.WEST && monster.getProperties().getPosition().x > 0) {
+                    canMove = !moveMonster(monster, -1, 0);
+                }
+
+                if (canMove) {
+                    monster.changeDirection(Directions.values()[random.nextInt(0, 4)]);
+                }
+            } while (canMove);
+        }
+    }
+
     public void update() {
         setValue(this.getValue() - 1);
         showValue.setText(String.valueOf(value));
         mortalCount.setText(String.valueOf(Chest.getLength()));
+
+        moveMonster();
+
         if (getValue() == 0) {
-            for (int i = 0; i < settings.getPlayers().size(); i++) {
-                if (settings.getPlayers().get(i).getProperties().isMyTurn()) {
-                    settings.getPlayers().get(i).getProperties().setMyTurn(false);
-                    if (turnCount >= settings.getPlayers().size()) {
+            for (int i = 0; i < gameMap.getSettings().getPlayers().size(); i++) {
+                if (gameMap.getSettings().getPlayers().get(i).getProperties().isMyTurn()) {
+                    gameMap.getSettings().getPlayers().get(i).getProperties().setMyTurn(false);
+                    if (turnCount >= gameMap.getSettings().getPlayers().size()) {
                         turnCount = 0;
                     }
 
                     break;
                 }
             }
-            /*try {
-                while (!FightPanel.isRunning()) {
-                    //Thread.sleep(1000);
-                }
-            } catch(InterruptedException ex){
-                ex.printStackTrace();
-            }*/
-
 
             JOptionPane.showMessageDialog(null, "Player " + (turnCount + 1) + "! \n it's your turn!");
             button.setEnabled(true);
