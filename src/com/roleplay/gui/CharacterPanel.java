@@ -52,56 +52,56 @@ public class CharacterPanel {
 
         btn_Dwarf.addActionListener(e -> {
             race = Races.DWARF;
-            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
-            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
+            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
         });
 
         btn_Human.addActionListener(e -> {
             race = Races.HUMAN;
-            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
-            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
+            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
 
         });
 
         btn_Elf.addActionListener(e -> {
             race = Races.ELF;
-            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
-            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
+            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
         });
 
         btn_Hobbit.addActionListener(e -> {
             race = Races.HOBBIT;
-            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75.png"))));
-            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
+            btn_Dwarf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Human.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Elf.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75.png"))));
+            btn_Hobbit.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_125x75_enable.png"))));
         });
 
         btn_Fighter.addActionListener(e -> {
-            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter1_300x300.png"))));
-            btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter_enable.png"))));
-            btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
-            btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
+            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/player/fighter1_300x300.png"))));
+            btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_fighter_enable.png"))));
+            btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_wizard.png"))));
+            btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_thief.png"))));
             this.character = new Warrior(new CharacterProperties(new Point(xCount, yCount)));
         });
         btn_wizard.addActionListener(e -> {
-            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/wizard1_300x300.png"))));
-            btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter.png"))));
-            btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard_enable.png"))));
-            btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief.png"))));
+            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/player/wizard1_300x300.png"))));
+            btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_fighter.png"))));
+            btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_wizard_enable.png"))));
+            btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_thief.png"))));
             this.character = new Wizard(new CharacterProperties(new Point(xCount, yCount)));
         });
         btn_thief.addActionListener(e -> {
-            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_300x300.png"))));
-            btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_fighter.png"))));
-            btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_wizard.png"))));
-            btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_thief_enable.png"))));
+            charcterPicture.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/player/fighter2_300x300.png"))));
+            btn_Fighter.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_fighter.png"))));
+            btn_wizard.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_wizard.png"))));
+            btn_thief.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_thief_enable.png"))));
             this.character = new Thief(new CharacterProperties(new Point(xCount, yCount)));
         });
 
@@ -193,7 +193,7 @@ public class CharacterPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Background_Character_3.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("com/roleplay/resources/images/backgrounds/Background_Character_3.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
             }
         };

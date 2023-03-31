@@ -9,7 +9,7 @@ public class Amulet extends Artefact {
     public Amulet(ItemProperties itemProperties, Effect effect) {
         super(itemProperties, effect);
         itemProperties.setName("amulet");
-        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/amulet_32x32.png"));
+        itemProperties.setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/items/amulet_32x32.png"));
     }
 
     @Override

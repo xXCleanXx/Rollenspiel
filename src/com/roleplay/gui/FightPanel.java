@@ -123,7 +123,7 @@ public class FightPanel extends JPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/Fight.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("com/roleplay/resources/images/backgrounds/Fight.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
             }
         };

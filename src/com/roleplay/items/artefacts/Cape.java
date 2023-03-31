@@ -9,7 +9,7 @@ public class Cape extends Artefact {
     public Cape(ItemProperties itemProperties , Effect effect) {
         super(itemProperties, effect);
         itemProperties.setName("cape");
-        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/cape_32x32.png"));
+        itemProperties.setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/items/cape_32x32.png"));
     }
 
     @Override

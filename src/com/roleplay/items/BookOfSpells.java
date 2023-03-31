@@ -18,7 +18,7 @@ public class BookOfSpells extends Item {
     public BookOfSpells(ItemProperties itemProperties) {
         super(itemProperties);
         itemProperties.setName("bookOfSpells");
-        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/book_of_spells_32x32.png"));
+        itemProperties.setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/items/book_of_spells_32x32.png"));
     }
 
     public Spell[] getSpells() {

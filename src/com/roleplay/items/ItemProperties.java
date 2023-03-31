@@ -23,22 +23,4 @@ public class ItemProperties extends TileProperties {
     public ItemProperties() {
         super();
     }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        if (weight < 0) throw new IllegalArgumentException("Weight cannot be less than 0!");
-
-        this.weight = weight;
-    }
 }

@@ -9,7 +9,7 @@ public class Ring extends Artefact {
     public Ring(ItemProperties itemProperties, Effect effect) {
         super(itemProperties, effect);
         itemProperties.setName("ring");
-        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/ring_32x32.png"));
+        itemProperties.setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/items/ring_32x32.png"));
     }
 
     @Override

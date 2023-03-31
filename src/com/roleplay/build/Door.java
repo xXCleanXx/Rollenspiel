@@ -17,9 +17,9 @@ public class Door extends Tile<GameMapElementProperties> {
     }
 
     private String getImagePath(boolean flag) {
-        String path = "src/com/roleplay/resources/images/door.png";
+        String path = "com/roleplay/resources/images/door.png";
 
-        if (flag) path = "src/com/roleplay/resources/images/doorRotated.png";
+        if (flag) path = "com/roleplay/resources/images/doorRotated.png";
 
         return path;
     }
@@ -45,9 +45,9 @@ public class Door extends Tile<GameMapElementProperties> {
     public void open() {
         getProperties().getHitBox().setEnabled(false);
         if(getProperties().getName().equalsIgnoreCase("door")){
-            getProperties().setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/doorOpen.png"));
+            getProperties().setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/doorOpen.png"));
         } else if (getProperties().getName().equalsIgnoreCase("doorRotated")){
-            getProperties().setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/doorRotatedOpen.png"));
+            getProperties().setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/doorRotatedOpen.png"));
         }
         open = true;
     }

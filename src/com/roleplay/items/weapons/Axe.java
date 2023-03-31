@@ -7,6 +7,6 @@ public class Axe extends Weapon {
     public Axe(ItemProperties itemProperties) {
         super(itemProperties, 6);
         itemProperties.setName("axe");
-        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/axe_32x32.png"));
+        itemProperties.setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/items/axe_32x32.png"));
     }
 }

@@ -8,7 +8,7 @@ public class Shield extends Item {
     public Shield(ItemProperties itemProperties) {
         super(itemProperties);
         itemProperties.setName("shield");
-        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/shield_32x32.png"));
+        itemProperties.setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/items/shield_32x32.png"));
     }
 
     public double getStrength() {

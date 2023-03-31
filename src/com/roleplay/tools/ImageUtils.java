@@ -3,6 +3,7 @@ package com.roleplay.tools;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.InputStream;
 
 public class ImageUtils {
 
@@ -13,7 +14,9 @@ public class ImageUtils {
             return null;
         } else {
             try {
-                img = ImageIO.read(new File(pathname));
+                InputStream is = ImageUtils.class.getClassLoader().getResourceAsStream(pathname);
+                img = ImageIO.read(is);
+                is.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

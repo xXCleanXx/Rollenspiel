@@ -70,11 +70,11 @@ public class ItemPanel {
 
     private void changeIconAndList(Item item, JButton button) {
         if (!settings.getItemWhiteList().contains(item)) {
-            button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_" + item.getProperties().getName() + "_enable.png"))));
+            button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_" + item.getProperties().getName() + "_enable.png"))));
             settings.addItemToWhiteList(item);
 
         } else {
-            button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_" + item.getProperties().getName() + "_disable.png"))));
+            button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_" + item.getProperties().getName() + "_disable.png"))));
             settings.getItemWhiteList().remove(item);
         }
     }
@@ -88,7 +88,7 @@ public class ItemPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/artefact_background2.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("com/roleplay/resources/images/backgrounds/artefact_background2.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
 
             }

@@ -7,8 +7,8 @@ public class Thief extends Character {
         super(properties);
         getProperties().setName("thief");
         getProperties().setDisplayName("Thief");
-        getProperties().setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_32x32.png"));
-        getProperties().setTexture100(ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_100x100.png"));
-        getProperties().setTexture300(ImageUtils.loadImage("src/com/roleplay/resources/images/player/fighter2_300x300.png"));
+        getProperties().setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/player/fighter2_32x32.png"));
+        getProperties().setTexture100(ImageUtils.loadImage("com/roleplay/resources/images/player/fighter2_100x100.png"));
+        getProperties().setTexture300(ImageUtils.loadImage("com/roleplay/resources/images/player/fighter2_300x300.png"));
     }
 }

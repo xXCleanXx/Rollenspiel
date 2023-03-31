@@ -29,7 +29,7 @@ public class ControlPanel extends JPanel {
         button.setOpaque(false);
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
-        button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/dice.png"))));
+        button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/dice.png"))));
         button.addActionListener(e -> {
             Random rand = new Random();
             value = rand.nextInt(20) + 1;
@@ -65,7 +65,7 @@ public class ControlPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/controlBackGround.png"), 0, 0, this);
+        g.drawImage(ImageUtils.loadImage("com/roleplay/resources/images/backgrounds/controlBackGround.png"), 0, 0, this);
         showValue.setText(String.valueOf(getValue()));
         Toolkit.getDefaultToolkit().sync();
     }

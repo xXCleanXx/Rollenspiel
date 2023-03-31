@@ -52,12 +52,12 @@ public class SettingsPanel {
         button.addActionListener(e -> {
             settings.setPlayerCount(playerCount);
             resetIcons();
-            button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40_enable.png"))));
+            button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_60x40_enable.png"))));
         });
     }
 
     private void resetIcon(JButton button) {
-        button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("src/com/roleplay/resources/images/buttons/btn_60x40.png"))));
+        button.setIcon(new ImageIcon(Objects.requireNonNull(ImageUtils.loadImage("com/roleplay/resources/images/buttons/btn_60x40.png"))));
     }
 
     private void resetIcons(){
@@ -84,7 +84,7 @@ public class SettingsPanel {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(ImageUtils.loadImage("src/com/roleplay/resources/images/backgrounds/artefact_background3.png"), 0, 0, this);
+                g.drawImage(ImageUtils.loadImage("com/roleplay/resources/images/backgrounds/artefact_background3.png"), 0, 0, this);
                 Toolkit.getDefaultToolkit().sync();
             }
         };

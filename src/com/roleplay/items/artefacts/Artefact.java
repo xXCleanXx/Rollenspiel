@@ -14,7 +14,6 @@ public abstract class Artefact extends Item {
 
     protected Artefact(ItemProperties itemProperties ,Effect effect) {
         super(itemProperties);
-         getProperties().setWeight(0);
 
         setEffect(effect);
     }

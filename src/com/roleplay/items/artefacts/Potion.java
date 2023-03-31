@@ -14,7 +14,7 @@ public class Potion extends Artefact {
     public Potion(ItemProperties itemProperties) {
         super(itemProperties, loadEffect());
         itemProperties.setName("potion");
-        itemProperties.setTexture32(ImageUtils.loadImage("src/com/roleplay/resources/images/items/potion_32x32.png"));
+        itemProperties.setTexture32(ImageUtils.loadImage("com/roleplay/resources/images/items/potion_32x32.png"));
     }
 
     @Override
