@@ -21,18 +21,16 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class BoardPanel extends JPanel implements ActionListener {
-    private final GameMap gameMap;
     public InventoryPanel inventoryPanel;
     private final FightPanel fightPanel;
     private static final EndInfoPanel endInfoPanel = new EndInfoPanel();
+    private final GameMap gameMap;
 
-    public BoardPanel(Settings settings) {
+    public BoardPanel(GameMap gameMap) {
         setLayout(new OverlayLayout(this));
 
-        inventoryPanel = new InventoryPanel(settings);
-        gameMap = GameMapCreator.loadRandomMap();
-        gameMap.setSettings(settings);
-
+        this.gameMap = gameMap;
+        inventoryPanel = new InventoryPanel(gameMap.getSettings());
         fightPanel = new FightPanel(gameMap);
 
         setPreferredSize(new Dimension(GameMap.TILE_SIZE * gameMap.getWidth(), GameMap.TILE_SIZE * gameMap.getHeight()));
@@ -60,8 +58,8 @@ public class BoardPanel extends JPanel implements ActionListener {
         Point position;
 
         do {
-            position = new Point(random.nextInt(gameMap.getWidth()), random.nextInt(gameMap.getHeight()));
-        } while (!gameMap.getMapElements()[position.y][position.x].getProperties().getName().equalsIgnoreCase("way"));
+            position = new Point(random.nextInt(getGameMap().getWidth()), random.nextInt(getGameMap().getHeight()));
+        } while (!getGameMap().getMapElements()[position.y][position.x].getProperties().getName().equalsIgnoreCase("way"));
 
         return position;
     }
@@ -70,18 +68,18 @@ public class BoardPanel extends JPanel implements ActionListener {
         Random rand = new Random();
         Point position;
 
-        int count = switch (gameMap.getSettings().getDifficulty()) {
-            case HARD -> gameMap.getSettings().getPlayerCount() * 4;
-            case HARDCORE -> gameMap.getSettings().getPlayerCount() * 3;
-            case MEDIUM -> gameMap.getSettings().getPlayerCount() * 2;
-            case EASY -> gameMap.getSettings().getPlayerCount();
+        int count = switch (getGameMap().getSettings().getDifficulty()) {
+            case HARD -> getGameMap().getSettings().getPlayerCount() * 4;
+            case HARDCORE -> getGameMap().getSettings().getPlayerCount() * 3;
+            case MEDIUM -> getGameMap().getSettings().getPlayerCount() * 2;
+            case EASY -> getGameMap().getSettings().getPlayerCount();
         };
 
         for (int i = 0; i < count; i++) {
             position = generatePoint(rand);
             Monster monster = new Monster(new CharacterProperties(new Point(position)));
             new CharacterCreator(monster, Races.HOBBIT, "Monster");
-            gameMap.addMonster(monster);
+            getGameMap().addMonster(monster);
         }
     }
 
@@ -89,22 +87,22 @@ public class BoardPanel extends JPanel implements ActionListener {
         Random rand = new Random();
         Point position;
 
-        for (int i = 0; i < rand.nextInt((gameMap.getWidth() * gameMap.getHeight()) / 4 * gameMap.getSettings().getPlayers().size()); i++) {
+        for (int i = 0; i < rand.nextInt((getGameMap().getWidth() * getGameMap().getHeight()) / 4 * getGameMap().getSettings().getPlayers().size()); i++) {
             position = generatePoint(rand);
-            ItemFactory itemFactory = new ItemFactory(gameMap.getSettings());
-            Item item = itemFactory.createItemByName(gameMap.getSettings().getItemWhiteList().get(rand.nextInt(getGameMap().getSettings().getItemWhiteList().size())).getProperties().getName());
+            ItemFactory itemFactory = new ItemFactory(getGameMap().getSettings());
+            Item item = itemFactory.createItemByName(getGameMap().getSettings().getItemWhiteList().get(rand.nextInt(getGameMap().getSettings().getItemWhiteList().size())).getProperties().getName());
             item.getProperties().setPosition(new Point(position));
-            gameMap.addItem(item);
+            getGameMap().addItem(item);
         }
 
         for (int i = 0; i < 5; i++) {
             position = generatePoint(rand);
-            gameMap.addItem(new Key(new ItemProperties(new Point(position))));
+            getGameMap().addItem(new Key(new ItemProperties(new Point(position))));
         }
 
         for (int i = 1; i <= 3; i++) {
             position = generatePoint(rand);
-            gameMap.addItem(new MortalInstruments(new ItemProperties(new Point(position)), i));
+            getGameMap().addItem(new MortalInstruments(new ItemProperties(new Point(position)), i));
         }
     }
 
@@ -112,17 +110,17 @@ public class BoardPanel extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(gameMap.getMap(), 0, 0, null);
+        g.drawImage(getGameMap().getMap(), 0, 0, null);
 
-        for (Item item : gameMap.getItems()) {
+        for (Item item : getGameMap().getItems()) {
             item.draw(g, this);
         }
 
-        for (Character item : gameMap.getSettings().getPlayers()) {
+        for (Character item : getGameMap().getSettings().getPlayers()) {
             item.draw(g, this);
         }
 
-        for (Monster monster : gameMap.getMonsters()) {
+        for (Monster monster : getGameMap().getMonsters()) {
             monster.draw(g, this);
         }
 
@@ -131,7 +129,7 @@ public class BoardPanel extends JPanel implements ActionListener {
     }
 
     public GameMap getGameMap() {
-        return this.gameMap;
+        return gameMap;
     }
 
     public void update() {
@@ -141,8 +139,8 @@ public class BoardPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (Character c : gameMap.getSettings().getPlayers()) {
-            c.tick(gameMap.getWidth(), gameMap.getHeight());
+        for (Character c : getGameMap().getSettings().getPlayers()) {
+            c.tick(getGameMap().getWidth(), getGameMap().getHeight());
         }
 
         repaint();
@@ -159,16 +157,16 @@ public class BoardPanel extends JPanel implements ActionListener {
     }
 
     private void isCharacterOnPosition() {
-        for (Character fighter : gameMap.getSettings().getPlayers()) {
+        for (Character fighter : getGameMap().getSettings().getPlayers()) {
             if (fighter.getProperties().isMyTurn()) {
                 boolean monster = true;
 
-                for (Character opponent : gameMap.getSettings().getPlayers()) {
+                for (Character opponent : getGameMap().getSettings().getPlayers()) {
                     monster = !fight(fighter, opponent);
                 }
 
                 if (monster) {
-                    for (Character item : gameMap.getMonsters()) {
+                    for (Character item : getGameMap().getMonsters()) {
                         fight(fighter, item);
                     }
                 }

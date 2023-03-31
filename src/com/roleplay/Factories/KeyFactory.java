@@ -88,17 +88,21 @@ public class KeyFactory {
 
     private void performPlayerMove(Character c, int dx, int dy) {
         Tile<?> mapElement = boardPanel.getGameMap().getMapElements()[c.getProperties().getPosition().y + dy][c.getProperties().getPosition().x + dx];
+
         if ((mapElement instanceof Chest && c.getProperties().getInventory().containsMortal())) {
             List<Integer> index = new ArrayList<>();
+
             for (int i = 0; i < c.getProperties().getInventory().length(); i++) {
                 if (c.getProperties().getInventory().get(i) instanceof MortalInstruments) {
                     ((Chest) mapElement).addInstrument((MortalInstruments) c.getProperties().getInventory().get(i));
                     index.add(i);
                 }
             }
+
             for (int i : index) {
                 c.getProperties().getInventory().remove(i);
             }
+
             c.getProperties().getPosition().translate(dx, dy);
 
             notifyObservers();

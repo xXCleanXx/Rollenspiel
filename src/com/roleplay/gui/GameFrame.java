@@ -2,6 +2,8 @@ package com.roleplay.gui;
 
 import com.roleplay.Factories.KeyFactory;
 import com.roleplay.interfaces.IObserver;
+import com.roleplay.map.GameMap;
+import com.roleplay.map.GameMapCreator;
 import com.roleplay.map.Settings;
 
 import javax.swing.*;
@@ -9,7 +11,6 @@ import java.awt.*;
 
 public class GameFrame extends JFrame implements IObserver {
     private BoardPanel board;
-    private PlayerListPanel playerList;
     private ControlPanel gameControl;
 
     private static GameFrame gameFrame;
@@ -22,11 +23,14 @@ public class GameFrame extends JFrame implements IObserver {
     private void initialize(Settings settings) {
         setTitle("Nerds vs Monsters");
 
-        board = new BoardPanel(settings);
+        GameMap gameMap = GameMapCreator.loadRandomMap();
+        gameMap.setSettings(settings);
+
+        board = new BoardPanel(gameMap);
         add(board, BorderLayout.CENTER);
-        gameControl = new ControlPanel(settings);
+        gameControl = new ControlPanel(gameMap);
         add(gameControl, BorderLayout.EAST);
-        playerList = new PlayerListPanel(settings);
+        PlayerListPanel playerList = new PlayerListPanel(settings);
         add(playerList, BorderLayout.WEST);
 
         KeyFactory keyFactory = new KeyFactory(settings);
