@@ -28,7 +28,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_400x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="settings"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="settings"/>
             </properties>
           </component>
           <vspacer id="8a3e1">
@@ -54,7 +54,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_400x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="artefact"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="artefact"/>
             </properties>
           </component>
           <component id="7c2eb" class="javax.swing.JButton" binding="btn_Character">
@@ -71,7 +71,7 @@
               <hideActionText value="false"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_400x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="charcterMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="charcterMenu"/>
             </properties>
           </component>
         </children>
@@ -97,7 +97,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_800x100 .png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="start"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="start"/>
             </properties>
           </component>
           <component id="28ea" class="javax.swing.JButton" binding="btn_Info">
@@ -114,7 +114,7 @@
               <hideActionText value="true"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="INFO_PANEL"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="INFO_PANEL"/>
             </properties>
           </component>
         </children>
@@ -135,7 +135,7 @@
               <font name="Comic Sans MS" size="36"/>
               <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="MvsN"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="MvsN"/>
             </properties>
           </component>
         </children>

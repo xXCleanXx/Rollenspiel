@@ -47,9 +47,26 @@ public class MainPanel {
         btn_Start.addActionListener(e -> {
             if (settings.getPlayers().size() >= 3) {
                 mainFrame.setVisible(false);
+                sethealthForDifficulty();
                 new GameFrame(settings);
             }
         });
+    }
+
+    private void sethealthForDifficulty() {
+        if (settings.getDifficulty() == Difficulty.EASY) {
+            for (Character character : settings.getPlayers()) {
+                character.getProperties().setHealthPoints(character.getProperties().getHealthPoints() + 10);
+            }
+        } else if (settings.getDifficulty() == Difficulty.MEDIUM) {
+            for (Character character : settings.getPlayers()) {
+                character.getProperties().setHealthPoints(character.getProperties().getHealthPoints() + 5);
+            }
+        } else if (settings.getDifficulty() == Difficulty.HARDCORE) {
+            for (Character character : settings.getPlayers()) {
+                character.getProperties().setHealthPoints(5);
+            }
+        }
     }
 
     public JPanel getMainPanel() {

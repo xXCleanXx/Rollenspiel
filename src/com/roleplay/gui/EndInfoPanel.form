@@ -42,7 +42,7 @@
                   <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
                   <opaque value="false"/>
                   <requestFocusEnabled value="false"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="end"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="end"/>
                 </properties>
               </component>
             </children>
@@ -88,7 +88,7 @@
                   <foreground color="-16777216"/>
                   <lineWrap value="true"/>
                   <opaque value="false"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="endText"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="endText"/>
                   <wrapStyleWord value="true"/>
                 </properties>
               </component>

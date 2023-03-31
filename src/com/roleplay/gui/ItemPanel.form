@@ -24,7 +24,7 @@
             <properties>
               <font name="Comic Sans MS" size="36"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="items"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="items"/>
             </properties>
           </component>
           <component id="e5d9c" class="javax.swing.JLabel" binding="subTitle">
@@ -61,7 +61,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="startMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="startMenu"/>
             </properties>
           </component>
           <component id="d5f29" class="javax.swing.JButton" binding="btn_artefact">
@@ -76,7 +76,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="settings"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="settings"/>
             </properties>
           </component>
           <hspacer id="43b29">
@@ -169,7 +169,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="leather"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="leather"/>
                 </properties>
               </component>
               <component id="3b46e" class="javax.swing.JLabel">
@@ -181,7 +181,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="chain"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="chain"/>
                 </properties>
               </component>
               <component id="dc384" class="javax.swing.JLabel">
@@ -193,7 +193,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="iron"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="iron"/>
                 </properties>
               </component>
               <component id="cd0ed" class="javax.swing.JLabel">
@@ -205,7 +205,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="shield"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="shield"/>
                 </properties>
               </component>
             </children>
@@ -218,7 +218,7 @@
               <enabled value="true"/>
               <font name="Comic Sans MS" size="24"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="armor"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="armor"/>
             </properties>
           </component>
           <vspacer id="1ea95">
@@ -247,7 +247,7 @@
               <enabled value="true"/>
               <font name="Comic Sans MS" size="24"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="weapons"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="weapons"/>
             </properties>
           </component>
           <grid id="bf090" layout-manager="GridLayoutManager" row-count="2" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="7" vgap="-1">
@@ -360,7 +360,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="axe"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="axe"/>
                 </properties>
               </component>
               <component id="fe71" class="javax.swing.JLabel">
@@ -372,7 +372,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="bow"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="bow"/>
                 </properties>
               </component>
               <component id="1c10" class="javax.swing.JLabel">
@@ -384,7 +384,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="dagger"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="dagger"/>
                 </properties>
               </component>
               <component id="420d4" class="javax.swing.JLabel">
@@ -396,7 +396,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="dart"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="dart"/>
                 </properties>
               </component>
               <component id="13d2e" class="javax.swing.JLabel">
@@ -408,7 +408,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="handAxe"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="handAxe"/>
                 </properties>
               </component>
               <component id="eb3a7" class="javax.swing.JLabel">
@@ -420,7 +420,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="spear"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="spear"/>
                 </properties>
               </component>
               <component id="9420a" class="javax.swing.JLabel">
@@ -432,7 +432,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="sword"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="sword"/>
                 </properties>
               </component>
             </children>
@@ -509,7 +509,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="Amulet"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="Amulet"/>
                 </properties>
               </component>
               <component id="e2c1e" class="javax.swing.JLabel">
@@ -521,7 +521,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="cape"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="cape"/>
                 </properties>
               </component>
               <component id="4a6eb" class="javax.swing.JLabel">
@@ -533,7 +533,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="potion"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="potion"/>
                 </properties>
               </component>
               <component id="b8a2b" class="javax.swing.JLabel">
@@ -545,7 +545,7 @@
                   <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
-                  <text resource-bundle="com/roleplay/tools/messages" key="ring"/>
+                  <text resource-bundle="com/roleplay/resources/properties/messages" key="ring"/>
                 </properties>
               </component>
             </children>
@@ -558,7 +558,7 @@
               <enabled value="true"/>
               <font name="Comic Sans MS" size="24"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="artefact"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="artefact"/>
             </properties>
           </component>
         </children>

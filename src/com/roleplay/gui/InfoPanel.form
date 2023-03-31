@@ -27,7 +27,7 @@
               <foreground color="-16777216"/>
               <horizontalTextPosition value="0"/>
               <icon value="com/roleplay/resources/images/buttons/btn_250x100.png"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="startMenu"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="startMenu"/>
             </properties>
           </component>
         </children>
@@ -47,7 +47,7 @@
             <properties>
               <font name="Comic Sans MS" size="36"/>
               <foreground color="-16777216"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="info"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="info"/>
             </properties>
           </component>
         </children>
@@ -77,7 +77,7 @@
               <foreground color="-16777216"/>
               <lineWrap value="true"/>
               <opaque value="false"/>
-              <text resource-bundle="com/roleplay/tools/messages" key="control"/>
+              <text resource-bundle="com/roleplay/resources/properties/messages" key="control"/>
               <wrapStyleWord value="true"/>
             </properties>
           </component>
